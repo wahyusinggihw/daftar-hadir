@@ -12,6 +12,16 @@ body {
   padding: 20px;
   background: rgb(130, 106, 251);
 } */
+
+:root {
+  --form-control-color: #22B2A9;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 .container {
   position: relative;
   max-width: 700px;
@@ -81,9 +91,38 @@ body {
 .form .status {
   column-gap: 5px;
 }
-.status input {
-  accent-color: #0d6efd;
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: #22B2A9;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid #22B2A9;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
 }
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
 .form :where(.status input, .status label) {
   cursor: pointer;
 }
@@ -102,10 +141,10 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #0d6efd;
+  background: #22B2A9;
 }
 .form button:hover {
-  background: #0b5ed7;
+  background: #1a857d;
 }
 /*Responsive*/
 @media screen and (max-width: 500px) {
@@ -132,6 +171,19 @@ body {
 }
 .inputcontainer label {
   color: #333;
+}
+
+.note{
+  background-color: #cff4fc;
+  border-left: 6px solid #9eeaf9;
+  padding: 1.25rem;
+}
+
+.note p {
+  color: #055160;
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 16px;
 }
 
 /* bagian tanda tangan */
@@ -199,13 +251,13 @@ body {
 #cariNikButton i {
   font-size: 23px;
   /* color: #333; */
-  color: #0d6efd;
+  color: #22B2A9;
 }
 
 #loadingIndicator {
   font-size: 23px;
   /* color: #333; */
-  color: #0d6efd;
+  color: #22B2A9;
 }
 .search a {
   cursor: pointer;

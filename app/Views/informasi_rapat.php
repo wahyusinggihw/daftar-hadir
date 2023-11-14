@@ -28,18 +28,25 @@
         </header>
         <div class="container-info">
             <div class="card-info">
-                <div class="card-qr">
-                    <img src="<?= $qrCode ?>" alt="Logo">
+                <div class="tutorial">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
-
                 <div class="card-text">
-                    <h1>INFORMASI RAPAT</h1>
                     <ul>
                         <li><?= $agendaRapat['agenda_rapat'] ?></li>
                         <li><?= $agendaRapat['nama_instansi'] ?></li>
                     </ul>
+                    <div class="card-qr">
+                        <img src="<?= $qrCode ?>" alt="Logo">
+                    </div>
                     <div class="code-rapat">
-                        KODE RAPAT : <p id="teksToSalin" onclick="copyText()"><?= $agendaRapat['kode_rapat'] ?></p>
+                        <p id="teksToSalin" onclick="copyText()"><?= $agendaRapat['kode_rapat'] ?></p>
                     </div>
                 </div>
             </div>
