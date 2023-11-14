@@ -34,6 +34,7 @@ class BasicauthFilter implements FilterInterface
 
             echo json_encode(array(
                 "status" => false,
+                "error" => true,
                 "message" => "Invalid credentials"
             ));
             die;

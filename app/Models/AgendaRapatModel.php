@@ -212,7 +212,7 @@ class AgendaRapatModel extends Model
     // membuat view untuk mengelompokkan id instansi dan nama instansi (SUPER ADMIN)
     function viewAgendaRapatByInstansi()
     {
-        $viewName = 'agendarapatbyinstansi';
+        $viewName = 'agendaRapatByInstansi';
         $viewExists = $this->db->query("SHOW TABLES LIKE '$viewName'")->getRow();
 
         if (!$viewExists) {
