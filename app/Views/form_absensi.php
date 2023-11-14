@@ -25,6 +25,9 @@
             <?php
             // Capture the old value of the status radio input
             $oldStatusValue = old('statusRadio');
+            if ($oldStatusValue != 'tamu') {
+                $oldAsnNonAsnValue = '';
+            }
             $oldAsnNonAsnValue = old('asnNonAsnRadio');
             // d(validation_list_errors());
             ?>

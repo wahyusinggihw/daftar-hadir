@@ -1,34 +1,13 @@
-function setInputFilter(textbox, errMsg) {
-  if (textbox) {
-    textbox.addEventListener("input", function () {
-      const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-
-      if (this.value !== numericValue) {
-        // Non-numeric characters were entered - block and show error
-        this.value = numericValue;
-        this.classList.add("input-error");
-        this.setCustomValidity(errMsg);
-        this.reportValidity();
-      } else {
-        // Numeric input - remove error
-        this.classList.remove("input-error");
-        this.setCustomValidity("");
-        this.reportValidity();
-      }
-    });
-  }
-}
-
 $(document).ready(function () {
   // check if there is validation error from checking the radio button
   var oldStatus = $('input[name="statusRadio"]:checked').val();
   console.log(oldStatus);
   if (oldStatus === "pegawai") {
     setInputFilter(document.getElementById("nip"), "Harus berupa angka");
-    onErrorHndlePegawaiStatus();
+    onErrorHandlePegawaiStatus();
   } else if (oldStatus === "tamu") {
     setInputFilter(document.getElementById("nip"), "Harus berupa angka");
-    onErrorHndleTamuStatus();
+    onErrorHandleTamuStatus();
   } else {
     // Initialization
     initializePage();
@@ -54,6 +33,7 @@ function initializePage() {
   readonlyFormFields(
     "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
+  $(".note").hide();
   $("#cariNikButton").addClass("disabled-button");
   $("#label-default").show();
   $("#cariNikButton").show();
@@ -63,8 +43,9 @@ function initializePage() {
   // disableFormFields();
 }
 
-function onErrorHndlePegawaiStatus() {
+function onErrorHandlePegawaiStatus() {
   signaturePad.on();
+  $(".note").hide();
   $("#asnNonAsnContainer").show();
   $("#cariNikButton").addClass("disabled-button");
   $("#cariNikButton").show();
@@ -79,9 +60,11 @@ function onErrorHndlePegawaiStatus() {
   handlePegawaiNipInput();
 }
 
-function onErrorHndleTamuStatus() {
+function onErrorHandleTamuStatus() {
   // $("#instansiOption").hide();
   // $("#instansiText").show();
+  tamuStatusClicked = false;
+  $(".note").fadeIn(200);
   handleTamuNipInput();
 }
 
@@ -92,9 +75,11 @@ function handleStatusRadioButtonClick() {
 
   // debounceTimeout = setTimeout(function () {
   var statusValue = $('input[name="statusRadio"]:checked');
-
-  $("#nip, #no_hp, #nama, #alamat, #asal_instansi_tamu").val("");
-
+  var asnNonAsnRadio = 'input[name="asnNonAsnRadio"]';
+  $(asnNonAsnRadio).prop("checked", false);
+  $(
+    "#nip, #no_hp, #nama, #alamat, #asal_instansi_tamu, #asal_instansi_option"
+  ).val("");
   if (statusValue.val() === "tamu") {
     // restoreSavedValues("tamu");
     handleTamuStatus();
@@ -117,8 +102,16 @@ function handleNipInputChange() {
 }
 
 // Function to handle 'tamu' status
+var tamuStatusClicked = false;
+
 function handleTamuStatus() {
   signaturePad.on();
+  if (!tamuStatusClicked) {
+    $(".note").fadeIn(200); // add slide-in animation
+    tamuStatusClicked = true;
+  }
+  $(".note").show(); // add slide-in animation
+
   enableFormFields(
     "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
@@ -141,6 +134,7 @@ function handleTamuStatus() {
 function handlePegawaiStatus() {
   var asnNonAsnRadio = 'input[name="asnNonAsnRadio"]';
   var statusValuePegawai = $(asnNonAsnRadio + ":checked");
+  $(".note").hide();
 
   if (statusValuePegawai.length > 0) {
     // The radio button is already checked on page load
@@ -312,6 +306,27 @@ function restoreSavedValues(key) {
   }
 }
 
+function setInputFilter(textbox, errMsg) {
+  if (textbox) {
+    textbox.addEventListener("input", function () {
+      const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+      if (this.value !== numericValue) {
+        // Non-numeric characters were entered - block and show error
+        this.value = numericValue;
+        this.classList.add("input-error");
+        this.setCustomValidity(errMsg);
+        this.reportValidity();
+      } else {
+        // Numeric input - remove error
+        this.classList.remove("input-error");
+        this.setCustomValidity("");
+        this.reportValidity();
+      }
+    });
+  }
+}
+
 const username = "meetingcheck";
 const password = "meetingcheck%^2023";
 function tamuAjax(nikValue) {
@@ -451,7 +466,7 @@ function validateRecaptcha() {
 
   if (recaptchaResponse.length === 0) {
     // User hasn't checked the reCAPTCHA, display an error message.
-    recaptchaErrorElement.textContent = "Mohon centang reCAPTCHA.";
+    recaptchaErrorElement.textContent = "centang reCAPTCHA terlebih dahulu.";
     return false;
   }
 
