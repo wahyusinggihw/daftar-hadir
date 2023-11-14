@@ -11,9 +11,9 @@
   },
   "require": {
     "php": "^7.4 || ^8.0",
-    "chillerlan/php-qrcode": "^4.3",
     "cocur/slugify": "4.4.0",
     "codeigniter4/framework": "^4.0",
+    "endroid/qr-code": "^4.6",
     "ramsey/uuid": "^4.2",
     "tecnickcom/tcpdf": "^6.6"
   },

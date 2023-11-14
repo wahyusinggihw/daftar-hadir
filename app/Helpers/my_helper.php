@@ -1,9 +1,12 @@
 <?php
 
-use CodeIgniter\Config\Services;
-use CodeIgniter\HTTP\CURLRequest;
-use chillerlan\QRCode\{QRCode, QROptions};
-
+// use chillerlan\QRCode\{QRCode, QROptions};
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
 
 function kodeRapat()
 {
@@ -67,18 +70,23 @@ function getCurrentTimeRounded()
 function generateQrCode($linkRapat)
 {
     // add logo to qr
-    // qroptions for qr without padding
-    $options = new QROptions();
-    $options->addLogoSpace = true;
-    $options->logoPath = FCPATH . 'assets/img/icon.png';
-    $options->logoWidth = 100;
-    $options->logoHeight = 100;
-    $options->logoResizeToWidth = true;
-    $options->logoResizeToHeight = true;
-    $options->outputType = QRCode::OUTPUT_MARKUP_SVG;
-    // dd($options);
-    $qr = new QRCode($options);
-    $result = $qr->render($linkRapat);
+    $logoPath = FCPATH . 'assets/img/pemkab.png';
+
+    $qr = QrCode::create($linkRapat)
+        ->setSize(500)
+        ->setForegroundColor(new Color(0, 0, 0, 0))
+        ->setMargin(10)
+        ->setBackgroundColor(new Color(255, 255, 255, 0));
+
+    $logo = Logo::create($logoPath)
+        ->setResizeToWidth(120)
+        ->setResizeToHeight(120);
+
+    // $label = Label::create('Scan QR Code untuk mengikuti rapat', 16)
+
+    $writer = new  PngWriter();
+    $result = $writer->write($qr, $logo)->getDataUri();
+
     return $result;
 }
 
