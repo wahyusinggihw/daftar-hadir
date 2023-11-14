@@ -46,12 +46,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Jam</label>
-                            <input class="timepicker-default form-control <?= validation_show_error('jam_default') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam_default" name="jam_default">
-                            <input style="display: none;" class="timepicker form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam" name="jam">
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('jam') ?>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Jam</label>
+                                <input class="timepicker-default form-control <?= validation_show_error('jam_default') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam_default" name="jam_default">
+                                <input style="display: none;" class="timepicker form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam" name="jam">
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('jam') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm">

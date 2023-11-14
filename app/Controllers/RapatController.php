@@ -46,6 +46,9 @@ class RapatController extends BaseController
         if (str_starts_with($url, site_url('/rapat/daftar-hadir/'))) {
             $kodeRapat = $this->request->getUri()->getSegment(3);
             $rapat = $this->agendaRapat->getAgendaRapatByKode(trim($kodeRapat));
+            if ($rapat == null) {
+                return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan');
+            }
             $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
             // dd($expiredTime);
             if ($expiredTime) {
