@@ -1,0 +1,31 @@
+.button-container {
+    text-align: center;
+    margin-top: 100px;
+    width: 100%; 
+}
+
+#tambah-agenda {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#tambah-agenda:hover {
+    background-color: #0056b3;
+}
+
+.data-kosong {
+    text-align: center;
+    font-size: 24px;
+}
+
+.icon-empty {
+  width: 100px; /* Sesuaikan lebar gambar sesuai kebutuhan */
+  height: auto;
+  margin: auto; /* Biarkan tinggi mengikuti proporsi asli */
+}

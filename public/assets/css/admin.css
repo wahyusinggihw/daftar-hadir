@@ -1,0 +1,60 @@
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+#requirements-list {
+  display: flex;
+  margin-top: 8px;
+}
+
+#requirements-1 {
+  list-style-type: none;
+  margin-right: 15px;
+  padding: 0;
+}
+
+#requirements-2 {
+  list-style-type: none;
+  padding: 0;
+}
+
+#requirements li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+#requirements-1 i {
+  margin-right: 8px;
+}
+
+#requirements-2 i {
+  margin-right: 8px;
+}
+
+/* Warna merah untuk ikon silang */
+#requirements-list ul i.fa-times-circle {
+  color: #dc3545;
+}
+
+/* Warna hijau untuk ikon centang */
+#requirements-list ul i.fa-check-circle {
+  color: #28a745;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  /* Warna merah untuk pesan kesalahan */
+  margin-top: 4px;
+}

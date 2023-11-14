@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.table-container {
+    max-width: 1900px;
+    margin: 0 auto;
+}
+
+.participant-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.participant-table th,
+.participant-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.participant-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.participant-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.participant-table tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.download-button:hover {
+    background-color: #9bffff;
+}

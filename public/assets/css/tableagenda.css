@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.agenda-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.agenda-table th,
+.agenda-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.agenda-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.agenda-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.agenda-table tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.form-popup h2 {
+    margin-bottom: 10px;
+}

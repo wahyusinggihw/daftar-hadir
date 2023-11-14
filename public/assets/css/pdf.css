@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 34px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.agenda {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.description {
+    margin-top: 20px;
+}
+
+.link {
+    color: blue;
+}
