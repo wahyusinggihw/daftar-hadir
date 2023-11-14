@@ -312,40 +312,57 @@ function restoreSavedValues(key) {
   }
 }
 
+const username = "meetingcheck";
+const password = "meetingcheck%^2023";
 function tamuAjax(nikValue) {
   $.ajax({
     url: base_url + "/api/peserta/" + nikValue, // Replace with your API endpoint
     type: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader(
+        "Authorization",
+        "Basic " + btoa(username + ":" + password)
+      );
+    },
     success: function (data) {
       console.log(data);
       console.log(data.status);
-      if (data.status === false) {
+      if (!data.error) {
+        if (data.status === false) {
+          $("#loadingIndicator").hide();
+          $("#no_hp, #nama, #alamat, #asal_instansi_tamu")
+            .val("")
+            .prop("readonly", false);
+        } else if (data.status === true) {
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            toast: "true",
+            position: "top-end",
+            text: "Silahkan melakukan tanda tangan.",
+            showConfirmButton: false, // Optionally, hide the "OK" button
+            timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
+          });
+          // saveCurrentValues("tamu");
+          console.log(data);
+          $("#loadingIndicator").hide();
+          $("#signatureCanvas").removeClass("greyed-out-form");
+          // $('#no_hp, #nama, #alamat, #asal_instansi_tamu').addClass('greyed-out-form');
+          // Update the form fields with the fetched data
+          $("#no_hp").val(data.data.no_hp).prop("readonly", false);
+          $("#nama").val(data.data.nama).prop("readonly", false);
+          $("#alamat").val(data.data.alamat).prop("readonly", false);
+          $("#instansiText, #asal_instansi_tamu")
+            .val(data.data.asal_instansi)
+            .prop("readonly", false);
+        }
+      } else {
         $("#loadingIndicator").hide();
-        $("#no_hp, #nama, #alamat, #asal_instansi_tamu")
-          .val("")
-          .prop("readonly", false);
-      } else if (data.status === true) {
         Swal.fire({
-          icon: "success",
-          title: "Success!",
-          toast: "true",
-          position: "top-end",
-          text: "Silahkan melakukan tanda tangan.",
-          showConfirmButton: false, // Optionally, hide the "OK" button
-          timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
+          icon: "error",
+          title: "Terjadi Kesalahan!",
+          text: "Mohon tunggu beberapa saat dan coba lagi.",
         });
-        // saveCurrentValues("tamu");
-        console.log(data);
-        $("#loadingIndicator").hide();
-        $("#signatureCanvas").removeClass("greyed-out-form");
-        // $('#no_hp, #nama, #alamat, #asal_instansi_tamu').addClass('greyed-out-form');
-        // Update the form fields with the fetched data
-        $("#no_hp").val(data.data.no_hp).prop("readonly", false);
-        $("#nama").val(data.data.nama).prop("readonly", false);
-        $("#alamat").val(data.data.alamat).prop("readonly", false);
-        $("#instansiText, #asal_instansi_tamu")
-          .val(data.data.asal_instansi)
-          .prop("readonly", false);
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {
@@ -360,48 +377,64 @@ function pegawaiAjax(apiEndpoint, nikValue) {
   $.ajax({
     url: base_url + apiEndpoint + nikValue, // Replace with your API endpoint
     type: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader(
+        "Authorization",
+        "Basic " + btoa(username + ":" + password)
+      );
+    },
     success: function (data) {
+      console.log(data);
       console.log(data.status);
-      if (data.status === false) {
-        // Handle the case where data is not found
-        $("#no_hp, #nama, #alamat, #asal_instansi_option")
-          .val("")
-          .prop("readonly", false);
-        // $("#loadingIndicator").hide();
+      if (!data.error) {
+        if (data.status === false) {
+          // Handle the case where data is not found
+          $("#no_hp, #nama, #alamat, #asal_instansi_option")
+            .val("")
+            .prop("readonly", false);
+          // $("#loadingIndicator").hide();
+          $("#cariNikButton i").attr("class", initialClasses);
+          // Show an alert using SweetAlert when NIK is not found
+          Swal.fire({
+            icon: "error",
+            title: "NIP Tidak ditemukan.",
+            text: "NIP tidak ditemukan. Cek kembali NIP anda dan coba lagi.",
+          });
+        } else if (data.status === true) {
+          // $("#loadingIndicator").hide();
+          $("#cariNikButton i").attr("class", initialClasses);
+          $("#cariNikButton").addClass("disabled-button");
+          $("#nip").on("change", function () {
+            $("#cariNikButton").removeClass("disabled-button");
+          });
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            toast: "true",
+            position: "top-end",
+            text: "Silahkan melakukan tanda tangan.",
+            showConfirmButton: false, // Optionally, hide the "OK" button
+            timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
+          });
+          // saveCurrentValues("pegawai");
+          $("#signatureCanvas").removeClass("greyed-out-form");
+          signaturePad.on();
+          console.log(data);
+          // $("#nip").val(data.data.nip).prop("readonly", false);
+          $("#no_hp").val(data.data.no_hp).prop("readonly", true);
+          $("#nama").val(data.data.nama_lengkap).prop("readonly", true);
+          $("#alamat").val(data.data.alamat).prop("readonly", true);
+          $("#instansiOption, #asal_instansi_option")
+            .val(data.data.ket_ukerja)
+            .prop("readonly", true);
+        }
+      } else {
         $("#cariNikButton i").attr("class", initialClasses);
-        // Show an alert using SweetAlert when NIK is not found
         Swal.fire({
           icon: "error",
-          title: "NIP Tidak ditemukan.",
-          text: "NIP tidak ditemukan. Cek kembali NIP anda dan coba lagi.",
+          title: "Terjadi Kesalahan!",
+          text: "Mohon tunggu beberapa saat dan coba lagi.",
         });
-      } else if (data.status === true) {
-        // $("#loadingIndicator").hide();
-        $("#cariNikButton i").attr("class", initialClasses);
-        $("#cariNikButton").addClass("disabled-button");
-        $("#nip").on("change", function () {
-          $("#cariNikButton").removeClass("disabled-button");
-        });
-        Swal.fire({
-          icon: "success",
-          title: "Success!",
-          toast: "true",
-          position: "top-end",
-          text: "Silahkan melakukan tanda tangan.",
-          showConfirmButton: false, // Optionally, hide the "OK" button
-          timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
-        });
-        // saveCurrentValues("pegawai");
-        $("#signatureCanvas").removeClass("greyed-out-form");
-        signaturePad.on();
-        console.log(data);
-        // $("#nip").val(data.data.nip).prop("readonly", false);
-        $("#no_hp").val(data.data.no_hp).prop("readonly", true);
-        $("#nama").val(data.data.nama_lengkap).prop("readonly", true);
-        $("#alamat").val(data.data.alamat).prop("readonly", true);
-        $("#instansiOption, #asal_instansi_option")
-          .val(data.data.ket_ukerja)
-          .prop("readonly", true);
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {

@@ -26,12 +26,14 @@ class UsersControllerAPI extends BaseController
         if (isset($data)) {
             $response = [
                 'status' => true,
+                'error' => false,
                 'data' => $data
             ];
             // return $this->respond($response, 200);
         } else {
             $response = [
                 'status' => false,
+                'error' => false,
                 'messages' => 'User not found'
             ];
         }
@@ -47,12 +49,14 @@ class UsersControllerAPI extends BaseController
             if ($item->kode_instansi == $nip) {
                 $result = [
                     'status' => true,
+                    'error' => false,
                     'data' => $item
                 ];
                 break;
             } else {
                 $result = [
                     'status' => false,
+                    'error' => false,
                     'data' => null
                 ];
             }
@@ -68,12 +72,14 @@ class UsersControllerAPI extends BaseController
         if (isset($pegawaiJSON->data)) {
             $result = [
                 'status' => true,
+                'error' => false,
                 'data' => $pegawaiJSON->data
             ];
             // break;
         } else {
             $result = [
                 'status' => false,
+                'error' => false,
                 'data' => null
             ];
         }
@@ -89,12 +95,14 @@ class UsersControllerAPI extends BaseController
         if (isset($pegawaiJSON->data)) {
             $result = [
                 'status' => true,
+                'error' => false,
                 'data' => $pegawaiJSON->data
             ];
             // break;
         } else {
             $result = [
                 'status' => false,
+                'error' => false,
                 'data' => null
             ];
         }

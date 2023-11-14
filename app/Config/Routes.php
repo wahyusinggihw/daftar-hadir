@@ -18,16 +18,16 @@ $routes->post('/rapat/submit-kode', 'Home::submitKode');
 $routes->get('/rapat/daftar-hadir/(:segment)', 'RapatController::formAbsensi/$1');
 $routes->post('/rapat/daftar-hadir/store', 'RapatController::absenStore');
 
-// AJAX PESERTA RAPAT
-$routes->get('api/peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
-$routes->get('api/pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
-$routes->get('api/pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
-$routes->get('api/pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
-$routes->post('api/save-signature', 'RapatController::saveSignatureData');
-
-
-// API Mobile App
+// API / AJAX
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
+
+    // AJAX PESERTA RAPAT (form daftar hadir)
+    $routes->get('peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
+    $routes->get('pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
+    $routes->get('pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
+    $routes->get('pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
+    $routes->post('save-signature', 'RapatController::saveSignatureData');
+
     $routes->post('login', "Api\AuthControllerAPI::login");
     // get agenda rapat berdasarkan instansi user (Home Screen)
     $routes->get('agenda-rapat/get-by-instansi/(:segment)', 'Api\AgendaRapatControllerAPI::index/$1');
