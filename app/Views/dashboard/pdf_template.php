@@ -8,6 +8,15 @@
             width: 100%;
         }
 
+        .tabeldaftarhadir {
+            font-size: 10px;
+        }
+
+        p {
+            font-size: 10px;
+            text-align: center;
+        }
+
         td,
         th {
             border: 1px solid #000000;
@@ -17,6 +26,7 @@
         }
 
         h1 {
+            font-size: 14px;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -27,6 +37,7 @@
 
         /* Style for header */
         .table-row {
+            font-size: 12px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -48,9 +59,9 @@
 </head>
 
 <body>
-    <div class="logo">
+    <!-- <div class="logo">
         <img width="100" src="assets/img/logo.png" alt="Logo">
-    </div>
+    </div> -->
     <p>
         <i>DaftarHadir</i><br>
         Jl. Pahlawan, Paket Agung, Kec. Buleleng, Kabupaten Buleleng, Bali 81117
@@ -89,9 +100,9 @@
             <td><?= $agendaRapat['jam'] ?></td>
         </tr>
     </table>
-    </p>
-
-    <table cellpadding="6">
+    <br>
+    <br>
+    <table cellpadding="4" class="tabeldaftarhadir">
         <tr>
             <th><strong>NIP/NIK</strong></th>
             <th><strong>Nama</strong></th>
