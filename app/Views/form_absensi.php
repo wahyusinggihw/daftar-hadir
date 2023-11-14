@@ -33,11 +33,11 @@
                 <div class="status-option">
                     <div class="status">
                         <input class="statusRadio" name="statusRadio" type="radio" id="statusRadio1" value="pegawai" <?php if ($oldStatusValue === 'pegawai') echo 'checked'; ?> />
-                        <label class="statusRadio" for="statusRadio1">Pegawai</label>
+                        <label class="statusRadio-label" for="statusRadio1">Pegawai</label>
                     </div>
                     <div class="status">
                         <input class="statusRadio" name="statusRadio" type="radio" id="statusRadio2" value="tamu" <?php if ($oldStatusValue === 'tamu') echo 'checked'; ?> />
-                        <label class="statusRadio" for="statusRadio2">Tamu</label>
+                        <label class="statusRadio-label" for="statusRadio2">Tamu</label>
                     </div>
                 </div>
                 <div class="invalid-response">
@@ -76,6 +76,9 @@
                     <input value="<?= old('nip') ?>" type="text" placeholder="Masukkan NIP" id="nip" name="nip" inputmode="numeric" />
                     <a style="display: none;" class="cari" id="cariNikButton"><i class="fa fa-search"></i></a>
                     <i style="display: none;" id="loadingIndicator" class="fa fa-circle-o-notch fa-spin"></i>
+                </div>
+                <div class="note">
+                    <p><strong>Info!</strong> Tanda tangani formulir ini jika Anda telah mengisi sebelumnya. Jika ini pertama kalinya, lengkapi biodata dengan cermat.</p>
                 </div>
                 <div class="invalid-response">
                     <?= validation_show_error('nip') ?>

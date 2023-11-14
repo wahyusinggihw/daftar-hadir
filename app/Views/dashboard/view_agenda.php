@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <body>
-    <div class="card card-info">
+    <!-- <div class="card card-info">
         <div class="card-body">
             <form action="#" method="#">
                 <?= csrf_field() ?>
@@ -67,7 +67,7 @@
 
                                     <img id="qr" width="100px" src="<?= $qrCode ?>" alt="" class="">
                                 </div>
-                                <!-- cara agar code "a" menjadi column di dalam row -->
+
                                 <div class="col">
                                     <div class="row mb-4">
                                         <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-primary" target="_blank">Informasi rapat</a>
@@ -78,9 +78,51 @@
                     </div>
             </form>
         </div>
+    </div> -->
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fa-solid fa-circle-info" style="color: #000000;"></i>
+                Informasi Agenda
+            </h3>
+        </div>
+        <div class="d-flex">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Agenda Rapat</dt>
+                    <dd class="col-sm-8"><?= old('agenda_rapat', $data['agenda_rapat']) ?></dd>
+                    <dt class="col-sm-4">Tempat</dt>
+                    <dd class="col-sm-8"><?= old('tempat', $data['tempat']) ?></dd>
+                    <dt class="col-sm-4">Tanggal</dt>
+                    <dd class="col-sm-8"><?= old('tanggal', $data['tanggal']) ?></dd>
+                    <dt class="col-sm-4">Jam</dt>
+                    <dd class="col-sm-8"><?= old('jam', $data['jam']) ?></dd>
+                    <dt class="col-sm-4">Deskripsi</dt>
+                    <dd class="col-sm-8"><?= old('deskripsi', $data['deskripsi']) ?></dd>
+                </dl>
+            </div>
+            <div class="card-body">
+                <div class="col">
+                    <div class="col">
+
+                        <img id="qr" width="300px" src="<?= $qrCode ?>" alt="" class="">
+                    </div>
+
+                    <div class="col">
+                        <div class="row mb-2">
+                            <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn   btn-primary" target="_blank">Tampilkan Informasi rapat</a>
+                        </div>
+                        <div class="row mb-2">
+                            <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-primary" target="_blank">Salin link Rapat</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-
-
 
     <script>
         // Function to customize print settings
