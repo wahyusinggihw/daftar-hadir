@@ -13,7 +13,8 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Agenda Rapat</label>
-                            <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat">
+                            <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat" maxlength="255">
+                            <div class="agenda-counter"></div>
                             <div class="invalid-feedback">
                                 <?= validation_show_error('agenda_rapat') ?>
                             </div>
@@ -24,7 +25,8 @@
 
                         <div class="form-group">
                             <label>Tempat Rapat</label>
-                            <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat') ?>" id="tempat" name="tempat">
+                            <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat') ?>" id="tempat" name="tempat" maxlength="255">
+                            <div class="tempat-counter"></div>
                             <div class="invalid-feedback">
                                 <?= validation_show_error('tempat') ?>
                             </div>
@@ -51,7 +53,8 @@
                     </div>
                     <div class="form-group">
                         <label>Agenda Rapat</label>
-                        <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi"><?= old('deskripsi') ?></textarea>
+                        <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" maxlength="2550"><?= old('deskripsi') ?></textarea>
+                        <div class="deskripsi-counter"></div>
                         <div class="invalid-feedback">
                             <?= validation_show_error('deskripsi') ?>
                         </div>
@@ -66,6 +69,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
+        $('#deskripsi').on('input', function() {
+            const max = 2550;
+            const length = $(this).val().length;
+            if (length == max) {
+                $('.deskripsi-counter').text(`Maksimum karakter yang diinput adalah ${max} karakter`).addClass('text-danger');
+            } else {
+                $('.deskripsi-counter').text('').removeClass('text-danger');
+            }
+            // $('.deskripsi-counter').text(remaining);     
+        });
+        $('#agenda_rapat').on('input', function() {
+            const max = 255;
+            const length = $(this).val().length;
+            if (length == max) {
+                $('.agenda-counter').text(`Maksimum karakter tercapai (${max})`).addClass('text-danger');
+            } else {
+                $('.agenda-counter').text('').removeClass('text-danger');
+            }
+            // $('.deskripsi-counter').text(remaining);     
+        });
+        $('#tempat').on('input', function() {
+            const max = 255;
+            const length = $(this).val().length;
+            if (length == max) {
+                $('.tempat-counter').text(`Maksimum karakter tercapai (${max})`).addClass('text-danger');
+            } else {
+                $('.tempat-counter').text('').removeClass('text-danger');
+            }
+        });
         // Function to format the current time as 'HH:mm' and round to the nearest 30-minute interval
         function getCurrentTimeRounded() {
             const now = new Date();

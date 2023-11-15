@@ -58,8 +58,7 @@ class AgendaRapat extends Migration
                 'constraint' => 6,
             ],
             'deskripsi' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+                'type' => 'TEXT'
             ],
             'link_rapat' => [
                 'type' => 'VARCHAR',
