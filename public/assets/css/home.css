@@ -1,24 +1,24 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  
+  flex-direction: column-reverse;
 }
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   max-width: 50%;
-
 }
 
-.landing-page .content .section-1 {
-  /* background-image: url("https://iili.io/JfZ5ubR.png"); */
-  width: auto;
-  height: 625px;
-  background-size: 100% 100%;
+body {
+  /* display: flex; */
+  height: 100%;
+  width: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: scroll;
+  background-position: bottom right;
+  background-attachment: fixed;
 }
 
 .landing-page .content .section-2 {
@@ -38,7 +38,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* padding-top: 30px; */
+  padding-top: 40px;
   padding-bottom: 30px;
 }
 
@@ -53,7 +53,7 @@
 }
 .landing-page .content .info h1 {
   /* color: #0357ad; */
-  color: #22B2A9;
+  color: #22b2a9;
   font-size: 50px;
   font-style: normal;
   font-weight: bold;
@@ -83,7 +83,7 @@
   cursor: pointer;
   color: #fff;
   /* background-color: #0466ed; */
-  background-color: #22B2A9;
+  background-color: #22b2a9;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -100,7 +100,7 @@
   border: 100px black;
   border-radius: 15px;
   /* box-shadow: 0px 0px 100px 1px rgba(0, 0, 0, 0.205); */
-  background: rgba(255, 255, 255, 0.9);
+  /* background: rgba(255, 255, 255, 0.9); */
   box-sizing: border-box;
 }
 
@@ -112,6 +112,8 @@
 }
 
 .formid input {
+  /*transparran */
+  background: rgba(255, 255, 255, 0.596);
   width: 400px;
   height: 50px;
   border-radius: 14px 0px 0px 14px;
@@ -123,6 +125,7 @@
   height: auto;
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 60px;
   margin-left: 80px;
   box-sizing: border-box;
 }
@@ -180,11 +183,21 @@
   .landing-page .content .info {
     text-align: center;
   }
-}
+} */
 
 @media only screen and (max-width: 600px) {
-  .landing-page .content .section-1 {
-    height: 500px;
+  .timeline {
+    margin-left: 35px;
+  }
+  .content-wrapper {
+    max-width: 100%;
+  }
+  body {
+    background-image: none;
+  }
+  .formid input {
+    width: 100%;
+    height: 40px;
   }
   .formid {
     width: 300px;
@@ -196,18 +209,28 @@
   .landing-page .content .info h2 {
     font-size: 30px;
   }
-  .formid input {
+  body {
+    /* display: flex; */
+    height: 100%;
     width: 100%;
-    height: 40px;
+    background-size: 700px 65%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-attachment: fixed;
   }
+
+  /* .landing-page .content .section-1 {
+    height: 500px;
+  }
+
   .container-timeline h2 {
     font-size: 30px;
   }
   .landing-page .content .formid button {
     height: 40px;
-  }
+  } */
 }
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   .formid {
     width: 500px;
     padding: 30px;

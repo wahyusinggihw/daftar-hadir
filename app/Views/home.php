@@ -6,7 +6,7 @@
 
 <?= $this->section('content') ?>
 
-<body>
+<body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
   <!-- Modal -->
   <?php if (session()->getFlashdata('error')) : ?>
     <script>
@@ -19,7 +19,7 @@
 
   <?php endif; ?>
 
-  <div class="row">
+  <div class="row ">
     <div class="content-wrapper">
       <ul class="timeline">
         <li>
