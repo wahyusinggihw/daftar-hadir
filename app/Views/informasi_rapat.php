@@ -1,7 +1,6 @@
 <?= $this->extend('layout/page_layout') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/informasi.css') ?>">
 <?= $this->endSection(); ?>
 
@@ -21,7 +20,7 @@
     <?php endif; ?>
 
     <div class="card-info">
-        <div class="content-wrapper">
+        <div class="content-timeline">
             <ul class="timeline">
                 <li>
                     <div class="item">
