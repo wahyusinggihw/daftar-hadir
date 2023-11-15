@@ -19,7 +19,7 @@
 
   <?php endif; ?>
 
-  <div class="row ">
+  <div class="row">
     <div class="content-wrapper">
       <ul class="timeline">
         <li>

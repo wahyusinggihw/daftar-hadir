@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
+  /* background-color: rgba(255, 255, 255, 0.452); */
 }
 
 .content-wrapper {
@@ -140,7 +141,7 @@ body {
   border-left: 4px solid #24b1ad;
 }
 .timeline li:hover .item span {
-  background: #f10505;
+  background: #1a857d;
 }
 .timeline li:last-child .item {
   border-left: 4px solid transparent;
@@ -192,9 +193,6 @@ body {
   .content-wrapper {
     max-width: 100%;
   }
-  body {
-    background-image: none;
-  }
   .formid input {
     width: 100%;
     height: 40px;
@@ -210,80 +208,162 @@ body {
     font-size: 30px;
   }
   body {
-    /* display: flex; */
-    height: 100%;
-    width: 100%;
-    background-size: 700px 65%;
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-attachment: fixed;
-  }
-
-  /* .landing-page .content .section-1 {
-    height: 500px;
-  }
-
-  .container-timeline h2 {
-    font-size: 30px;
+    background-size: 400px 400px;
   }
   .landing-page .content .formid button {
+    width: 70px;
     height: 40px;
-  } */
+  }
 }
-/* @media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
+  .timeline {
+    margin-left: 35px;
+  }
+  .content-wrapper {
+    max-width: 100%;
+  }
+  .formid input {
+    width: 100%;
+    height: 40px;
+  }
   .formid {
-    width: 500px;
-    padding: 30px;
+    width: 400px;
+    padding: 25px;
   }
   .landing-page .content .info h1 {
-    font-size: 50px;
+    font-size: 35px;
   }
   .landing-page .content .info h2 {
-    font-size: 50px;
+    font-size: 35px;
   }
-  .container-timeline h2 {
-    font-size: 50px;
+  body {
+    background-size: 500px 500px;
   }
-  .landing-page .content .section-1 {
-    height: 550px;
+  .landing-page .content .formid button {
+    width: 70px;
+    height: 40px;
   }
 }
 @media only screen and (min-width: 768px) {
-  .landing-page .content .section-1 {
-    height: 600px;
+  .timeline {
+    margin-left: 100px;
+    margin-right: 60px;
   }
-  .landing-page .content .info h1 {
-    font-size: 55px;
+  .content-wrapper {
+    max-width: 100%;
   }
-  .landing-page .content .info h2 {
-    font-size: 55px;
-  }
-  .container-timeline h2 {
-    font-size: 55px;
+  .formid input {
+    width: 100%;
+    height: 40px;
   }
   .formid {
-    width: 700x;
-    padding: 50px;
+    width: 400px;
+    padding: 25px;
+  }
+  .landing-page .content .info h1 {
+    font-size: 40px;
+  }
+  .landing-page .content .info h2 {
+    font-size: 40px;
+  }
+  body {
+    background-size: 600px 600px;
+  }
+  .landing-page .content .formid button {
+    width: 70px;
+    height: 40px;
   }
 }
 @media only screen and (min-width: 992px) {
-  .landing-page .content .section-1 {
-    height: 625px;
+  .row {
+    flex-direction: row;
+  }
+  .timeline {
+    margin-left: 60px;
+    margin-right: 0px;
+  }
+  .content-wrapper {
+    max-width: 50%;
+  }
+  .formid input {
+    width: 100%;
+    height: 40px;
+  }
+  .formid {
+    width: 400px;
+    padding: 30px;
+  }
+  .landing-page .content .info h1 {
+    font-size: 45px;
+  }
+  .landing-page .content .info h2 {
+    font-size: 45px;
+  }
+  body {
+    background-size: 600px 600px;
+  }
+  .landing-page .content .formid button {
+    width: 70px;
+    height: 40px;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .landing-page .content .info h1 {
-    font-size: 60px;
+  .row {
+    flex-direction: row;
   }
-  .landing-page .content .info h2 {
-    font-size: 60px;
+  .timeline {
+    margin-left: 60px;
+    margin-right: 0px;
   }
-  .container-timeline h2 {
-    font-size: 60px;
+  .content-wrapper {
+    max-width: 50%;
+  }
+  .formid input {
+    width: 400px;
+    height: 40px;
+  }
+  .formid {
+    width: 400px;
+    padding: 25px;
+  }
+  body {
+    background-size: 650px 650px;
+  }
+  .landing-page .content .formid button {
+    width: 70px;
+    height: 40px;
   }
 }
 @media only screen and (min-width: 1400px) {
-  .landing-page .content .section-1 {
-    height: 700px;
+  .row {
+    flex-direction: row;
   }
-} */
+  .timeline {
+    margin-left: 70px;
+    margin-right: 0px;
+  }
+  .content-wrapper {
+    max-width: 50%;
+  }
+  .formid input {
+    width: 400px;
+    height: 50px;
+  }
+  .formid {
+    width: 500px;
+    padding: 25px;
+  }
+  .landing-page .content .info h1 {
+    font-size: 50px;
+  }
+  .landing-page .content .info h2 {
+    font-size: 50px;
+  }
+  body {
+    background-size: 700px 700px;
+  }
+  .landing-page .content .formid button {
+    width: 70px;
+    height: 50px;
+  }
+}
