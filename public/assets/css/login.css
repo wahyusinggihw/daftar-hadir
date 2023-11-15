@@ -8,7 +8,6 @@ body {
   border-radius: 0px;
   display: flex;
   justify-content: center;
-  background: #cefffd;
   /* width: auto;
   height: 700px; */
   background-size: cover;
@@ -81,9 +80,6 @@ body {
 .login-form button:hover {
   background-color: #0056b3;
 }
-
-
-
 
 .password-input-container {
   position: relative;
