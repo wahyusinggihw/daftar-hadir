@@ -204,15 +204,17 @@ class AgendaRapat extends BaseController
         $rules =
             [
                 'agenda_rapat' => [
-                    'rules' => 'required',
+                    'rules' => 'required|max_length[255]',
                     'errors' => [
-                        'required' => 'Agenda Rapat harus diisi.'
+                        'required' => 'Agenda Rapat harus diisi.',
+                        'max_length' => 'Agenda Rapat maksimal 255 karakter.'
                     ]
                 ],
                 'tempat' => [
-                    'rules' => 'required',
+                    'rules' => 'required|max_length[255]',
                     'errors' => [
-                        'required' => 'Tempat Rapat harus diisi.'
+                        'required' => 'Tempat Rapat harus diisi.',
+                        'max_length' => 'Tempat Rapat maksimal 255 karakter.'
                     ]
                 ],
                 'tanggal' => [
@@ -228,9 +230,10 @@ class AgendaRapat extends BaseController
                     ]
                 ],
                 'deskripsi' => [
-                    'rules' => 'required',
+                    'rules' => 'required|max_length[2550]',
                     'errors' => [
-                        'required' => 'Deskripsi Rapat harus diisi.'
+                        'required' => 'Deskripsi Rapat harus diisi.',
+                        'max_length' => 'Deskripsi Rapat maksimal 2550 karakter.'
                     ]
                 ],
             ];

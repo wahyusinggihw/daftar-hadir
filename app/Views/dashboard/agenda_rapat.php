@@ -39,7 +39,7 @@
                             <?php if (session()->get('role') == 'admin') : ?>
                                 <td><?= $item['admin_nama_bidang'] ?></td>
                             <?php endif; ?>
-                            <td><?= $item['agenda_rapat'] ?></td>
+                            <td><?= elipsis($item['agenda_rapat']) ?></td>
                             <td><?= elipsis($item['deskripsi']) ?></td>
                             <td><?= $item['tanggal'] . '/ ' . $item['jam'] ?></td>
                             <td><span class="badge <?= $item['status'] == 'selesai' ? 'bg-danger' : 'bg-success' ?>"><?= $item['status'] ?></span></td>
@@ -123,6 +123,11 @@
                     const form = document.createElement('form');
                     form.method = 'POST';
                     form.action = base_url + '/dashboard/delete-agenda/' + id;
+                    const csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = '<?= csrf_token() ?>';
+                    csrfInput.value = '<?= csrf_hash() ?>';
+                    form.appendChild(csrfInput);
                     document.body.appendChild(form);
                     form.submit();
                 }
