@@ -29,7 +29,7 @@ ul {
     display: flex;
     justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.452);
-    height:20% ;
+    height: 600px;
     align-items: baseline;
 }
 
@@ -48,7 +48,7 @@ ul {
 }
 
 .card-qr img {
-    width: 400px;
+    width: 350px;
 }
 
 .card-text {
@@ -62,11 +62,11 @@ ul {
 }
 
 .card-text h1 {
-    margin-bottom: 100px;
+    font-size: 25px;
 }
 
 .card-text ul {
-    font-size: 30px;
+    font-size: 15pxpx;
     list-style: none;
 }
 
@@ -165,11 +165,16 @@ ul {
     }
 
     .card-text{
-        margin-top: 5px;
+        margin-top: 30px;
+    }
+
+    .card-text h1{
+        font-size: 20px;
+        margin-bottom: 0;
     }
 
     .card-text ul{
-        font-size: 23px;
+        font-size: 18px;
     }
 
     .card-qr img{
@@ -190,8 +195,29 @@ ul {
 
 /* Media query untuk perangkat dengan lebar antara 481 dan 768 pixel */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .content-timeline{
+        width: 80%;
+    }
+
+    .content-wrapper{
+        width: 80%;
+    }
+
+    .card-text{
+        margin-top: 30px;
+    }
+
+    .card-text h1{
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    .card-text ul{
+        font-size: 24px;
+    }
+
     .card-qr img{
-        width: 50px;
+        width: 350px;
     }
 
     .card-info {
@@ -209,15 +235,42 @@ ul {
 /* Media query untuk perangkat dengan lebar antara 769 dan 1024 pixel */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
+    .content-timeline {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .content-wrapper {
+        width: 80%;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+
+    .card-text {
+        margin-top: 30px;
+    }
+
+    .card-text h1 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    .card-text ul {
+        font-size: 24px;
+    }
+
+    .card-qr img {
+        width: 350px;
+    }
 
     .card-info {
         display: flex;
         flex-direction: column-reverse;
         height: 100%;
-        width: 100%;
+        align-items: center;
     }
 
-    .timeline{
+    .timeline {
         margin-left: 0;
     }
 }
@@ -228,5 +281,7 @@ ul {
 
 /* Media query untuk perangkat dengan lebar minimum 1201 pixel */
 @media only screen and (min-width: 1201px) {
-    
+    .card-info{
+        height: 800px;
+    }
 }
