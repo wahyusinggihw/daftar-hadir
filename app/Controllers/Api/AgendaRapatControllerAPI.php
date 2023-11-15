@@ -16,17 +16,20 @@ class AgendaRapatControllerAPI extends BaseController
         helper('my_helper');
     }
 
-    public function index($idInstansi = null)
+    public function getByInstansi($idInstansi)
     {
-        // $agendaRapat = $this->agendaRapat->getAllAgendaByInstansi($idInstansi);
         $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi);
+
+        if ($agendaRapat == null) {
+            return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
+        }
 
         return $this->response(200, $agendaRapat);
     }
 
-    public function getById($id = null)
+    public function getAgendaRapat($kodeRapat)
     {
-        $agendaRapat = $this->agendaRapat->getAgendaRapatByIdAgenda($id);
+        $agendaRapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
 
         if (!$agendaRapat) {
             return $this->errorResponse(500, 'Rapat tidak ditemukan');
@@ -39,6 +42,7 @@ class AgendaRapatControllerAPI extends BaseController
         }
         return $this->response(200, $agendaRapat);
     }
+
 
     protected function response($status, $data)
     {

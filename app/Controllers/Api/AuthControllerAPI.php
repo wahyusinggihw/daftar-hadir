@@ -20,21 +20,6 @@ class AuthControllerAPI extends BaseController
         $this->userAPI = new PesertaRapatModel();;
     }
 
-    // public function login()
-    // {
-    //     $username = $this->request->getVar('username');
-    //     $pegawaiData = $userController->getPegawai($username);
-
-    //     // You can now check the "pegawai" data for login purposes
-    //     if (!empty($pegawaiData['pegawai']['asn']) || !empty($pegawaiData['pegawai']['non_asn'])) {
-    //         // User is authenticated, you can proceed with the login
-    //         return $this->respond(['message' => 'Login successful']);
-    //     } else {
-    //         // User is not authenticated
-    //         return $this->respond(['message' => 'Login failed']);
-    //     }
-    // }
-
     private function getPegawai($nip)
     {
         $pegawaiAsn = $this->userAPI->getAsnByNip($nip);
@@ -53,8 +38,6 @@ class AuthControllerAPI extends BaseController
 
     public function login()
     {
-        // $userAPI = new PesertaRapatModel();
-        // $userAPI = $this->userController;
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
@@ -107,22 +90,8 @@ class AuthControllerAPI extends BaseController
                 'data' => json_decode(json_encode($user['asn']), true),
                 // 'token' => 
             ];
-
             return $this->respond($response, 200);
         }
-    }
-
-    protected function cariUser($json, $key)
-    {
-        foreach ($json->data as $item) {
-            if ($item->kode_instansi === $key) {
-                $result = $item;
-                break;
-            } else {
-                $result = null;
-            }
-        }
-        return $result;
     }
 
     public function gantiPassword()

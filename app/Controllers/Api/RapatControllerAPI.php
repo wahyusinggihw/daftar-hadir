@@ -75,37 +75,34 @@ class RapatControllerAPI extends BaseController
         helper('my_helper');
 
         $kodeRapat = $this->request->getVar('kode_rapat');
-        $idRapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
-        $idAgenda = $idRapat['id_agenda'];
         $nip = $this->request->getVar('nip');
 
-        $validate = $this->validateForm();
+        if ($this->agendaRapat->getAgendaRapatByKode($kodeRapat) == null) {
+            return $this->errorResponse(500, 'Kode rapat tidak ditemukan');
+        }
 
+        $rapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
+
+        $validate = $this->validateForm();
         if (!$validate) {
             return $this->errorResponse(500, $this->validator->getErrors());
         }
 
         $slug = (new Slugify())->slugify($kodeRapat);
 
-        $detailRapat = $this->agendaRapat->select()->where('kode_rapat', $kodeRapat)->first();
 
-        if ($detailRapat == null) {
-            return $this->errorResponse(500, 'Kode rapat tidak ditemukan');
-        }
-
-
-        // $expirationTime = expiredTime($detailRapat['jam']);
-        $expiredTime = expiredTime($idRapat['tanggal'], $idRapat['jam']);
+        // Cek apakah rapat sudah berakhir
+        $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
         if ($expiredTime) {
             return $this->errorResponse(500, 'Rapat sudah berakhir');
         }
 
-        $riwayatKehadiran = $this->daftarHadir->sudahAbsenAPI($this->request->getVar('nip'), $idRapat['id_agenda']);
+        $riwayatKehadiran = $this->daftarHadir->sudahAbsenAPI($this->request->getVar('nip'), $rapat['id_agenda']);
         // Get the base64-encoded signature data from the mobile app
         $signatureData = $this->request->getVar('signatureData');
 
         // Decode the base64 data to binary
-        $saveTandaTangan = $this->saveSignature($idAgenda, $nip)->getBody();
+        $saveTandaTangan = $this->saveSignature($rapat['id_agenda'], $nip)->getBody();
         $tandaTanganDecode = json_decode($saveTandaTangan, true);
         $tandaTangan = $tandaTanganDecode['publicPath'];
 
@@ -114,7 +111,7 @@ class RapatControllerAPI extends BaseController
             $dataDaftarHadir = [
                 'id_daftar_hadir' => Uuid::uuid4()->toString(),
                 'slug' => $slug,
-                'id_agenda_rapat' => $idRapat['id_agenda'],
+                'id_agenda_rapat' => $rapat['id_agenda'],
                 'NIK' => $this->request->getVar('nip'),
                 'nama' => $this->request->getVar('nama'),
                 'asal_instansi' => $this->request->getVar('asal_instansi'),
@@ -168,8 +165,8 @@ class RapatControllerAPI extends BaseController
             'nip' => [
                 'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => 'NIK harus diisi',
-                    'numeric' => 'NIK harus berupa angka'
+                    'required' => 'NIP harus diisi',
+                    'numeric' => 'NIP harus berupa angka'
                 ]
             ],
             'no_hp' => [

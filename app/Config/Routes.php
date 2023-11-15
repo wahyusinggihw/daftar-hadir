@@ -28,13 +28,14 @@ $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     $routes->get('pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
     $routes->post('save-signature', 'RapatController::saveSignatureData');
 
+    // login
     $routes->post('login', "Api\AuthControllerAPI::login");
     // get agenda rapat berdasarkan instansi user (Home Screen)
-    $routes->get('agenda-rapat/get-by-instansi/(:segment)', 'Api\AgendaRapatControllerAPI::index/$1');
-    // get agenda rapat berdasarkan id agenda rapat (Scan QR Code)
-    $routes->get('agenda-rapat/get-by-id/(:segment)', 'Api\AgendaRapatControllerAPI::getById/$1');
-    // post form absen (Qr code result)
-    $routes->post('form-absensi-store', 'Api\RapatControllerAPI::absenStore');
+    $routes->get('agenda-rapat/instansi/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansi/$1');
+    // get agenda rapat berdasarkan id agenda rapat (Qr code result)
+    $routes->get('agenda-rapat/scan/(:segment)', 'Api\AgendaRapatControllerAPI::getAgendaRapat/$1');
+    // post form absen
+    $routes->post('daftar-hadir/store', 'Api\RapatControllerAPI::absenStore');
 });
 
 // berhasil page
