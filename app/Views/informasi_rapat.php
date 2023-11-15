@@ -77,7 +77,7 @@
         </div>
         <div class="content-wrapper">
             <div class="card-text">
-                <h1><?= $agendaRapat['agenda_rapat'] ?>s</h1>
+                <h1><?= $agendaRapat['agenda_rapat'] ?></h1>
                 <ul>
                     <li><?= $agendaRapat['nama_instansi'] ?></li>
                     <!-- <li><?= $agendaRapat['nama_bidang'] ?></li> -->

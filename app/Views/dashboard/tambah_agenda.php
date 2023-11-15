@@ -3,8 +3,17 @@
 <?= $this->section('content') ?>
 
 <body>
-    <!-- buat agar menjadi di tengah -->
+    <?php if (session()->getFlashdata('error')) : ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?= session()->getFlashdata('error') ?>',
+            })
+        </script>
+    <?php endif; ?>
 
+    <!-- buat agar menjadi di tengah -->
     <div class="card card-primary">
         <div class="card-body">
             <form action="<?= base_url('/dashboard/agenda-rapat/tambah-agenda/store') ?>" method="post">
