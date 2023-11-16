@@ -368,3 +368,45 @@ body {
     height: 50px;
   }
 }
+@media only screen and (min-width: 1920px) {
+  .row {
+    flex-direction: row;
+  }
+  .timeline {
+    margin-left: 70px;
+    margin-right: 0px;
+  }
+  .timeline li .item h3 {
+    font-size: 27px;
+  }
+  .timeline li .item p {
+    font-size: 23px;
+  }
+  .content-wrapper {
+    max-width: 50%;
+  }
+  .formid input {
+    width: 500px;
+    height: 60px;
+  }
+  .formid {
+    width: 800px;
+    padding: 25px;
+  }
+  .landing-page .content .info h1 {
+    font-size: 90px;
+  }
+  .landing-page .content .info h2 {
+    font-size: 90px;
+  }
+  .formid .form-p p {
+    font-size: 23px;
+  }
+  body {
+    background-size: 800px 800px;
+  }
+  .landing-page .content .formid button {
+    width: 100px;
+    height: 60px;
+  }
+}
