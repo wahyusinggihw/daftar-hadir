@@ -59,9 +59,9 @@ class RapatController extends BaseController
             return redirect()->to('/');
         }
 
-        $rapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
-        session()->setFlashdata('kode_valid', $rapat['kode_rapat']);
-        $this->session->set('id_agenda', $rapat['id_agenda']);
+        // $rapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);/
+        // session()->setFlashdata('kode_valid', $rapat['kode_rapat']);
+        // $this->session->set('id_agenda', $rapat['id_agenda']);
         $data = [
             'title' => 'Form Absensi',
             'instansi' => $instansiDecode,
@@ -200,7 +200,7 @@ class RapatController extends BaseController
         helper('my_helper');
 
         $validate = $this->validateForm();
-        $idAgenda = $this->session->get('id_agenda');
+        // $idAgenda = $this->session->get('id_agenda');
         $statusUser = $this->request->getVar('statusRadio');
         $token = $this->request->getVar('g-recaptcha-response');
         $validateCaptcha  = verifyCaptcha($token);
@@ -214,11 +214,11 @@ class RapatController extends BaseController
             return redirect()->back()->withInput()->with('kode_valid', true);
         }
 
-        $idAgenda = $this->session->get('id_agenda');
+        $idAgenda = $this->request->getVar('id_agenda');
         $nip = $this->request->getVar('nip');
+        $riwayatKehadiran = $this->daftarHadir->sudahAbsen($nip, $idAgenda);
 
-        if (!$this->daftarHadir->sudahAbsen($nip)) {
-
+        if (!$riwayatKehadiran) {
             $statusUser = $this->request->getVar('statusRadio');
 
             $this->handleAbsen($idAgenda, $nip, $statusUser);
