@@ -3,6 +3,13 @@
   flex-wrap: wrap;
   flex-direction: column-reverse;
   /* background-color: rgba(255, 255, 255, 0.452); */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  max-width: 100%; /* Menetapkan lebar maksimum sesuai lebar body */
+  overflow-x: auto;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .content-wrapper {
