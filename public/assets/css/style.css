@@ -21,18 +21,17 @@ nav {
   /* position: fixed; */
   top: 0;
   left: 0;
-  z-index: 9999;
   width: 100%;
   background-color: #ffffff;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 0rem;
 }
 nav .logo {
   width: 30%;
   padding-left: 30px;
+  margin-top: 15px;
 }
 nav .logo img {
   /* padding-top: 0px; */
