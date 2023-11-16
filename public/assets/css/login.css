@@ -25,12 +25,9 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
+  width: 400px;
   text-align: center;
-  /* margin-left: 300px; */
-  margin-top: 100px;
-  /* margin-bottom: 150px; */
+  margin: 50px;
 }
 
 .login-form h2 {
@@ -114,23 +111,38 @@ body {
   font-size: 1.2em;
 } 
 
-/* MEDIA QUERRY */
+/* CSS umum di sini */
 
-@media (max-width: 767px) {
-  
+/* Media query untuk perangkat dengan lebar maksimum 480 pixel */
+@media only screen and (max-width: 480px) {
+  .login-form{
+    width: 500px;
+    height: 800px;
+    margin: 0px;
+  }
+
 }
 
-/* Media query untuk tablet */
-@media (min-width: 768px) and (max-width: 991px) {
-  
+/* Media query untuk perangkat dengan lebar antara 481 dan 768 pixel */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .login-form{
+    width: 400px;
+    margin: 100px;
+  }
 }
 
-/* Media query untuk desktop dengan resolusi 1366 */
-@media (min-width: 992px) and (max-width: 1366px) {
-  
+/* Media query untuk perangkat dengan lebar antara 769 dan 1024 pixel */
+@media only screen and (min-width: 820px) and (max-width: 1024px) {
+  .login-form{
+    width: 400px;
+    margin: 200px;
+  }
 }
 
-/* Media query untuk desktop dengan resolusi 1920 */
-@media (min-width: 1367px) and (max-width: 1920px) {
-  
+/* Media query untuk perangkat khusu tab s7 */
+@media only screen and (min-width: 769px) and (max-width: 800px) {
+  .login-form {
+    width: 400px;
+    margin: 250px;
+  }
 }

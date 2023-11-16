@@ -18,101 +18,29 @@ ul {
 
 /* BAGIAN HEADER */
 nav {
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  z-index: 9999;
   width: 100%;
   background-color: #ffffff;
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 0rem;
 }
 nav .logo {
-  width: 30%;
-  padding-left: 30px;
+  margin-top: 15px;
+  text-align: center;
 }
 nav .logo img {
-  /* padding-top: 0px; */
   width: 110px;
 }
 
-.container-navbar {
-  /* padding-left: 15px;
-  padding-right: 15px; */
-  /* margin-left: auto;
-  margin-right: auto; */
-  background-color: rgb(255, 255, 255);
-}
-/* .container-navbar .logo {
-  color: #5d5d5d;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-} */
-/* Small */
-@media (min-width: 500px) {
-  .container-navbar {
-    width: 95%;
+@media only screen and (min-width: 992px) {
+  nav {
+    width: 100%;
+    height: 60px;
+  }
+  nav .logo {
+    width: 10%;
+    padding-left: 30px;
+    margin-top: 15px;
   }
 }
-@media (min-width: 768px) {
-  .container-navbar {
-    width: 95%;
-  }
-}
-/* Medium */
-@media (min-width: 992px) {
-  .container-navbar {
-    width: 95%;
-  }
-}
-/* Large */
-@media (min-width: 1200px) {
-  .container-navbar {
-    width: 95%;
-  }
-}
-
-/* End Global Rules */
-
-/* Start Landing Page */
-.landing-page header {
-  /* min-height: 80px;
-  display: flex; */
-  background-color: rgb(255, 255, 255);
-}
-/* @media (max-width: 767px) {
-  .landing-page header {
-    min-height: auto;
-    display: flex;
-  }
-} */
-.landing-page header .container-navbar {
-  display: flex;
-  /* align-items: center; */
-  justify-content: space-between;
-}
-@media (max-width: 767px) {
-  .landing-page header .container {
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-/* .landing-page header .logo {
-  color: #5d5d5d;
-  font-style: italic;
-  text-transform: uppercase;
-  font-size: 20px;
-} */
-/* @media (max-width: 767px) {
-  .landing-page header .logo {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-} */
 
 .landing-page .content .container {
   display: flex;
