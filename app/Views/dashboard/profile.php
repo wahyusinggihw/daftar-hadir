@@ -27,7 +27,7 @@
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <?php if ($profile['avatar'] == 'default.jpg') : ?>
-                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url('uploads/avatars/default.jpg') ?>" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url('/uploads/avatars/default.png') ?>" alt="User profile picture">
                         <?php else : ?>
                             <img class="profile-user-img img-fluid img-circle" src="<?= base_url('/uploads/avatars/' . $profile['avatar']) ?>" alt="User profile picture">
                         <?php endif; ?>
@@ -35,6 +35,10 @@
                     <h3 class="profile-username text-center"><?= $profile['nama'] ?></h3>
                     <p class="text-muted text-center"><?= $profile['nama_instansi'] ?></p>
                     <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Role</b>
+                            <p class="float-right"><?= $profile['role']  ?></p>
+                        </li>
                         <li class="list-group-item">
                             <b>Username</b>
                             <p class="float-right"><?= $profile['username']  ?></p>
