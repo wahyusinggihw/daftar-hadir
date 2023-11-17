@@ -44,12 +44,7 @@ class BidangInstansiModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function getALlBidang()
-    {
-        return $this->findAll();
-    }
-
-    function getAllBidangByInstansi($idInstansi)
+    public function getAllBidangByInstansi($idInstansi)
     {
         return $this->where('id_instansi', $idInstansi)->findAll();
     }

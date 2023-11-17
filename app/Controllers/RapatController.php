@@ -140,7 +140,7 @@ class RapatController extends BaseController
         ];
 
         // Handle the absen logic here
-        $userExist = $this->pesertaUmum->cekIfExist($nip);
+        $userExist = $this->pesertaUmum->checkIfExist($nip);
         if ($userExist != null && $statusUser == 'tamu') {
             $dataPesertaUmum = [
                 'id_peserta_umum' => $userExist['id_peserta_umum'],

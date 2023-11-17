@@ -18,6 +18,13 @@ class UsersControllerAPI extends BaseController
         $this->instansiAPI = new PesertaRapatModel();
     }
 
+    /**
+     * Get peserta umum by their NIK.
+     *
+     * @param string $nik The NIK of the user to retrieve.
+     *
+     * @return \CodeIgniter\HTTP\Response The response containing the user data or an error message.
+     */
     public function getPeserta($nik)
     {
         // $nik = $this->request->getVar('nip');
@@ -110,6 +117,14 @@ class UsersControllerAPI extends BaseController
         return $this->respond($result);
     }
 
+    /**
+     * Get pegawai Asn and NonAsn by NIP
+     * 
+     * @param string $nip NIP of the pegawai
+     * @return mixed Response containing JSON data of the pegawai
+     *
+     * @throws \CodeIgniter\HTTP\Exceptions\HTTPException
+     */
     public function getPegawai($nip)
     {
         $pegawaiAsn = $this->instansiAPI->getAsnByNip($nip);
