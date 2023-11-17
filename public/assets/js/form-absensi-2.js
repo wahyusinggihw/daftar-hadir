@@ -3,10 +3,16 @@ $(document).ready(function () {
   var oldStatus = $('input[name="statusRadio"]:checked').val();
   console.log(oldStatus);
   if (oldStatus === "pegawai") {
-    setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+    setInputFilter(
+      [document.getElementById("nip"), document.getElementById("no_hp")],
+      "Harus berupa angka"
+    );
     onErrorHandlePegawaiStatus();
   } else if (oldStatus === "tamu") {
-    setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+    setInputFilter(
+      [document.getElementById("nip"), document.getElementById("no_hp")],
+      "Harus berupa angka"
+    );
     onErrorHandleTamuStatus();
   } else {
     // Initialization
@@ -26,7 +32,10 @@ $(document).ready(function () {
 
 // Function to initialize the page
 function initializePage() {
-  setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+  setInputFilter(
+    [document.getElementById("nip"), document.getElementById("no_hp")],
+    "Harus berupa angka"
+  );
   disableFormFields(
     "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
@@ -306,23 +315,25 @@ function restoreSavedValues(key) {
   }
 }
 
-function setInputFilter(textbox, errMsg) {
-  if (textbox) {
-    textbox.addEventListener("input", function () {
-      const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+function setInputFilter(textboxes, errMsg) {
+  if (textboxes && Array.isArray(textboxes)) {
+    textboxes.forEach(function (textbox) {
+      textbox.addEventListener("input", function () {
+        const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
 
-      if (this.value !== numericValue) {
-        // Non-numeric characters were entered - block and show error
-        this.value = numericValue;
-        this.classList.add("input-error");
-        this.setCustomValidity(errMsg);
-        this.reportValidity();
-      } else {
-        // Numeric input - remove error
-        this.classList.remove("input-error");
-        this.setCustomValidity("");
-        this.reportValidity();
-      }
+        if (this.value !== numericValue) {
+          // Non-numeric characters were entered - block and show error
+          this.value = numericValue;
+          this.classList.add("input-error");
+          this.setCustomValidity(errMsg);
+          this.reportValidity();
+        } else {
+          // Numeric input - remove error
+          this.classList.remove("input-error");
+          this.setCustomValidity("");
+          this.reportValidity();
+        }
+      });
     });
   }
 }
