@@ -100,31 +100,16 @@ class DaftarHadirModel extends Model
         return $query;
     }
 
-    function sudahAbsen($nik)
+    function sudahAbsen($nik, $id_agenda)
     {
-        $data = $this->where('NIK', $nik)->first();
-        $id_agenda = session()->get('id_agenda');
+        $data = $this->where('NIK', $nik)->where('id_agenda_rapat', $id_agenda)->first();
         if ($data != null) {
-            if ($data['id_agenda_rapat'] == $id_agenda) {
-                return true;
-            } else {
-                return false;
-            }
+            return true;
+        } else {
+            return false;
         }
-        // return false;
-    }
 
-    function sudahAbsenAPI($nik, $id_agenda)
-    {
-        $data = $this->where('NIK', $nik)->first();
-        if ($data != null) {
-            if ($data['id_agenda_rapat'] == $id_agenda) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
+        // return false;
     }
 
     public function insertDaftarHadir($data)

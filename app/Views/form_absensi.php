@@ -31,6 +31,9 @@
             $oldAsnNonAsnValue = old('asnNonAsnRadio');
             // d(validation_list_errors());
             ?>
+            <input type="hidden" name="id_agenda" id="id_agenda" value="<?= $rapat['id_agenda'] ?>">
+            <input type="hidden" name="kode_rapat" id="kode_rapat" value="<?= $rapat['kode_rapat'] ?>">
+
             <div class="status-box">
                 <h3>Pilih Status</h3>
                 <div class="status-option">
@@ -148,7 +151,6 @@
             </div>
 
             <div class="button-function">
-                <input type="hidden" name="kode_rapat" value="<?= session()->get('kode_valid') ?>">
 
                 <div class="form-group text-end">
                     <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>"></div>
