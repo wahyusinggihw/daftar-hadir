@@ -74,15 +74,16 @@ class DaftarHadirController extends BaseController
         $agendaRapat  = $this->agendaRapat->getAgendaRapatByIdAgenda($idAgenda);
         $daftarHadir = $this->daftarhadir->getDaftarHadirByID($idAgenda);
         $judul = $agendaRapat['agenda_rapat'];
+        $author = $this->session->get('nama');
         $rawData = [
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
         ];
 
-        $pdf = new TCPDF('P', PDF_UNIT, 'A4', true, 'UTF-8', false);
+        $pdf = new TCPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
 
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('DaftarHadir');
+        $pdf->SetCreator('DaftarHadir');
+        $pdf->SetAuthor($author);
         $pdf->SetTitle('Daftar Hadir ' . $judul);
         $pdf->SetSubject($judul);
 
@@ -100,7 +101,7 @@ class DaftarHadirController extends BaseController
         $pdf->writeHTML($html, true, false, true, false, '');
 
         $this->response->setContentType('application/pdf');
-        $pdf->Output($judul . '.pdf', 'I');
+        $pdf->Output('Daftar Hadir' . $judul . '.pdf', 'I');
         exit(0);
     }
 }
