@@ -28,6 +28,17 @@ class RapatControllerAPI extends BaseController
         $this->agendaRapat = new AgendaRapatModel();
     }
 
+    /**
+     * Saves a signature image file to the server and returns a JSON response with the status and message.
+     * 
+     * Signature path is saveed with combination of agenda ID(UUID) and NIP.
+     * 
+     * i.e : 3d0d7e6c-6e6f-4cfc-8b0c-6f7f1a7d9e7a_123456789.png
+     * 
+     * @param int $idAgenda The ID of the agenda.
+     * @param string $nip The NIP of the user.
+     * @return \CodeIgniter\HTTP\ResponseInterface The JSON response with the status and message.
+     */
     public function saveSignature($idAgenda, $nip)
     {
         helper('filesystem');
@@ -97,9 +108,7 @@ class RapatControllerAPI extends BaseController
             return $this->errorResponse(500, 'Rapat sudah berakhir');
         }
 
-        $riwayatKehadiran = $this->daftarHadir->sudahAbsenAPI($this->request->getVar('nip'), $rapat['id_agenda']);
-        // Get the base64-encoded signature data from the mobile app
-        $signatureData = $this->request->getVar('signatureData');
+        $riwayatKehadiran = $this->daftarHadir->sudahAbsen($this->request->getVar('nip'), $rapat['id_agenda']);
 
         // Decode the base64 data to binary
         $saveTandaTangan = $this->saveSignature($rapat['id_agenda'], $nip)->getBody();
