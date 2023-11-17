@@ -10,7 +10,7 @@
                 <form action="<?= base_url('/dashboard/profile/edit-profile/' . $data['id_admin']) ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
-                    <input type="hidden" id="text" name="id" value="<?= $data['id_admin'] ?>">
+                    <input type="hidden" id="text" name="id_user" value="<?= $data['id_admin'] ?>">
 
                     <div class="form-group">
                         <label for="nama">Nama Lengkap:</label>
@@ -20,13 +20,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input class="form-control <?= validation_show_error('username') ? 'is-invalid' : '' ?>" value="<?= $data['username'] ?>" type="text" id="username" name="username" placeholder="Username">
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('username') ?>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="avatar" class="form-label">Foto Profil</label>
                         <input class="form-control <?= validation_show_error('avatar') ? 'is-invalid' : '' ?>" value="<?= $data['avatar'] ?>" type="file" id="avatar" name="avatar">
