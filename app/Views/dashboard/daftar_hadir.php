@@ -24,6 +24,7 @@
                         <th>No</th>
                         <th>NIP/NIK</th>
                         <th>Nama</th>
+                        <th>Status</th>
                         <th>Asal Instansi</th>
                         <th>TTD</th>
                         <th>Timestamp</th>
@@ -36,6 +37,7 @@
                             <td></td>
                             <td><?= $item['NIK'] ?></td>
                             <td><?= $item['nama'] ?></td>
+                            <td><?= $item['status'] ?></td>
                             <td><?= $item['asal_instansi'] ?></td>
                             <td>
                                 <div class="btn btn-secondary show-sweet-alert" data-ttd="<?= $item['ttd'] ?>">Lihat</div>
