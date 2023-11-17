@@ -222,7 +222,8 @@ class AdminController extends BaseController
                 'rules' => 'required|is_unique[admins.username]|alpha_dash',
                 'errors' => [
                     'required' => 'Username harus diisi',
-                    'is_unique' => 'Username sudah terdaftar'
+                    'is_unique' => 'Username sudah terdaftar',
+                    'alpha_dash' => 'Username hanya boleh terdiri dari huruf, angka, garis bawah dan dash'
                 ]
             ],
             'password' => [

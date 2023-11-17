@@ -66,18 +66,18 @@ class UsersController extends BaseController
         $validate = $this->validate([
 
             'old-password' => [
-                'rules' => 'required|min_length[8]',
+                'rules' => 'required',
                 'errors' => [
                     // 'matches' => 'Password lama tidak cocok dengan password sebelumnya',
                     'required' => 'Password lama harus diisi'
                 ]
             ],
             'new-password' => [
-                'rules' => 'required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/]',
+                'rules' => 'required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/]',
                 'errors' => [
                     'required' => 'Password baru harus diisi',
                     'min_length' => 'Password baru harus terdiri dari minimal 8 karakter',
-                    'regex_match' => 'Password baru harus terdiri dari huruf besar, huruf kecil, angka, dan karakter khusus'
+                    'regex_match' => 'Password baru harus terdiri dari huruf besar, huruf kecil dan angka.'
                 ]
             ],
             'confirm-password' => [
@@ -91,6 +91,7 @@ class UsersController extends BaseController
 
         if (!password_verify($this->request->getVar('old-password'), $profile['password'])) {
             // Old password doesn't match, return an error
+            session()->setFlashdata('error', 'Password lama tidak cocok');
             return redirect()->back()->withInput()->with('error', 'Password lama tidak cocok');
         }
 
@@ -119,13 +120,13 @@ class UsersController extends BaseController
                     'required' => 'Nama harus diisi'
                 ]
             ],
-            'username' => [
-                'rules' => 'required|alpha_dash',
-                'errors' => [
-                    'required' => 'Username harus diisi',
-                    'is_unique' => 'Username tidak boleh sama dengan sebelumnya'
-                ]
-            ],
+            // 'username' => [
+            //     'rules' => 'required|alpha_dash',
+            //     'errors' => [
+            //         'required' => 'Username harus diisi',
+            //         'is_unique' => 'Username tidak boleh sama dengan sebelumnya'
+            //     ]
+            // ],
             'avatar' => [
                 'rules' => 'max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
@@ -142,22 +143,21 @@ class UsersController extends BaseController
 
         $avatar = $this->request->getFile('avatar');
         if ($avatar->getError() == 4) {
-            $imageName = 'default.jpg';
+            $imageName = 'default.png';
         } else {
             $imageName = $id . '.' . $avatar->getExtension();
             $avatar->move('uploads/avatars', $imageName);
         }
-
+        // dd($imageName);
         $slug = $this->slugify->slugify($this->request->getVar('nama'));
-        $this->users->save([
+        $data = [
             'id_admin' => $id,
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
             'avatar' => $imageName,
-            'username' => $this->request->getVar('username'),
             'updated_at' => date('Y-m-d H:i:s')
-            // 'password' => password_hash($this->request->getVar('new-password'), PASSWORD_DEFAULT)
-        ]);
+        ];
+        $this->users->updateAdmin($data);
         session()->remove('avatar');
         session()->set('avatar', $imageName);
 
