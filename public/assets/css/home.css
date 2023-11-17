@@ -444,8 +444,12 @@ body {
     border-radius: 0px 25px 25px 0px;
   }
   .invalid-feedback {
-    margin-top: 300px;
     font-size: 25px;
+    display: block;
+    position: absolute;
+    bottom: -2.5rem;
+    left: 0;
+    transform: none;
   }
 }
 @media only screen and (min-width: 3840px) {
@@ -525,5 +529,10 @@ body {
   }
   .invalid-feedback {
     font-size: 40px;
+    display: block;
+    position: absolute;
+    bottom: -3.5rem;
+    left: 0;
+    transform: none;
   }
 }
