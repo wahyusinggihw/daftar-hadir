@@ -33,21 +33,27 @@ class Auth extends BaseController
                             'required' => 'Password tidak boleh kosong',
                         ]
                     ],
+                    'g-recaptcha-response' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => 'centang reCAPTCHA terlebih dahulu.',
+                        ]
+                    ],
                 ];
 
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
+
+            if (!$this->validate($rules)) {
+                return redirect()->back()->withInput();
+            }
+
             $token = $this->request->getVar('g-recaptcha-response');
             $validateCaptcha  = verifyCaptcha($token);
             if (!$validateCaptcha->success) {
                 $this->session->setFlashdata('error', 'Terdapat aktifitas tidak wajar, mohon coba lagi.');
                 return redirect()->back()->withInput()->with('kode_valid', true);
             }
-
-            if (!$this->validate($rules)) {
-                return redirect()->back()->withInput();
-            }
-
 
             $admin = $this->adminModel->where('username', $username)->first();
             // dd($user);

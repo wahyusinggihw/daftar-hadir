@@ -156,7 +156,8 @@
                     <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>"></div>
                 </div>
             </div>
-            <div class="invalid-response" id="recaptcha-error"></div>
+            <!-- <div class="invalid-response" id="recaptcha-error"></div> -->
+            <div class="invalid-response"><?= validation_show_error('g-recaptcha-response') ?></div>
             <button type="submit">Kirim</button>
         </form>
     </section>

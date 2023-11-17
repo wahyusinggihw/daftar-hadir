@@ -47,7 +47,7 @@ class Home extends BaseController
 
         $rapat = $agendaRapat->getAgendaRapatByKode(trim($kode));
         if ($rapat == null) {
-            return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan');
+            return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
         } else {
 
             $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
