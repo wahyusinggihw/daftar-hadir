@@ -83,6 +83,7 @@
         </div>
       </div>
       <form action="<?= base_url('/rapat/submit-kode') ?>" method="post">
+        <?= csrf_field() ?>
         <div class="formid">
           <div class="form-p">
             <p>Silahkan Masukan Kode Rapat</p>
