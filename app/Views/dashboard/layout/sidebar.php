@@ -97,10 +97,11 @@
                 text: 'Anda yakin ingin logout?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
+                confirmButtonColor: '#22b23a',
+                cancelButtonColor: '#d33',
                 confirmButtonText: 'Logout',
                 cancelButtonText: 'Batal',
+                reverseButtons: true
             }).then((result) => {
                 base_url = '<?= base_url() ?>';
                 if (result.isConfirmed) {

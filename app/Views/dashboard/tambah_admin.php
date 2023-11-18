@@ -80,7 +80,7 @@
                                     </ul>
                                     <ul id="requirements-2">
                                         <li><i id="letter" class="far fa-times-circle"></i>Huruf kecil</li>
-                                        <li><i id="length" class="far fa-times-circle"></i>Berisi 8 karakter</li>
+                                        <li><i id="length" class="far fa-times-circle"></i>Minimal 8 karakter</li>
                                     </ul>
                                 </div>
                                 <div class="invalid-feedback">

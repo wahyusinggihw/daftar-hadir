@@ -181,7 +181,8 @@ input[type="radio"]:checked::before {
 
 .note p {
   color: #055160;
-  text-align: left;
+  text-align: justify;
+  align-self: start;
   margin-bottom: 0;
   font-size: 16px;
 }
