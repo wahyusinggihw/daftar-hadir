@@ -33,10 +33,21 @@ class Auth extends BaseController
                             'required' => 'Password tidak boleh kosong',
                         ]
                     ],
+                    'g-recaptcha-response' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => 'centang reCAPTCHA terlebih dahulu.',
+                        ]
+                    ],
                 ];
 
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
+
+            if (!$this->validate($rules)) {
+                return redirect()->back()->withInput();
+            }
+
             $token = $this->request->getVar('g-recaptcha-response');
             $validateCaptcha  = verifyCaptcha($token);
             if (!$validateCaptcha->success) {
@@ -44,14 +55,10 @@ class Auth extends BaseController
                 return redirect()->back()->withInput()->with('kode_valid', true);
             }
 
-            if (!$this->validate($rules)) {
-                return redirect()->back()->withInput();
-            }
-
-
             $admin = $this->adminModel->where('username', $username)->first();
             // dd($user);
             if (!$admin) {
+                $this->incrementLoginAttempts();
                 return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
             }
             if (password_verify($password, $admin['password'])) {
@@ -73,6 +80,7 @@ class Auth extends BaseController
                 }
                 return redirect()->to('/dashboard/agenda-rapat');
             } else {
+                $this->incrementLoginAttempts();
                 return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
             }
         } else {
@@ -80,6 +88,18 @@ class Auth extends BaseController
                 'title' => 'Log In',
             ];
             return view('auth/login_view', $data);
+        }
+    }
+
+    protected function incrementLoginAttempts()
+    {
+        $loginAttempts = session()->get('loginAttempts') ?? 3;
+        $loginAttempts--;
+        session()->set('loginAttempts', $loginAttempts);
+
+        if ($loginAttempts <= 0) {
+            session()->setTempdata('failedLogin', 'Anda salah memasukkan username atau password sebanyak 3 kali. Coba lagi beberapat saat lagi.', 10);
+            session()->remove('loginAttempts');
         }
     }
 

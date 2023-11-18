@@ -45,6 +45,10 @@ class AgendaRapat extends BaseController
     {
         $agendaRapat  = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
         // dd($agendaRapat);
+        if ($agendaRapat == null) {
+            return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
+        }
+
         $data = [
             'title' => 'Informasi Rapat',
             'qrCode' => generateQrCode($agendaRapat['link_rapat']),
@@ -75,7 +79,7 @@ class AgendaRapat extends BaseController
         $selectedDate = $this->request->getVar('tanggal');
         if ($selectedDate == $currentDate) {
             var_dump('Waktu rapat harus aman ' . $currentTime . '.');
-            if ($selectedTime < $roundedCurrentTime) {
+            if ($selectedTime < $currentTime) {
                 var_dump('Waktu rapat harus diatas jam ' . $currentTime . '.');
                 return redirect()->back()->withInput()->with('error', 'Waktu rapat harus diatas jam ' . $currentTime . '.');
             }
@@ -204,17 +208,17 @@ class AgendaRapat extends BaseController
         $rules =
             [
                 'agenda_rapat' => [
-                    'rules' => 'required|max_length[255]',
+                    'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'Agenda Rapat harus diisi.',
-                        'max_length' => 'Agenda Rapat maksimal 255 karakter.'
+                        'min_length' => 'Agenda Rapat minimal memiliki 5 karakter.'
                     ]
                 ],
                 'tempat' => [
-                    'rules' => 'required|max_length[255]',
+                    'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'Tempat Rapat harus diisi.',
-                        'max_length' => 'Tempat Rapat maksimal 255 karakter.'
+                        'min_length' => 'Tempat Rapat minimal memiliki 5 karakter.'
                     ]
                 ],
                 'tanggal' => [
@@ -230,10 +234,10 @@ class AgendaRapat extends BaseController
                     ]
                 ],
                 'deskripsi' => [
-                    'rules' => 'required|max_length[2550]',
+                    'rules' => 'required|min_length[5]',
                     'errors' => [
                         'required' => 'Deskripsi Rapat harus diisi.',
-                        'max_length' => 'Deskripsi Rapat maksimal 2550 karakter.'
+                        'min_length' => 'Deskripsi Rapat minimal memiliki 5 karakter.'
                     ]
                 ],
             ];

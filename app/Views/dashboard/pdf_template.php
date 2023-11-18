@@ -55,6 +55,10 @@
         .table-row .column-divider {
             width: 30px;
         }
+
+        .no-column {
+            width: 10%;
+        }
     </style>
 </head>
 
@@ -104,15 +108,20 @@
     <br>
     <table cellpadding="4" class="tabeldaftarhadir">
         <tr>
+            <th class="no-column"><strong>No</strong></th>
             <th><strong>NIP/NIK</strong></th>
             <th><strong>Nama</strong></th>
+            <th><strong>Status</strong></th>
             <th><strong>Asal Instansi</strong></th>
             <th><strong>Tanggal/Jam Absen</strong></th>
         </tr>
+        <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
             <tr>
+                <td class="no-column"><?= $no++ ?></td>
                 <td><?= $item['NIK'] ?></td>
                 <td><?= $item['nama'] ?></td>
+                <td><?= $item['status'] ?></td>
                 <td><?= $item['asal_instansi'] ?></td>
                 <td><?= date('Y-m-d', strtotime($item['created_at'])) . '/' . date('H:i', strtotime($item['created_at'])) ?></td>
             </tr>

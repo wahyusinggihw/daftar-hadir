@@ -86,7 +86,13 @@ class PesertaUmumModel extends Model
 
     ];
 
-    public function cekIfExist($nik)
+    /**
+     * Check if a record with the given NIK exists in the database.
+     * 
+     * @param string $nik The NIK to check.
+     * @return mixed The first record with the given NIK, or null if not found.
+     */
+    public function checkIfExist($nik)
     {
         $cek = $this->where('nik', $nik)->first();
         return $cek;

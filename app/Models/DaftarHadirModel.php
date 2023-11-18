@@ -19,6 +19,7 @@ class DaftarHadirModel extends Model
         'id_agenda_rapat',
         'NIK',
         'nama',
+        'status',
         'asal_instansi',
         'ttd',
         'created_at',
@@ -76,7 +77,7 @@ class DaftarHadirModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function getDaftarHadir()
+    public function getDaftarHadir()
     {
         $id_admin = session()->get('id_admin');
         $builder = $this->table('daftarhadirs');
@@ -88,7 +89,7 @@ class DaftarHadirModel extends Model
         return $query;
     }
 
-    function getDaftarHadirByID($id_agenda)
+    public function getDaftarHadirByID($id_agenda)
     {
         $id_admin = session()->get('id_admin');
         $builder = $this->table('daftarhadirs');
@@ -100,7 +101,14 @@ class DaftarHadirModel extends Model
         return $query;
     }
 
-    function sudahAbsen($nik, $id_agenda)
+    /**
+     * Check if a user has already marked attendance for a specific meeting.
+     *
+     * @param string $nik The NIK of the user.
+     * @param int $id_agenda The ID of the meeting agenda.
+     * @return bool Returns true if the user has marked attendance, false otherwise.
+     */
+    public function sudahAbsen($nik, $id_agenda)
     {
         $data = $this->where('NIK', $nik)->where('id_agenda_rapat', $id_agenda)->first();
         if ($data != null) {

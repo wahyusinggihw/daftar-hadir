@@ -3,10 +3,16 @@ $(document).ready(function () {
   var oldStatus = $('input[name="statusRadio"]:checked').val();
   console.log(oldStatus);
   if (oldStatus === "pegawai") {
-    setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+    setInputFilter(
+      [document.getElementById("nip"), document.getElementById("no_hp")],
+      "Harus berupa angka"
+    );
     onErrorHandlePegawaiStatus();
   } else if (oldStatus === "tamu") {
-    setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+    setInputFilter(
+      [document.getElementById("nip"), document.getElementById("no_hp")],
+      "Harus berupa angka"
+    );
     onErrorHandleTamuStatus();
   } else {
     // Initialization
@@ -26,7 +32,10 @@ $(document).ready(function () {
 
 // Function to initialize the page
 function initializePage() {
-  setInputFilter(document.getElementById("nip"), "Harus berupa angka");
+  setInputFilter(
+    [document.getElementById("nip"), document.getElementById("no_hp")],
+    "Harus berupa angka"
+  );
   disableFormFields(
     "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
@@ -40,6 +49,7 @@ function initializePage() {
   $("#instansiOption").show();
   $("#instansiText").hide();
   signaturePad.off();
+  clearValues();
   // disableFormFields();
 }
 
@@ -63,6 +73,10 @@ function onErrorHandlePegawaiStatus() {
 function onErrorHandleTamuStatus() {
   // $("#instansiOption").hide();
   // $("#instansiText").show();
+  // tamuAjax($("#nip").val());
+  //get nip value
+  var nipValue = $("#nip").val();
+  restoreSavedValues(nipValue);
   tamuStatusClicked = false;
   $(".note").fadeIn(200);
   handleTamuNipInput();
@@ -128,6 +142,8 @@ function handleTamuStatus() {
   $("#cariNikButton").hide();
   $("#label-nik").show();
   $("#label-default").hide();
+  // add placeholder for nip input
+  $("#nip").attr("placeholder", "Masukkan NIK");
 }
 
 // Function to handle 'pegawai' status
@@ -158,6 +174,7 @@ function handlePegawaiStatus() {
   $("#instansiText").hide();
   $("#label-default").show();
   $("#label-nik").hide();
+  $("#nip").attr("placeholder", "Masukkan NIP");
 
   $(asnNonAsnRadio).on("click", function () {
     // console.log(statusValuePegawai);
@@ -283,46 +300,71 @@ function getApiEndpoint(statusValuePegawai) {
 }
 
 var savedValues = {};
-function saveCurrentValues(key) {
-  savedValues[key] = {
-    nip: $("#nip").val(),
-    no_hp: $("#no_hp").val(),
-    nama: $("#nama").val(),
-    alamat: $("#alamat").val(),
-    asal_instansi_tamu: $("#asal_instansi_tamu").val(),
-  };
-  console.log(savedValues);
+function saveCurrentValues(key, values) {
+  // Save the values to savedValues object
+  savedValues[key] = values;
+
+  // Save the values to localStorage
+  localStorage.setItem(key, JSON.stringify(values));
 }
 
 function restoreSavedValues(key) {
-  var savedData = savedValues[key];
+  // Get the saved values from localStorage
+  const savedValuesFromLocalStorage = JSON.parse(localStorage.getItem(key));
 
-  if (savedData) {
-    $("#nip").val(savedData.nip);
-    $("#no_hp").val(savedData.no_hp);
-    $("#nama").val(savedData.nama);
-    $("#alamat").val(savedData.alamat);
-    $("#asal_instansi_tamu").val(savedData.asal_instansi_tamu);
+  // If there are saved values from localStorage, restore them
+  if (savedValuesFromLocalStorage) {
+    // Update savedValues object for consistency
+    savedValues[key] = savedValuesFromLocalStorage;
+
+    $("#no_hp").val(savedValuesFromLocalStorage.no_hp);
+    $("#nama").val(savedValuesFromLocalStorage.nama);
+    $("#alamat").val(savedValuesFromLocalStorage.alamat);
+    $("#asal_instansi_tamu").val(
+      savedValuesFromLocalStorage.asal_instansi_tamu
+    );
+    // Add other form fields as needed
   }
+
+  // Return the saved values
+  return savedValuesFromLocalStorage;
+}
+// Function to clear all form values
+function removeValues(key) {
+  // Clear the form fields
+  $("#no_hp, #nama, #alamat, #asal_instansi_tamu").val("");
+
+  // Clear the saved values
+  savedValues = {};
+
+  // Remove the saved values from localStorage
+  localStorage.removeItem(key);
 }
 
-function setInputFilter(textbox, errMsg) {
-  if (textbox) {
-    textbox.addEventListener("input", function () {
-      const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+function clearValues() {
+  savedValues = {};
+  localStorage.clear();
+}
 
-      if (this.value !== numericValue) {
-        // Non-numeric characters were entered - block and show error
-        this.value = numericValue;
-        this.classList.add("input-error");
-        this.setCustomValidity(errMsg);
-        this.reportValidity();
-      } else {
-        // Numeric input - remove error
-        this.classList.remove("input-error");
-        this.setCustomValidity("");
-        this.reportValidity();
-      }
+function setInputFilter(textboxes, errMsg) {
+  if (textboxes && Array.isArray(textboxes)) {
+    textboxes.forEach(function (textbox) {
+      textbox.addEventListener("input", function () {
+        const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+        if (this.value !== numericValue) {
+          // Non-numeric characters were entered - block and show error
+          this.value = numericValue;
+          this.classList.add("input-error");
+          this.setCustomValidity(errMsg);
+          this.reportValidity();
+        } else {
+          // Numeric input - remove error
+          this.classList.remove("input-error");
+          this.setCustomValidity("");
+          this.reportValidity();
+        }
+      });
     });
   }
 }
@@ -358,8 +400,15 @@ function tamuAjax(nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          // saveCurrentValues("tamu");
-          console.log(data);
+          nipValue = $("#nip").val();
+          removeValues(nipValue);
+          saveCurrentValues(nipValue, {
+            no_hp: data.data.no_hp,
+            nama: data.data.nama,
+            alamat: data.data.alamat,
+            asal_instansi_tamu: data.data.asal_instansi,
+          });
+          console.log(restoreSavedValues("tamu"));
           $("#loadingIndicator").hide();
           $("#signatureCanvas").removeClass("greyed-out-form");
           // $('#no_hp, #nama, #alamat, #asal_instansi_tamu').addClass('greyed-out-form');
@@ -370,6 +419,22 @@ function tamuAjax(nikValue) {
           $("#instansiText, #asal_instansi_tamu")
             .val(data.data.asal_instansi)
             .prop("readonly", false);
+          // let no_hp = document.getElementById("no_hp");
+          // no_hp.setAttribute("value", data.data.no_hp);
+          // no_hp.value = data.data.no_hp;
+
+          // let nama = document.getElementById("nama");
+          // nama.setAttribute("value", data.data.nama);
+          // nama.value = data.data.nama;
+
+          // let alamat = document.getElementById("alamat");
+          // alamat.setAttribute("value", data.data.alamat);
+          // alamat.value = data.data.alamat;
+
+          // let asal_instansi_tamu =
+          //   document.getElementById("asal_instansi_tamu");
+          // asal_instansi_tamu.setAttribute("value", data.data.asal_instansi);
+          // asal_instansi_tamu.value = data.data.asal_instansi;
         }
       } else {
         $("#loadingIndicator").hide();
@@ -431,10 +496,9 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          // saveCurrentValues("pegawai");
           $("#signatureCanvas").removeClass("greyed-out-form");
           signaturePad.on();
-          console.log(data);
+          // console.log(data);
           // $("#nip").val(data.data.nip).prop("readonly", false);
           $("#no_hp").val(data.data.no_hp).prop("readonly", true);
           $("#nama").val(data.data.nama_lengkap).prop("readonly", true);

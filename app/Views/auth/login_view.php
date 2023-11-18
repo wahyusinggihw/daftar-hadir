@@ -39,10 +39,19 @@
         <form action="<?= base_url('/auth/login') ?>" method="post" id="form-login" onsubmit="return validateRecaptcha()">
             <?= csrf_field() ?>
             <div class="container">
+                <?php if (session('loginAttempts')) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        Percobaan login tersisa <?= session('loginAttempts') ?> kali.
+                    </div>
+                <?php elseif ((session('failedLogin'))) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session('failedLogin') ?>
+                    </div>
+                <?php endif ?>
                 <div class="input-wrapper">
                     <div class="form-group mb-3">
                         <label for="username" class="form-label">Username:</label>
-                        <input type="text" class="form-control <?= validation_show_error('username') ? 'is-invalid' : '' ?>" value="<?= old('username') ?>" id="username" name="username" placeholder="Masukkan username" autofocus>
+                        <input type="text" class="form-control <?= validation_show_error('username') ? 'is-invalid' : '' ?>" value="<?= old('username') ?>" id="username" name="username" placeholder="Masukkan username" <?= session('failedLogin') ? 'disabled' : '' ?> autofocus>
                         <div class="invalid-feedback text-start">
                             <?= validation_show_error('username') ?>
                         </div>
@@ -53,7 +62,7 @@
                     <div class="form-group mb-3">
                         <label for="password" class="form-label">Password:</label>
                         <div class="password-input-container">
-                            <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password">
+                            <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password" <?= session('failedLogin') ? 'disabled' : '' ?>>
                             <span class="password-toggle-btn" onclick="togglePasswordVisibility()">
                                 <i id="password-toggle-icon" class="fa fa-eye"></i>
                             </span>
@@ -64,7 +73,7 @@
                     </div>
                     <br>
                     <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>" id="recaptcha"></div>
-                    <div class="invalid-feedback text-start" id="recaptcha-error"></div>
+                    <div class="invalid-feedback text-start"><?= validation_show_error('g-recaptcha-response') ?></div>
                 </div>
 
                 <button type="submit" data-action='submit'>Login</button>

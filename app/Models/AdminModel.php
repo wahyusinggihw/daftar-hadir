@@ -67,4 +67,9 @@ class AdminModel extends Model
             return $this->findAll();
         }
     }
+
+    public function updateAdmin($data)
+    {
+        $this->update(session()->get('id_admin'), $data);
+    }
 }

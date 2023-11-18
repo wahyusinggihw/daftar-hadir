@@ -15,7 +15,7 @@
 
     <?php if ($daftar_hadir != null) : ?>
         <!-- <a href="#" download class="btn btn-primary mb-2">Download File</a> -->
-        <a href="<?= base_url('dashboard/cetak-daftar-hadir/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Agenda</a>
+        <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/cetak/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Agenda</a>
         <!-- foreach php -->
         <div class="table-container my-3" style="background-color:white; padding: 20px;">
             <table id="example" class="order-column" style="width:100%">
@@ -24,6 +24,7 @@
                         <th>No</th>
                         <th>NIP/NIK</th>
                         <th>Nama</th>
+                        <th>Status</th>
                         <th>Asal Instansi</th>
                         <th>TTD</th>
                         <th>Timestamp</th>
@@ -36,6 +37,7 @@
                             <td></td>
                             <td><?= $item['NIK'] ?></td>
                             <td><?= $item['nama'] ?></td>
+                            <td><?= $item['status'] ?></td>
                             <td><?= $item['asal_instansi'] ?></td>
                             <td>
                                 <div class="btn btn-secondary show-sweet-alert" data-ttd="<?= $item['ttd'] ?>">Lihat</div>

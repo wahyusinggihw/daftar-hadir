@@ -47,7 +47,7 @@ class RapatController extends BaseController
             $kodeRapat = $this->request->getUri()->getSegment(3);
             $rapat = $this->agendaRapat->getAgendaRapatByKode(trim($kodeRapat));
             if ($rapat == null) {
-                return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan');
+                return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
             }
             $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
             // dd($expiredTime);
@@ -134,13 +134,14 @@ class RapatController extends BaseController
             'id_agenda_rapat' => $idAgenda,
             'NIK' => $this->request->getVar('nip'),
             'nama' => $this->request->getVar('nama'),
+            'status' => $status,
             'asal_instansi' => $status == 'pegawai' ? $instansiPegawai : $instansiTamu,
             'ttd' => $tandaTangan,
             'created_at' => date('Y-m-d H:i:s')
         ];
 
         // Handle the absen logic here
-        $userExist = $this->pesertaUmum->cekIfExist($nip);
+        $userExist = $this->pesertaUmum->checkIfExist($nip);
         if ($userExist != null && $statusUser == 'tamu') {
             $dataPesertaUmum = [
                 'id_peserta_umum' => $userExist['id_peserta_umum'],
@@ -202,15 +203,16 @@ class RapatController extends BaseController
         $validate = $this->validateForm();
         // $idAgenda = $this->session->get('id_agenda');
         $statusUser = $this->request->getVar('statusRadio');
+
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('kode_valid', true);
+        }
+
         $token = $this->request->getVar('g-recaptcha-response');
         $validateCaptcha  = verifyCaptcha($token);
         // dd($validateCaptcha);
         if (!$validateCaptcha->success) {
             $this->session->setFlashdata('error', 'Terdapat aktifitas tidak wajar, mohon coba lagi.');
-            return redirect()->back()->withInput()->with('kode_valid', true);
-        }
-
-        if (!$validate) {
             return redirect()->back()->withInput()->with('kode_valid', true);
         }
 
@@ -264,6 +266,13 @@ class RapatController extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Tanda tangan harus diisi'
+                ]
+            ],
+            // recaptcha
+            'g-recaptcha-response' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'centang reCAPTCHA terlebih dahulu.'
                 ]
             ],
         ];

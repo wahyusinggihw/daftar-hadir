@@ -12,11 +12,17 @@ $routes->group('auth', function ($routes) {
     $routes->post('logout', 'Auth::logout');
 });
 
-// SLnding page
+// Landing page
 $routes->get('/', 'Home::index');
 $routes->post('/rapat/submit-kode', 'Home::submitKode');
 $routes->get('/rapat/daftar-hadir/(:segment)', 'RapatController::formAbsensi/$1');
 $routes->post('/rapat/daftar-hadir/store', 'RapatController::absenStore');
+
+// berhasil page
+$routes->get('berhasil', 'RapatController::berhasil', ['filter' => 'cekkode']);
+
+//  Route for displaying information about a meeting.
+$routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');
 
 // API / AJAX
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
@@ -26,7 +32,6 @@ $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     $routes->get('pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
     $routes->get('pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
     $routes->get('pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
-    $routes->post('save-signature', 'RapatController::saveSignatureData');
 
     // login
     $routes->post('login', "Api\AuthControllerAPI::login");
@@ -37,16 +42,6 @@ $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     // post form absen
     $routes->post('daftar-hadir/store', 'Api\RapatControllerAPI::absenStore');
 });
-
-// berhasil page
-$routes->get('berhasil', 'RapatController::berhasil', ['filter' => 'cekkode']);
-
-/**
- * Route for displaying information about a meeting.
- * 
- * $1 The segment containing the meeting ID.
- */
-$routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');
 
 // Dashboard
 $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
@@ -59,13 +54,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
     // CRUD agenda rapat di semua role
     $routes->get('agenda-rapat/daftar-hadir/(:segment)', 'Dashboard\DaftarHadirController::cariDaftarHadir/$1');
     $routes->post('agenda-rapat/daftar-hadir/delete-peserta/(:segment)', 'Dashboard\DaftarHadirController::delete/$1');
-    $routes->get('cetak-daftar-hadir/(:segment)', 'Dashboard\DaftarHadirController::generatePdf/$1');
+    $routes->get('agenda-rapat/daftar-hadir/cetak/(:segment)', 'Dashboard\DaftarHadirController::generatePdf/$1');
 
     $routes->get('agenda-rapat/tambah-agenda', 'Dashboard\AgendaRapat::tambahAgenda');
     $routes->post('agenda-rapat/tambah-agenda/store', 'Dashboard\AgendaRapat::store');
 
     $routes->get('agenda-rapat/view-agenda/(:segment)', 'Dashboard\AgendaRapat::view/$1');
-
 
     $routes->get('agenda-rapat/edit-agenda/(:segment)', 'Dashboard\AgendaRapat::edit/$1');
     $routes->post('agenda-rapat/edit-agenda/(:segment)/update', 'Dashboard\AgendaRapat::update/$1');
@@ -81,7 +75,7 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
     /**
      * Kelola Admin Routes
      * 
-     * This group of routes is used to manage the super admin, admin instansi, and operator bidang.
+     * This group of routes is used to manage admin instansi, and operator bidang.
      * 
      * - Super admin -> admin instansi -> operator bidang
      * - Super admin manages Admin instansi

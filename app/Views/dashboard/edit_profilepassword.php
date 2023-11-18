@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="old-password">Password Lama:</label>
-                        <input class="form-control <?= validation_show_error('old-password') ? 'is-invalid' : '' ?>" value="<?= session()->getFlashdata('error') ? '' : old('old-password') ?>" id="old-password" name="old-password" placeholder="Password lama">
+                        <input class="form-control <?= validation_show_error('old-password') ? 'is-invalid' : '' ?>" id="old-password" name="old-password" placeholder="Password lama">
                         <div class="invalid-feedback">
                             <?= validation_show_error('old-password') ?>
                         </div>
@@ -40,7 +40,7 @@
                                 <li><i id="length" class="far fa-times-circle"></i>Berisi 8 karakter</li>
                             </ul>
                         </div>
-                        <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
                         <div class="invalid-feedback">
                             <?= validation_show_error('new-password') ?>
                         </div>

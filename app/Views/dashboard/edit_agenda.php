@@ -77,6 +77,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
+        // show minlength
+        function handleCharacterCounter(inputId, counterClass, minLength) {
+            $(inputId).on('input', function() {
+                const length = $(this).val().length;
+                if (length < minLength) {
+                    $(counterClass).text(`Minimal karakter yang diinput adalah ${minLength} karakter`).addClass('text-danger');
+                } else {
+                    $(counterClass).text('').removeClass('text-danger');
+                }
+            });
+        }
+
+        // Call the function for each input field
+        handleCharacterCounter('#agenda_rapat', '.agenda-counter', 5);
+        handleCharacterCounter('#tempat', '.tempat-counter', 5);
+        handleCharacterCounter('#deskripsi', '.deskripsi-counter', 5);
+
         $(document).ready(function() {
             // Determine if the default time is ahead of the current time
             const defaultDate = '<?= $data['tanggal'] ?>';
@@ -101,38 +118,6 @@
                     $('.timepicker-default').hide();
                     $('.timepicker').show();
                 }
-            });
-
-            $('#deskripsi').on('keyup', function() {
-                const max = 2550;
-                const length = $(this).val().length;
-                const remaining = max - length;
-                if (length == max) {
-                    $('.deskripsi-counter').text('Maksimum karakter yang diinput adalah ' + max + ' karakter').addClass('text-danger');
-                } else {
-                    $('.deskripsi-counter').text('').removeClass('text-danger');
-                }
-                // $('.deskripsi-counter').text(remaining);     
-            });
-            $('#agenda_rapat').on('keyup', function() {
-                const max = 255;
-                const length = $(this).val().length;
-                if (length == max) {
-                    $('.agenda-counter').text(`Maksimum karakter tercapai (${max})`).addClass('text-danger');
-                } else {
-                    $('.agenda-counter').text('').removeClass('text-danger');
-                }
-                // $('.deskripsi-counter').text(remaining);     
-            });
-            $('#tempat').on('keyup', function() {
-                const max = 255;
-                const length = $(this).val().length;
-                if (length == max) {
-                    $('.tempat-counter').text(`Maksimum karakter tercapai (${max})`).addClass('text-danger');
-                } else {
-                    $('.tempat-counter').text('').removeClass('text-danger');
-                }
-                // $('.deskripsi-counter').text(remaining);     
             });
             // Function to format the current time as 'HH:mm' and round to the nearest 30-minute interval
             function getCurrentTimeRounded() {
