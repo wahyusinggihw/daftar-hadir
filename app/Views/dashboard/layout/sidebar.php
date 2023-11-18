@@ -93,12 +93,17 @@
     <script>
         function showLogoutConfirmation() {
             Swal.fire({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonStyling: false,
                 title: 'Konfirmasi Logout',
                 text: 'Anda yakin ingin logout?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#22b23a',
-                cancelButtonColor: '#d33',
+                // confirmButtonColor: '#22b23a',
+                // cancelButtonColor: '#d33',
                 confirmButtonText: 'Logout',
                 cancelButtonText: 'Batal',
                 reverseButtons: true

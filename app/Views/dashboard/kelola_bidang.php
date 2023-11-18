@@ -71,12 +71,17 @@
 
         function showDeleteConfirmation(id) {
             Swal.fire({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonStyling: false,
                 title: 'Konfirmasi Hapus',
                 text: 'Anda yakin akan menghapus data?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#22b23a',
-                cancelButtonColor: '#d33',
+                // confirmButtonColor: '#22b23a',
+                // cancelButtonColor: '#d33',
                 confirmButtonText: 'Hapus',
                 cancelButtonText: 'Batal',
                 reverseButtons: true
