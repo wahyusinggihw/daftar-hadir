@@ -58,6 +58,7 @@ class Auth extends BaseController
             $admin = $this->adminModel->where('username', $username)->first();
             // dd($user);
             if (!$admin) {
+                $this->incrementLoginAttempts();
                 return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
             }
             if (password_verify($password, $admin['password'])) {
@@ -79,6 +80,7 @@ class Auth extends BaseController
                 }
                 return redirect()->to('/dashboard/agenda-rapat');
             } else {
+                $this->incrementLoginAttempts();
                 return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
             }
         } else {
@@ -86,6 +88,18 @@ class Auth extends BaseController
                 'title' => 'Log In',
             ];
             return view('auth/login_view', $data);
+        }
+    }
+
+    protected function incrementLoginAttempts()
+    {
+        $loginAttempts = session()->get('loginAttempts') ?? 3;
+        $loginAttempts--;
+        session()->set('loginAttempts', $loginAttempts);
+
+        if ($loginAttempts <= 0) {
+            session()->setTempdata('failedLogin', 'Anda salah memasukkan username atau password sebanyak 3 kali. Coba lagi beberapat saat lagi.', 10);
+            session()->remove('loginAttempts');
         }
     }
 
