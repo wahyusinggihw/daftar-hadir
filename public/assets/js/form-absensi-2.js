@@ -49,6 +49,7 @@ function initializePage() {
   $("#instansiOption").show();
   $("#instansiText").hide();
   signaturePad.off();
+  clearValues();
   // disableFormFields();
 }
 
@@ -73,7 +74,9 @@ function onErrorHandleTamuStatus() {
   // $("#instansiOption").hide();
   // $("#instansiText").show();
   // tamuAjax($("#nip").val());
-  restoreSavedValues("tamu");
+  //get nip value
+  var nipValue = $("#nip").val();
+  restoreSavedValues(nipValue);
   tamuStatusClicked = false;
   $(".note").fadeIn(200);
   handleTamuNipInput();
@@ -139,6 +142,8 @@ function handleTamuStatus() {
   $("#cariNikButton").hide();
   $("#label-nik").show();
   $("#label-default").hide();
+  // add placeholder for nip input
+  $("#nip").attr("placeholder", "Masukkan NIK");
 }
 
 // Function to handle 'pegawai' status
@@ -169,6 +174,7 @@ function handlePegawaiStatus() {
   $("#instansiText").hide();
   $("#label-default").show();
   $("#label-nik").hide();
+  $("#nip").attr("placeholder", "Masukkan NIP");
 
   $(asnNonAsnRadio).on("click", function () {
     // console.log(statusValuePegawai);
@@ -323,6 +329,22 @@ function restoreSavedValues(key) {
   // Return the saved values
   return savedValuesFromLocalStorage;
 }
+// Function to clear all form values
+function removeValues(key) {
+  // Clear the form fields
+  $("#no_hp, #nama, #alamat, #asal_instansi_tamu").val("");
+
+  // Clear the saved values
+  savedValues = {};
+
+  // Remove the saved values from localStorage
+  localStorage.removeItem(key);
+}
+
+function clearValues() {
+  savedValues = {};
+  localStorage.clear();
+}
 
 function setInputFilter(textboxes, errMsg) {
   if (textboxes && Array.isArray(textboxes)) {
@@ -378,7 +400,9 @@ function tamuAjax(nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          saveCurrentValues("tamu", {
+          nipValue = $("#nip").val();
+          removeValues(nipValue);
+          saveCurrentValues(nipValue, {
             no_hp: data.data.no_hp,
             nama: data.data.nama,
             alamat: data.data.alamat,
