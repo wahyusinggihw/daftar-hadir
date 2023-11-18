@@ -5,8 +5,8 @@
          <li class="nav-item">
              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="#" role="button"><?= strtoupper(session()->get('role')) ?></i></a>
+         <li class="nav-item" style="cursor: default;">
+             <p class="nav-link" href="#" style="cursor: default;" role="button"><?= strtoupper(session()->get('role')) ?></p>
          </li>
 
      </ul>

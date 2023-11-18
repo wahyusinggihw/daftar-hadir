@@ -20,7 +20,7 @@
     <section class="container">
         <header><?= isset($rapat['agenda_rapat']) ? $rapat['agenda_rapat'] : 'Rapat'  ?></header>
         <p>Isi sesuai dengan data diri anda</p>
-        <form action="<?= base_url('/rapat/daftar-hadir/store') ?>" method="post" enctype="multipart/form-data" class="form" onsubmit="return validateRecaptcha()">
+        <form action="<?= base_url('/rapat/daftar-hadir/store') ?>" method="post" enctype="multipart/form-data" class="form" id="form-absensi">
             <?= csrf_field() ?>
             <?php
             // Capture the old value of the status radio input

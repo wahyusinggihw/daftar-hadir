@@ -72,6 +72,8 @@ function onErrorHandlePegawaiStatus() {
 function onErrorHandleTamuStatus() {
   // $("#instansiOption").hide();
   // $("#instansiText").show();
+  // tamuAjax($("#nip").val());
+  restoreSavedValues("tamu");
   tamuStatusClicked = false;
   $(".note").fadeIn(200);
   handleTamuNipInput();
@@ -292,27 +294,34 @@ function getApiEndpoint(statusValuePegawai) {
 }
 
 var savedValues = {};
-function saveCurrentValues(key) {
-  savedValues[key] = {
-    nip: $("#nip").val(),
-    no_hp: $("#no_hp").val(),
-    nama: $("#nama").val(),
-    alamat: $("#alamat").val(),
-    asal_instansi_tamu: $("#asal_instansi_tamu").val(),
-  };
-  console.log(savedValues);
+function saveCurrentValues(key, values) {
+  // Save the values to savedValues object
+  savedValues[key] = values;
+
+  // Save the values to localStorage
+  localStorage.setItem(key, JSON.stringify(values));
 }
 
 function restoreSavedValues(key) {
-  var savedData = savedValues[key];
+  // Get the saved values from localStorage
+  const savedValuesFromLocalStorage = JSON.parse(localStorage.getItem(key));
 
-  if (savedData) {
-    $("#nip").val(savedData.nip);
-    $("#no_hp").val(savedData.no_hp);
-    $("#nama").val(savedData.nama);
-    $("#alamat").val(savedData.alamat);
-    $("#asal_instansi_tamu").val(savedData.asal_instansi_tamu);
+  // If there are saved values from localStorage, restore them
+  if (savedValuesFromLocalStorage) {
+    // Update savedValues object for consistency
+    savedValues[key] = savedValuesFromLocalStorage;
+
+    $("#no_hp").val(savedValuesFromLocalStorage.no_hp);
+    $("#nama").val(savedValuesFromLocalStorage.nama);
+    $("#alamat").val(savedValuesFromLocalStorage.alamat);
+    $("#asal_instansi_tamu").val(
+      savedValuesFromLocalStorage.asal_instansi_tamu
+    );
+    // Add other form fields as needed
   }
+
+  // Return the saved values
+  return savedValuesFromLocalStorage;
 }
 
 function setInputFilter(textboxes, errMsg) {
@@ -369,8 +378,13 @@ function tamuAjax(nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          // saveCurrentValues("tamu");
-          console.log(data);
+          saveCurrentValues("tamu", {
+            no_hp: data.data.no_hp,
+            nama: data.data.nama,
+            alamat: data.data.alamat,
+            asal_instansi_tamu: data.data.asal_instansi,
+          });
+          console.log(restoreSavedValues("tamu"));
           $("#loadingIndicator").hide();
           $("#signatureCanvas").removeClass("greyed-out-form");
           // $('#no_hp, #nama, #alamat, #asal_instansi_tamu').addClass('greyed-out-form');
@@ -381,6 +395,22 @@ function tamuAjax(nikValue) {
           $("#instansiText, #asal_instansi_tamu")
             .val(data.data.asal_instansi)
             .prop("readonly", false);
+          // let no_hp = document.getElementById("no_hp");
+          // no_hp.setAttribute("value", data.data.no_hp);
+          // no_hp.value = data.data.no_hp;
+
+          // let nama = document.getElementById("nama");
+          // nama.setAttribute("value", data.data.nama);
+          // nama.value = data.data.nama;
+
+          // let alamat = document.getElementById("alamat");
+          // alamat.setAttribute("value", data.data.alamat);
+          // alamat.value = data.data.alamat;
+
+          // let asal_instansi_tamu =
+          //   document.getElementById("asal_instansi_tamu");
+          // asal_instansi_tamu.setAttribute("value", data.data.asal_instansi);
+          // asal_instansi_tamu.value = data.data.asal_instansi;
         }
       } else {
         $("#loadingIndicator").hide();
@@ -442,10 +472,9 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          // saveCurrentValues("pegawai");
           $("#signatureCanvas").removeClass("greyed-out-form");
           signaturePad.on();
-          console.log(data);
+          // console.log(data);
           // $("#nip").val(data.data.nip).prop("readonly", false);
           $("#no_hp").val(data.data.no_hp).prop("readonly", true);
           $("#nama").val(data.data.nama_lengkap).prop("readonly", true);

@@ -14,7 +14,7 @@ body {
 } */
 
 :root {
-  --form-control-color: #22B2A9;
+  --form-control-color: #22b2a9;
 }
 
 *,
@@ -30,6 +30,7 @@ body {
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
 }
 .container header {
   font-size: 1.5rem;
@@ -98,10 +99,10 @@ input[type="radio"] {
   background-color: #fff;
   margin: 0;
   font: inherit;
-  color: #22B2A9;
+  color: #22b2a9;
   width: 1.15em;
   height: 1.15em;
-  border: 0.15em solid #22B2A9;
+  border: 0.15em solid #22b2a9;
   border-radius: 50%;
   transform: translateY(-0.075em);
   display: grid;
@@ -141,7 +142,7 @@ input[type="radio"]:checked::before {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #22B2A9;
+  background: #22b2a9;
 }
 .form button:hover {
   background: #1a857d;
@@ -173,7 +174,7 @@ input[type="radio"]:checked::before {
   color: #333;
 }
 
-.note{
+.note {
   background-color: #cff4fc;
   border-left: 6px solid #9eeaf9;
   padding: 1.25rem;
@@ -251,13 +252,13 @@ input[type="radio"]:checked::before {
 #cariNikButton i {
   font-size: 23px;
   /* color: #333; */
-  color: #22B2A9;
+  color: #22b2a9;
 }
 
 #loadingIndicator {
   font-size: 23px;
   /* color: #333; */
-  color: #22B2A9;
+  color: #22b2a9;
 }
 .search a {
   cursor: pointer;
