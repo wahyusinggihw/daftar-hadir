@@ -7,7 +7,7 @@
         <div class="row justify-content-center align-items-center text-center">
             <div class="animate__animated animate__tada animate__repeat-2">
                 <div class="d-flex align-items-center justify-content-center flex-column ">
-                    <i class="fas fa-check fa-4x text-success"></i>
+                    <i class="fa-regular fa-circle-check fa-4x text-success"></i>
                     <h1 class="h5 mb-3 fw-normal">
                         <div class="fs-4">Berhasil</div>
                     </h1>

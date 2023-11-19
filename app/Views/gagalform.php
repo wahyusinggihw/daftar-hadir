@@ -7,7 +7,7 @@
         <div class="row justify-content-center align-items-center text-center">
             <div class="animate__animated animate__tada animate__repeat-2">
                 <div class="d-flex align-items-center justify-content-center flex-column ">
-                    <i class="fa-solid fa-xmark fa-4x text-danger"></i>
+                    <i class="fa-regular fa-circle-xmark fa-4x text-danger"></i>
                     <h1 class="h5 mb-3 fw-normal">
                         <div class="fs-4">Gagal</div>
                     </h1>
@@ -19,7 +19,7 @@
         <a href="<?= base_url() ?>" class="btn btn-secondary my-2">Lanjutkan</a>
     </div>
 
-    <script>
+    <!-- <script>
         var count = 5;
         var countdownElement = document.getElementById("countdown");
         var countdownInterval = setInterval(function() {
@@ -31,7 +31,7 @@
                 countdownElement.innerHTML = "";
             }
         }, 1000);
-    </script>
+    </script> -->
 </body>
 
 <?= $this->endSection() ?>
