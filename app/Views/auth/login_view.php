@@ -85,7 +85,7 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
-<script src="<?php echo base_url('assets/js/login.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
 <script>
     function validateRecaptcha() {
         // Use the grecaptcha object to check if the user has checked the reCAPTCHA.

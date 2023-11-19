@@ -71,7 +71,15 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="password">password:</label>
-                                <input class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" type="password" id="password" name="password" placeholder="password">
+                                <div class="password-input-container">
+                                    <input class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" type="password" id="password" name="password" placeholder="password">
+                                    <span class="password-toggle-btn" onclick="togglePasswordVisibility()">
+                                        <i id="password-toggle-icon" class="fa fa-eye"></i>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        <?= validation_show_error('password') ?>
+                                    </div>
+                                </div>
                                 <label for="label-validasi">Password harus berisi sebagai berikut: :</label>
                                 <div id="requirements-list">
                                     <ul id="requirements-1">
@@ -83,9 +91,6 @@
                                         <li><i id="length" class="far fa-times-circle"></i>Minimal 8 karakter</li>
                                     </ul>
                                 </div>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('password') ?>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,6 +99,7 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
 </body>
 
 <?= $this->endSection() ?>

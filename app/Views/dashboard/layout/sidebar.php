@@ -1,13 +1,13 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-
+    <a href=" index3.html" class="brand-link">
+        <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="AdminLTE Logo" class="brand-image" style="opacity: .8" width="100">
+        <span><img src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="AdminLTE Logo" style="margin-left: 5px;" width="150"></span>
+    </a>
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <a href="index3.html" class="brand-link">
-            <img src="<?php echo base_url('assets/img/logo.png'); ?>" alt="Logo" width="220">
-        </a>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <?php if (session()->get('avatar') == 'default.png') : ?>

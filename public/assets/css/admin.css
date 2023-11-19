@@ -58,3 +58,43 @@ label {
   /* Warna merah untuk pesan kesalahan */
   margin-top: 4px;
 }
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-125%);
+  cursor: pointer;
+}
+
+.toggle-new{
+  position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-40%);
+    cursor: pointer;
+}
+
+.toggle-confirm {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-155%);
+  cursor: pointer;
+}
+
+.toggle-new i{
+  font-size: 1.2em;
+}
+
+.toggle-confirm i {
+  font-size: 1.2em;
+}
+
+.password-toggle-btn i {
+  font-size: 1.2em;
+}

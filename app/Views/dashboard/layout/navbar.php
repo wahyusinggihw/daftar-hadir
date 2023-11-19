@@ -23,7 +23,7 @@
              <a class="nav-link" href="<?= base_url('/') ?>" target="_blank" role="button"><i class="fas fa-link"></i></a>
          </li>
          <li class="nav-item dropdown">
-             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> Menu</a>
+             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><?= session('username') ?></a>
              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
                  <li><a href="#" class="dropdown-item">Edit Password</a></li>
                  <li><a href="#" class="dropdown-item">Edit Profile </a></li>

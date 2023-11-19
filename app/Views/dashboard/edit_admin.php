@@ -31,6 +31,15 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="new-password">Password Baru:</label>
+                                <div class="password-input-container">
+                                    <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" type="password" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
+                                    <span class="toggle-new" onclick="togglePasswordVisibility()">
+                                        <i id="new-toggle-icon" class="fa fa-eye"></i>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        <?= validation_show_error('new-password') ?>
+                                    </div>
+                                </div>
                                 <div id="requirements-list">
                                     <ul id="requirements-1">
                                         <li><i id="capital" class="far fa-times-circle"></i>Huruf Kapital</li>
@@ -41,16 +50,15 @@
                                         <li><i id="length" class="far fa-times-circle"></i>Berisi 8 karakter</li>
                                     </ul>
                                 </div>
-                                <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('new-password') ?>
-                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="confirm-password">Konfirmasi Password:</label>
-                                <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                                <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                                <span class="toggle-confirm" onclick="togglePasswordVisibilityConfirm()">
+                                    <i id="confirm-toggle-icon" class="fa fa-eye"></i>
+                                </span>
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('confirm-password') ?>
                                 </div>
@@ -63,65 +71,37 @@
             </div>
         </div>
     </div>
-    <!-- <script>
-        var myInput = document.getElementById("new-password");
-        var letter = document.getElementById("letter");
-        var capital = document.getElementById("capital");
-        var number = document.getElementById("number");
-        var length = document.getElementById("length");
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('new-password');
+            const passwordToggleIcon = document.getElementById('new-toggle-icon');
 
-        // When the user clicks on the password field, show the message box
-        myInput.onfocus = function() {
-            document.getElementById("message").style.display = "block";
-        }
-
-        // When the user clicks outside of the password field, hide the message box
-        myInput.onblur = function() {
-            document.getElementById("message").style.display = "none";
-        }
-
-        // When the user starts to type something inside the password field
-        myInput.onkeyup = function() {
-            // Validate lowercase letters
-            var lowerCaseLetters = /[a-z]/g;
-            if (myInput.value.match(lowerCaseLetters)) {
-                letter.classList.remove("invalid");
-                letter.classList.add("valid");
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordToggleIcon.classList.remove('fa-eye');
+                passwordToggleIcon.classList.add('fa-eye-slash');
             } else {
-                letter.classList.remove("valid");
-                letter.classList.add("invalid");
-            }
-
-            // Validate capital letters
-            var upperCaseLetters = /[A-Z]/g;
-            if (myInput.value.match(upperCaseLetters)) {
-                capital.classList.remove("invalid");
-                capital.classList.add("valid");
-            } else {
-                capital.classList.remove("valid");
-                capital.classList.add("invalid");
-            }
-
-            // Validate numbers
-            var numbers = /[0-9]/g;
-            if (myInput.value.match(numbers)) {
-                number.classList.remove("invalid");
-                number.classList.add("valid");
-            } else {
-                number.classList.remove("valid");
-                number.classList.add("invalid");
-            }
-
-            // Validate length
-            if (myInput.value.length >= 8) {
-                length.classList.remove("invalid");
-                length.classList.add("valid");
-            } else {
-                length.classList.remove("valid");
-                length.classList.add("invalid");
+                passwordField.type = 'password';
+                passwordToggleIcon.classList.remove('fa-eye-slash');
+                passwordToggleIcon.classList.add('fa-eye');
             }
         }
-    </script> -->
+
+        function togglePasswordVisibilityConfirm() {
+            const passwordField = document.getElementById('confirm-password');
+            const passwordToggleIcon = document.getElementById('confirm-toggle-icon');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordToggleIcon.classList.remove('fa-eye');
+                passwordToggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordToggleIcon.classList.remove('fa-eye-slash');
+                passwordToggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 
 <?= $this->endSection() ?>

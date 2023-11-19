@@ -16,6 +16,10 @@ ul {
   margin: 0;
 }
 
+.sidebar{
+  overflow: hidden;
+}
+
 /* BAGIAN HEADER */
 nav {
   width: 100%;
