@@ -19,10 +19,10 @@ $routes->get('/rapat/daftar-hadir/(:segment)', 'RapatController::formAbsensi/$1'
 $routes->post('/rapat/daftar-hadir/store', 'RapatController::absenStore');
 
 // berhasil page
-$routes->get('berhasil', 'RapatController::berhasil', ['filter' => 'cekkode']);
+$routes->get('berhasil', 'RapatController::berhasilPage', ['filter' => 'cekkode']);
 
 // gagal page
-$routes->get('/gagal', 'RapatController::gagalForm');
+$routes->get('gagal', 'RapatController::gagalPage', ['filter' => 'cekkode']);
 
 //  Route for displaying information about a meeting.
 $routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');

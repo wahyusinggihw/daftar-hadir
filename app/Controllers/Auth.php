@@ -66,6 +66,7 @@ class Auth extends BaseController
                     'id_admin' => $admin['id_admin'],
                     'username' => $admin['username'],
                     'nama' => $admin['nama'],
+                    'slug' => $admin['slug'],
                     'avatar' => $admin['avatar'],
                     'role' => $admin['role'],
                     'id_instansi' => $admin['id_instansi'],

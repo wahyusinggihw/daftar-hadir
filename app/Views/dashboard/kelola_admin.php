@@ -30,7 +30,7 @@
                     <?php endif; ?>
                     <th>Role</th>
                     <th>Username</th>
-                    <th>created_at</th>
+                    <th>Tanggal Dibuat</th>
                     <th>Aksi</th>
                 </tr>
             </thead>

@@ -23,6 +23,9 @@ class AdminSeed extends Seeder
             'nama' => 'Super Admin',
             'role' => 'superadmin',
             'id_instansi' => 'superadmin',
+            'nama_instansi' => 'Super Admin',
+            'id_bidang' => 'superadmin',
+            'nama_bidang' => 'Super Admin',
             'username' => 'super',
             'avatar' => 'default.png', // 'avatar' => 'default.png
             'password' => password_hash('super', PASSWORD_DEFAULT),

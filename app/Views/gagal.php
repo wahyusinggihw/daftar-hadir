@@ -3,15 +3,35 @@
 <?= $this->section('content') ?>
 
 <body>
-    <div class="notifikasi">
-        <div class="icon">
-            <svg class="gagal" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="currentColor" d="M84.707 68.752L65.951 49.998l18.75-18.752a1.989 1.989 0 0 0 0-2.813L71.566 15.295a1.99 1.99 0 0 0-2.814 0L49.999 34.047l-18.75-18.752c-.746-.747-2.067-.747-2.814 0L15.297 28.431a1.992 1.992 0 0 0 0 2.814L34.05 49.998L15.294 68.753a1.993 1.993 0 0 0 0 2.814L28.43 84.704a1.988 1.988 0 0 0 2.814 0l18.755-18.755l18.756 18.754c.389.388.896.583 1.407.583s1.019-.195 1.408-.583l13.138-13.137a1.99 1.99 0 0 0-.001-2.814z"/></svg>
-            <p>Gagal</p>
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="animate__animated animate__tada animate__repeat-2">
+                <div class="d-flex align-items-center justify-content-center flex-column mt-4">
+                    <i class="fa-regular fa-circle-xmark fa-4x text-danger"></i>
+                    <h1 class="h5 mb-3 fw-normal">
+                        <div class="fs-4">Gagal</div>
+                    </h1>
+                </div>
+            </div>
+            <div class="mb-3 fs-5"><?= session()->getFlashdata('error') ?></div>
+            <div class="mb-3 fs-6">Anda akan diarahkan ke halaman utama dalam <span id="countdown"></span> detik</div>
         </div>
-        <p>Kode Rapat Kadaluarsa</p>
-        <button type="submit" class="lanjut">Konfirmasi</button>
+        <a href="<?= base_url() ?>" class="btn btn-secondary my-2">Lanjutkan</a>
     </div>
 
+    <script>
+        var count = 5;
+        var countdownElement = document.getElementById("countdown");
+        var countdownInterval = setInterval(function() {
+            countdownElement.innerHTML = count;
+            count--;
+            if (count < 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "<?= base_url() ?>";
+                countdownElement.innerHTML = "";
+            }
+        }, 1000);
+    </script>
 </body>
 
 <?= $this->endSection() ?>

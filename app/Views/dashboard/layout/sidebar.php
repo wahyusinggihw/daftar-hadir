@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href=" index3.html" class="brand-link">
+    <a href="<?= base_url('dashboard') ?>" class="brand-link">
         <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="AdminLTE Logo" class="brand-image" style="opacity: .8" width="100">
         <span><img src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="AdminLTE Logo" style="margin-left: 5px;" width="150"></span>
     </a>
@@ -18,7 +18,7 @@
             </div>
             <div class="info">
                 <div class="col">
-                    <a href="<?= base_url('dashboard/profile') ?>" class="d-block" style="text-decoration: none;"><?= session()->get('nama') ?></a>
+                    <a href="#" class="d-block" style="text-decoration: none;"><?= session()->get('nama') ?></a>
                 </div>
             </div>
 
