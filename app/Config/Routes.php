@@ -21,6 +21,9 @@ $routes->post('/rapat/daftar-hadir/store', 'RapatController::absenStore');
 // berhasil page
 $routes->get('berhasil', 'RapatController::berhasil', ['filter' => 'cekkode']);
 
+// gagal page
+$routes->get('/gagal', 'RapatController::gagalForm');
+
 //  Route for displaying information about a meeting.
 $routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');
 

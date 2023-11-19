@@ -33,6 +33,14 @@ class RapatController extends BaseController
         return view('berhasil', $data);
     }
 
+    public function gagalForm()
+    {
+        $data = [
+            'title' => 'Behasil'
+        ];
+        return view('gagalform', $data);
+    }
+
     public function formAbsensi($kodeRapat)
     {
         helper('my_helper');

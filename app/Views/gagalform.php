@@ -7,13 +7,13 @@
         <div class="row justify-content-center align-items-center text-center">
             <div class="animate__animated animate__tada animate__repeat-2">
                 <div class="d-flex align-items-center justify-content-center flex-column ">
-                    <i class="fas fa-check fa-4x text-success"></i>
+                    <i class="fa-solid fa-xmark fa-4x text-danger"></i>
                     <h1 class="h5 mb-3 fw-normal">
-                        <div class="fs-4">Berhasil</div>
+                        <div class="fs-4">Gagal</div>
                     </h1>
                 </div>
             </div>
-            <div class="mb-3 fs-5">Terimakasih telah mengisi daftar hadir!</div>
+            <div class="mb-3 fs-5">Anda Sudah Melakukan Absensi!</div>
             <div class="mb-3 fs-6">Anda akan diarahkan ke halaman utama dalam <span id="countdown">detik</span></div>
         </div>
         <a href="<?= base_url() ?>" class="btn btn-secondary my-2">Lanjutkan</a>
