@@ -5,6 +5,9 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
+        <a href="index3.html" class="brand-link">
+            <img src="<?php echo base_url('assets/img/logo.png'); ?>" alt="Logo" width="200">
+        </a>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <?php if (session()->get('avatar') == 'default.png') : ?>

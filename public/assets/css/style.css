@@ -5,7 +5,7 @@
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 xa {
   text-decoration: none;
@@ -22,12 +22,13 @@ nav {
   background-color: #ffffff;
   height: 60px;
 }
+
 nav .logo {
   margin-top: 15px;
   text-align: center;
 }
 nav .logo img {
-  width: 110px;
+  width: 250px;
 }
 
 @media only screen and (min-width: 992px) {
