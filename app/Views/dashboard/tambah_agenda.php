@@ -53,8 +53,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Jam</label>
-                            <input class="timepicker-default form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam">
-                            <input style="display: none;" class="timepicker form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam">
+                            <input class="timepicker-default readonly form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= validation_show_error('jam') ?>
                             </div>
@@ -74,9 +73,18 @@
         </div>
     </div>
 
+    <style>
+        /* prevent user from inputting, but allow user to click */
+        #jam {
+            background-color: white;
+        }
+    </style>
+
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script> -->
     <script>
         // show minlength
         function handleCharacterCounter(inputId, counterClass, minLength) {
@@ -110,38 +118,38 @@
             return `${roundedTime.getHours().toString().padStart(2, '0')}:${roundedTime.getMinutes().toString().padStart(2, '0')}`;
         }
 
+        function getCurrentTime() {
+            const now = new Date();
+            return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        }
+
         // Get the current time rounded to the nearest 30-minute interval and set it as the defaultTime
         const defaultTimeRounded = getCurrentTimeRounded();
+        const defaultTime = getCurrentTime();
 
-        $('.timepicker').timepicker({
-            timeFormat: 'HH:mm',
-            interval: 30,
-            defaultTime: defaultTimeRounded,
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true,
-            minTime: '00:00', // Set an initial minTime
-        });
-
-        $('.timepicker-default').timepicker({
-            timeFormat: 'HH:mm',
-            interval: 30,
-            defaultTime: defaultTimeRounded,
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true,
-            minTime: defaultTimeRounded // Set an initial minTime
+        const timepicker = flatpickr('.timepicker-default', {
+            // allowInput: true,
+            disableMobile: true,
+            enableTime: true,
+            noCalendar: true,
+            time_24hr: true,
+            minTime: defaultTime,
+            defaultHour: defaultTime.split(':')[0],
+            // defaultMinute: defaultTime.split(':')[1],
         });
 
         // show timepicker time based on the selected date
         $('#tanggal').on('change', function() {
             const selectedDate = $(this).val();
             if (selectedDate === '<?= date('Y-m-d') ?>') {
-                $('.timepicker').hide();
-                $('.timepicker-default').show();
+                timepicker.set('minTime', defaultTime);
+                timepicker.set('defaultHour', defaultTime.split(':')[0]);
+                timepicker.set('defaultMinute', defaultTime.split(':')[1]);
+                $('.timepicker-default').val(defaultTime);
             } else {
-                $('.timepicker-default').hide();
-                $('.timepicker').show();
+                timepicker.set('minTime', '00:00');
+                timepicker.set('defaultHour', '00');
+                timepicker.set('defaultMinute', '00');
             }
         });
     </script>

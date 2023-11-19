@@ -139,13 +139,13 @@ class AgendaRapat extends BaseController
         // Compare the selected time with the rounded current time
         $currentTime = date('H:i');
         $roundedCurrentTime = getCurrentTimeRounded();
-        $selectedTime = $this->request->getVar('jam_default');
+        $selectedTime = $this->request->getVar('jam');
 
         // Compare the selected date with the current date
         $currentDate = date('Y-m-d');
         $selectedDate = $this->request->getVar('tanggal');
         if ($selectedDate == $currentDate) {
-            if ($selectedTime < $roundedCurrentTime) {
+            if ($selectedTime < $currentTime) {
                 return redirect()->back()->withInput()->with('error', 'Waktu rapat harus diatas jam ' . $currentTime . '.');
             }
         }
@@ -155,9 +155,9 @@ class AgendaRapat extends BaseController
         }
 
         // Determine the name of the "jam" field to use based on the date condition
-        if ($selectedDate < $currentDate || ($selectedDate == $currentDate && $this->request->getVar('jam_default'))) {
-            // Use the "jam_default" field when the date is today and "jam_default" is selected
-            $jamValue = $this->request->getVar('jam_default');
+        if ($selectedDate < $currentDate || ($selectedDate == $currentDate && $this->request->getVar('jam'))) {
+            // Use the "jam" field when the date is today and "jam" is selected
+            $jamValue = $this->request->getVar('jam');
         } else {
             // Use the "jam" field for other dates
             $jamValue = $this->request->getVar('jam');
