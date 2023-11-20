@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Agenda Rapat</label>
+                            <label>Judul Rapat</label>
                             <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat" minlength="5">
                             <div class="agenda-counter"></div>
                             <div class="invalid-feedback">
