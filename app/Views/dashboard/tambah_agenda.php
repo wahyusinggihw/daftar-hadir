@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Judul Rapat</label>
+                            <label>Agenda Rapat</label>
                             <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat" minlength="5">
                             <div class="agenda-counter"></div>
                             <div class="invalid-feedback">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Agenda Rapat</label>
+                        <label>Deskripsi Rapat</label>
                         <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" minlength="5"><?= old('deskripsi') ?></textarea>
                         <div class="deskripsi-counter"></div>
                         <div class="invalid-feedback">
