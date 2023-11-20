@@ -122,9 +122,9 @@
 
         const showSignature = function(ttd) {
             Swal.fire({
-                title: 'Tanda tangan',
-                html: `<img src="${ttd}" width="400" height="200" alt="Image">`,
-                confirmButtonText: 'Close',
+                imageUrl: ttd,
+                imageHeight: 200,
+                imageAlt: "Tanda tangan"
             });
         };
 

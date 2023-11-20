@@ -26,9 +26,9 @@
             countdownElement.innerHTML = count;
             count--;
             if (count < 0) {
-                // clearInterval(countdownInterval);
-                // window.location.href = "<?= base_url() ?>";
-                // countdownElement.innerHTML = "";
+                clearInterval(countdownInterval);
+                window.location.href = "<?= base_url() ?>";
+                countdownElement.innerHTML = "";
             }
         }, 1000);
     </script>

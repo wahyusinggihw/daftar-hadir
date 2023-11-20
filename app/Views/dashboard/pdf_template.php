@@ -22,7 +22,7 @@
             border: 1px solid #000000;
             text-align: center;
             height: 20px;
-            margin: 8px;
+            padding: 8px;
         }
 
         h1 {
@@ -54,10 +54,6 @@
 
         .table-row .column-divider {
             width: 30px;
-        }
-
-        .no-column {
-            width: 10%;
         }
     </style>
 </head>
