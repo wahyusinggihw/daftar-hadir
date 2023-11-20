@@ -85,7 +85,22 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
-<script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const passwordToggleIcon = document.getElementById('password-toggle-icon');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordToggleIcon.classList.remove('fa-eye');
+            passwordToggleIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            passwordToggleIcon.classList.remove('fa-eye-slash');
+            passwordToggleIcon.classList.add('fa-eye');
+        }
+    }
+</script>
 <script>
     function validateRecaptcha() {
         // Use the grecaptcha object to check if the user has checked the reCAPTCHA.
