@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?= base_url('assets/img/icon.png') ?>" type="image/x-icon">
-    <title>Meeting Check <?php isset($title) ? print('- ' . $title) : '' ?></title>
+    <title>Daftar Hadir <?php isset($title) ? print('- ' . $title) : '' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
@@ -85,7 +85,22 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
-<script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const passwordToggleIcon = document.getElementById('password-toggle-icon');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordToggleIcon.classList.remove('fa-eye');
+            passwordToggleIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            passwordToggleIcon.classList.remove('fa-eye-slash');
+            passwordToggleIcon.classList.add('fa-eye');
+        }
+    }
+</script>
 <script>
     function validateRecaptcha() {
         // Use the grecaptcha object to check if the user has checked the reCAPTCHA.
