@@ -73,8 +73,8 @@
                                 <label for="password">password:</label>
                                 <div class="password-input-container">
                                     <input class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" type="password" id="password" name="password" placeholder="password">
-                                    <span class="password-toggle-btn" onclick="togglePasswordVisibility()">
-                                        <i id="password-toggle-icon" class="fa fa-eye"></i>
+                                    <span class="toggle-new" onclick="togglePassword('password')">
+                                        <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
                                     <div class="invalid-feedback">
                                         <?= validation_show_error('password') ?>
