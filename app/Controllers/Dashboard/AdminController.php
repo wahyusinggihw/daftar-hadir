@@ -219,11 +219,12 @@ class AdminController extends BaseController
                 ]
             ],
             'username' => [
-                'rules' => 'required|is_unique[admins.username]|alpha_dash',
+                'rules' => 'required|is_unique[admins.username]|alpha_dash|regex_match[/^[a-z]+$/]',
                 'errors' => [
                     'required' => 'Username harus diisi',
                     'is_unique' => 'Username sudah terdaftar',
-                    'alpha_dash' => 'Username hanya boleh terdiri dari huruf, angka, garis bawah dan dash'
+                    'alpha_dash' => 'Username hanya boleh terdiri dari huruf, angka, garis bawah dan dash',
+                    'regex_match' => 'Username harus terdiri dari huruf kecil'
                 ]
             ],
             'password' => [
