@@ -65,10 +65,9 @@
                     <div class="item">
                         <span>5</span>
                         <div class="content">
-                            <h3>Mengisi Formulir</h3>
+                            <h3>Selesai</h3>
                             <p>
-                                Jika sebagai pegawai cukup isikan NIP atau NIPT, lalu tekan "Cari" dan tanda tangan. Sedangkan untuk tamu jika baru pertama anda bisa isi semua biodata anda pada formulir yang sudah di sediakan, jika NIK kalian sudah terdaftar
-                                silahkan tekan "Cari" lalu lanjutkan mengisi tanda tangan.
+                                Pastikan semua data yang anda masukkan sudah benar, kemudian anda dapat mengirim formulir dengan menekan tombol "Kirim".
                             </p>
                         </div>
                     </div>
