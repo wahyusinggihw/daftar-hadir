@@ -18,11 +18,11 @@ nav {
   padding-top: 1px;
   width: 100%;
   background-color: #ffffff;
-  height: 50px;
+  height: 60px;
 }
 
 nav .logo {
-  /* margin-top: 15px; */
+  margin-top: 5px;
   text-align: center;
 }
 nav .logo img {
@@ -37,7 +37,7 @@ nav .logo img {
   nav .logo {
     width: 10%;
     padding-left: 30px;
-    margin-top: 5px;
+    margin-top: 15px;
   }
 }
 @media only screen and (min-width: 1920px) {

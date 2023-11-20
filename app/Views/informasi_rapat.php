@@ -6,7 +6,7 @@
 
 <?= $this->section('content') ?>
 
-<body style="background-image:url(<?= base_url('assets/img/kota.png') ?>);">
+<body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
     <!-- Modal -->
     <?php if (session()->getFlashdata('error')) : ?>
         <script>
