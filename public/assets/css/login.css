@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   border-radius: 0px;
   display: flex;
   justify-content: center;
@@ -15,6 +15,16 @@ body {
     background-position: bottom right;
     background-attachment: fixed;
     background-color: rgba(255, 255, 255, 0.096);
+} */
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
 }
 
 .login-form {

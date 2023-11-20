@@ -90,7 +90,7 @@
           </div>
 
           <div class="form-input">
-            <input type="text" class="form-control <?= (validation_show_error('id_rapat')) ? 'is-invalid' : '' ?>" id="id_rapat" name="id_rapat" placeholder="XXX-XXX">
+            <input type="text" class="form-control <?= (validation_show_error('id_rapat')) ? 'is-invalid' : '' ?>" id="id_rapat" name="id_rapat" placeholder="XXX-XXX" autocomplete="off">
             <button>Masuk</button>
             <div class="invalid-feedback">
               <?= validation_show_error('id_rapat') ?>
