@@ -90,8 +90,8 @@ label {
 .toggle-confirm-2 {
   position: absolute;
   top: 50%;
-  right: 25px;
-  transform: translateY(430%);
+  right: 10px;
+  transform: translateY(-40%);
   cursor: pointer;
 }
 
@@ -109,4 +109,29 @@ label {
 
 .password-toggle-btn i {
   font-size: 1.2em;
+}
+
+/* CSS umum di sini */
+
+/* Media query untuk perangkat dengan lebar maksimum 480 pixel */
+@media only screen and (max-width: 480px) {
+  
+}
+
+/* Media query untuk perangkat dengan lebar antara 481 dan 768 pixel */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  
+}
+
+/* Media query untuk perangkat dengan lebar antara 769 dan 1024 pixel */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+/* Media query untuk perangkat dengan lebar antara 1025 dan 1200 pixel */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {}
+
+/* Media query untuk perangkat dengan lebar minimum 1201 pixel */
+@media only screen and (min-width: 1201px) {
+  
 }

@@ -103,42 +103,37 @@
         handleCharacterCounter('#deskripsi', '.deskripsi-counter', 5);
 
         $(document).ready(function() {
-            // Determine if the default time is ahead of the current time
             const defaultDate = '<?= $data['tanggal'] ?>';
             const currentDate = '<?= date('Y-m-d') ?>';
-            // Get the current time rounded to the nearest 30-minute interval and set it as the defaultTime
-            const defaultTimeRounded = getCurrentTimeRounded();
             const defaultTime = '<?= $data['jam'] ?>';
+            const currentTime = getCurrentTime();
+
+            let minTime;
+            if (currentDate === defaultDate) {
+                minTime = currentTime;
+            } else {
+                minTime = '00:00';
+            }
+
 
             const timepicker = flatpickr('.timepicker-default', {
-                // allowInput: true,
                 disableMobile: true,
                 enableTime: true,
                 noCalendar: true,
                 time_24hr: true,
-                minTime: defaultTime,
-                defaultHour: defaultTime.split(':')[0],
-                // defaultMinute: defaultTime.split(':')[1],
+                minTime: minTime,
+                defaultHour: minTime.split(':')[0],
+                defaultMinute: minTime.split(':')[1],
             });
 
-            if (defaultDate > currentDate) {
-                timepicker.set('minTime', '00:00');
-                timepicker.set('defaultHour', '00');
-                timepicker.set('defaultMinute', '00');
-                $('.timepicker-default').val(defaultTime);
-            }
-
             $('#tanggal').on('change', function() {
-                // updateDefaultTime();
-                console.log('timedb:' + defaultDate);
                 const selectedDate = $(this).val();
-                console.log(selectedDate);
-                console.log('datenow' + '<?= date('Y-m-d') ?>');
-                if (selectedDate === '<?= date('Y-m-d') ?>') {
-                    timepicker.set('minTime', defaultTime);
-                    timepicker.set('defaultHour', defaultTime.split(':')[0]);
-                    timepicker.set('defaultMinute', defaultTime.split(':')[1]);
-                    $('.timepicker-default').val(defaultTime);
+                if (selectedDate === currentDate) {
+                    timepicker.set('minTime', currentTime);
+                    timepicker.set('defaultHour', currentTime.split(':')[0]);
+                    timepicker.set('defaultMinute', currentTime.split(':')[1]);
+                    // timepicker.setDate(selectedDate + ' ' + currentTime, true);
+                    $('.timepicker-default').val(currentTime)
                 } else {
                     timepicker.set('minTime', '00:00');
                     timepicker.set('defaultHour', '00');
@@ -146,32 +141,9 @@
                 }
             });
 
-            // Function to format the current time as 'HH:mm' and round to the nearest 30-minute interval
-            function getCurrentTimeRounded() {
+            function getCurrentTime() {
                 const now = new Date();
-                const minutes = now.getMinutes();
-
-                // Calculate the remaining minutes until the next 30-minute interval
-                const remainingMinutes = 30 - (minutes % 30);
-
-                // Calculate the time for the next 30-minute interval
-                const roundedTime = new Date(now);
-                roundedTime.setMinutes(roundedTime.getMinutes() + remainingMinutes);
-
-                return `${roundedTime.getHours().toString().padStart(2, '0')}:${roundedTime.getMinutes().toString().padStart(2, '0')}`;
-            }
-
-            function updateDefaultTime() {
-                const selectedDate = $('#tanggal').val();
-                const currentDate = '<?= date('Y-m-d') ?>';
-
-                if (selectedDate === currentDate) {
-                    // If the selected date is the same as the current date, use the selected time
-                    defaultTime = $('#jam').val();
-                } else {
-                    // If the selected date is different, use the time from the database
-                    defaultTime = '<?= $data['jam'] ?>';
-                }
+                return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
             }
         });
     </script>

@@ -33,8 +33,8 @@
                                 <label for="new-password">Password Baru:</label>
                                 <div class="password-input-container">
                                     <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" type="password" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
-                                    <span class="toggle-new" onclick="togglePasswordVisibility()">
-                                        <i id="new-toggle-icon" class="fa fa-eye"></i>
+                                    <span class="toggle-new" onclick="togglePassword('new-password')">
+                                        <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
                                     <div class="invalid-feedback">
                                         <?= validation_show_error('new-password') ?>
@@ -56,8 +56,8 @@
                             <div class="form-group">
                                 <label for="confirm-password">Konfirmasi Password:</label>
                                 <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
-                                <span class="toggle-confirm" onclick="togglePasswordVisibilityConfirm()">
-                                    <i id="confirm-toggle-icon" class="fa fa-eye"></i>
+                                <span class="toggle-confirm" onclick="togglePassword('confirm-password')">
+                                    <i id="toggle-password" class="fa fa-eye"></i>
                                 </span>
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('confirm-password') ?>
