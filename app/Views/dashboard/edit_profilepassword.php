@@ -12,7 +12,7 @@
             })
         </script>
     <?php endif; ?>
-    <div class="col-8 my-2">
+    <div class="col-md-8 my-2">
         <div class="card card-warning">
             <div class="card-body">
                 <form action="<?= base_url('dashboard/profile/edit-profilepassword/' . $data['id_admin']) ?>" method="post">
@@ -58,12 +58,14 @@
 
                     <div class="form-group">
                         <label for="confirm-password">Konfirmasi Password:</label>
-                        <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
-                        <span class="toggle-confirm-2" onclick="togglePassword('confirm-password')">
-                            <i id="toggle-password" class="fa fa-eye"></i>
-                        </span>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('confirm-password') ?>
+                        <div class="password-input-container">
+                            <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                            <span class="toggle-confirm-2" onclick="togglePassword('confirm-password')">
+                                <i id="toggle-password" class="fa fa-eye"></i>
+                            </span>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('confirm-password') ?>
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>

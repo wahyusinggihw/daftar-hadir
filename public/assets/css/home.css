@@ -188,6 +188,10 @@ body {
 } */
 
 @media only screen and (max-width: 600px) {
+  body {
+    overflow: auto;
+  }
+
   .timeline {
     margin-left: 35px;
   }
@@ -208,9 +212,7 @@ body {
   .landing-page .content .info h2 {
     font-size: 30px;
   }
-  /* body {
-    background-size: 400px 400px;
-  } */
+  
   .landing-page .content .formid button {
     width: 70px;
     height: 40px;
