@@ -36,9 +36,9 @@
                                     <span class="toggle-new" onclick="togglePassword('new-password')">
                                         <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
-                                    <div class="invalid-feedback">
-                                        <?= validation_show_error('new-password') ?>
-                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('new-password') ?>
                                 </div>
                                 <div id="requirements-list">
                                     <ul id="requirements-1">
@@ -59,9 +59,9 @@
                                 <span class="toggle-confirm" onclick="togglePassword('confirm-password')">
                                     <i id="toggle-password" class="fa fa-eye"></i>
                                 </span>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('confirm-password') ?>
-                                </div>
+                            </div>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('confirm-password') ?>
                             </div>
                         </div>
                     </div>

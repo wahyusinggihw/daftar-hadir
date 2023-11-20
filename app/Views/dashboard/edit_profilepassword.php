@@ -27,9 +27,9 @@
                             <span class="toggle-new" onclick="togglePassword('old-password')">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('old-password') ?>
-                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('old-password') ?>
                         </div>
                     </div>
 
@@ -50,9 +50,9 @@
                             <span class="toggle-new" onclick="togglePassword('new-password')">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('new-password') ?>
-                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('new-password') ?>
                         </div>
                     </div>
 
@@ -63,9 +63,9 @@
                             <span class="toggle-confirm-2" onclick="togglePassword('confirm-password')">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('confirm-password') ?>
-                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('confirm-password') ?>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>

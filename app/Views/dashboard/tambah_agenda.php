@@ -45,27 +45,27 @@
                         <div class="form-group">
                             <label>Tanggal</label>
                             <input type="date" class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', date('Y-m-d')) ?>" id="tanggal" name="tanggal" min="<?= date('Y-m-d') ?>">
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('tanggal') ?>
-                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('tanggal') ?>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Jam</label>
                             <input class="timepicker-default readonly form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam" autocomplete="off">
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('jam') ?>
-                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('jam') ?>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Deskripsi Rapat</label>
                         <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" minlength="5"><?= old('deskripsi') ?></textarea>
                         <div class="deskripsi-counter"></div>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('deskripsi') ?>
-                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        <?= validation_show_error('deskripsi') ?>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>

@@ -76,9 +76,9 @@
                                     <span class="toggle-new" onclick="togglePassword('password')">
                                         <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
-                                    <div class="invalid-feedback">
-                                        <?= validation_show_error('password') ?>
-                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('password') ?>
                                 </div>
                                 <label for="label-validasi">Password harus berisi sebagai berikut: :</label>
                                 <div id="requirements-list">
