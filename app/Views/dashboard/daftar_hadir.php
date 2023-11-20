@@ -15,7 +15,7 @@
 
     <?php if ($daftar_hadir != null) : ?>
         <!-- <a href="#" download class="btn btn-primary mb-2">Download File</a> -->
-        <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/cetak/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Agenda</a>
+        <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/cetak/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Daftar Hadir</a>
         <!-- foreach php -->
         <div class="table-container my-3" style="background-color:white; padding: 20px;">
             <table id="example" class="order-column" style="width:100%">
@@ -86,10 +86,11 @@
                 text: 'Anda yakin akan menghapus data?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
+                confirmButtonColor: '#22b23a',
+                cancelButtonColor: '#6c757d',
                 confirmButtonText: 'Hapus',
                 cancelButtonText: 'Batal',
+                reverseButtons: true
             }).then((result) => {
                 base_url = '<?= base_url() ?>';
                 if (result.isConfirmed) {
