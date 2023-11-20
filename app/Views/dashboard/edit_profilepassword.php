@@ -40,26 +40,33 @@
                                 <li><i id="length" class="far fa-times-circle"></i>Berisi 8 karakter</li>
                             </ul>
                         </div>
-                        <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('new-password') ?>
+                        <div class="password-input-container">
+                            <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" type="password" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
+                            <span class="toggle-new" onclick="togglePasswordVisibility()">
+                                <i id="new-toggle-icon" class="fa fa-eye"></i>
+                            </span>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('new-password') ?>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="confirm-password">Konfirmasi Password:</label>
-                        <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                        <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                        <span class="toggle-confirm-2" onclick="togglePasswordVisibilityConfirm()">
+                            <i id="confirm-toggle-icon" class="fa fa-eye"></i>
+                        </span>
                         <div class="invalid-feedback">
                             <?= validation_show_error('confirm-password') ?>
                         </div>
                     </div>
-
-
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
     </div>
+    <script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
 </body>
 
 <?= $this->endSection(); ?>

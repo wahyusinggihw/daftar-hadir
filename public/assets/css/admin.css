@@ -67,7 +67,7 @@ label {
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-125%);
+  transform: translateY(-40%);
   cursor: pointer;
 }
 
@@ -87,11 +87,23 @@ label {
   cursor: pointer;
 }
 
+.toggle-confirm-2 {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(430%);
+  cursor: pointer;
+}
+
 .toggle-new i{
   font-size: 1.2em;
 }
 
 .toggle-confirm i {
+  font-size: 1.2em;
+}
+
+.toggle-confirm-2 i {
   font-size: 1.2em;
 }
 
