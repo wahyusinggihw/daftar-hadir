@@ -12,7 +12,7 @@
             })
         </script>
     <?php endif; ?>
-    <div class="col-8 my-2">
+    <div class="col-md-8 my-2">
         <div class="card card-primary">
             <div class="card-body">
                 <form action="<?= base_url('dashboard/kelola-bidang/tambah-bidang') ?>" method="post">
