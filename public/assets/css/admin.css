@@ -4,6 +4,11 @@
 
 label {
   display: block;
+  margin-bottom: 8px;
+}
+
+.label-req {
+  display: block;
   margin-top: 20px;
 }
 

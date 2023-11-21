@@ -80,7 +80,7 @@
                                         <?= validation_show_error('password') ?>
                                     </div>
                                 </div>
-                                <label for="label-validasi">Password harus berisi sebagai berikut: :</label>
+                                <label class="label-req" for="label-validasi">Password harus berisi sebagai berikut: :</label>
                                 <div id="requirements-list-custom">
                                     <ul id="requirements-1">
                                         <li><i id="capital" class="far fa-times-circle"></i>Huruf Kapital</li>
