@@ -54,7 +54,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" data-info="" class="small-box-footer info">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" data-info="" class="small-box-footer info info-filter">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-4">
@@ -68,7 +68,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" data-info="tersedia" class="small-box-footer info">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" data-info="tersedia" class="small-box-footer info info-filter">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-4">
@@ -81,7 +81,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" data-info="selesai" class="small-box-footer info">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" data-info="selesai" class="small-box-footer info info-filter">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     <?php endif; ?>
@@ -111,7 +111,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const infoElements = document.querySelectorAll('.info');
+            const infoElements = document.querySelectorAll('.info-filter');
 
             infoElements.forEach(function(infoElement) {
                 infoElement.addEventListener('click', function(event) {
