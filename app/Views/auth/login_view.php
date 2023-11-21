@@ -62,7 +62,7 @@
                     <div class="form-group mb-3">
                         <label for="password" class="form-label">Password:</label>
                         <div class="password-input-container">
-                            <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password" <?= session('failedLogin') ? 'disabled' : '' ?>>
+                            <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password" <?= session('failedLogin') ? 'disabled' : '' ?> style="background-image: none;">
                             <span class="password-toggle-btn" onclick="togglePasswordVisibility()">
                                 <i id="password-toggle-icon" class="fa fa-eye"></i>
                             </span>

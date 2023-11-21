@@ -1,5 +1,5 @@
 .form-group {
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 label {
@@ -10,12 +10,15 @@ label {
 .form-control {
   width: 100%;
   padding: 8px;
-  margin-bottom: 8px;
 }
 
 #requirements-list {
   display: flex;
-  margin-top: 8px;
+  margin-top: 20px;
+}
+
+#requirements-list-custom {
+  display: flex;
 }
 
 #requirements-1 {
@@ -53,10 +56,32 @@ label {
   color: #28a745;
 }
 
-.invalid-feedback {
+#requirements-list-custom ul i.fa-times-circle {
   color: #dc3545;
-  /* Warna merah untuk pesan kesalahan */
-  margin-top: 4px;
+}
+
+/* Warna hijau untuk ikon centang */
+#requirements-list-custom ul i.fa-check-circle {
+  color: #28a745;
+}
+
+.invalid-feedback {
+  display: block;
+  bottom: -1.5rem;
+  /* Atur jarak di bawah input, misalnya -1.5rem atau sesuai kebutuhan */
+  left: 0;
+  /* Atur posisi horizontal ke kiri */
+  transform: none;
+  /* Hapus transform */
+}
+
+.invalid-feedback-custom{
+  color: #dc3545;
+  display: block;
+  position: absolute;
+  /* Atur jarak di bawah input, misalnya -1.5rem atau sesuai kebutuhan */
+  transform: none;
+  /* Hapus transform */
 }
 
 .password-input-container {
@@ -82,8 +107,8 @@ label {
 .toggle-confirm {
   position: absolute;
   top: 50%;
-  right: 20px;
-  transform: translateY(-155%);
+  right: 10px;
+  transform: translateY(-40%);
   cursor: pointer;
 }
 
@@ -109,6 +134,10 @@ label {
 
 .password-toggle-btn i {
   font-size: 1.2em;
+}
+
+#submit{
+  margin-top: 20px;
 }
 
 /* CSS umum di sini */

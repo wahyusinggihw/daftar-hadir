@@ -72,16 +72,16 @@
                             <div class="form-group">
                                 <label for="password">password:</label>
                                 <div class="password-input-container">
-                                    <input class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" type="password" id="password" name="password" placeholder="password">
+                                    <input class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" type="password" id="password" name="password" placeholder="password" style="background-image: none;">
                                     <span class="toggle-new" onclick="togglePassword('password')">
                                         <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
-                                </div>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('password') ?>
+                                    <div class="invalid-feedback">
+                                        <?= validation_show_error('password') ?>
+                                    </div>
                                 </div>
                                 <label for="label-validasi">Password harus berisi sebagai berikut: :</label>
-                                <div id="requirements-list">
+                                <div id="requirements-list-custom">
                                     <ul id="requirements-1">
                                         <li><i id="capital" class="far fa-times-circle"></i>Huruf Kapital</li>
                                         <li><i id="number" class="far fa-times-circle"></i>Angka</li>
