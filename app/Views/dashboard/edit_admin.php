@@ -17,7 +17,7 @@
                                     <span class="toggle-new" onclick="togglePassword('new-password')">
                                         <i id="toggle-password" class="fa fa-eye"></i>
                                     </span>
-                                    <div class="invalid-feedback ">
+                                    <div class="invalid-feedback-custom">
                                         <?= validation_show_error('new-password') ?>
                                     </div>
                                 </div>
