@@ -54,18 +54,18 @@
                         <div class="form-group">
                             <label>Jam</label>
                             <input class="timepicker-default readonly form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam" autocomplete="off">
-                        </div>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('jam') ?>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('jam') ?>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Deskripsi Rapat</label>
                         <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" minlength="5"><?= old('deskripsi') ?></textarea>
                         <div class="deskripsi-counter"></div>
-                    </div>
-                    <div class="invalid-feedback">
-                        <?= validation_show_error('deskripsi') ?>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('deskripsi') ?>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
