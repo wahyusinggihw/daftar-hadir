@@ -23,11 +23,11 @@
                     <div class="form-group">
                         <label for="old-password">Password Lama:</label>
                         <div class="password-input-container">
-                            <input type="password" class="form-control <?= validation_show_error('old-password') ? 'is-invalid' : '' ?>" id="old-password" name="old-password" placeholder="Password lama">
+                            <input type="password" class="form-control <?= validation_show_error('old-password') ? 'is-invalid' : '' ?>" id="old-password" name="old-password" placeholder="Password lama" style="background-image: none;">
                             <span class="toggle-new" onclick="togglePassword('old-password')">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback-custom">
                                 <?= validation_show_error('old-password') ?>
                             </div>
                         </div>
@@ -35,6 +35,15 @@
 
                     <div class="form-group">
                         <label for="new-password">Password Baru:</label>
+                        <div class="password-input-container">
+                            <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" type="password" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka." style="background-image: none;">
+                            <span class="toggle-new" onclick="togglePassword('new-password')">
+                                <i id="toggle-password" class="fa fa-eye"></i>
+                            </span>
+                            <div class="invalid-feedback-custom">
+                                <?= validation_show_error('new-password') ?>
+                            </div>
+                        </div>
                         <div id="requirements-list">
                             <ul id="requirements-1">
                                 <li><i id="capital" class="far fa-times-circle"></i>Huruf Kapital</li>
@@ -45,30 +54,21 @@
                                 <li><i id="length" class="far fa-times-circle"></i>Berisi 8 karakter</li>
                             </ul>
                         </div>
-                        <div class="password-input-container">
-                            <input class="form-control <?= validation_show_error('new-password') ? 'is-invalid' : '' ?>" type="password" value="<?= old('new-password') ?>" id="new-password" name="new-password" placeholder="Password baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password baru harus terdiri dari huruf besar, huruf kecil, dan angka.">
-                            <span class="toggle-new" onclick="togglePassword('new-password')">
-                                <i id="toggle-password" class="fa fa-eye"></i>
-                            </span>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('new-password') ?>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="confirm-password">Konfirmasi Password:</label>
                         <div class="password-input-container">
-                            <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password">
+                            <input class="form-control <?= validation_show_error('confirm-password') ? 'is-invalid' : '' ?>" type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password" style="background-image: none;">
                             <span class="toggle-confirm-2" onclick="togglePassword('confirm-password')">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback-custom">
                                 <?= validation_show_error('confirm-password') ?>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button id="submit" type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
