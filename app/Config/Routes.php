@@ -27,15 +27,14 @@ $routes->get('gagal', 'RapatController::gagalPage', ['filter' => 'cekkode']);
 //  Route for displaying information about a meeting.
 $routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');
 
+// AJAX PESERTA RAPAT (form daftar hadir)
+$routes->get('api/peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
+$routes->get('api/pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
+$routes->get('api/pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
+$routes->get('api/pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
+
 // API / AJAX
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
-
-    // AJAX PESERTA RAPAT (form daftar hadir)
-    $routes->get('peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
-    $routes->get('pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
-    $routes->get('pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
-    $routes->get('pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
-
     // login
     $routes->post('login', "Api\AuthControllerAPI::login");
     // get agenda rapat berdasarkan instansi user (Home Screen)

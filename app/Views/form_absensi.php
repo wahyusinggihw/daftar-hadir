@@ -79,7 +79,7 @@
                 <label style="display: none;" for="nip" class="form-label" id="label-nik">NIK</label>
                 <label style="display: none;" for="nip" class="form-label" id="label-default">NIP</label>
                 <div class="search <?= validation_show_error('nip') ? 'invalid-input' : '' ?>" id="search">
-                    <input value="<?= old('nip') ?>" type="text" placeholder="Masukkan NIP" id="nip" name="nip" inputmode="numeric" autocomplete="off"/>
+                    <input value="<?= old('nip') ?>" type="text" placeholder="Masukkan NIP" id="nip" name="nip" inputmode="numeric" autocomplete="off" />
                     <a style="display: none;" class="cari" id="cariNikButton"><i class="fa fa-search"></i></a>
                     <i style="display: none;" id="loadingIndicator" class="fa fa-circle-o-notch fa-spin"></i>
                 </div>
@@ -95,14 +95,14 @@
             <div class="column">
                 <div class="input-box">
                     <label for="nama">Nama Lengkap</label>
-                    <input class="<?= validation_show_error('nama') ? 'invalid-input' : '' ?>" value="<?= old('nama') ?>" type="text" placeholder="Masukkan Nama Lengkap" id="nama" name="nama" autocomplete="off"/>
+                    <input class="<?= validation_show_error('nama') ? 'invalid-input' : '' ?>" value="<?= old('nama') ?>" type="text" placeholder="Masukkan Nama Lengkap" id="nama" name="nama" autocomplete="off" />
                     <div class="invalid-response">
                         <?= validation_show_error('nama') ?>
                     </div>
                 </div>
                 <div class="input-box">
                     <label for="no_hp">No. Handphone</label>
-                    <input class="<?= validation_show_error('no_hp') ? 'invalid-input' : '' ?>" value="<?= old('no_hp') ?>" type="text" placeholder="Masukkan No. Handphone" id="no_hp" name="no_hp" inputmode="numeric" autocomplete="off"/>
+                    <input class="<?= validation_show_error('no_hp') ? 'invalid-input' : '' ?>" value="<?= old('no_hp') ?>" type="text" placeholder="Masukkan No. Handphone" id="no_hp" name="no_hp" inputmode="numeric" autocomplete="off" />
                     <div class="invalid-response">
                         <?= validation_show_error('no_hp') ?>
                     </div>
@@ -112,14 +112,14 @@
             <div class="column">
                 <div class="input-box">
                     <label for="alamat">Alamat</label>
-                    <input class="<?= validation_show_error('alamat') ? 'invalid-input' : '' ?>" value="<?= old('alamat') ?>" type="text" placeholder="Masukkan Alamat" id="alamat" name="alamat" autocomplete="off"/>
+                    <input class="<?= validation_show_error('alamat') ? 'invalid-input' : '' ?>" value="<?= old('alamat') ?>" type="text" placeholder="Masukkan Alamat" id="alamat" name="alamat" autocomplete="off" />
                     <div class="invalid-response">
                         <?= validation_show_error('alamat') ?>
                     </div>
                 </div>
                 <div class="input-box" id="instansiText" style="display: none;">
                     <label for=" asal_instansi_tamu">Asal Instansi</label>
-                    <input class="<?= validation_show_error('asal_instansi_tamu') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_tamu') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_tamu" name="asal_instansi_tamu" autocomplete="off"/>
+                    <input class="<?= validation_show_error('asal_instansi_tamu') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_tamu') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_tamu" name="asal_instansi_tamu" autocomplete="off" />
                     <div class="invalid-response">
                         <?= validation_show_error('asal_instansi_tamu') ?>
                     </div>
@@ -150,9 +150,8 @@
                 <div class="invalid-response"><?= validation_show_error('signatureData') ?></div>
             </div>
 
-            <div class="button-function">
-
-                <div class="form-group text-end">
+            <div class="input-box">
+                <div class="text-end">
                     <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>"></div>
                 </div>
             </div>

@@ -14,7 +14,8 @@
                 </div>
             </div>
             <div class="mb-3 fs-5"><?= session()->getFlashdata('success') ?></div>
-            <div class="mb-3 fs-6">Anda akan diarahkan ke halaman utama dalam <span id="countdown"></span> detik</div>
+            <!-- <div class="mb-3 fs-5">Terimakasih telah mengisi daftar hadir!</div> -->
+            <div><small id="countdown" class="mb-3 fs-6"></small></div>
         </div>
         <a href="<?= base_url() ?>" class="btn btn-secondary my-2">Lanjutkan</a>
     </div>
@@ -23,12 +24,13 @@
         var count = 5;
         var countdownElement = document.getElementById("countdown");
         var countdownInterval = setInterval(function() {
-            countdownElement.innerHTML = count;
+            countdownElement.innerHTML = "Anda akan diarahkan ke halaman utama dalam " + count + " detik";
             count--;
             if (count < 0) {
                 clearInterval(countdownInterval);
+                countdownElement.innerHTML = "Memuat...";
                 window.location.href = "<?= base_url() ?>";
-                countdownElement.innerHTML = "";
+                // countdownElement.innerHTML = "";
             }
         }, 1000);
     </script>

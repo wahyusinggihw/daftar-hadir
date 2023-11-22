@@ -239,7 +239,7 @@ function handleCariNikButtonClick() {
       // Additional validation logic if needed
 
       var apiEndpoint = getApiEndpoint(statusValuePegawai);
-      console.log(apiEndpoint);
+      // console.log(apiEndpoint);
 
       if (nikValue.length > 0) {
         pegawaiAjax(apiEndpoint, nikValue);
@@ -369,21 +369,11 @@ function setInputFilter(textboxes, errMsg) {
   }
 }
 
-const username = "meetingcheck";
-const password = "meetingcheck%^2023";
 function tamuAjax(nikValue) {
   $.ajax({
     url: base_url + "/api/peserta/" + nikValue, // Replace with your API endpoint
     type: "GET",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Basic " + btoa(username + ":" + password)
-      );
-    },
     success: function (data) {
-      console.log(data);
-      console.log(data.status);
       if (!data.error) {
         if (data.status === false) {
           $("#loadingIndicator").hide();
@@ -457,15 +447,9 @@ function pegawaiAjax(apiEndpoint, nikValue) {
   $.ajax({
     url: base_url + apiEndpoint + nikValue, // Replace with your API endpoint
     type: "GET",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Basic " + btoa(username + ":" + password)
-      );
-    },
     success: function (data) {
-      console.log(data);
-      console.log(data.status);
+      // console.log(data);
+      // console.log(data.status);
       if (!data.error) {
         if (data.status === false) {
           // Handle the case where data is not found
