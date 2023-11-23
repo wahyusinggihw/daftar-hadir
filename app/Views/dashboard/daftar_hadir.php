@@ -27,7 +27,7 @@
                         <th>Status</th>
                         <th>Asal Instansi</th>
                         <th>TTD</th>
-                        <th>Timestamp</th>
+                        <th>Waktu Absen</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

@@ -36,7 +36,7 @@
         </div>
 
         <h2>Login</h2>
-        <form action="<?= base_url('/auth/login') ?>" method="post" id="form-login" onsubmit="return validateRecaptcha()">
+        <form action="<?= base_url('/auth/login') ?>" method="post" id="form-login">
             <?= csrf_field() ?>
             <div class="container">
                 <?php if (session('loginAttempts')) : ?>
@@ -99,23 +99,6 @@
             passwordToggleIcon.classList.remove('fa-eye-slash');
             passwordToggleIcon.classList.add('fa-eye');
         }
-    }
-</script>
-<script>
-    function validateRecaptcha() {
-        // Use the grecaptcha object to check if the user has checked the reCAPTCHA.
-        var recaptchaResponse = grecaptcha.getResponse();
-        var recaptchaErrorElement = document.getElementById("recaptcha-error");
-
-        if (recaptchaResponse.length === 0) {
-            // User hasn't checked the reCAPTCHA, display an error message.
-            recaptchaErrorElement.textContent = "Mohon centang reCAPTCHA.";
-            return false;
-        }
-
-        // User has checked the reCAPTCHA, clear the error message and continue with form submission.
-        recaptchaErrorElement.textContent = "";
-        return true;
     }
 </script>
 

@@ -99,7 +99,7 @@ class Auth extends BaseController
         session()->set('loginAttempts', $loginAttempts);
 
         if ($loginAttempts <= 0) {
-            session()->setTempdata('failedLogin', 'Anda salah memasukkan username atau password sebanyak 3 kali. Coba lagi beberapat saat lagi.', 10);
+            session()->setTempdata('failedLogin', 'Anda salah memasukkan username atau password sebanyak 3 kali. Coba lagi beberapat saat lagi.', 60);
             session()->remove('loginAttempts');
         }
     }
