@@ -83,11 +83,11 @@
                     <a style="display: none;" class="cari" id="cariNikButton"><i class="fa fa-search"></i></a>
                     <i style="display: none;" id="loadingIndicator" class="fa fa-circle-o-notch fa-spin"></i>
                 </div>
+                <div class="invalid-response mb-2">
+                    <?= validation_show_error('nip') ?>
+                </div>
                 <div class="note">
                     <p><strong>Info!</strong> Tanda tangani formulir ini jika Anda telah mengisi sebelumnya. Jika ini pertama kalinya, lengkapi biodata dengan cermat.</p>
-                </div>
-                <div class="invalid-response">
-                    <?= validation_show_error('nip') ?>
                 </div>
                 <!-- Tombol cari yang dimodifikasi menggunakan tag a untuk melakukan ajax request(isi data otomatis), karena dalam 1 form hanya bisa 1 tombol yakni tombol kirim (yang dibawah) -->
             </div>

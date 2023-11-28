@@ -110,13 +110,12 @@ class RapatControllerAPI extends BaseController
 
         $riwayatKehadiran = $this->daftarHadir->sudahAbsen($this->request->getVar('nip'), $rapat['id_agenda']);
 
-        // Decode the base64 data to binary
-        $saveTandaTangan = $this->saveSignature($rapat['id_agenda'], $nip)->getBody();
-        $tandaTanganDecode = json_decode($saveTandaTangan, true);
-        $tandaTangan = $tandaTanganDecode['publicPath'];
-
-
         if (!$riwayatKehadiran) {
+            // Decode the base64 data to binary
+            $saveTandaTangan = $this->saveSignature($rapat['id_agenda'], $nip)->getBody();
+            $tandaTanganDecode = json_decode($saveTandaTangan, true);
+            $tandaTangan = $tandaTanganDecode['publicPath'];
+
             $dataDaftarHadir = [
                 'id_daftar_hadir' => Uuid::uuid4()->toString(),
                 'slug' => $slug,

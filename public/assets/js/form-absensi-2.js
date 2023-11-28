@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // check if there is validation error from checking the radio button
   var oldStatus = $('input[name="statusRadio"]:checked').val();
-  console.log(oldStatus);
+  // console.log(oldStatus);
   if (oldStatus === "pegawai") {
     setInputFilter(
       [document.getElementById("nip"), document.getElementById("no_hp")],
@@ -398,7 +398,7 @@ function tamuAjax(nikValue) {
             alamat: data.data.alamat,
             asal_instansi_tamu: data.data.asal_instansi,
           });
-          console.log(restoreSavedValues("tamu"));
+          // console.log(restoreSavedValues("tamu"));
           $("#loadingIndicator").hide();
           $("#signatureCanvas").removeClass("greyed-out-form");
           // $('#no_hp, #nama, #alamat, #asal_instansi_tamu').addClass('greyed-out-form');

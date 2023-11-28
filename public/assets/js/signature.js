@@ -33,7 +33,7 @@ signaturePad.addEventListener(
 
 const clearButton = wrapper.querySelector("[data-action=clear]");
 clearButton.addEventListener("click", () => {
-  console.log("clear");
+  // console.log("clear");
   signaturePad.clear();
   document.getElementById("signatureData").value = "";
 });
