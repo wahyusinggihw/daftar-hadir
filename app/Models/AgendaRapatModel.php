@@ -79,7 +79,7 @@ class AgendaRapatModel extends Model
 
     private function getAllAgendas()
     {
-        $agendas = $this->findAll();
+        $agendas = $this->orderBy('tanggal', 'DESC')->findAll();
         $agendas = $this->getAgendasWithEditability($agendas);
         return $this->addStatusToAgendas($agendas);
     }
@@ -90,6 +90,7 @@ class AgendaRapatModel extends Model
         $builder->select('agendarapats.*, admins.slug as admin_slug, admins.id_bidang as admin_id_bidang, admins.nama_bidang as admin_nama_bidang');
         $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
         $builder->where('admins.id_instansi', session()->get('id_instansi'));
+        $builder->orderBy('agendarapats.tanggal', 'DESC');
         $agendas = $builder->get()->getResultArray();
         $agendas = $this->getAgendasWithEditability($agendas);
         return $this->addStatusToAgendas($agendas);
@@ -103,10 +104,10 @@ class AgendaRapatModel extends Model
         $builder->where('admins.id_instansi', session()->get('id_instansi'));
         $builder->where('admins.id_bidang', session()->get('id_bidang'));
         $builder->orWhere('admins.id_bidang IS NULL OR admins.id_bidang = ""'); //show the admins instansi agenda 
+        $builder->orderBy('agendarapats.tanggal', 'DESC');
         $agendas = $builder->get()->getResultArray();
         $agendas = $this->getAgendasWithEditability($agendas);
         return $this->addStatusToAgendas($agendas);
-        // return $this->addStatusToAgendas($agendas);
     }
 
     private function addStatusToAgendas($agendas)

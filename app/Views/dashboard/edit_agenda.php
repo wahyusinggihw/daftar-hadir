@@ -69,6 +69,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-danger">Batal</a>
                 </form>
             </div>
         </div>

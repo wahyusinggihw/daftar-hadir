@@ -68,7 +68,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>

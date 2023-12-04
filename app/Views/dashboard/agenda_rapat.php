@@ -49,8 +49,8 @@
                                         <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/' . $item['slug']) ?>" class="btn btn-info mx-2"><i class="fa-solid fa-list" style="color: white;"></i></a>
                                         <a href="<?= base_url('dashboard/agenda-rapat/view-agenda/' . $item['slug']) ?>" class="btn btn-info"><i class="fa-solid fa-eye" style="color: white;"></i></a>
                                         <?php if ($item['status'] != 'selesai') : ?>
-                                            <a href="<?= base_url('dashboard/agenda-rapat/edit-agenda/' . $item['slug']) ?>" class="btn btn-warning mx-2  <?= $item['editable'] == 'false' ? 'disabled' : '' ?>"><i class="fa-solid fa-pen" style="color: white;"></i></a>
-                                            <button class="btn btn-danger delete-button" data-id="<?= $item['id_agenda'] ?>"><i class="fa-solid fa-trash"></i></button>
+                                            <a href="<?= base_url('dashboard/agenda-rapat/edit-agenda/' . $item['slug']) ?>" class="btn btn-warning ml-2<?= $item['editable'] == 'false' ? 'disabled' : '' ?>" <?= $item['editable'] == 'false' ? 'hidden' : '' ?>><i class="fa-solid fa-pen" style="color: white;"></i></a>
+                                            <button class="btn btn-danger delete-button ml-2" data-id="<?= $item['id_agenda'] ?>"><i class="fa-solid fa-trash"></i></button>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -83,8 +83,10 @@
             "columnDefs": [{
                 "targets": targets, // Index of the column to disable sorting (zero-based index)
                 "orderable": false,
-
             }],
+            // "order": [
+            //     [4, "desc"]
+            // ],
             // Additional DataTables options here
             createdRow: function(row, data, dataIndex) {
                 $('td:eq(0)', row).html(startNumber++);
