@@ -17,6 +17,8 @@ class BidangInstansiModel extends Model
         'id_bidang',
         'slug',
         'nama_bidang',
+        'nama_kepala_bidang',
+        'nip_kepala_bidang',
         'id_instansi',
     ];
 

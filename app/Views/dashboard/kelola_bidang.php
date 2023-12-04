@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Bidang</th>
-                    <th>ID Instansi</th>
                     <th>Nama Bidang</th>
+                    <th>Nama Kepala Bidang</th>
+                    <th>NIP Kepala Bidang</th>
                     <!-- <th>created_at</th> -->
                     <th>Aksi</th>
                 </tr>
@@ -33,9 +33,9 @@
                 <?php foreach ($bidang as $item) : ?>
                     <tr>
                         <td></td>
-                        <td><?= $item['id_bidang'] ?></td>
-                        <td><?= $item['id_instansi'] ?></td>
                         <td><?= $item['nama_bidang'] ?></td>
+                        <td><?= $item['nama_kepala_bidang'] ?></td>
+                        <td><?= $item['nip_kepala_bidang'] ?></td>
                         <td>
                             <div class="row">
                                 <div class="col-lg-12 btn-group">

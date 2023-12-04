@@ -35,15 +35,7 @@ class BidangInstansiController extends BaseController
     public function tambahBidang()
     {
         if ($this->request->is('post')) {
-            $validate = $this->validate([
-                'nama_bidang' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Nama bidang harus diisi'
-                    ]
-                ],
-            ]);
-
+            $validate = $this->validateForm();
 
             if (!$validate) {
                 return redirect()->back()->withInput();
@@ -55,6 +47,8 @@ class BidangInstansiController extends BaseController
                 'id_bidang' => $uuid,
                 'slug' => $slug,
                 'nama_bidang' => $this->request->getVar('nama_bidang'),
+                'nama_kepala_bidang' => $this->request->getVar('nama_kepala_bidang'),
+                'nip_kepala_bidang' => $this->request->getVar('nip_kepala_bidang'),
                 'id_instansi' => $this->session->get('id_instansi'),
                 // 'created_at' => date('Y-m-d H:i:s'),
             ];
@@ -103,6 +97,8 @@ class BidangInstansiController extends BaseController
         $data = [
             'slug' => $slugify->slugify($this->request->getVar('nama_bidang')),
             'nama_bidang' => $this->request->getVar('nama_bidang'),
+            'nama_kepala_bidang' => $this->request->getVar('nama_kepala_bidang'),
+            'nip_kepala_bidang' => $this->request->getVar('nip_kepala_bidang'),
             'id_instansi' => $this->session->get('id_instansi'),
         ];
 
@@ -129,6 +125,21 @@ class BidangInstansiController extends BaseController
                     'rules' => 'required',
                     'errors' => [
                         'required' => 'Nama bidang harus diisi'
+                    ]
+                ],
+                'nama_kepala_bidang' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Nama kepala bidang harus diisi'
+                    ]
+                ],
+                'nip_kepala_bidang' => [
+                    'rules' => 'required|numeric|min_length[18]|max_length[18]',
+                    'errors' => [
+                        'required' => 'NIP kepala bidang harus diisi',
+                        'numeric' => 'NIP kepala bidang harus berupa angka',
+                        'min_length' => 'NIP kepala bidang harus 18 digit',
+                        'max_length' => 'NIP kepala bidang harus 18 digit'
                     ]
                 ],
             ];

@@ -21,6 +21,14 @@ class BidangInstansi extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'nama_kepala_bidang' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'nip_kepala_bidang' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'id_instansi' => [
                 'type' => 'INT',
                 'constraint' => 11,
