@@ -32,8 +32,8 @@
                     <!-- <div class="col-sm-6"> -->
                     <div class="form-group">
                         <label>Program</label>
-                        <input type="text" class="form-control <?= validation_show_error('program') ? 'is-invalid' : '' ?>" value="<?= old('program') ?>" id="program" name="program" maxlength="255">
-                        <div class="agenda-counter"></div>
+                        <input type="text" class="form-control <?= validation_show_error('program') ? 'is-invalid' : '' ?>" value="<?= old('program') ?>" id="program" name="program">
+                        <div class="program-counter"></div>
                         <div class="invalid-feedback">
                             <?= validation_show_error('program') ?>
                         </div>
@@ -109,6 +109,7 @@
 
         // Call the function for each input field
         handleCharacterCounter('#agenda_rapat', '.agenda-counter', 5);
+        handleCharacterCounter('#program', '.program-counter', 5);
         handleCharacterCounter('#tempat', '.tempat-counter', 5);
         handleCharacterCounter('#deskripsi', '.deskripsi-counter', 5);
 

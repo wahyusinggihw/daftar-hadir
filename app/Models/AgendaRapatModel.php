@@ -25,6 +25,7 @@ class AgendaRapatModel extends Model
         'id_bidang',
         'nama_bidang',
         'agenda_rapat',
+        'program',
         'kode_rapat',
         'tempat',
         'tanggal',

@@ -101,6 +101,7 @@ class AgendaRapat extends BaseController
             'nama_bidang' => session()->get('nama_bidang'),
             'kode_rapat' => $kodeRapat,
             'agenda_rapat' => $this->request->getVar('agenda_rapat'),
+            'program' => $this->request->getVar('program'),
             'tempat' => $this->request->getVar('tempat'),
             'tanggal' => $this->request->getVar('tanggal'),
             'jam' => $this->request->getVar('jam'),
@@ -165,6 +166,7 @@ class AgendaRapat extends BaseController
 
         $data = [
             'agenda_rapat' => $this->request->getVar('agenda_rapat'),
+            'program' => $this->request->getVar('program'),
             'slug' => $slugify->slugify($this->request->getVar('agenda_rapat')),
             'tempat' => $this->request->getVar('tempat'),
             'tanggal' => $this->request->getVar('tanggal'),
@@ -212,6 +214,13 @@ class AgendaRapat extends BaseController
                     'errors' => [
                         'required' => 'Agenda Rapat harus diisi.',
                         'min_length' => 'Agenda Rapat minimal memiliki 5 karakter.'
+                    ]
+                ],
+                'program' => [
+                    'rules' => 'required|min_length[5]',
+                    'errors' => [
+                        'required' => 'Program Rapat harus diisi.',
+                        'min_length' => 'Program Rapat minimal memiliki 5 karakter.'
                     ]
                 ],
                 'tempat' => [

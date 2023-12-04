@@ -24,8 +24,9 @@
                         <?php if (session()->get('role') == 'admin') : ?>
                             <th>Nama Bidang</th>
                         <?php endif; ?>
-                        <th>Agenda</th>
-                        <th>Deskripsi</th>
+                        <th>Judul</th>
+                        <th>Program</th>
+                        <th>Kegiatan</th>
                         <th>Tanggal/Jam</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -40,6 +41,7 @@
                                 <td><?= $item['admin_nama_bidang'] ?></td>
                             <?php endif; ?>
                             <td><?= elipsis($item['agenda_rapat']) ?></td>
+                            <td><?= elipsis($item['program']) ?></td>
                             <td><?= elipsis($item['deskripsi']) ?></td>
                             <td><?= $item['tanggal'] . '/ ' . $item['jam'] ?></td>
                             <td><span class="badge <?= $item['status'] == 'selesai' ? 'bg-danger' : 'bg-success' ?>"><?= $item['status'] ?></span></td>
