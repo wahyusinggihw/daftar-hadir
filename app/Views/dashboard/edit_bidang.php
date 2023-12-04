@@ -35,7 +35,7 @@
                     <br>
 
                     <label for="nip_kepala_bidang">NIP Kepala Bidang:</label>
-                    <input class="form-control <?= validation_show_error('nip_kepala_bidang') ? 'is-invalid' : '' ?>" value="<?= old('nip_kepala_bidang', $data['nip_kepala_bidang']) ?>" type="text" id="nip_kepala_bidang" name="nip_kepala_bidang" placeholder="">
+                    <input class="form-control <?= validation_show_error('nip_kepala_bidang') ? 'is-invalid' : '' ?>" value="<?= old('nip_kepala_bidang', $data['nip_kepala_bidang']) ?>" type="text" id="nip_kepala_bidang" name="nip_kepala_bidang" placeholder="" maxlength="18">
                     <div class="invalid-feedback">
                         <?= validation_show_error('nip_kepala_bidang') ?>
                     </div>

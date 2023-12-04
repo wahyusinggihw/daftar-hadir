@@ -31,7 +31,7 @@
                     </div>
                     <br>
                     <label for="nip_kepala_bidang">NIP Kepala Bidang:</label>
-                    <input class="form-control <?= validation_show_error('nip_kepala_bidang') ? 'is-invalid' : '' ?>" type="text" id="nip_kepala_bidang" name="nip_kepala_bidang" placeholder="" inputmode="numeric">
+                    <input class="form-control <?= validation_show_error('nip_kepala_bidang') ? 'is-invalid' : '' ?>" type="text" id="nip_kepala_bidang" name="nip_kepala_bidang" placeholder="" inputmode="numeric" maxlength="18">
                     <div class="invalid-feedback">
                         <?= validation_show_error('nip_kepala_bidang') ?>
                     </div>

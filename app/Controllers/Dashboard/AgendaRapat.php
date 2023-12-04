@@ -22,7 +22,8 @@ class AgendaRapat extends BaseController
     public function tambahAgenda()
     {
         $data = [
-            'title' => 'Tambah Agenda Rapat',
+            'title' => 'Agenda Rapat',
+            'subtitle' => 'Tambah Agenda Rapat',
             'validation' => \Config\Services::validation()
         ];
 
@@ -33,7 +34,8 @@ class AgendaRapat extends BaseController
     {
         $linkRapat = $this->agendaRapat->where('slug', $slug)->first()['link_rapat'];
         $data = [
-            'title' => 'Detail Agenda Rapat',
+            'title' => 'Agenda Rapat',
+            'subtitle' => 'Detail Agenda Rapat',
             'qrCode' => generateQrCode($linkRapat),
             'data' => $this->agendaRapat->where('slug', $slug)->first(),
         ];
@@ -117,7 +119,8 @@ class AgendaRapat extends BaseController
     public function edit($slug)
     {
         $data = [
-            'title' => 'Edit Agenda Rapat',
+            'title' => 'Agenda Rapat',
+            'subtitle' => 'Edit',
             'data' => $this->agendaRapat->where('slug', $slug)->first(),
             'validation' => \Config\Services::validation(),
         ];

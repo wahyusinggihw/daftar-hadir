@@ -15,12 +15,14 @@ class DaftarHadirController extends BaseController
     {
         $this->daftarhadir = new DaftarHadirModel();
         $this->agendaRapat = new AgendaRapatModel();
+        helper('my_helper');
     }
     public function index()
     {
 
         $data = [
-            'title' => 'Daftar Hadir',
+            'title' => 'Agenda Rapat',
+            'subtitle' => 'Daftar Hadir',
             'data' => $this->daftarhadir->getDaftarHadir()
 
         ];
@@ -35,8 +37,9 @@ class DaftarHadirController extends BaseController
         // dd($daftarHadir);
 
         $data = [
-            'title' => 'Daftar Hadir',
-            'subtitle' => $agendaRapat['agenda_rapat'],
+            'title' => 'Agenda Rapat',
+            'title1' => 'Daftar Hadir',
+            'subtitle' => elipsis($agendaRapat['agenda_rapat'], 20),
             'id_agenda' => $agendaRapat['id_agenda'],
             // 'data' => $this->daftarhadir->getDaftarHadirByID($id_agenda)
             'daftar_hadir' => $daftarHadir,

@@ -57,8 +57,12 @@ class AdminController extends BaseController
         $pesertaRapat = new PesertaRapatModel();
         $instansi = $pesertaRapat->getInstansi();
         $instansiDecode = json_decode($instansi);
+        $currentRole = session()->get('role');
+        $title = $currentRole == 'superadmin' ? 'Admin' : 'Operator';
+
         $data = [
-            'title' => $role == 'admin' ? 'Tambah Operator' : 'Tambah Admin',
+            'title' => 'Kelola ' . $title,
+            'subtitle' => 'Tambah ' . $title,
             'validation' => \Config\Services::validation(),
             'instansi' => $instansiDecode,
             'bidang' => $this->bidangModel->getAllBidangByInstansi($this->session->get('id_instansi'))
@@ -136,9 +140,10 @@ class AdminController extends BaseController
     public function edit($slug)
     {
         $currentRole = session()->get('role');
-        $title = $currentRole == 'superadmin' ? 'Edit Password Admin' : 'Edit Password Operator';
+        $title = $currentRole == 'superadmin' ? 'Admin' : 'Operator';
         $data = [
-            'title' => $title,
+            'title' => 'Kelola ' . $title,
+            'subtitle' => 'Edit Password ' . $title,
             'active' => 'kelola_admin',
             'role' => $currentRole,
             'data' => $this->adminModel->where('slug', $slug)->first(),

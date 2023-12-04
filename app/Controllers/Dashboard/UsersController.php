@@ -33,7 +33,8 @@ class UsersController extends BaseController
     {
         $profile = $this->users->where('slug', $slug)->first();
         $data = [
-            'title' => 'Edit Profil',
+            'title' => 'Profil',
+            'subtitle' => 'Edit Profil',
             'data' => $profile,
             // 'validation' => \Config\Services::validation(),
             // 'password' => $password2
@@ -48,7 +49,8 @@ class UsersController extends BaseController
         $profile = $this->users->where('slug', $slug)->first();
         // dd($profile['id_admin']);
         $data = [
-            'title' => 'Edit Password',
+            'title' => 'Profil',
+            'subtitle' => 'Edit Password',
             'data' => $profile,
             // 'validation' => \Config\Services::validation(),
             // 'password' => $password2
