@@ -62,7 +62,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Tanggal</label>
-                                <input type="date" class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', $data['tanggal']) ?>" id="tanggal" name="tanggal" min="<?= date('Y-m-d') ?>">
+                                <input class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', $data['tanggal']) ?>" id="tanggal" name="tanggal" min="<?= date('d-m-Y') ?>">
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('tanggal') ?>
                                 </div>
@@ -87,6 +87,10 @@
     <style>
         /* prevent user from inputting, but allow user to click */
         #jam {
+            background-color: white;
+        }
+
+        #tanggal {
             background-color: white;
         }
     </style>
@@ -116,7 +120,7 @@
 
         $(document).ready(function() {
             const defaultDate = '<?= $data['tanggal'] ?>';
-            const currentDate = '<?= date('Y-m-d') ?>';
+            const currentDate = '<?= date('d-m-Y') ?>';
             const defaultTime = '<?= $data['jam'] ?>';
             const currentTime = getCurrentTime();
 
@@ -136,6 +140,14 @@
                 minTime: minTime,
                 defaultHour: minTime.split(':')[0],
                 defaultMinute: minTime.split(':')[1],
+            });
+
+            const datepicker = flatpickr('#tanggal', {
+                // allowInput: true,
+                disableMobile: true,
+                dateFormat: "d-m-Y",
+                minDate: 'today',
+                defaultDate: defaultDate,
             });
 
             $('#tanggal').on('change', function() {

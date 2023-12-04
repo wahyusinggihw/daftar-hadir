@@ -77,7 +77,7 @@ class AgendaRapat extends BaseController
         $currentTime = date('H:i');
         $roundedCurrentTime = getCurrentTimeRounded();
         $selectedTime = $this->request->getVar('jam');
-        $currentDate = date('Y-m-d');
+        $currentDate = date('d-m-Y');
         $selectedDate = $this->request->getVar('tanggal');
         if ($selectedDate == $currentDate) {
             var_dump('Waktu rapat harus aman ' . $currentTime . '.');
@@ -146,7 +146,7 @@ class AgendaRapat extends BaseController
         $selectedTime = $this->request->getVar('jam');
 
         // Compare the selected date with the current date
-        $currentDate = date('Y-m-d');
+        $currentDate = date('d-m-Y');
         $selectedDate = $this->request->getVar('tanggal');
         if ($selectedDate == $currentDate) {
             if ($selectedTime < $currentTime) {

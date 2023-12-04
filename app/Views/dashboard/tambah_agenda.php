@@ -3,6 +3,7 @@
 <?= $this->section('content') ?>
 
 <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <?php if (session()->getFlashdata('error')) : ?>
         <script>
             Swal.fire({
@@ -60,7 +61,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Tanggal</label>
-                            <input type="date" class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', date('Y-m-d')) ?>" id="tanggal" name="tanggal" min="<?= date('Y-m-d') ?>">
+                            <input type="text" class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', date('d-m-Y')) ?>" id="tanggal" name="tanggal" min="<?= date('d-m-Y') ?>" autocomplete="off">
                         </div>
                         <div class="invalid-feedback">
                             <?= validation_show_error('tanggal') ?>
@@ -85,6 +86,10 @@
     <style>
         /* prevent user from inputting, but allow user to click */
         #jam {
+            background-color: white;
+        }
+
+        #tanggal {
             background-color: white;
         }
     </style>
@@ -148,10 +153,20 @@
             // defaultMinute: defaultTime.split(':')[1],
         });
 
+        // datenow
+        const datepicker = flatpickr('#tanggal', {
+            // allowInput: true,
+            disableMobile: true,
+            dateFormat: "d-m-Y",
+            minDate: 'today',
+            defaultDate: 'today',
+        });
+
         // show timepicker time based on the selected date
         $('#tanggal').on('change', function() {
             const selectedDate = $(this).val();
-            if (selectedDate === '<?= date('Y-m-d') ?>') {
+            // console.log(selectedDate);
+            if (selectedDate === '<?= date('d-m-Y') ?>') {
                 timepicker.set('minTime', defaultTime);
                 timepicker.set('defaultHour', defaultTime.split(':')[0]);
                 timepicker.set('defaultMinute', defaultTime.split(':')[1]);
