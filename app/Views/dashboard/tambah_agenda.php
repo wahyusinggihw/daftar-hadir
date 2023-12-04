@@ -19,28 +19,44 @@
             <form action="<?= base_url('/dashboard/agenda-rapat/tambah-agenda/store') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Agenda Rapat</label>
-                            <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat" minlength="5">
-                            <div class="agenda-counter"></div>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('agenda_rapat') ?>
-                            </div>
-
+                    <!-- <div class="col-sm-6"> -->
+                    <div class="form-group">
+                        <label>Judul</label>
+                        <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat') ?>" id="agenda_rapat" name="agenda_rapat" minlength="5">
+                        <div class="agenda-counter"></div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('agenda_rapat') ?>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-
-                        <div class="form-group">
-                            <label>Tempat Rapat</label>
-                            <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat') ?>" id="tempat" name="tempat" minlength="5">
-                            <div class="tempat-counter"></div>
-                            <div class="invalid-feedback">
-                                <?= validation_show_error('tempat') ?>
-                            </div>
+                    <!-- </div> -->
+                    <!-- <div class="col-sm-6"> -->
+                    <div class="form-group">
+                        <label>Program</label>
+                        <input type="text" class="form-control <?= validation_show_error('program') ? 'is-invalid' : '' ?>" value="<?= old('program') ?>" id="program" name="program" maxlength="255">
+                        <div class="agenda-counter"></div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('program') ?>
                         </div>
                     </div>
+                    <!-- </div> -->
+                    <div class="form-group">
+                        <label>Kegiatan</label>
+                        <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="2" id="deskripsi" name="deskripsi" minlength="5"><?= old('deskripsi') ?></textarea>
+                        <div class="deskripsi-counter"></div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('deskripsi') ?>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-6"> -->
+                    <div class="form-group">
+                        <label>Tempat Rapat</label>
+                        <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat') ?>" id="tempat" name="tempat" minlength="5">
+                        <div class="tempat-counter"></div>
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('tempat') ?>
+                        </div>
+                    </div>
+                    <!-- </div> -->
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Tanggal</label>
@@ -57,14 +73,6 @@
                             <div class="invalid-feedback">
                                 <?= validation_show_error('jam') ?>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Deskripsi Rapat</label>
-                        <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" minlength="5"><?= old('deskripsi') ?></textarea>
-                        <div class="deskripsi-counter"></div>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('deskripsi') ?>
                         </div>
                     </div>
                 </div>

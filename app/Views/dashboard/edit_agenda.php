@@ -19,26 +19,46 @@
                     <?= csrf_field() ?>
                     <input type="hidden" id="text" name="id_agenda" value="<?= $data['id_agenda'] ?>">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Agenda Rapat</label>
-                                <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat', $data['agenda_rapat']) ?>" id="agenda_rapat" name="agenda_rapat" maxlength="255">
-                                <div class="agenda-counter"></div>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('agenda_rapat') ?>
-                                </div>
+                        <!-- <div class="col-sm-6"> -->
+                        <div class="form-group">
+                            <label>Judul</label>
+                            <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat', $data['agenda_rapat']) ?>" id="agenda_rapat" name="agenda_rapat" maxlength="255">
+                            <div class="agenda-counter"></div>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('agenda_rapat') ?>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Tempat Rapat</label>
-                                <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat', $data['tempat']) ?>" id="tempat" name="tempat" maxlength="">
-                                <div class="tempat-counter"></div>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('tempat') ?>
-                                </div>
+                        <!-- </div> -->
+                        <!-- <div class="col-sm-6"> -->
+                        <div class="form-group">
+                            <label>Program</label>
+                            <input type="text" class="form-control <?= validation_show_error('agenda_rapat') ? 'is-invalid' : '' ?>" value="<?= old('agenda_rapat', $data['agenda_rapat']) ?>" id="agenda_rapat" name="agenda_rapat" maxlength="255">
+                            <div class="agenda-counter"></div>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('agenda_rapat') ?>
                             </div>
                         </div>
+                        <!-- </div> -->
+                        <!-- <div class="col-sm"> -->
+                        <div class="form-group">
+                            <label>Kegiatan</label>
+                            <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="2" id="deskripsi" name="deskripsi" maxlength="2550"><?= old('deskripsi', $data['deskripsi']) ?></textarea>
+                            <div class="deskripsi-counter"></div>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('deskripsi') ?>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="col-sm-6"> -->
+                        <div class="form-group">
+                            <label>Tempat Rapat</label>
+                            <input type="text" class="form-control <?= validation_show_error('tempat') ? 'is-invalid' : '' ?>" value="<?= old('tempat', $data['tempat']) ?>" id="tempat" name="tempat" maxlength="">
+                            <div class="tempat-counter"></div>
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('tempat') ?>
+                            </div>
+                        </div>
+                        <!-- </div> -->
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Tanggal</label>
@@ -54,16 +74,6 @@
                                 <input class="timepicker-default form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam" name="jam">
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('jam') ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="form-group">
-                                <label>Agenda Rapat</label>
-                                <textarea class="form-control <?= validation_show_error('deskripsi') ? 'is-invalid' : '' ?>" rows="5" id="deskripsi" name="deskripsi" maxlength="2550"><?= old('deskripsi', $data['deskripsi']) ?></textarea>
-                                <div class="deskripsi-counter"></div>
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('deskripsi') ?>
                                 </div>
                             </div>
                         </div>
