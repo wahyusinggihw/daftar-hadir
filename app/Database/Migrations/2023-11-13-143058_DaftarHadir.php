@@ -33,6 +33,10 @@ class DaftarHadir extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'no_hp' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

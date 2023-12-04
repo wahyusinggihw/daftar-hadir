@@ -19,6 +19,7 @@ class DaftarHadirModel extends Model
         'id_agenda_rapat',
         'NIK',
         'nama',
+        'no_hp',
         'status',
         'asal_instansi',
         'ttd',

@@ -79,6 +79,8 @@ class DaftarHadirController extends BaseController
         $daftarHadir = $this->daftarhadir->getDaftarHadirByID($idAgenda);
         $judul = $agendaRapat['agenda_rapat'];
         $author = $this->session->get('nama');
+        $ttd = $daftarHadir[0]['ttd'];
+
         $rawData = [
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
