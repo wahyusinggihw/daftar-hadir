@@ -22,15 +22,12 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>Kode Instansi</th>
                     <th>Nama Instansi</th>
                     <?php if (session()->get('role') == 'admin') : ?>
                         <th>Nama Bidang</th>
                     <?php endif; ?>
-                    <th>Role</th>
+                    <th>Nama Admin</th>
                     <th>Username</th>
-                    <th>Tanggal Dibuat</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -38,20 +35,17 @@
                 <?php foreach ($admins as $item) : ?>
                     <tr>
                         <td><?= $item['id_admin'] ?></td>
-                        <td><?= $item['nama'] ?></td>
-                        <td><?= $item['id_instansi'] ?></td>
                         <td><?= $item['nama_instansi'] ?></td>
                         <?php if (session()->get('role') == 'admin') : ?>
                             <td><?= $item['nama_bidang'] ?></td>
                         <?php endif; ?>
-                        <td><?= $item['role'] ?></td>
+                        <td><?= $item['nama'] ?></td>
                         <td><?= $item['username'] ?></td>
-                        <td><?= $item['created_at'] ?></td>
                         <td>
                             <div class="row">
                                 <div class="col-lg-12 btn-group">
                                     <!-- <a href="<?= base_url('dashboard/kelola-admin/view-agenda/' . $item['slug']) ?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a> -->
-                                    <a href="<?= base_url('dashboard/kelola-admin/edit-admin/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="<?= base_url('dashboard/kelola-admin/edit-admin/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fas fa-lock"></i></a>
                                     <button href="#" class="btn btn-danger delete-button" data-id="<?= $item['id_admin'] ?>"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="nama">Nama Lengkap:</label>
+                                <label for="nama">Nama Admin:</label>
                                 <input class="form-control <?= validation_show_error('nama') ? 'is-invalid' : '' ?>" value="<?= old('nama') ?>" type="text" id="nama" name="nama" placeholder="Masukkan nama" autofocus>
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('nama') ?>
