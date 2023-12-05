@@ -51,6 +51,11 @@ class BidangInstansiModel extends Model
         return $this->where('id_instansi', $idInstansi)->findAll();
     }
 
+    public function getBidangByID($idBidang)
+    {
+        return $this->where('id_bidang', $idBidang)->first();
+    }
+
     public function updateBidang($idBidang, $data)
     {
         // Filter by id_agenda

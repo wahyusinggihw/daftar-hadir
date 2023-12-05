@@ -10,6 +10,7 @@ class DataSeeder extends Seeder
     {
         // $this->call('AgendaRapatSeed');
         // $this->call('PesertaUmumSeed');
+        $this->call('BidangSeeder');
         $this->call('AdminSeed');
     }
 }

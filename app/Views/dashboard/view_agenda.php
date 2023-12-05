@@ -44,7 +44,7 @@
                         </div>
                         <div class="col d-flex justify-content-center">
                             <div class="row mb-2">
-                                <a href="https://api.whatsapp.com/send?text=<?= urlencode('Check out this meeting information: ' . base_url('rapat/informasi/' . $data['kode_rapat'])) ?>" role="bt" class="btn btn-outline-info" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+                                <a href="https://api.whatsapp.com/send?text=<?= urlencode('Informasi Rapat: ' . base_url('rapat/informasi/' . $data['kode_rapat'])) ?>" role="bt" class="btn btn-outline-info" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
                             </div>
                             <div class="row mb-2 ms-4">
                                 <button data-kode="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" id="salin-kode" class="btn btn-outline-info"><i class="fa-solid fa-copy"></i></button>

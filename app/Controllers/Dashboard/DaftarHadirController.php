@@ -5,16 +5,19 @@ namespace App\Controllers\Dashboard;
 use App\Controllers\BaseController;
 use App\Models\DaftarHadirModel;
 use App\Models\AgendaRapatModel;
+use App\Models\BidangInstansiModel;
 use TCPDF;
 
 class DaftarHadirController extends BaseController
 {
     protected $daftarhadir;
     protected $agendaRapat;
+    protected $BidangInstansi;
     public function __construct()
     {
         $this->daftarhadir = new DaftarHadirModel();
         $this->agendaRapat = new AgendaRapatModel();
+        $this->BidangInstansi = new BidangInstansiModel();
         helper('my_helper');
     }
     public function index()
@@ -77,6 +80,7 @@ class DaftarHadirController extends BaseController
     {
         $agendaRapat  = $this->agendaRapat->getAgendaRapatByIdAgenda($idAgenda);
         $daftarHadir = $this->daftarhadir->getDaftarHadirByID($idAgenda);
+        $bidangInstansi = $this->BidangInstansi->getBidangById($agendaRapat['id_bidang']);
         $judul = $agendaRapat['agenda_rapat'];
         $author = $this->session->get('nama');
         $ttd = $daftarHadir[0]['ttd'];
@@ -84,6 +88,7 @@ class DaftarHadirController extends BaseController
         $rawData = [
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
+            'bidangInstansi' => $bidangInstansi
         ];
 
         $pdf = new TCPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);

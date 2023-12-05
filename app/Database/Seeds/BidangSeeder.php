@@ -12,7 +12,7 @@ class BidangSeeder extends Seeder
     {
         $uuid = Uuid::uuid4()->toString();
         $dataBidang = [
-            'id_bidang' => $uuid,
+            'id_bidang' => 'd51476a5-627d-37e4-9734-eac706850787',
             'nama_bidang' => 'Persandian dan Statistik',
             'nama_kepala_bidang' => 'Drs. H. M. Syafruddin, M.Si',
             'nip_kepala_bidang' => '196606011992031001',
