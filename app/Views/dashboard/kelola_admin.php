@@ -34,7 +34,7 @@
             <tbody>
                 <?php foreach ($admins as $item) : ?>
                     <tr>
-                        <td><?= $item['id_admin'] ?></td>
+                        <td></td>
                         <td><?= $item['nama_instansi'] ?></td>
                         <?php if (session()->get('role') == 'admin') : ?>
                             <td><?= $item['nama_bidang'] ?></td>

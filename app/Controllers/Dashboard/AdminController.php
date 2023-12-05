@@ -42,7 +42,7 @@ class AdminController extends BaseController
                 'title' => 'Kelola Admin',
                 'active' => 'kelola_peserta',
                 'role' => $currentRole,
-                'admins' => $this->adminModel->where('role', 'admin')->findAll(),
+                'admins' => $this->adminModel->where('role', 'admin')->orderBy('created_at', 'DESC')->findAll(),
             ];
             return view('dashboard/kelola_admin', $data);
         }
