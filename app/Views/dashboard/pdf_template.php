@@ -62,42 +62,28 @@
     <!-- <div class="logo">
         <img width="100" src="assets/img/logo.png" alt="Logo">
     </div> -->
-    <p>
+    <!-- <p>
         <i>DaftarHadir</i><br>
         Jl. Pahlawan, Paket Agung, Kec. Buleleng, Kabupaten Buleleng, Bali 81117
     </p>
-    <hr>
-    <h1>DAFTAR HADIR<br>RAPAT <?= strtoupper($agendaRapat['agenda_rapat']) ?></h1>
+    <hr> -->
+    <h1>DAFTAR HADIR RAPAT<br> <?= strtoupper($agendaRapat['agenda_rapat']) ?></h1>
+    <br>
     <table class="table-row">
         <tr>
-            <td class="column-label">Kode Rapat</td>
+            <td class="column-label">Program</td>
             <td class="column-divider">:</td>
-            <td><?= $agendaRapat['kode_rapat'] ?></td>
+            <td><?= $agendaRapat['program'] ?></td>
         </tr>
         <tr>
-            <td class="column-label">Agenda Rapat</td>
+            <td class="column-label">Kegiatan</td>
             <td class="column-divider">:</td>
             <td><?= $agendaRapat['agenda_rapat'] ?></td>
         </tr>
         <tr>
-            <td class="column-label">Instansi</td>
-            <td class="column-divider">:</td>
-            <td><?= $agendaRapat['nama_instansi'] ?></td>
-        </tr>
-        <tr>
-            <td class="column-label">Bidang</td>
-            <td class="column-divider">:</td>
-            <td><?= $agendaRapat['nama_bidang'] ?></td>
-        </tr>
-        <tr>
             <td class="column-label">Tanggal</td>
             <td class="column-divider">:</td>
-            <td><?= date('Y-m-d', strtotime($agendaRapat['created_at'])) ?></td>
-        </tr>
-        <tr>
-            <td class="column-label">Pukul</td>
-            <td class="column-divider">:</td>
-            <td><?= $agendaRapat['jam'] ?></td>
+            <td><?= date('d F Y', strtotime($agendaRapat['created_at'])) ?></td>
         </tr>
     </table>
     <br>
@@ -105,21 +91,21 @@
     <table cellpadding="4" class="tabeldaftarhadir">
         <tr>
             <th class="no-column"><strong>No</strong></th>
-            <th><strong>NIP/NIK</strong></th>
             <th><strong>Nama</strong></th>
-            <th><strong>Status</strong></th>
-            <th><strong>Asal Instansi</strong></th>
-            <th><strong>Tanggal/Jam Absen</strong></th>
+            <th><strong>Instansi</strong></th>
+            <th><strong>No HP</strong></th>
+            <th><strong>Tanda Tangan</strong></th>
         </tr>
         <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
             <tr>
                 <td class="no-column"><?= $no++ ?></td>
-                <td><?= $item['NIK'] ?></td>
                 <td><?= $item['nama'] ?></td>
-                <td><?= $item['status'] ?></td>
                 <td><?= $item['asal_instansi'] ?></td>
-                <td><?= date('Y-m-d', strtotime($item['created_at'])) . '/' . date('H:i', strtotime($item['created_at'])) ?></td>
+                <td><?= $item['no_hp'] ?></td>
+                <td>
+                    ttd
+                </td>
             </tr>
         <?php endforeach; ?>
     </table>
