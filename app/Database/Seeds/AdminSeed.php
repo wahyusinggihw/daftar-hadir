@@ -62,23 +62,23 @@ class AdminSeed extends Seeder
         ];
 
 
-        // $adminInstansiData = [];
+        $adminInstansiData = [];
 
-        // foreach ($instansis as $instansi) {
-        //     $instanceNameWithoutDomain = str_replace('.bulelengkab.go.id', '', $instansi);
-        //     $adminInstansiData[] = [
-        //         'id_admin' => $faker->uuid,
-        //         'slug' => str_replace(['.', '-'], '', $instanceNameWithoutDomain),
-        //         'nama' => ucfirst($faker->word),
-        //         'role' => 'admin',
-        //         'id_instansi' => $faker->randomNumber(8),
-        //         'nama_instansi' => 'Admin ' . ucfirst($instanceNameWithoutDomain),
-        //         'username' => strtolower($instanceNameWithoutDomain),
-        //         'avatar' => 'default.png',
-        //         'password' => password_hash($instanceNameWithoutDomain, PASSWORD_DEFAULT),
-        //         'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
-        //     ];
-        // }
+        foreach ($instansis as $instansi) {
+            $instanceNameWithoutDomain = str_replace('.bulelengkab.go.id', '', $instansi);
+            $adminInstansiData[] = [
+                'id_admin' => $faker->uuid,
+                'slug' => str_replace(['.', '-'], '', $instanceNameWithoutDomain),
+                'nama' => 'Admin ' . ucfirst($instanceNameWithoutDomain),
+                'role' => 'admin',
+                'id_instansi' => $faker->randomNumber(8),
+                'nama_instansi' => ucfirst($instanceNameWithoutDomain),
+                'username' => strtolower($instanceNameWithoutDomain),
+                'avatar' => 'default.png',
+                'password' => password_hash('Admin123', PASSWORD_DEFAULT),
+                'created_at' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+            ];
+        }
 
         $this->forge->addKey('id_admin', true);
         // Admin Data
@@ -98,18 +98,18 @@ class AdminSeed extends Seeder
         ];
 
         // admin instansi data
-        $adminInstansiData = [
-            'id_admin' => '21486571-73f7-4570-b8de-d412aa4c887f',
-            'slug' => 'kominfo',
-            'nama' => 'Kominfosanti',
-            'role' => 'admin',
-            'id_instansi' => '75010306',
-            'nama_instansi' => 'Kominfosanti',
-            'username' => 'kominfosanti',
-            'avatar' => 'default.png', // 'avatar' => 'default.png
-            'password' => password_hash('kominfosanti', PASSWORD_DEFAULT),
-            'created_at' => date('Y-m-d H:i:s'),
-        ];
+        // $adminInstansiData = [
+        //     'id_admin' => '21486571-73f7-4570-b8de-d412aa4c887f',
+        //     'slug' => 'kominfo',
+        //     'nama' => 'Kominfosanti',
+        //     'role' => 'admin',
+        //     'id_instansi' => '75010306',
+        //     'nama_instansi' => 'Kominfosanti',
+        //     'username' => 'kominfosanti',
+        //     'avatar' => 'default.png', // 'avatar' => 'default.png
+        //     'password' => password_hash('kominfosanti', PASSWORD_DEFAULT),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        // ];
 
         // operator data
         $operatorData = [
@@ -127,8 +127,8 @@ class AdminSeed extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
         ];
         $this->db->table('admins')->insert($superAdmin);
-        $this->db->table('admins')->insert($adminInstansiData);
-        $this->db->table('admins')->insert($operatorData);
+        $this->db->table('admins')->insertBatch($adminInstansiData);
+        // $this->db->table('admins')->insert($operatorData);
 
         // for ($i = 0; $i < 3; $i++) {
         //     # code...
