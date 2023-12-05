@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -56,6 +57,8 @@
             width: 30px;
         }
     </style>
+
+    
 </head>
 
 <body>
@@ -90,11 +93,11 @@
     <br>
     <table cellpadding="4" class="tabeldaftarhadir">
         <tr>
-            <th class="no-column"><strong>No</strong></th>
-            <th><strong>Nama</strong></th>
-            <th><strong>Instansi</strong></th>
-            <th><strong>No HP</strong></th>
-            <th><strong>Tanda Tangan</strong></th>
+            <th class="no-column" width="5%"><strong>No</strong></th>
+            <th width="25%"><strong>Nama</strong></th>
+            <th width="40%"><strong>Instansi</strong></th>
+            <th width="15%"><strong>No HP</strong></th>
+            <th width="14%"><strong>Tanda Tangan</strong></th>
         </tr>
         <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
@@ -103,12 +106,14 @@
                 <td><?= $item['nama'] ?></td>
                 <td><?= $item['asal_instansi'] ?></td>
                 <td><?= $item['no_hp'] ?></td>
-                <td>
-                    ttd
-                </td>
+                <td></td>
             </tr>
         <?php endforeach; ?>
     </table>
 </body>
 
 </html>
+
+
+
+
