@@ -20,17 +20,6 @@ class DaftarHadirController extends BaseController
         $this->BidangInstansi = new BidangInstansiModel();
         helper('my_helper');
     }
-    public function index()
-    {
-
-        $data = [
-            'title' => 'Agenda Rapat',
-            'subtitle' => 'Daftar Hadir',
-            'data' => $this->daftarhadir->getDaftarHadir()
-
-        ];
-        return view('dashboard/daftar_hadir', $data);
-    }
 
     public function cariDaftarHadir($slug)
     {

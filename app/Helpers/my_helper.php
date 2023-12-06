@@ -114,15 +114,6 @@ function verifyCaptcha($token)
     return null;
 }
 
-function image_to_base64($path)
-{
-    // $path = 'myfolder/myimage.png';
-    $type = pathinfo($path, PATHINFO_EXTENSION);
-    $data = file_get_contents($path);
-    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-    return $base64;
-}
-
 function elipsis($str, $length = 80)
 {
     if (strlen(strip_tags($str)) > $length) {
@@ -132,6 +123,12 @@ function elipsis($str, $length = 80)
     }
 }
 
+/**
+ * Format the date in Indonesian format.
+ *
+ * @param string $date The date to be formatted.
+ * @return string The formatted date in Indonesian.
+ */
 function format_indo($date)
 {
     // array hari dan bulan

@@ -122,6 +122,7 @@ class RapatControllerAPI extends BaseController
                 'id_agenda_rapat' => $rapat['id_agenda'],
                 'NIK' => $this->request->getVar('nip'),
                 'nama' => $this->request->getVar('nama'),
+                'no_hp' => $this->request->getVar('no_hp'),
                 'status' => $this->request->getVar('status'),
                 'asal_instansi' => $this->request->getVar('asal_instansi'),
                 'ttd' => $tandaTangan,
