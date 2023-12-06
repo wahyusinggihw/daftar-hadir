@@ -77,10 +77,10 @@ body {
 }
 .landing-page .content .formid button {
   border: none;
-  width: 100px;
+  width: 400px;
   height: 50px;
-  border-radius: 0px 14px 14px 0px;
-  margin-left: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
   cursor: pointer;
   color: #fff;
   /* background-color: #0466ed; */
@@ -112,13 +112,32 @@ body {
   position: relative;
 }
 
+.formid .input-kode{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .formid input {
   /*transparran */
-  background: rgba(255, 255, 255, 0.596);
-  width: 400px;
-  height: 50px;
-  border-radius: 14px 0px 0px 14px;
-  border: 2px solid #22b2a9;
+  background: rgba(255, 255, 255, 0);
+  width: 16px; 
+  height: 16px; 
+  text-align: center;
+  font-size: 16px; 
+  margin: 0 3.2px; 
+  padding: 8px; 
+  border: none;
+  border-bottom: 2px solid #6e6e6e; 
+  outline: none;
+}
+
+.formid input+input {
+  margin-left: 4px; 
+}
+
+.formid input:focus {
+  border-bottom: 2px solid #007BFF;
 }
 
 /* bagian timeline */
@@ -322,9 +341,14 @@ body {
     max-width: 50%;
   }
   .formid input {
-    width: 400px;
+    width: 50px;
     height: 50px;
   }
+
+  .formid .form-input input{
+    width: 400px;
+  }
+
   .formid {
     width: 400px;
     padding: 25px;
@@ -333,7 +357,7 @@ body {
     background-size: 650px 650px;
   } */
   .landing-page .content .formid button {
-    width: 70px;
+    width: 350px;
     height: 50px;
   }
 }
@@ -495,10 +519,16 @@ body {
     max-width: 50%;
   }
   .formid input {
-    width: 700px;
-    height: 130px;
-    font-size: 40px;
-    border-radius: 25px 0px 0px 25px;
+    padding-left: 15px;
+      letter-spacing: 42px;
+      border: 0;
+      background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+      background-position: bottom;
+      background-size: 50px 1px;
+      background-repeat: repeat-x;
+      background-position-x: 35px;
+      width: 220px;
+      outline: none;
   }
   .formid {
     width: 1000px;
@@ -527,6 +557,7 @@ body {
     width: 190px;
     height: 130px;
     font-size: 40px;
+    margin-top: 10px;
     border-radius: 0px 25px 25px 0px;
   }
   .invalid-feedback {

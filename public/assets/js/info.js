@@ -2,7 +2,11 @@
 function copyText() {
     var teksElement = document.getElementById("teksToSalin");
     var textarea = document.createElement("textarea");
-    textarea.value = teksElement.innerText;
+
+    // Menggunakan textContent untuk mendapatkan teks tanpa format atau tata letak
+    var teksTanpaSymbol = teksElement.textContent.replace(/[^\d]/g, ''); // Hanya menyertakan karakter angka
+
+    textarea.value = teksTanpaSymbol;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand('copy');
