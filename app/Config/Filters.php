@@ -30,6 +30,7 @@ class Filters extends BaseConfig
         'basicAuth'     => \App\Filters\BasicauthFilter::class,
         'admin'         => \App\Filters\AdminFilter::class,
         'islogin'       => \App\Filters\LoggedInFilter::class,
+        'defaultPassword' => \App\Filters\DefaultPassword::class,
     ];
 
     /**

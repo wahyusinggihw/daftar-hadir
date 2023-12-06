@@ -29,7 +29,6 @@
         </script>
     <?php endif; ?>
 
-
     <div class="login-form">
         <div class="container">
             <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="Logo" width="100">

@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class LoggedInFilter implements FilterInterface
+class DefaultPassword implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,17 +25,9 @@ class LoggedInFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $defaultPassword = session()->get('password_default');
-        if ($defaultPassword) {
-            return redirect()->to('/auth/change-password');
+        if (!session()->get('password_default') == 1) {
+            return redirect()->to('/');
         }
-
-        if (session()->get('logged_in')) {
-            // Redirect to the dashboard
-            return redirect()->to('/dashboard');
-        }
-
-        return $request;
     }
 
     /**

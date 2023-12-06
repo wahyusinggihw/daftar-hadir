@@ -27,6 +27,11 @@ class AuthFilter implements FilterInterface
     {
         $allowedRoles = ['admin', 'superadmin', 'operator'];
         $userRole = session()->get('role');
+        $isLoggedIn = session()->get('logged_in');
+
+        if (!$isLoggedIn) {
+            return redirect()->to('/');
+        }
 
         if (!in_array($userRole, $allowedRoles)) {
             return redirect()->to('/');
