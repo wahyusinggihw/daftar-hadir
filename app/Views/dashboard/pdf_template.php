@@ -68,20 +68,10 @@
 
 
         .tanda-tangan p {
-            text-align: center;
+            text-align: left;
             margin: 5px 0;
             font-size: 10px;
             /* Align text within paragraphs to the right */
-        }
-
-        .tanda-tangan {
-            margin-top: 100px;
-            /* Align text to the right within the container */
-            display: flex;
-            flex-direction: column;
-            /* Stack child elements vertically */
-            align-items: flex-end;
-            /* Align children to the right end */
         }
     </style>
 
@@ -140,13 +130,23 @@
         <?php endforeach; ?>
     </table>
 
+    <table class="signature" style="border: none;">
+        <tr style="border: none;">
+            <td width="60%" style="border: none;"></td>
+            <td width="40%" style="border: none;">
+                <div class="tanda-tangan">
+                    <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
+                    <br>
+                    <p></p>
+                    <p></p>
+                    <p><strong style="text-decoration: underline;"><?= $bidangInstansi['nama_kepala_bidang'] ?></strong><br><span>NIP. <?= $bidangInstansi['nip_kepala_bidang'] ?></span></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
     <!-- signature section -->
-    <div class="tanda-tangan">
-        <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
-        <br>
-        <br>
-        <p><strong style="text-decoration: underline;"><?= $bidangInstansi['nama_kepala_bidang'] ?></strong><br><span>NIP. <?= $bidangInstansi['nip_kepala_bidang'] ?></span></p>
-    </div>
+
 
 </body>
 
