@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= base_url('dashboard') ?>" class="brand-link">
-        <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="AdminLTE Logo" class="brand-image" style="opacity: .8" width="100">
-        <span class="brand-text font-weight-light"><img src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="AdminLTE Logo" style="margin-left: 5px;" width="150"></span>
+    <a href="<?= base_url('dashboard') ?>" class="brand-link" style="background-color: #007bff;">
+        <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="AdminLTE Logo" class="brand-image" style="opacity: .8;" width="100">
+        <span class="brand-text font-weight-light"><img src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="AdminLTE Logo" style="margin-left: 5px;" width="150;"></span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
