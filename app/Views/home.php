@@ -87,14 +87,18 @@
           <div class="form-p">
             <p>Silahkan Masukan Kode Rapat</p>
           </div>
+          <?php
+          $invalid_input = validation_show_error('id_rapat') ? 'invalid-input' : '';
+          ?>
 
           <div class="input-kode" id="otp">
-            <input type="text" class="otp-input" id="otpInput1" name="otpInput1" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
-            <input type="text" class="otp-input" id="otpInput2" name="otpInput2" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
-            <input type="text" class="otp-input" id="otpInput3" name="otpInput3" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
-            <input type="text" class="otp-input" id="otpInput4" name="otpInput4" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
-            <input type="text" class="otp-input" id="otpInput5" name="otpInput5" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
-            <input type="text" class="otp-input" id="otpInput6" name="otpInput6" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput1" name="otpInput1" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput2" name="otpInput2" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput3" name="otpInput3" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            -
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput4" name="otpInput4" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput5" name="otpInput5" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+            <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput6" name="otpInput6" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
           </div>
 
           <div class="form-input">

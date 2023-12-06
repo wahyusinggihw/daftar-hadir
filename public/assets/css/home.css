@@ -112,7 +112,7 @@ body {
   position: relative;
 }
 
-.formid .input-kode{
+.formid .input-kode {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,23 +121,29 @@ body {
 .formid input {
   /*transparran */
   background: rgba(255, 255, 255, 0);
-  width: 16px; 
-  height: 16px; 
+  width: 16px;
+  height: 16px;
   text-align: center;
-  font-size: 16px; 
-  margin: 0 3.2px; 
-  padding: 8px; 
+  font-size: 16px;
+  margin: 0 3.2px;
+  padding: 8px;
   border: none;
-  border-bottom: 2px solid #6e6e6e; 
+  border-bottom: 2px solid #6e6e6e;
   outline: none;
 }
 
-.formid input+input {
-  margin-left: 4px; 
+.invalid-input {
+  /* border: 1px solid #dc3545; */
+  border-bottom: 2px solid #dc3545 !important;
+  /* border-color: 1px solid #dc3545; */
+}
+
+.formid input + input {
+  margin-left: 4px;
 }
 
 .formid input:focus {
-  border-bottom: 2px solid #007BFF;
+  border-bottom: 2px solid #007bff;
 }
 
 /* bagian timeline */
@@ -231,7 +237,7 @@ body {
   .landing-page .content .info h2 {
     font-size: 30px;
   }
-  
+
   .landing-page .content .formid button {
     width: 70px;
     height: 40px;
@@ -345,7 +351,7 @@ body {
     height: 50px;
   }
 
-  .formid .form-input input{
+  .formid .form-input input {
     width: 400px;
   }
 
@@ -520,15 +526,19 @@ body {
   }
   .formid input {
     padding-left: 15px;
-      letter-spacing: 42px;
-      border: 0;
-      background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
-      background-position: bottom;
-      background-size: 50px 1px;
-      background-repeat: repeat-x;
-      background-position-x: 35px;
-      width: 220px;
-      outline: none;
+    letter-spacing: 42px;
+    border: 0;
+    background-image: linear-gradient(
+      to left,
+      black 70%,
+      rgba(255, 255, 255, 0) 0%
+    );
+    background-position: bottom;
+    background-size: 50px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    width: 220px;
+    outline: none;
   }
   .formid {
     width: 1000px;
