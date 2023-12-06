@@ -33,36 +33,6 @@ class DaftarHadirModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [
-        'NIK' => [
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => 'NIP/NIK harus diisi',
-                'numeric' => 'NIP/NIK harus berupa angka'
-            ]
-        ],
-        'nama' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Nama harus diisi'
-            ]
-        ],
-        'asal_instansi' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Asal Instansi harus diisi'
-            ]
-        ],
-        'ttd' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Tanda Tangan harus diisi'
-            ]
-        ]
-
-
-    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -78,18 +48,6 @@ class DaftarHadirModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getDaftarHadir()
-    {
-        $id_admin = session()->get('id_admin');
-        $builder = $this->table('daftarhadirs');
-        $builder->select('*');
-        $builder->join('agendarapats', 'agendarapats.id_agenda = daftarhadirs.id_agenda_rapat',);
-        $builder->where('id_admin', $id_admin);
-        $query = $builder->get()->getResultArray();
-
-        return $query;
-    }
-
     public function getDaftarHadirByID($id_agenda)
     {
         $id_admin = session()->get('id_admin');
@@ -98,6 +56,7 @@ class DaftarHadirModel extends Model
         $builder->join('agendarapats', 'agendarapats.id_agenda = daftarhadirs.id_agenda_rapat',);
         // $builder->where('id_admin', $id_admin);
         $builder->where('id_agenda_rapat', $id_agenda);
+        $builder->orderBy('daftarhadirs.created_at', 'ASC');
         $query = $builder->get()->getResultArray();
         return $query;
     }

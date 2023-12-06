@@ -114,7 +114,6 @@
         <tr>
             <td class="column-label">Hari/Tanggal</td>
             <td class="column-divider">:</td>
-            <?php setlocale(LC_TIME, 'id_ID'); ?>
             <td><?= format_indo(date($agendaRapat['tanggal'])) ?></td>
         </tr>
     </table>
@@ -126,7 +125,7 @@
             <th width="25%"><strong>Nama</strong></th>
             <th width="40%"><strong>Instansi</strong></th>
             <th width="15%"><strong>No HP</strong></th>
-            <th width="14%"><strong>Tanda Tangan</strong></th>
+            <th width="15%"><strong>Tanda Tangan</strong></th>
         </tr>
         <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
@@ -135,7 +134,7 @@
                 <td><?= $item['nama'] ?></td>
                 <td><?= $item['asal_instansi'] ?></td>
                 <td><?= $item['no_hp'] ?></td>
-                <td><img src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $item['ttd']) ?>" alt="ttd <?= $item['nama'] ?>" srcset=""></td>
+                <td><img src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $item['ttd']) ?>" alt="ttd <?= $item['nama'] ?>"></td>
             </tr>
         <?php endforeach; ?>
     </table>
