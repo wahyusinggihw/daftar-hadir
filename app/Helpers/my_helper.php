@@ -1,6 +1,8 @@
 <?php
 
 // use chillerlan\QRCode\{QRCode, QROptions};
+
+use Cocur\Slugify\Slugify;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Logo\Logo;
@@ -90,13 +92,6 @@ function generateQrCode($linkRapat)
     return $result;
 }
 
-function loopIteration($pager, $group)
-{
-    $counter = $pager->getDetails($group)['currentPage'] === 1 ? 1 : ($pager->getDetails($group)['currentPage'] - 1) * 5 + 1;
-
-    return $counter;
-}
-
 // captcha server side
 function verifyCaptcha($token)
 {
@@ -135,4 +130,45 @@ function elipsis($str, $length = 80)
     } else {
         return strip_tags($str);
     }
+}
+
+function format_indo($date)
+{
+    // array hari dan bulan
+    $nama_hari = array(
+        'Minggu',
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        "Jum'at",
+        'Sabtu'
+    );
+    $nama_bulan = array(
+        1 => 'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        "Desember"
+    );
+
+    // Format the date using the desired format (d F Y)
+    $tanggal_formatted = date('d F Y', strtotime($date));
+
+    // Extract day, month, and year
+    $day = date('w', strtotime($date));
+    $month = date('n', strtotime($date));
+    $year = date('Y', strtotime($date));
+
+    // Output the formatted date in Indonesian
+    $result = $nama_hari[$day] . ', ' . date('d', strtotime($date)) . ' ' . $nama_bulan[$month] . ' ' . $year;
+
+    return $result;
 }

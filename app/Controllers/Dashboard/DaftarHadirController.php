@@ -83,7 +83,7 @@ class DaftarHadirController extends BaseController
         $bidangInstansi = $this->BidangInstansi->getBidangById($agendaRapat['id_bidang']);
         $judul = $agendaRapat['agenda_rapat'];
         $author = $this->session->get('nama');
-        $ttd = $daftarHadir[0]['ttd'];
+        // $ttd = $daftarHadir[0]['ttd'];
 
         $rawData = [
             'agendaRapat' => $agendaRapat,
@@ -107,6 +107,48 @@ class DaftarHadirController extends BaseController
 
         // Load the view file and assign data to it
         $html = view('dashboard/pdf_template', $rawData);
+
+        //     $html = '
+        //     <!DOCTYPE html>
+        //     <html lang="en">
+        //     <head>
+        //         <meta charset="UTF-8">
+        //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //         <title>Document</title>
+        //     </head>
+        //     <body>
+        //     <p class="header"><strong>DAFTAR HADIR RAPAT</strong><br> <span class="judul">' . $agendaRapat['agenda_rapat'] . '</span></p>
+        //     <table border="1" cellpadding="4" class="tabeldaftarhadir">
+        //     <tr>
+        //         <th class="no-column" width="5%"><strong>No</strong></th>
+        //         <th width="25%"><strong>Nama</strong></th>
+        //         <th width="40%"><strong>Instansi</strong></th>
+        //         <th width="15%"><strong>No HP</strong></th>
+        //         <th width="14%"><strong>Tanda Tangan</strong></th>
+        //     </tr>';
+
+        //     $i = 1;
+        //     foreach ($daftarHadir as $row) {
+        //         $html .= '<tr><
+        //         <td>' . $i++ . '</td>            
+        //         <td>' . $i++ . '</td>            
+        //         <td>' . $i++ . '</td>            
+        //         <td>' . $i++ . '</td>            
+        //         <td><img src="' . $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $row['ttd']) . '" alt=""></td>            
+        //         /tr>';
+        //     }
+
+        //     $html .= '
+        //    </table>
+        //     </body>
+        //     </html>
+        //     ';
+
+        // dd($_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $row['ttd']));
+        // $mpdf = new \Mpdf\Mpdf();
+        // $mpdf->WriteHTML($html);
+        // $this->response->setContentType('application/pdf');
+        // $mpdf->Output();
 
         // Output the HTML content
         $pdf->writeHTML($html, true, false, true, false, '');

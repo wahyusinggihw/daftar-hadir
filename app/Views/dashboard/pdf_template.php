@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -13,10 +12,10 @@
             font-size: 10px;
         }
 
-        p {
+        /* p {
             font-size: 10px;
             text-align: center;
-        }
+        } */
 
         td,
         th {
@@ -32,13 +31,23 @@
             margin-bottom: 20px;
         }
 
+        .header {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header .judul {
+            font-size: 14px;
+        }
+
         .logo {
             float: right;
         }
 
         /* Style for header */
         .table-row {
-            font-size: 12px;
+            font-size: 10px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -56,9 +65,27 @@
         .table-row .column-divider {
             width: 30px;
         }
+
+
+        .tanda-tangan p {
+            text-align: center;
+            margin: 5px 0;
+            font-size: 10px;
+            /* Align text within paragraphs to the right */
+        }
+
+        .tanda-tangan {
+            margin-top: 100px;
+            /* Align text to the right within the container */
+            display: flex;
+            flex-direction: column;
+            /* Stack child elements vertically */
+            align-items: flex-end;
+            /* Align children to the right end */
+        }
     </style>
 
-    
+
 </head>
 
 <body>
@@ -70,7 +97,8 @@
         Jl. Pahlawan, Paket Agung, Kec. Buleleng, Kabupaten Buleleng, Bali 81117
     </p>
     <hr> -->
-    <h1>DAFTAR HADIR RAPAT<br> <?= strtoupper($agendaRapat['agenda_rapat']) ?></h1>
+    <p class="header"><strong>DAFTAR HADIR RAPAT</strong><br> <span class="judul"><?= $agendaRapat['agenda_rapat'] ?></span></p>
+    <br>
     <br>
     <table class="table-row">
         <tr>
@@ -81,12 +109,13 @@
         <tr>
             <td class="column-label">Kegiatan</td>
             <td class="column-divider">:</td>
-            <td><?= $agendaRapat['agenda_rapat'] ?></td>
+            <td><?= $agendaRapat['deskripsi'] ?></td>
         </tr>
         <tr>
-            <td class="column-label">Tanggal</td>
+            <td class="column-label">Hari/Tanggal</td>
             <td class="column-divider">:</td>
-            <td><?= date('d F Y', strtotime($agendaRapat['created_at'])) ?></td>
+            <?php setlocale(LC_TIME, 'id_ID'); ?>
+            <td><?= format_indo(date($agendaRapat['tanggal'])) ?></td>
         </tr>
     </table>
     <br>
@@ -106,14 +135,19 @@
                 <td><?= $item['nama'] ?></td>
                 <td><?= $item['asal_instansi'] ?></td>
                 <td><?= $item['no_hp'] ?></td>
-                <td></td>
+                <td><img src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $item['ttd']) ?>" alt="ttd <?= $item['nama'] ?>" srcset=""></td>
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <!-- signature section -->
+    <div class="tanda-tangan">
+        <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
+        <br>
+        <br>
+        <p><strong style="text-decoration: underline;"><?= $bidangInstansi['nama_kepala_bidang'] ?></strong><br><span>NIP. <?= $bidangInstansi['nip_kepala_bidang'] ?></span></p>
+    </div>
+
 </body>
 
 </html>
-
-
-
-
