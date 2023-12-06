@@ -92,7 +92,7 @@
             <input type="text" id="otpInput1" name="otpInput1" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
             <input type="text" id="otpInput2" name="otpInput2" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
             <input type="text" id="otpInput3" name="otpInput3" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
-            <span>-</span>
+            <!-- <span>-</span> -->
             <input type="text" id="otpInput4" name="otpInput4" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
             <input type="text" id="otpInput5" name="otpInput5" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
             <input type="text" id="otpInput6" name="otpInput6" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off">
