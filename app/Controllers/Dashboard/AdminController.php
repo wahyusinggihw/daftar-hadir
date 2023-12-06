@@ -224,7 +224,7 @@ class AdminController extends BaseController
                 ]
             ],
             'username' => [
-                'rules' => 'required|is_unique[admins.username]|alpha_dash|regex_match[/^[a-z]+$/]',
+                'rules' => 'required|is_unique[admins.username]|alpha_dash|regex_match[/^[a-z_]+$/]',
                 'errors' => [
                     'required' => 'Username harus diisi',
                     'is_unique' => 'Username sudah terdaftar',
