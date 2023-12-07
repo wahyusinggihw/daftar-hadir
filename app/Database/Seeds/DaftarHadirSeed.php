@@ -12,7 +12,7 @@ class DaftarHadirSeed extends Seeder
     {
 
 
-        for ($i = 1; $i < 40; $i++) {
+        for ($i = 1; $i < 21; $i++) {
             # code...
             $uuid = Uuid::uuid4()->toString();
             $faker = Factory::create();
@@ -22,6 +22,8 @@ class DaftarHadirSeed extends Seeder
                 'id_agenda_rapat' => 'c63021b2-5f35-49c3-9587-731ad0f28e24',
                 'NIK' => $faker->randomNumber(9, true),
                 'nama' => $faker->name(),
+                'no_hp' => $faker->phoneNumber(),
+                'status' => 'pegawai',
                 'asal_instansi' => 'Kominfo',
                 'ttd' => 'ttd',
                 'created_at' => date('Y-m-d H:i:s')
