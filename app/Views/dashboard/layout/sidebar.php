@@ -8,7 +8,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <?php if (session()->get('avatar') == 'default.png') : ?>
                     <img src="<?= base_url('/uploads/avatars/default.png') ?>" class="img-circle elevation-2" alt="User Image">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- SidebarSearch Form -->
         <!-- <div class="form-inline">
