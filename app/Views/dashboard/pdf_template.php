@@ -68,7 +68,7 @@
 
 
         .tanda-tangan p {
-            text-align: left;
+            text-align: center;
             margin: 5px 0;
             font-size: 10px;
             /* Align text within paragraphs to the right */
@@ -115,7 +115,7 @@
             <th width="25%"><strong>Nama</strong></th>
             <th width="40%"><strong>Instansi</strong></th>
             <th width="15%"><strong>No HP</strong></th>
-            <th width="15%"><strong>Tanda Tangan</strong></th>
+            <th width="14%"><strong>Tanda Tangan</strong></th>
         </tr>
         <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
@@ -129,10 +129,10 @@
         <?php endforeach; ?>
     </table>
 
-    <table class="signature" style="border: none;">
-        <tr style="border: none;">
-            <td width="60%" style="border: none;"></td>
-            <td width="40%" style="border: none;">
+    <table class="signature" >
+        <tr >
+            <td width="55%" ></td>
+            <td width="45%" >
                 <div class="tanda-tangan">
                     <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
                     <br>

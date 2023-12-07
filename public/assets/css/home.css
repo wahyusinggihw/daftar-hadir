@@ -110,6 +110,7 @@ body {
   justify-content: center;
   flex-direction: row;
   position: relative;
+  width: 100%;
 }
 
 .formid .input-kode {
@@ -136,6 +137,13 @@ body {
   /* border: 1px solid #dc3545; */
   border-bottom: 2px solid #dc3545 !important;
   /* border-color: 1px solid #dc3545; */
+}
+.invalid-response {
+  position: absolute;
+  display: block;
+  color: #dc3545;
+  bottom: -1.5rem;
+  transform: none;
 }
 
 .formid input + input {
@@ -201,17 +209,6 @@ body {
   text-align: justify;
 }
 
-/* bagian timeline */
-
-/*  RESPONSIVE MEDIA QUERRY */
-
-/* RESPONSIVE */
-/* @media (max-width: 992px) {
-  .landing-page .content .info {
-    text-align: center;
-  }
-} */
-
 @media only screen and (max-width: 600px) {
   body {
     overflow: auto;
@@ -239,8 +236,11 @@ body {
   }
 
   .landing-page .content .formid button {
-    width: 70px;
+    width: 100%;
     height: 40px;
+  }
+  .landing-page .content .container-info {
+    display: none;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -255,20 +255,17 @@ body {
     height: 40px;
   }
   .formid {
-    width: 400px;
+    width: 350px;
     padding: 25px;
   }
   .landing-page .content .info h1 {
-    font-size: 35px;
+    font-size: 40px;
   }
   .landing-page .content .info h2 {
-    font-size: 35px;
+    font-size: 40px;
   }
-  /* body {
-    background-size: 500px 500px;
-  } */
   .landing-page .content .formid button {
-    width: 70px;
+    width: 100%;
     height: 40px;
   }
 }
@@ -285,7 +282,7 @@ body {
     height: 40px;
   }
   .formid {
-    width: 400px;
+    width: 350px;
     padding: 25px;
   }
   .landing-page .content .info h1 {
@@ -294,11 +291,8 @@ body {
   .landing-page .content .info h2 {
     font-size: 40px;
   }
-  /* body {
-    background-size: 600px 600px;
-  } */
   .landing-page .content .formid button {
-    width: 70px;
+    width: 100%;
     height: 40px;
   }
 }
@@ -327,11 +321,8 @@ body {
   .landing-page .content .info h2 {
     font-size: 45px;
   }
-  /* body {
-    background-size: 600px 600px;
-  } */
   .landing-page .content .formid button {
-    width: 70px;
+    width: 100%;
     height: 50px;
   }
 }
@@ -354,14 +345,10 @@ body {
   .formid .form-input input {
     width: 400px;
   }
-
   .formid {
     width: 400px;
     padding: 25px;
   }
-  /* body {
-    background-size: 650px 650px;
-  } */
   .landing-page .content .formid button {
     width: 350px;
     height: 50px;
@@ -379,12 +366,13 @@ body {
     max-width: 50%;
   }
   .formid input {
-    width: 400px;
+    width: 100%;
     height: 50px;
   }
   .formid {
-    width: 500px;
+    width: 450px;
     padding: 25px;
+    align-items: center;
   }
   .landing-page .content .info h1 {
     font-size: 50px;
@@ -392,11 +380,15 @@ body {
   .landing-page .content .info h2 {
     font-size: 50px;
   }
-  /* body {
-    background-size: cover;
-  } */
+  .landing-page .content .container-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 40px;
+  }
   .landing-page .content .formid button {
-    width: 70px;
+    margin-top: 30px;
+    width: 100%;
     height: 50px;
   }
 }
@@ -405,13 +397,13 @@ body {
     flex-direction: row;
   }
   .timeline li .item span {
-    font-size: 40px;
+    font-size: 35px;
     position: absolute;
     top: -8px;
-    left: -50px;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
+    left: -40px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
     text-align: center;
     background: #24b1ad;
     color: #fff;
@@ -419,7 +411,7 @@ body {
     border-radius: 50%;
   }
   .timeline {
-    margin-left: 70px;
+    margin-left: 90px;
     margin-right: 0px;
   }
   .timeline li .item {
@@ -441,13 +433,12 @@ body {
     max-width: 50%;
   }
   .formid input {
-    width: 400px;
+    width: 100%;
     height: 80px;
     font-size: 25px;
-    border-radius: 25px 0px 0px 25px;
   }
   .formid {
-    width: 1000px;
+    width: 600px;
     padding: 25px;
   }
   .landing-page .content .info h1 {
@@ -461,38 +452,44 @@ body {
     justify-content: space-around;
     align-items: center;
     padding-top: 40px;
-    padding-bottom: 90px;
+    padding-bottom: 70px;
   }
   .formid .form-p p {
     font-size: 25px;
   }
-  /* body {
-    background-size: 1000px 1000px;
-  } */
+
   .landing-page .content .formid button {
-    width: 130px;
-    height: 80px;
+    width: 100%;
+    height: 70px;
+    margin-top: 45px;
     font-size: 25px;
-    border-radius: 0px 25px 25px 0px;
+    font-weight: 300;
+    border-radius: 10px;
   }
-  .invalid-feedback {
-    font-size: 25px;
-    display: block;
+
+  .invalid-response {
     position: absolute;
+    display: block;
+    color: #dc3545;
     bottom: -2.5rem;
-    left: 0;
     transform: none;
+    font-size: 25px;
   }
+
+  .formid .input-kode {
+    font-size: 25px;
+  }
+
 }
 @media only screen and (min-width: 3840px) {
   .row {
     flex-direction: row;
   }
   .timeline li .item span {
-    font-size: 100px;
+    font-size: 70px;
     position: absolute;
     top: -8px;
-    left: -80px;
+    left: -90px;
     width: 150px;
     height: 150px;
     line-height: 150px;
@@ -503,17 +500,18 @@ body {
     border-radius: 50%;
   }
   .timeline {
-    margin-left: 70px;
+    margin-left: 200px;
     margin-right: 0px;
+    margin-top: 100px;
   }
   .timeline li:last-child .item {
-    border-left: 15px solid transparent;
+    border-left: 25px solid transparent;
   }
   .timeline li .item {
     position: relative;
     min-height: 50px;
     padding: 0 20px 20px 100px;
-    border-left: 15px solid #24b1ad;
+    border-left: 25px solid #24b1ad;
   }
   .timeline li .item h3 {
     font-size: 60px;
@@ -525,57 +523,50 @@ body {
     max-width: 50%;
   }
   .formid input {
-    padding-left: 15px;
-    letter-spacing: 42px;
-    border: 0;
-    background-image: linear-gradient(
-      to left,
-      black 70%,
-      rgba(255, 255, 255, 0) 0%
-    );
-    background-position: bottom;
-    background-size: 50px 1px;
-    background-repeat: repeat-x;
-    background-position-x: 35px;
-    width: 220px;
-    outline: none;
+    width: 100%;
+    height: 150px;
+    font-size: 50px;
   }
   .formid {
-    width: 1000px;
+    width: 1150px;
     padding: 25px;
   }
   .landing-page .content .info h1 {
-    font-size: 160px;
+    font-size: 140px;
   }
   .landing-page .content .info h2 {
-    font-size: 160px;
+    font-size: 140px;
   }
   .landing-page .content .container-info {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 200px;
+    padding-top: 100px;
+    padding-bottom: 180px;
   }
   .formid .form-p p {
     font-size: 50px;
+    margin-bottom: 40px;
   }
-  /* body {
-    background-size: 2000px 2000px;
-  } */
+
   .landing-page .content .formid button {
-    width: 190px;
+    margin-top: 90px;
+    width: 100%;
     height: 130px;
-    font-size: 40px;
-    margin-top: 10px;
-    border-radius: 0px 25px 25px 0px;
+    font-size: 50px;
+    font-weight: 300;
+    border-radius: 15px;
   }
-  .invalid-feedback {
-    font-size: 40px;
-    display: block;
+  .invalid-response {
     position: absolute;
-    bottom: -3.5rem;
-    left: 0;
+    display: block;
+    color: #dc3545;
+    bottom: -5rem;
     transform: none;
+    font-size: 50px;
   }
+  .formid .input-kode {
+    font-size: 50px;
+  }
+
 }

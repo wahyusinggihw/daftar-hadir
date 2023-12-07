@@ -103,7 +103,7 @@
 
           <div class="form-input">
             <input type="hidden" class="form-control <?= (validation_show_error('id_rapat')) ? 'is-invalid' : '' ?>" id="id_rapat" name="id_rapat" placeholder="XXX-XXX" autocomplete="off">
-            <div class="invalid-feedback">
+            <div class="invalid-response">
               <?= validation_show_error('id_rapat') ?>
             </div>
           </div>
