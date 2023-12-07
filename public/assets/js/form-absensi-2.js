@@ -484,12 +484,31 @@ function pegawaiAjax(apiEndpoint, nikValue) {
           signaturePad.on();
           // console.log(data);
           // $("#nip").val(data.data.nip).prop("readonly", false);
-          $("#no_hp").val(data.data.no_hp).prop("readonly", true);
-          $("#nama").val(data.data.nama_lengkap).prop("readonly", true);
-          $("#alamat").val(data.data.alamat).prop("readonly", true);
-          $("#instansiOption, #asal_instansi_option")
-            .val(data.data.ket_ukerja)
-            .prop("readonly", true);
+          // check if data.data is null, if true then set the value to empty string
+          // terdapat beberapa data yang kosong, sehingga perlu dilakukan pengecekan
+          function updateFormField(fieldId, fieldValue) {
+            if (fieldValue === "") {
+              $(fieldId).val(String.fromCharCode(32)).prop("readonly", true);
+            } else {
+              $(fieldId).val(fieldValue).prop("readonly", true);
+            }
+          }
+
+          updateFormField("#no_hp", data.data.no_hp);
+          updateFormField("#nama", data.data.nama_lengkap);
+          updateFormField("#alamat", data.data.alamat);
+          updateFormField(
+            "#instansiOption, #asal_instansi_option",
+            data.data.ket_ukerja
+          );
+          // console.log(data.data.no_hp);
+          // Update the form fields with the fetched data
+          // $("#no_hp").val(data.data.no_hp).prop("readonly", true);
+          // $("#nama").val(data.data.nama_lengkap).prop("readonly", true);
+          // $("#alamat").val(data.data.alamat).prop("readonly", true);
+          // $("#instansiOption, #asal_instansi_option")
+          //   .val(data.data.ket_ukerja)
+          //   .prop("readonly", true);
         }
       } else {
         $("#cariNikButton i").attr("class", initialClasses);
