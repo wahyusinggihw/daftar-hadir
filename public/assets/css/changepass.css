@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.login-form {
+    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 50px;
+}
+
+.login-form .logo{
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#requirements-list-change {
+    display: flex;
+    margin-top: 30px;
+}
+
+#requirements-list-custom {
+    display: flex;
+}
+
+#requirements-1 {
+    list-style-type: none;
+    margin-right: 15px;
+    padding: 0;
+}
+
+#requirements-2 {
+    list-style-type: none;
+    padding: 0;
+}
+
+#requirements li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+#requirements-1 i {
+    margin-right: 8px;
+}
+
+#requirements-2 i {
+    margin-right: 8px;
+}
+
+/* Warna merah untuk ikon silang */
+#requirements-list-change ul i.fa-times-circle {
+    color: #dc3545;
+}
+
+/* Warna hijau untuk ikon centang */
+#requirements-list-change ul i.fa-check-circle {
+    color: #28a745;
+}
+
+#requirements-list-change ul i.fa-times-circle {
+    color: #dc3545;
+}
+
+/* Warna hijau untuk ikon centang */
+#requirements-list-change ul i.fa-check-circle {
+    color: #28a745;
+}
+
+.login-form button {
+    width: 100%;
+    height: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    position: absolute bottom;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+.password-new-input{
+    position: relative;
+}
+
+.password-toggle-btn-new i {
+    font-size: 1.2em;
+}
+
+.password-toggle-btn-new {
+    position: absolute;
+    top: 55%;
+    right: 10px;
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+.invalid-feedback {
+    display: block;
+    bottom: -1.5rem;
+    /* Atur jarak di bawah input, misalnya -1.5rem atau sesuai kebutuhan */
+    left: 0;
+    /* Atur posisi horizontal ke kiri */
+    transform: none;
+    /* Hapus transform */
+}
+
+.invalid-feedback-custom {
+    color: #dc3545;
+    display: block;
+    position: absolute;
+    /* Atur jarak di bawah input, misalnya -1.5rem atau sesuai kebutuhan */
+    transform: none;
+    /* Hapus transform */
+}
+
+@media only screen and (max-width: 480px) {
+    .login-form{
+        margin: 0px;
+    }
+}
+
+/* Media query untuk perangkat dengan lebar antara 481 dan 768 pixel */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    
+}
+
+/* Media query untuk perangkat dengan lebar antara 1025 dan 1200 pixel */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {}
+
+/* Media query untuk perangkat dengan lebar minimum 1201 pixel */
+@media only screen and (min-width: 1201px) {
+
+}

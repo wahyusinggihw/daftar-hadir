@@ -35,23 +35,23 @@
                         <dd class="col-sm-8 text-justify"><?= $data['deskripsi'] ?></dd>
                     </dl>
                 </div>
+                <div class="col d-flex justify-content-right ms-5">
+                    <div class="row mb-2">
+                        <a href="https://api.whatsapp.com/send?text=<?= urlencode('Informasi Rapat: ' . base_url('rapat/informasi/' . $data['kode_rapat'])) ?>" role="bt" class="btn btn-outline-info" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+                    </div>
+                    <div class="row mb-2 ms-4">
+                        <button data-kode="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" id="salin-kode" class="btn btn-outline-info"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+                    <div class="row mb-2 ms-4">
+                        <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-outline-info" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="col-md-5 col-sm-4 d-flex align-items-center justify-content-center mx-auto">
                 <div class="card-body">
                     <div class="col">
                         <div class="col mb-2">
                             <img id="qr" class="img-fluid" src="<?= $qrCode ?>" alt="<?= $data['kode_rapat'] ?>">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <div class="row mb-2">
-                                <a href="https://api.whatsapp.com/send?text=<?= urlencode('Informasi Rapat: ' . base_url('rapat/informasi/' . $data['kode_rapat'])) ?>" role="bt" class="btn btn-outline-info" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
-                            </div>
-                            <div class="row mb-2 ms-4">
-                                <button data-kode="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" id="salin-kode" class="btn btn-outline-info"><i class="fa-solid fa-copy"></i></button>
-                            </div>
-                            <div class="row mb-2 ms-4">
-                                <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-outline-info" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/changepass.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/admin.css') ?>">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -39,25 +39,27 @@
     </style>
 
     <div class="login-form">
-        <div class="container">
+        <div class="logo">
             <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="Logo" width="100">
         </div>
 
-        <h2>Ganti Password</h2>
+        <h2>Ubah Password</h2>
         <form action="<?= base_url('/auth/change-password') ?>" method="post" id="form-login">
             <?= csrf_field() ?>
             <div class="container">
                 <div class="input-wrapper">
                     <div class="form-group mb-3">
-                        <label for="password" class="form-label">Password baru:</label>
-                        <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password" autofocus>
-                        <span class="password-toggle-btn" onclick="togglePassword('password')">
-                            <i id="password-toggle-icon" class="fa fa-eye"></i>
-                        </span>
-                        <div class="invalid-feedback text-start">
-                            <?= validation_show_error('password') ?>
+                        <div class="password-new-input">
+                            <label for="password" class="form-label">Password baru:</label>
+                            <input type="password" class="form-control <?= validation_show_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Masukkan password" autofocus>
+                            <span class="password-toggle-btn-new" onclick="togglePassword('password')">
+                                <i id="password-toggle-icon" class="fa fa-eye"></i>
+                            </span>
+                            <div class="invalid-feedback-custom">
+                                <?= validation_show_error('password') ?>
+                            </div>
                         </div>
-                        <div id="requirements-list">
+                        <div id="requirements-list-change">
                             <ul id="requirements-1">
                                 <li><i id="capital" class="far fa-times-circle"></i>Huruf Kapital</li>
                                 <li><i id="number" class="far fa-times-circle"></i>Angka</li>
@@ -78,7 +80,7 @@
                             <span class="password-toggle-btn" onclick="togglePassword('confirm-password')">
                                 <i id="password-toggle-icon" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback text-start">
+                            <div class="invalid-feedback-custom">
                                 <?= validation_show_error('confirm-password') ?>
                             </div>
                         </div>
