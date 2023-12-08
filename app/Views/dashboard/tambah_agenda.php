@@ -77,8 +77,8 @@
                         </div>
                     </div>
                 </div>
+                <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>

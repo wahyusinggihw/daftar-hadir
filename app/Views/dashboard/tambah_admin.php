@@ -94,6 +94,7 @@
                             </div>
                         </div>
                     </div>
+                    <a href="<?= base_url('dashboard/kelola-admin') ?>" type="submit" class="btn btn-secondary">Batal</a>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>
             </div>
