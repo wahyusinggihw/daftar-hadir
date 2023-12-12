@@ -300,7 +300,7 @@ class AgendaRapatModel extends Model
             return null;
             # code...
         } else {
-            return $agendas;
+            return array_values($agendas);
         }
     }
 
@@ -321,7 +321,7 @@ class AgendaRapatModel extends Model
             return null;
             # code...
         } else {
-            return $agendas;
+            return array_values($agendas);
         }
     }
 

@@ -20,7 +20,7 @@ class AgendaRapatControllerAPI extends BaseController
     {
         $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi);
 
-        if ($agendaRapat == null) {
+        if (empty($agendaRapat)) {
             return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
         }
 
@@ -31,7 +31,7 @@ class AgendaRapatControllerAPI extends BaseController
     {
         $agendaRapat = $this->agendaRapat->getAgendaAPISelesai($idInstansi);
 
-        if ($agendaRapat == null) {
+        if (empty($agendaRapat)) {
             return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
         }
 
