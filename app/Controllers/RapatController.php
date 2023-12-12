@@ -57,7 +57,7 @@ class RapatController extends BaseController
             if ($rapat == null) {
                 return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
             }
-            $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
+            $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam'], $rapat['kadaluwarsa']);
             // dd($expiredTime);
             if ($expiredTime) {
                 return redirect()->to('/')->with('error', 'Rapat Sudah Berakhir');

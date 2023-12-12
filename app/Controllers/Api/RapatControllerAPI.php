@@ -103,10 +103,10 @@ class RapatControllerAPI extends BaseController
 
 
         // Cek apakah rapat sudah berakhir
-        $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam']);
-        if ($expiredTime) {
-            return $this->errorResponse(500, 'Rapat sudah berakhir');
-        }
+        // $expiredTime = expiredTime($rapat['tanggal'], $rapat['jam'], $rapat['kadaluwarsa']);
+        // if ($expiredTime) {
+        //     return $this->errorResponse(500, 'Rapat sudah berakhir');
+        // }
 
         $riwayatKehadiran = $this->daftarHadir->sudahAbsen($this->request->getVar('nip'), $rapat['id_agenda']);
 

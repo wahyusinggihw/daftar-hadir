@@ -57,6 +57,11 @@ class AgendaRapat extends BaseController
             return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
         }
 
+        $isExpired = expiredTime($agendaRapat['tanggal'], $agendaRapat['jam'], $agendaRapat['kadaluwarsa']);
+        if ($isExpired) {
+            return redirect()->to('/')->with('error', 'Rapat sudah berakhir.');
+        }
+
         $data = [
             'title' => 'Informasi Rapat',
             'qrCode' => generateQrCode($agendaRapat['link_rapat']),
@@ -252,7 +257,7 @@ class AgendaRapat extends BaseController
                         'required' => 'Jam Rapat harus diisi.'
                     ]
                 ],
-                'kadaluwarasa' => [
+                'kadaluwarsa' => [
                     'rules' => 'required|numeric',
                     'errors' => [
                         'required' => 'Kadaluwarsa Rapat harus diisi.',

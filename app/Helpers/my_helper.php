@@ -20,11 +20,19 @@ function kodeRapat()
     return $kode;
 }
 
-function expiredTime($date, $time, $intervalMinutes)
+/**
+ * Calculates the expiration time of a meeting based on the given date, time, and interval.
+ *
+ * @param string $date The date of the meeting in 'Y-m-d' format.
+ * @param string $time The time of the meeting in 'H:i' format.
+ * @param int $kadaluwarsa The interval in minutes from agendarapats table to add to the meeting time.
+ * @return bool Returns true if the meeting has expired, false otherwise.
+ */
+function expiredTime($date, $time, $kadaluwarsa)
 {
     $datetimeStr = $date . ' ' . $time;
 
-    $interval = $intervalMinutes . 'M';
+    $interval = $kadaluwarsa . 'M';
 
     // Convert the datetime string to a DateTime object
     $datetime = new DateTime($datetimeStr);
@@ -48,9 +56,17 @@ function expiredTime($date, $time, $intervalMinutes)
     // return $expiredDateTime;
 }
 
-function statusRapat($date, $time, $intervalMinutes)
+/**
+ * Determines the status of a meeting based on its date, time, and expiration.
+ *
+ * @param string $date The date of the meeting.
+ * @param string $time The time of the meeting.
+ * @param int $kadaluwarsa The expiration time in minutes.
+ * @return string The status of the meeting ('tersedia' if still valid, 'selesai' if expired).
+ */
+function statusRapat($date, $time, $kadaluwarsa)
 {
-    $expiredCheck = expiredTime($date, $time, $intervalMinutes);
+    $expiredCheck = expiredTime($date, $time, $kadaluwarsa);
     // dd($currentDateTime->format('Y-m-d H:i'), $expiredDateTime);
     if (!$expiredCheck) {
         // Meeting is still valid
