@@ -35,16 +35,20 @@ $routes->get('api/pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
 $routes->get('api/pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
 $routes->get('api/pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
 
-// API / AJAX
+// API
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     // login
     $routes->post('login', "Api\AuthControllerAPI::login");
     // get agenda rapat berdasarkan instansi user (Home Screen)
+    // Tersedia
     $routes->get('agenda-rapat/instansi/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansi/$1');
+    // Selesai
+    $routes->get('agenda-rapat/instansi/selesai/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansiSelesai/$1');
     // get agenda rapat berdasarkan id agenda rapat (Qr code result)
     $routes->get('agenda-rapat/scan/(:segment)', 'Api\AgendaRapatControllerAPI::getAgendaRapat/$1');
     // post form absen
     $routes->post('daftar-hadir/store', 'Api\RapatControllerAPI::absenStore');
+    $routes->post('change-password', "Api\AuthControllerAPI::changePassword");
 });
 
 // Dashboard
