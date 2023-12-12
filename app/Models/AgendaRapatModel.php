@@ -290,4 +290,45 @@ class AgendaRapatModel extends Model
             return $agendas;
         }
     }
+
+    public function getAgendaAPISelesai($id_instansi)
+    {
+        $builder = $this->table('agendarapats');
+        $builder->select('agendarapats.*');
+        $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+        $builder->where('admins.id_instansi', $id_instansi);
+        $agendas = $builder->get()->getResultArray();
+        // $agendas = $this->getAgendasWithEditability($agendas);
+        $agendas = $this->addStatusToAgendas($agendas);
+        // get the agenda where status avalilable
+        $agendas = array_filter($agendas, function ($agenda) {
+            return $agenda['status'] == 'selesai';
+        });
+        if (empty($agendas)) {
+            return null;
+            # code...
+        } else {
+            return $agendas;
+        }
+    }
+
+    // public function getAgendaAPI($id_instansi, $status)
+    // {
+    //     $builder = $this->table('agendarapats');
+    //     $builder->select('agendarapats.*');
+    //     $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+    //     $builder->where('admins.id_instansi', $id_instansi);
+    //     $agendas = $builder->get()->getResultArray();
+    //     // $agendas = $this->getAgendasWithEditability($agendas);
+    //     $agendas = $this->addStatusToAgendas($agendas);
+    //     // get the agenda where status matches
+    //     $agendas = array_filter($agendas, function ($agenda) use ($status) {
+    //         return $agenda['status'] == $status;
+    //     });
+    //     if (empty($agendas)) {
+    //         return null;
+    //     } else {
+    //         return $agendas;
+    //     }
+    // }
 }
