@@ -20,16 +20,17 @@ function kodeRapat()
     return $kode;
 }
 
-function expiredTime($date, $time)
+function expiredTime($date, $time, $intervalMinutes)
 {
     $datetimeStr = $date . ' ' . $time;
-    $interval = '4 hours'; // The interval you want to add
+
+    $interval = $intervalMinutes . 'M';
 
     // Convert the datetime string to a DateTime object
     $datetime = new DateTime($datetimeStr);
 
     // Add the interval to the datetime
-    $datetime->add(new DateInterval('PT4H'));
+    $datetime->add(new DateInterval('PT' . $interval));
 
     // Format the new datetime as 'Y-m-d H:i'
     $expiredDateTime = $datetime->format('Y-m-d H:i');
@@ -47,9 +48,9 @@ function expiredTime($date, $time)
     // return $expiredDateTime;
 }
 
-function statusRapat($date, $time)
+function statusRapat($date, $time, $intervalMinutes)
 {
-    $expiredCheck = expiredTime($date, $time);
+    $expiredCheck = expiredTime($date, $time, $intervalMinutes);
     // dd($currentDateTime->format('Y-m-d H:i'), $expiredDateTime);
     if (!$expiredCheck) {
         // Meeting is still valid

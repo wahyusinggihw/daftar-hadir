@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <!-- </div> -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label>Tanggal</label>
                             <input type="text" class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', date('d-m-Y')) ?>" id="tanggal" name="tanggal" min="<?= date('d-m-Y') ?>" autocomplete="off">
@@ -67,12 +67,22 @@
                             <?= validation_show_error('tanggal') ?>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label>Jam</label>
                             <input class="timepicker-default readonly form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam') ?>" id="jam" name="jam" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= validation_show_error('jam') ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Kadaluwarsa (Menit)</label>
+                            <input type="text" class="form-control <?= validation_show_error('kadaluwarsa') ? 'is-invalid' : '' ?>" value="<?= old('kadaluwarsa') ?>" id="kadaluwarsa" name="kadaluwarsa" inputmode="numeric" placeholder="contoh. 10" autocomplete="off">
+                            <div class="invalid-feedback">
+                                <?= validation_show_error('kadaluwarsa') ?>
                             </div>
                         </div>
                     </div>
@@ -100,6 +110,32 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script> -->
     <script>
+        function setInputFilter(textboxes, errMsg) {
+            if (textboxes && Array.isArray(textboxes)) {
+                textboxes.forEach(function(textbox) {
+                    textbox.addEventListener("input", function() {
+                        const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+                        if (this.value !== numericValue) {
+                            // Non-numeric characters were entered - block and show error
+                            this.value = numericValue;
+                            this.classList.add("input-error");
+                            this.setCustomValidity(errMsg);
+                            this.reportValidity();
+                        } else {
+                            // Numeric input - remove error
+                            this.classList.remove("input-error");
+                            this.setCustomValidity("");
+                            this.reportValidity();
+                        }
+                    });
+                });
+            }
+        }
+
+        setInputFilter([document.getElementById("kadaluwarsa")], "Harus berupa angka");
+
+
         // show minlength
         function handleCharacterCounter(inputId, counterClass, minLength) {
             $(inputId).on('input', function() {
@@ -150,6 +186,18 @@
             time_24hr: true,
             minTime: defaultTime,
             defaultHour: defaultTime.split(':')[0],
+            // defaultMinute: defaultTime.split(':')[1],
+        });
+
+        const timepickerKadaluarsa = flatpickr('.timepicker-kadaluarsa', {
+            // allowInput: true,
+            disableMobile: true,
+            enableTime: true,
+            noCalendar: true,
+            // time_24hr: true,
+            dateFormat: "i", // Use "i" format to display only minutes
+            // minTime: defaultTime,
+            // defaultHour: defaultTime.split(':')[0],
             // defaultMinute: defaultTime.split(':')[1],
         });
 

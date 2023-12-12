@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <!-- </div> -->
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Tanggal</label>
                                 <input class="form-control <?= validation_show_error('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal', $data['tanggal']) ?>" id="tanggal" name="tanggal" min="<?= date('d-m-Y') ?>">
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Jam</label>
                                 <input class="timepicker-default form-control <?= validation_show_error('jam') ? 'is-invalid' : '' ?>" value="<?= old('jam', $data['jam']) ?>" id="jam" name="jam">
@@ -77,9 +77,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Kadaluwarsa(Menit)</label>
+                                <input type="text" class="form-control <?= validation_show_error('kadaluwarsa') ? 'is-invalid' : '' ?>" value="<?= old('kadaluwarsa', $data['kadaluwarsa']) ?>" id="kadaluwarsa" name="kadaluwarsa" inputmode="numeric" placeholder="10" autocomplete="off">
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('kadaluwarsa') ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
                     <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-danger">Batal</a>
                 </form>
             </div>
         </div>
@@ -100,6 +109,31 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script> -->
     <script>
+        function setInputFilter(textboxes, errMsg) {
+            if (textboxes && Array.isArray(textboxes)) {
+                textboxes.forEach(function(textbox) {
+                    textbox.addEventListener("input", function() {
+                        const numericValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+                        if (this.value !== numericValue) {
+                            // Non-numeric characters were entered - block and show error
+                            this.value = numericValue;
+                            this.classList.add("input-error");
+                            this.setCustomValidity(errMsg);
+                            this.reportValidity();
+                        } else {
+                            // Numeric input - remove error
+                            this.classList.remove("input-error");
+                            this.setCustomValidity("");
+                            this.reportValidity();
+                        }
+                    });
+                });
+            }
+        }
+
+        setInputFilter([document.getElementById("kadaluwarsa")], "Harus berupa angka");
+
         // show minlength
         function handleCharacterCounter(inputId, counterClass, minLength) {
             $(inputId).on('input', function() {

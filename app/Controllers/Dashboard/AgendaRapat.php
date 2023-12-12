@@ -5,6 +5,7 @@ namespace App\Controllers\Dashboard;
 use Ramsey\Uuid\Uuid;
 use Cocur\Slugify\Slugify;
 use App\Models\AgendaRapatModel;
+use App\Models\DaftarHadirModel;
 use App\Controllers\BaseController;
 
 
@@ -12,9 +13,11 @@ class AgendaRapat extends BaseController
 {
     protected $helpers = ['form'];
     protected $agendaRapat;
+    protected $daftarHadir;
     public function __construct()
     {
         $this->agendaRapat = new AgendaRapatModel();
+        $this->daftarHadir = new DaftarHadirModel();
         helper('my_helper');
     }
 
@@ -32,12 +35,15 @@ class AgendaRapat extends BaseController
 
     public function view($slug)
     {
-        $linkRapat = $this->agendaRapat->where('slug', $slug)->first()['link_rapat'];
+        $agendaRapat = $this->agendaRapat->getAgendabySlug($slug);
+        // $linkRapat = $this->agendaRapat->where('slug', $slug)->first()['link_rapat'];
         $data = [
             'title' => 'Agenda Rapat',
             'subtitle' => 'Detail Agenda Rapat',
-            'qrCode' => generateQrCode($linkRapat),
-            'data' => $this->agendaRapat->where('slug', $slug)->first(),
+            'qrCode' => generateQrCode($agendaRapat[0]['link_rapat']),
+            'data' => $agendaRapat[0],
+            'jumlahKehadiran' => count($this->daftarHadir->getDaftarHadirByID($agendaRapat[0]['id_agenda'])),
+            'status' => $agendaRapat[0]['status']
         ];
 
         return view('dashboard/view_agenda', $data);
@@ -107,6 +113,7 @@ class AgendaRapat extends BaseController
             'tempat' => $this->request->getVar('tempat'),
             'tanggal' => $this->request->getVar('tanggal'),
             'jam' => $this->request->getVar('jam'),
+            'kadaluwarsa' => $this->request->getVar('kadaluwarsa'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'link_rapat' => base_url() . 'rapat/daftar-hadir/' . $kodeRapat,
             'created_at' => date('Y-m-d H:i:s'),
@@ -243,6 +250,13 @@ class AgendaRapat extends BaseController
                     'rules' => 'required',
                     'errors' => [
                         'required' => 'Jam Rapat harus diisi.'
+                    ]
+                ],
+                'kadaluwarasa' => [
+                    'rules' => 'required|numeric',
+                    'errors' => [
+                        'required' => 'Kadaluwarsa Rapat harus diisi.',
+                        'numeric' => 'Kadaluwarsa Rapat harus berupa angka.'
                     ]
                 ],
                 'deskripsi' => [

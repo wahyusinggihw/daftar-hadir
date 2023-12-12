@@ -31,6 +31,7 @@ class AgendaRapatModel extends Model
         'tanggal',
         'deskripsi',
         'jam',
+        'kadaluwarsa',
         'link_rapat',
         'created_at',
         'updated_at',
@@ -114,7 +115,7 @@ class AgendaRapatModel extends Model
     private function addStatusToAgendas($agendas)
     {
         foreach ($agendas as &$item) {
-            $item['status'] = statusRapat($item['tanggal'], $item['jam']);
+            $item['status'] = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
         }
         return $agendas;
     }
@@ -140,6 +141,18 @@ class AgendaRapatModel extends Model
             return true;
         }
         return false;
+    }
+
+    public function getAgendabySlug($slug)
+    {
+        $builder = $this->table('agendarapats');
+        $builder->select('agendarapats.*, admins.slug as admin_slug, admins.id_bidang as admin_id_bidang, admins.nama_bidang as admin_nama_bidang');
+        $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+        $builder->where('agendarapats.slug', $slug);
+        $agendas = $builder->get()->getResultArray();
+        $agendas  = $this->addStatusToAgendas($agendas);
+        // dd($agendas);
+        return $agendas;
     }
 
     // get agenda rapat by kode_rapat
@@ -228,7 +241,7 @@ class AgendaRapatModel extends Model
         $selesaiAgenda = [];
 
         foreach ($agendaItems as $item) {
-            $status = statusRapat($item['tanggal'], $item['jam']);
+            $status = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
 
             if ($status === 'tersedia') {
                 $tersediaAgenda[] = $item;
@@ -253,7 +266,7 @@ class AgendaRapatModel extends Model
         $selesaiAgenda = [];
 
         foreach ($agendaItems as $item) {
-            $status = statusRapat($item['tanggal'], $item['jam']);
+            $status = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
 
             if ($status === 'tersedia' && $item['id_instansi'] == $id_instansi) {
                 $tersediaAgenda[] = $item;
