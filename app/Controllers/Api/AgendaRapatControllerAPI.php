@@ -18,8 +18,10 @@ class AgendaRapatControllerAPI extends BaseController
 
     public function getByInstansi($idInstansi)
     {
-        $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi);
-
+        // get parameter from url
+        $nip = $this->request->getVar('nip');
+        $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi, $nip);
+        // var_dump($agendaRapat);
         if (empty($agendaRapat)) {
             return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
         }
@@ -29,7 +31,8 @@ class AgendaRapatControllerAPI extends BaseController
 
     public function getByInstansiSelesai($idInstansi)
     {
-        $agendaRapat = $this->agendaRapat->getAgendaAPISelesai($idInstansi);
+        $nip = $this->request->getVar('nip');
+        $agendaRapat = $this->agendaRapat->getAgendaAPISelesai($idInstansi, $nip);
 
         if (empty($agendaRapat)) {
             return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');

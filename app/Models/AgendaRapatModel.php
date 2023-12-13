@@ -120,6 +120,18 @@ class AgendaRapatModel extends Model
         return $agendas;
     }
 
+    private function addHistoryAbsensiToAgendas($agendas, $nip)
+    {
+        $daftarHadir = new DaftarHadirModel();
+
+        foreach ($agendas as &$item) {
+            $riwayatKehadiran = $daftarHadir->sudahAbsen($nip, $item['id_agenda']);
+            $item['hadir'] = $riwayatKehadiran ? $riwayatKehadiran : false;
+        }
+
+        return $agendas;
+    }
+
     private function getAgendasWithEditability($agendas)
     {
         foreach ($agendas as &$agenda) {
@@ -283,7 +295,7 @@ class AgendaRapatModel extends Model
     }
 
     // get agendainstansi API untuk mobile app
-    public function getAgendaAPI($id_instansi)
+    public function getAgendaAPI($id_instansi, $nip)
     {
         $builder = $this->table('agendarapats');
         $builder->select('agendarapats.*');
@@ -291,6 +303,7 @@ class AgendaRapatModel extends Model
         $builder->where('admins.id_instansi', $id_instansi);
         $agendas = $builder->get()->getResultArray();
         // $agendas = $this->getAgendasWithEditability($agendas);
+        $agendas = $this->addHistoryAbsensiToAgendas($agendas, $nip);
         $agendas = $this->addStatusToAgendas($agendas);
         // get the agenda where status avalilable
         $agendas = array_filter($agendas, function ($agenda) {
@@ -304,7 +317,7 @@ class AgendaRapatModel extends Model
         }
     }
 
-    public function getAgendaAPISelesai($id_instansi)
+    public function getAgendaAPISelesai($id_instansi, $nip)
     {
         $builder = $this->table('agendarapats');
         $builder->select('agendarapats.*');
@@ -312,6 +325,7 @@ class AgendaRapatModel extends Model
         $builder->where('admins.id_instansi', $id_instansi);
         $agendas = $builder->get()->getResultArray();
         // $agendas = $this->getAgendasWithEditability($agendas);
+        $agendas = $this->addHistoryAbsensiToAgendas($agendas, $nip);
         $agendas = $this->addStatusToAgendas($agendas);
         // get the agenda where status avalilable
         $agendas = array_filter($agendas, function ($agenda) {
