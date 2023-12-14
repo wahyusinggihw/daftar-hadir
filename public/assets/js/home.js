@@ -173,7 +173,7 @@ inputs.forEach((input, index1) => {
       var inputOtp6 = document.getElementById('otpInput6').value;
 
       // Mengkombinasikan nilai-nilai input OTP menjadi satu string secara manual
-      var combinedOtp = inputOtp1 + inputOtp2 + inputOtp3 + - + inputOtp4 + inputOtp5 + inputOtp6;
+      var combinedOtp = inputOtp1 + inputOtp2 + inputOtp3 + '-' + inputOtp4 + inputOtp5 + inputOtp6;
 
       // Menetapkan nilai kombinasi pada input tipe hidden
       document.getElementById('id_rapat').value = combinedOtp;
@@ -185,13 +185,5 @@ inputs.forEach((input, index1) => {
     }
   });
 });
-
-function checkSubmit(event) {
-        // Lakukan pengecekan atau aksi lainnya di sini
-        alert("Tombol Submit Ditekan!");
-
-        // Untuk menghindari pengiriman formulir (pengiriman POST atau GET)
-        event.preventDefault();
-}
 
 
