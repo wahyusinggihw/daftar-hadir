@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item <?php echo isset($title1) ? '' : 'active' ?>"><?php isset($title1) ? print($title1) : '' ?></li>
                     <?php endif; ?>
                     <?php if (isset($subtitle)) :  ?>
-                        <li class="breadcrumb-item active"><?php isset($subtitle) ? print($subtitle) : '' ?></li>
+                        <li class="breadcrumb-item active"><?php isset($subtitle) ? print(elipsis($subtitle, 30)) : '' ?></li>
                     <?php endif; ?>
                 </ol>
             </div><!-- /.col -->

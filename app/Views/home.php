@@ -43,40 +43,69 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-6 d-flex align-items-center order-1 order-lg-2">
-            <div class="w-100">
-              <div class="row justify-content-center">
-                <div class="col-md-8">
-                  <div class="title-kode-rapat">Kode Rapat</div>
-                  <div class="description-form-rapat">Untuk dapat melakukan presensi pada Aplikasi Daftar Hadir, masukkan
-                    kode yang telah dibagikan oleh
-                    petugas</div>
-                  <div class="mb-3">
-                    <div class="otp-field mb-4" id="otp">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput1" name="otpInput1" maxlength="1" pattern="[0-9]" inputmode="numeric" autocomplete="off">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput2" name="otpInput2" maxlength="1" pattern="[0-9]" disabled inputmode="numeric" autocomplete="off">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput3" name="otpInput3" maxlength="1" pattern="[0-9]" disabled inputmode="numeric" autocomplete="off">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput4" name="otpInput4" maxlength="1" pattern="[0-9]" disabled inputmode="numeric" autocomplete="off">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput5" name="otpInput5" maxlength="1" pattern="[0-9]" disabled inputmode="numeric" autocomplete="off">
-                      <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput6" name="otpInput6" maxlength="1" pattern="[0-9]" disabled inputmode="numeric" autocomplete="off">
-                    </div>
-                    <div class="form-input">
-                      <input type="hidden" class="form-control <?= (validation_show_error('id_rapat')) ? 'is-invalid' : '' ?>" id="id_rapat" name="id_rapat" placeholder="XXX-XXX" autocomplete="off">
-                      <div class="invalid-feedback">
-                        <?= validation_show_error('id_rapat') ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <button id="submitBtn" class="btn btn-rapat" type="submit">Cari Ruang Rapat</button>
-                  </div>
-                </div>
+          </li>
+          <li>
+            <div class="item">
+              <span>4</span>
+              <div class="content">
+                <h3>Mengisi Formulir</h3>
+                <p>
+                  Jika sebagai pegawai cukup isikan NIP atau NIPT, lalu tekan "Cari" dan tanda tangan. Sedangkan untuk tamu jika baru pertama anda bisa isi semua biodata anda pada formulir yang sudah di sediakan, jika NIK kalian sudah terdaftar
+                  silahkan tekan "Cari" lalu lanjutkan mengisi tanda tangan.
+                </p>
               </div>
             </div>
+          </li>
+          <li>
+            <div class="item">
+              <span>5</span>
+              <div class="content">
+                <h3>Selesai</h3>
+                <p>
+                  Pastikan semua data yang anda masukkan sudah benar, kemudian anda dapat mengirim formulir dengan menekan tombol "Kirim".
+                </p>
+              </div>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="content-wrapper">
+          <div class="container-info">
+            <div class="info">
+              <h1>Daftar Hadir Rapat</h1>
+              <h2>Pemkab Buleleng</h2>
+            </div>
           </div>
+          <form action="<?= base_url('/rapat/submit-kode') ?>" method="post">
+            <?= csrf_field() ?>
+            <div class="formid">
+              <div class="form-p">
+                <p>Silahkan Masukan Kode Rapat</p>
+              </div>
+              <?php
+              $invalid_input = validation_show_error('id_rapat') ? 'invalid-input' : '';
+              ?>
+
+              <div class="input-kode" id="otp">
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput1" name="otpInput1" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput2" name="otpInput2" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput3" name="otpInput3" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+                -
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput4" name="otpInput4" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput5" name="otpInput5" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+                <input type="text" class="otp-input <?= $invalid_input ?>" id="otpInput6" name="otpInput6" maxlength="1" pattern="[0-9]" oninput="moveToNext(this)" inputmode="numeric" autocomplete="off" placeholder="X">
+              </div>
+
+              <div class="form-input">
+                <input type="hidden" class="form-control <?= (validation_show_error('id_rapat')) ? 'is-invalid' : '' ?>" id="id_rapat" name="id_rapat" placeholder="XXX-XXX" autocomplete="off">
+                <div class="invalid-feedback">
+                  <?= validation_show_error('id_rapat') ?>
+                </div>
+              </div>
+              <button id="submitButton" onclick="combineOtpValues()">Masuk</button>
+            </div>
         </div>
       </div>
-    </div>
   </form>
 </body>
 

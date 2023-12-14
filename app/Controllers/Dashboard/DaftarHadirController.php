@@ -31,7 +31,7 @@ class DaftarHadirController extends BaseController
         $data = [
             'title' => 'Agenda Rapat',
             'title1' => 'Daftar Hadir',
-            'subtitle' => elipsis($agendaRapat['agenda_rapat'], 20),
+            'subtitle' => $agendaRapat['agenda_rapat'],
             'id_agenda' => $agendaRapat['id_agenda'],
             // 'data' => $this->daftarhadir->getDaftarHadirByID($id_agenda)
             'daftar_hadir' => $daftarHadir,

@@ -31,6 +31,7 @@ class AgendaRapatModel extends Model
         'tanggal',
         'deskripsi',
         'jam',
+        'kadaluwarsa',
         'link_rapat',
         'created_at',
         'updated_at',
@@ -114,8 +115,20 @@ class AgendaRapatModel extends Model
     private function addStatusToAgendas($agendas)
     {
         foreach ($agendas as &$item) {
-            $item['status'] = statusRapat($item['tanggal'], $item['jam']);
+            $item['status'] = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
         }
+        return $agendas;
+    }
+
+    private function addHistoryAbsensiToAgendas($agendas, $nip)
+    {
+        $daftarHadir = new DaftarHadirModel();
+
+        foreach ($agendas as &$item) {
+            $riwayatKehadiran = $daftarHadir->sudahAbsen($nip, $item['id_agenda']);
+            $item['hadir'] = $riwayatKehadiran ? $riwayatKehadiran : false;
+        }
+
         return $agendas;
     }
 
@@ -140,6 +153,18 @@ class AgendaRapatModel extends Model
             return true;
         }
         return false;
+    }
+
+    public function getAgendabySlug($slug)
+    {
+        $builder = $this->table('agendarapats');
+        $builder->select('agendarapats.*, admins.slug as admin_slug, admins.id_bidang as admin_id_bidang, admins.nama_bidang as admin_nama_bidang');
+        $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+        $builder->where('agendarapats.slug', $slug);
+        $agendas = $builder->get()->getResultArray();
+        $agendas  = $this->addStatusToAgendas($agendas);
+        // dd($agendas);
+        return $agendas;
     }
 
     // get agenda rapat by kode_rapat
@@ -228,7 +253,7 @@ class AgendaRapatModel extends Model
         $selesaiAgenda = [];
 
         foreach ($agendaItems as $item) {
-            $status = statusRapat($item['tanggal'], $item['jam']);
+            $status = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
 
             if ($status === 'tersedia') {
                 $tersediaAgenda[] = $item;
@@ -253,7 +278,7 @@ class AgendaRapatModel extends Model
         $selesaiAgenda = [];
 
         foreach ($agendaItems as $item) {
-            $status = statusRapat($item['tanggal'], $item['jam']);
+            $status = statusRapat($item['tanggal'], $item['jam'], $item['kadaluwarsa']);
 
             if ($status === 'tersedia' && $item['id_instansi'] == $id_instansi) {
                 $tersediaAgenda[] = $item;
@@ -270,7 +295,7 @@ class AgendaRapatModel extends Model
     }
 
     // get agendainstansi API untuk mobile app
-    public function getAgendaAPI($id_instansi)
+    public function getAgendaAPI($id_instansi, $nip)
     {
         $builder = $this->table('agendarapats');
         $builder->select('agendarapats.*');
@@ -278,6 +303,7 @@ class AgendaRapatModel extends Model
         $builder->where('admins.id_instansi', $id_instansi);
         $agendas = $builder->get()->getResultArray();
         // $agendas = $this->getAgendasWithEditability($agendas);
+        $agendas = $this->addHistoryAbsensiToAgendas($agendas, $nip);
         $agendas = $this->addStatusToAgendas($agendas);
         // get the agenda where status avalilable
         $agendas = array_filter($agendas, function ($agenda) {
@@ -287,7 +313,49 @@ class AgendaRapatModel extends Model
             return null;
             # code...
         } else {
-            return $agendas;
+            return array_values($agendas);
         }
     }
+
+    public function getAgendaAPISelesai($id_instansi, $nip)
+    {
+        $builder = $this->table('agendarapats');
+        $builder->select('agendarapats.*');
+        $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+        $builder->where('admins.id_instansi', $id_instansi);
+        $agendas = $builder->get()->getResultArray();
+        // $agendas = $this->getAgendasWithEditability($agendas);
+        $agendas = $this->addHistoryAbsensiToAgendas($agendas, $nip);
+        $agendas = $this->addStatusToAgendas($agendas);
+        // get the agenda where status avalilable
+        $agendas = array_filter($agendas, function ($agenda) {
+            return $agenda['status'] == 'selesai';
+        });
+        if (empty($agendas)) {
+            return null;
+            # code...
+        } else {
+            return array_values($agendas);
+        }
+    }
+
+    // public function getAgendaAPI($id_instansi, $status)
+    // {
+    //     $builder = $this->table('agendarapats');
+    //     $builder->select('agendarapats.*');
+    //     $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+    //     $builder->where('admins.id_instansi', $id_instansi);
+    //     $agendas = $builder->get()->getResultArray();
+    //     // $agendas = $this->getAgendasWithEditability($agendas);
+    //     $agendas = $this->addStatusToAgendas($agendas);
+    //     // get the agenda where status matches
+    //     $agendas = array_filter($agendas, function ($agenda) use ($status) {
+    //         return $agenda['status'] == $status;
+    //     });
+    //     if (empty($agendas)) {
+    //         return null;
+    //     } else {
+    //         return $agendas;
+    //     }
+    // }
 }

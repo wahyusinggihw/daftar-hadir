@@ -18,9 +18,23 @@ class AgendaRapatControllerAPI extends BaseController
 
     public function getByInstansi($idInstansi)
     {
-        $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi);
+        // get parameter from url
+        $nip = $this->request->getVar('nip');
+        $agendaRapat = $this->agendaRapat->getAgendaAPI($idInstansi, $nip);
+        // var_dump($agendaRapat);
+        if (empty($agendaRapat)) {
+            return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
+        }
 
-        if ($agendaRapat == null) {
+        return $this->response(200, $agendaRapat);
+    }
+
+    public function getByInstansiSelesai($idInstansi)
+    {
+        $nip = $this->request->getVar('nip');
+        $agendaRapat = $this->agendaRapat->getAgendaAPISelesai($idInstansi, $nip);
+
+        if (empty($agendaRapat)) {
             return $this->errorResponse(200, 'Agenda rapat tidak ditemukan.');
         }
 
@@ -35,11 +49,11 @@ class AgendaRapatControllerAPI extends BaseController
             return $this->errorResponse(500, 'Rapat tidak ditemukan');
         }
 
-        $expiredTime = expiredTime($agendaRapat['tanggal'], $agendaRapat['jam']);
+        // $expiredTime = expiredTime($agendaRapat['tanggal'], $agendaRapat['jam']);
 
-        if ($expiredTime) {
-            return $this->errorResponse(500, 'Rapat sudah berakhir');
-        }
+        // if ($expiredTime) {
+        //     return $this->errorResponse(500, 'Rapat sudah berakhir');
+        // }
         return $this->response(200, $agendaRapat);
     }
 

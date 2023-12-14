@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AgendaRapat extends Migration
+class Users extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_agenda' => [
+            'id_user' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -17,65 +17,42 @@ class AgendaRapat extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'id_admin' => [
+            'nip' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'id_instansi' => [
+            'kode_ukerja' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'nama_instansi' => [
+            'instansi' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'id_bidang' => [
+            'no_hp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'nama_bidang' => [
+            'nama' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'kode_rapat' => [
+            'alamat' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'agenda_rapat' => [
+            'username' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'program' => [
+            'password' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'tempat' => [
+            'avatar' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'tanggal' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'jam' => [
-                'type' =>  'VARCHAR',
-                'constraint' => 6,
-            ],
-            'kadaluwarsa' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'deskripsi' => [
-                'type' => 'TEXT'
-            ],
-            'link_rapat' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            // 'status' => [
-            //     'type' => 'enum',
-            //     'constraint' => ['tersedia', 'selesai'],
-            // ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -85,17 +62,12 @@ class AgendaRapat extends Migration
                 'null' => true,
             ],
         ]);
-
-        $this->forge->addKey('id_agenda', true);
-        $this->forge->addUniqueKey('id_agenda');
-        // $this->forge->addUniqueKey('kode_rapat');
-        // $this->forge->addUniqueKey('id_admin');
-        // $this->forge->addForeignKey('id_admin', 'admins', 'id_admin', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('agendarapats');
+        $this->forge->addKey('id_user', true);
+        $this->forge->createTable('users');
     }
 
     public function down()
     {
-        $this->forge->dropTable('agendarapats');
+        $this->forge->dropTable('users');
     }
 }

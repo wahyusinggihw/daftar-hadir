@@ -488,7 +488,7 @@ function pegawaiAjax(apiEndpoint, nikValue) {
           // terdapat beberapa data yang kosong, sehingga perlu dilakukan pengecekan
           function updateFormField(fieldId, fieldValue) {
             if (fieldValue === "") {
-              $(fieldId).val(String.fromCharCode(32)).prop("readonly", true);
+              $(fieldId).val("-").prop("readonly", true);
             } else {
               $(fieldId).val(fieldValue).prop("readonly", true);
             }
