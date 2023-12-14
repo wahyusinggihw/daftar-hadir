@@ -55,7 +55,7 @@
                             <span class="password-toggle-btn-new" onclick="togglePassword('password')">
                                 <i id="password-toggle-icon" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback-custom">
+                            <div class="invalid-feedback-change">
                                 <?= validation_show_error('password') ?>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <span class="password-toggle-btn" onclick="togglePassword('confirm-password')">
                                 <i id="password-toggle-icon" class="fa fa-eye"></i>
                             </span>
-                            <div class="invalid-feedback-custom">
+                            <div class="invalid-feedback-change">
                                 <?= validation_show_error('confirm-password') ?>
                             </div>
                         </div>
