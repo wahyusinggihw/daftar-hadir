@@ -22,7 +22,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 550px;
     margin: 50px;
 }
 
@@ -145,7 +145,7 @@ body {
     /* Hapus transform */
 }
 
-.invalid-feedback-custom {
+.invalid-feedback-change {
     color: #dc3545;
     display: block;
     position: absolute;
@@ -154,8 +154,9 @@ body {
     /* Hapus transform */
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 320px) {
     .login-form{
+        width: 400px;
         margin: 0px;
     }
 }

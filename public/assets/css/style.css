@@ -14,7 +14,7 @@ ul {
 }
 
 /* BAGIAN HEADER */
-nav {
+/* nav {
   padding-top: 1px;
   width: 100%;
   background-color: #ffffff;
@@ -67,7 +67,7 @@ nav .logo img {
   nav .logo img {
     width: 400px;
   }
-}
+} */
 
 .landing-page .content .container {
   display: flex;

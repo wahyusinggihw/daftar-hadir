@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 // Auth Admin
 $routes->group('auth', function ($routes) {
     $routes->match(['get', 'post'], 'login', 'Auth::login', ['filter' => 'islogin']);
-    $routes->match(['get', 'post'], 'change-password', 'Auth::changePassword', ['filter' => 'defaultPassword']);
+    $routes->match(['get', 'post'], 'change-password', 'Auth::changePassword');
     $routes->post('logout', 'Auth::logout');
     $routes->get('berhasil', 'Auth::berhasil', ['filter' => 'cekkode']);
 });
