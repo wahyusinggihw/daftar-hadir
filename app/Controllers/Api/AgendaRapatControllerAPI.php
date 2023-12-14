@@ -43,7 +43,8 @@ class AgendaRapatControllerAPI extends BaseController
 
     public function getAgendaRapat($kodeRapat)
     {
-        $agendaRapat = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
+        $nip = $this->request->getVar('nip');
+        $agendaRapat = $this->agendaRapat->getAgendaRapatByKodeAPI($kodeRapat, $nip);
 
         if (!$agendaRapat) {
             return $this->errorResponse(500, 'Rapat tidak ditemukan');

@@ -339,6 +339,21 @@ class AgendaRapatModel extends Model
         }
     }
 
+    public function getAgendaRapatByKodeAPI($kodeRapat, $nip)
+    {
+        $query = $this->where('kode_rapat', $kodeRapat)->first();
+        // dd($query);
+        if ($query != null) {
+            $query = $this->addHistoryAbsensiToAgendas([$query], $nip);
+            // return array_values($query);
+            return $query;
+        } else {
+            return false;
+        }
+
+        return $query;
+    }
+
     // public function getAgendaAPI($id_instansi, $status)
     // {
     //     $builder = $this->table('agendarapats');

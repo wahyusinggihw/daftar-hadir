@@ -129,11 +129,11 @@
         <?php endforeach; ?>
     </table>
 
-    <table class="signature" >
-        <tr >
-            <td width="55%" ></td>
-            <td width="45%" >
-                <div class="tanda-tangan">
+    <table class="signature">
+        <tr style="border: none;">
+            <td style="border: none;" width="55%"></td>
+            <td style="border: none;" width="45%">
+                <div style="border: none;" class="tanda-tangan">
                     <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
                     <br>
                     <p></p>
