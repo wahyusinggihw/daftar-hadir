@@ -31,7 +31,7 @@
                         <dd class="col-md-9"><?= $daftarHadir['asal_instansi'] ?></dd>
 
                         <dt class="col-md-3">Tanda Tangan</dt>
-                        <dd class="col-md-9"></dd>
+                        <dd class="col-md-9"><img src="<?= $daftarHadir['ttd'] ?>" alt="ttd <?= $daftarHadir['nama'] ?>" width="350px"></dd>
                     </dl>
                     <div class="mb-3">
                         <div class="bs-callout bs-callout-success">
