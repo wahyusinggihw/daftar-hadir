@@ -37,11 +37,11 @@
             <div class="status-box">
                 <h3>Pilih Status</h3>
                 <div class="status-option">
-                    <div class="status">
+                    <div class="status col-6">
                         <input class="statusRadio" name="statusRadio" type="radio" id="statusRadio1" value="pegawai" <?php if ($oldStatusValue === 'pegawai') echo 'checked'; ?> />
                         <label class="statusRadio-label" for="statusRadio1">Pegawai</label>
                     </div>
-                    <div class="status">
+                    <div class="status col-6">
                         <input class="statusRadio" name="statusRadio" type="radio" id="statusRadio2" value="tamu" <?php if ($oldStatusValue === 'tamu') echo 'checked'; ?> />
                         <label class="statusRadio-label" for="statusRadio2">Tamu</label>
                     </div>
@@ -53,11 +53,11 @@
             <div class="status-box" id="asnNonAsnContainer" style="display: none;">
                 <h3>Pilih Status Pegawai</h3>
                 <div class="status-option">
-                    <div class="status">
+                    <div class="status col-6">
                         <input class="asnNonAsnRadio" type="radio" id="asnRadio" name="asnNonAsnRadio" value="asn" <?php if ($oldAsnNonAsnValue === 'asn') echo 'checked'; ?> />
                         <label for="asnRadio">ASN</label>
                     </div>
-                    <div class="status">
+                    <div class="status col-6">
                         <input class="asnNonAsnRadio" type="radio" id="nonAsnRadio" name="asnNonAsnRadio" value="nonasn" <?php if ($oldAsnNonAsnValue === 'nonasn') echo 'checked'; ?> />
                         <label for="nonAsnRadio">Non-ASN</label>
                     </div>
