@@ -17,7 +17,7 @@
         </script>
     <?php endif; ?>
 
-    <section class="container">
+    <div class="container">
         <header><?= isset($rapat['agenda_rapat']) ? $rapat['agenda_rapat'] : 'Rapat'  ?></header>
         <p>Isi sesuai dengan data diri anda</p>
         <form action="<?= base_url('/rapat/daftar-hadir/store') ?>" method="post" enctype="multipart/form-data" class="form" id="form-absensi">
@@ -86,8 +86,14 @@
                 <div class="invalid-response mb-2">
                     <?= validation_show_error('nip') ?>
                 </div>
-                <div class="note">
-                    <p><strong>Info!</strong> Tanda tangani formulir ini jika Anda telah mengisi sebelumnya. Jika ini pertama kalinya, lengkapi biodata dengan cermat.</p>
+                <div class="mb-3">
+                    <div class="bs-callout bs-callout-info">
+                        <ul class="dot-list">
+                            <li>Kami akan menjamin kerahasiaan NIK anda.</li>
+                            <li>NIK yang anda inputkan akan kami gunakan untuk pengecekan otomatis apabila anda pernah melakukan
+                                presensi di sistem kami.</li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- Tombol cari yang dimodifikasi menggunakan tag a untuk melakukan ajax request(isi data otomatis), karena dalam 1 form hanya bisa 1 tombol yakni tombol kirim (yang dibawah) -->
             </div>
@@ -109,14 +115,8 @@
                 </div>
             </div>
 
+            <input type="hidden" name="alamat" id="alamat">
             <div class="column">
-                <div class="input-box">
-                    <label for="alamat">Alamat</label>
-                    <input class="<?= validation_show_error('alamat') ? 'invalid-input' : '' ?>" value="<?= old('alamat') ?>" type="text" placeholder="Masukkan Alamat" id="alamat" name="alamat" autocomplete="off" />
-                    <div class="invalid-response">
-                        <?= validation_show_error('alamat') ?>
-                    </div>
-                </div>
                 <div class="input-box" id="instansiText" style="display: none;">
                     <label for=" asal_instansi_tamu">Asal Instansi</label>
                     <input class="<?= validation_show_error('asal_instansi_tamu') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_tamu') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_tamu" name="asal_instansi_tamu" autocomplete="off" />
@@ -157,8 +157,15 @@
             </div>
             <!-- <div class="invalid-response" id="recaptcha-error"></div> -->
             <div class="invalid-response"><?= validation_show_error('g-recaptcha-response') ?></div>
-            <button type="submit">Kirim</button>
+            <div class="d-grid gap-2">
+                <button class="btn btn-rapat" type="submit" id="submitButton" disabled>Submit</button>
+            </div>
         </form>
+    </div>
+    <section class="section-footer-form">
+        <div class="title-footer">
+            Diskominfosanti Kabupaten Buleleng 2023
+        </div>
     </section>
 </body>
 

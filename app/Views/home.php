@@ -1,7 +1,7 @@
 <?= $this->extend('layout/page_layout') ?>
 
 <?= $this->section('style') ?>
-<!-- <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>"> -->
+<link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -78,6 +78,11 @@
       </div>
     </div>
   </form>
+  <section class="section-footer">
+    <div class="title-footer">
+      Diskominfosanti Kabupaten Buleleng 2023
+    </div>
+  </section>
 </body>
 
 <?= $this->endSection() ?>
