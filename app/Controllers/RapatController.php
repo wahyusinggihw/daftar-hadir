@@ -31,10 +31,11 @@ class RapatController extends BaseController
         // dd($idAgenda);
         $agendaRapat = $this->agendaRapat->getAgendaRapatByIdAgenda($idAgenda);
         $daftarHadir = $this->daftarHadir->getDaftarHadirByID($agendaRapat['id_agenda']);
+        // dd($daftarHadir);
         $data = [
             'title' => 'Behasil',
             'agendaRapat' => $agendaRapat,
-            'daftarHadir' => $daftarHadir,
+            'daftarHadir' => $daftarHadir[0],
         ];
         return view('berhasil', $data);
     }

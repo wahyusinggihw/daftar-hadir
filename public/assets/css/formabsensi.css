@@ -151,7 +151,8 @@ input[type="radio"]:checked::before {
   background: #405C98;
 }
 .form button:hover {
-  background: #405C98 ;
+  background: #6b85be ;
+  color: white;
 }
 /*Responsive*/
 @media screen and (max-width: 500px) {
