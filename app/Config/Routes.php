@@ -46,6 +46,8 @@ $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     $routes->get('agenda-rapat/instansi/selesai/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansiSelesai/$1');
     // get agenda rapat berdasarkan id agenda rapat (Qr code result)
     $routes->get('agenda-rapat/scan/(:segment)', 'Api\AgendaRapatControllerAPI::getAgendaRapat/$1');
+    // search
+    $routes->get('agenda-rapat/search', 'Api\AgendaRapatControllerAPI::getAllAgendaRapat');
     // post form absen
     $routes->post('daftar-hadir/store', 'Api\RapatControllerAPI::absenStore');
     $routes->post('change-password', "Api\AuthControllerAPI::changePassword");

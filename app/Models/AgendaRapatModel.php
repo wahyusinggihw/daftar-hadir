@@ -354,6 +354,22 @@ class AgendaRapatModel extends Model
         return $query;
     }
 
+    public function getAllAgendaRapatAPI($nip)
+    {
+        $builder = $this->table('agendarapats');
+        $builder->select('agendarapats.*');
+        $builder->join('admins', 'admins.id_admin = agendarapats.id_admin');
+        $agendas = $builder->get()->getResultArray();
+        $agendas = $this->addHistoryAbsensiToAgendas($agendas, $nip);
+        $agendas = $this->addStatusToAgendas($agendas);
+        if (empty($agendas)) {
+            return null;
+            # code...
+        } else {
+            return array_values($agendas);
+        }
+    }
+
     // public function getAgendaAPI($id_instansi, $status)
     // {
     //     $builder = $this->table('agendarapats');
