@@ -77,7 +77,10 @@ class DaftarHadirController extends BaseController
         $rawData = [
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
-            'bidangInstansi' => $bidangInstansi
+            // 'bidangInstansi' => $bidangInstansi,
+            'namaKepalaBidang' => $bidangInstansi['nama_kepala_bidang'] ?? '',
+            'nipKepalaBidang' => $bidangInstansi['nip_kepala_bidang'] ?? '<span style="">___________________________</span>',
+
         ];
 
         $pdf = new TCPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);

@@ -138,7 +138,7 @@
                     <br>
                     <p></p>
                     <p></p>
-                    <p><strong style="text-decoration: underline;"><?= $bidangInstansi['nama_kepala_bidang'] ?></strong><br><span>NIP. <?= $bidangInstansi['nip_kepala_bidang'] ?></span></p>
+                    <p><strong style="text-decoration: underline;"><?= $namaKepalaBidang ?></strong><br><span>NIP. <?= $nipKepalaBidang ?></span></p>
                 </div>
             </td>
         </tr>
