@@ -1,6 +1,14 @@
 /* .navbar-nav .nav-item .nav-link i {
   color: white;
 } */
+
+:root {
+  --color-main: #337CCF;
+  --color-second: #405C98;
+  --white: #ffffff;
+  --acsent-color: #47536E;
+}
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -142,6 +150,31 @@ label {
 
 #submit{
   margin-top: 20px;
+}
+
+.code-rapat {
+  display: flex;
+  text-align: center;
+}
+
+.code-rapat p {
+  background-color: var(--color-main);
+  color: white;
+  width: 150px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.267);
+  border-radius: 10px;
+  font-size: 36px;
+}
+
+.code-rapat p:hover {
+  background-color:var(--color-second);
+}
+
+.qr-code{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 /* CSS umum di sini */

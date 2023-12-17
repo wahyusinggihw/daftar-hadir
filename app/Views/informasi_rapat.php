@@ -1,7 +1,6 @@
 <?= $this->extend('layout/page_layout') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/informasi.css') ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -19,24 +18,38 @@
 
     <?php endif; ?>
 
-    <div class="card-info">
-        <div class="content-wrapper">
-            <div class="card-text">
-                <h1><?= $agendaRapat['agenda_rapat'] ?></h1>
-                <ul>
-                    <li><?= $agendaRapat['nama_instansi'] ?></li>
-                    <!-- <li><?= $agendaRapat['nama_bidang'] ?></li> -->
-                </ul>
-                <div class="card-qr">
-                    <img src="<?= $qrCode ?>" alt="Logo">
+    <div class="section-content d-flex align-items-center">
+        <div class="container-lg container-qrcode">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6 d-flex align-items-lg-center order-2 order-md-1">
+                    <div>
+                        <div class="title-rapat"><?= $agendaRapat['agenda_rapat'] ?>
+                        </div>
+                        <dl class="row description-list">
+                            <dt class="col-xl-3">Program</dt>
+                            <dd class="col-xl-9"><?= $agendaRapat['program'] ?>
+                            </dd>
+                            <dt class="col-xl-3">Kegiatan</dt>
+                            <dd class="col-xl-9"><?= $agendaRapat['deskripsi'] ?>
+                            </dd>
+                            <dt class="col-xl-3">Tanggal</dt>
+                            <dd class="col-xl-9"><?= format_indo(date($agendaRapat['tanggal'])) ?></dd>
+                            <dt class="col-xl-3">Kode Rapat</dt>
+                            <dd class="col-xl-9 kode-rapat">
+                                <p id="teksToSalin" onclick="copyText()"><?= $agendaRapat['kode_rapat'] ?></p>
+                            </dd>
+                        </dl>
+                    </div>
                 </div>
-                <div class="code-rapat">
-                    <p id="teksToSalin" onclick="copyText()"><?= $agendaRapat['kode_rapat'] ?></p>
+                <div class="col-12 col-md-6 col-lg-6 text-center order-1 order-md-2">
+                    <div class="title-scan">Pindai Saya</div>
+                    <div>
+                        <img src="<?= $qrCode ?>" alt="Logo" width="350px">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 <script src="<?php echo base_url('assets/js/info.js'); ?>"></script>

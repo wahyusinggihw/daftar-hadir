@@ -1,4 +1,4 @@
-<?= $this->extend('layout/page_layout') ?>
+<?= $this->extend('layout/page_layout_home') ?>
 
 <?= $this->section('style') ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">

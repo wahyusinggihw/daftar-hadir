@@ -30,7 +30,7 @@
                         <dt class="col-sm-4">Kegiatan</dt>
                         <dd class="col-sm-8"><?= $data['deskripsi'] ?></dd>
                         <dt class="col-sm-4">Tanggal/Jam</dt>
-                        <dd class="col-sm-8"><?= $data['jam'] ?></dd>
+                        <dd class="col-sm-8"><?= format_indo(date($data['tanggal'])) ?> / <?= $data['jam'] ?></dd>
                         <dt class="col-sm-4">Jumlah Kehadiran</dt>
                         <dd class="col-sm-8"><?= $jumlahKehadiran ?></dd>
                         <?php if ($status == 'tersedia') : ?>
@@ -40,8 +40,8 @@
                                     <div class="row mb-2">
                                         <a href="https://api.whatsapp.com/send?text=<?= urlencode('Informasi Rapat: ' . base_url('rapat/informasi/' . $data['kode_rapat'])) ?>" role="bt" class="btn btn-outline-info" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
                                     </div>
-                                    <div class="row mb-2 ms-4">
-                                        <button data-kode="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" id="salin-kode" class="btn btn-outline-info"><i class="fa-solid fa-copy"></i></button>
+                                    <div class="code-rapat row mb-2 ms-4">
+                                        <button data-kode="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-outline-info"><i class="fa-solid fa-copy"></i></button>
                                     </div>
                                     <div class="row mb-2 ms-4">
                                         <a href="<?= base_url('rapat/informasi/' . $data['kode_rapat']) ?>" class="btn btn-outline-info" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -56,11 +56,11 @@
             <div class="col-md-5 col-sm-4 d-flex align-items-center justify-content-center mx-auto">
                 <div class="card-body">
                     <?php if ($status == 'tersedia') : ?>
-                        <div class="col">
+                        <div class="qr-code">
                             <div class="col mb-2">
                                 <img id="qr" class="img-fluid" src="<?= $qrCode ?>" alt="<?= $data['kode_rapat'] ?>">
                             </div>
-                            <div class="col code-rapat">
+                            <div class="code-rapat">
                                 <p id="teksToSalin" onclick="copyText()"><?= $data['kode_rapat'] ?></p>
                             </div>
                         </div>
