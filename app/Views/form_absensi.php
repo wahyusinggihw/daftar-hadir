@@ -158,7 +158,7 @@
             <!-- <div class="invalid-response" id="recaptcha-error"></div> -->
             <div class="invalid-response"><?= validation_show_error('g-recaptcha-response') ?></div>
             <div class="d-grid gap-2">
-                <button class="btn btn-rapat" type="submit" id="submitButton" disabled>Submit</button>
+                <button class="btn btn-rapat" type="button" id="submitButton" onclick="showConfirmation()" disabled>Submit</button>
             </div>
         </form>
     </div>
@@ -176,6 +176,24 @@
 <script type="text/javascript" src="<?= base_url('assets/js/signature.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/form-absensi-2.js') ?>"></script>
 <script>
+    // show swal confirmation on after submit button
+    function showConfirmation() {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: 'Data yang anda masukkan akan disimpan',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#22b23a',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-absensi').submit();
+            }
+        });
+    }
     // if on error
     /**
      * This code block checks the value of the 'asnNonAsnRadio' input field and shows/hides the appropriate container based on the value.
