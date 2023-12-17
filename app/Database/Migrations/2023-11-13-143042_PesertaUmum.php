@@ -25,10 +25,10 @@ class PesertaUmum extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'alamat' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
+            // 'alamat' => [
+            //     'type' => 'VARCHAR',
+            //     'constraint' => 255,
+            // ],
             'no_hp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

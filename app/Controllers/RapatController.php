@@ -191,7 +191,7 @@ class RapatController extends BaseController
                 'slug' => $slugify->slugify($this->request->getVar('nama')),
                 'nik' => $this->request->getVar('nip'),
                 'nama' => $this->request->getVar('nama'),
-                'alamat' => $this->request->getVar('alamat'),
+                // 'alamat' => $this->request->getVar('alamat'),
                 'no_hp' => $this->request->getVar('no_hp'),
                 'asal_instansi' => $instansiTamu,
             ];
@@ -281,12 +281,12 @@ class RapatController extends BaseController
                     'required' => 'Nama harus diisi'
                 ]
             ],
-            'alamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Alamat harus diisi'
-                ]
-            ],
+            // 'alamat' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Alamat harus diisi'
+            //     ]
+            // ],
             'signatureData' => [
                 'rules' => 'required',
                 'errors' => [

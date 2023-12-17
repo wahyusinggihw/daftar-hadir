@@ -18,7 +18,7 @@ class PesertaUmumModel extends Model
         'slug',
         'nik',
         'nama',
-        'alamat',
+        // 'alamat',
         'no_hp',
         'asal_instansi',
         'created_at',
@@ -48,43 +48,6 @@ class PesertaUmumModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    // validation rules
-    protected $validationRules = [
-        'nik' => [
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => 'NIK harus diisi',
-                'numeric' => 'NIK harus berupa angka'
-            ]
-        ],
-        'nama' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Nama harus diisi'
-            ]
-        ],
-        'alamat' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Alamat harus diisi'
-            ]
-        ],
-        'no_hp' => [
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => 'No HP harus diisi',
-                'numeric' => 'No HP harus berupa angka'
-            ]
-        ],
-        'asal_instansi' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Asal Instansi harus diisi'
-            ]
-        ],
-
-    ];
 
     /**
      * Check if a record with the given NIK exists in the database.

@@ -10,7 +10,7 @@
                     <div class="title-judul-form">
                         <?= $agendaRapat['agenda_rapat'] ?>
                     </div>
-                    <div class="mb-4">Terimakasih sudah melakukan presnsi pada aplikasi yang kami sediakan, selamat mengikuti
+                    <div class="mb-4">Terimakasih sudah melakukan presensi pada aplikasi yang kami sediakan, selamat mengikuti
                         kegiatan Rapat
                         <?= $agendaRapat['agenda_rapat'] ?>
                     </div>
