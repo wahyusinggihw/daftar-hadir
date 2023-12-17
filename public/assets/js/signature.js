@@ -75,64 +75,64 @@ function saveSignatureData() {
   document.getElementById("signatureData").value = signatureData;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Ambil elemen-elemen input berdasarkan ID
-  var nipInput = document.getElementById('nip');
-  // var namaInput = document.getElementById('nama');
-  // var noHpInput = document.getElementById('no_hp');
-  // var asalInstansiInput = document.getElementById('asal_instansi_tamu');
-  // var signatureDataInput = document.getElementById('signatureData');
-  // var submitButton = document.getElementById('submitButton');
+// document.addEventListener('DOMContentLoaded', function () {
+//   // Ambil elemen-elemen input berdasarkan ID
+//   var nipInput = document.getElementById('nip');
+//   // var namaInput = document.getElementById('nama');
+//   // var noHpInput = document.getElementById('no_hp');
+//   // var asalInstansiInput = document.getElementById('asal_instansi_tamu');
+//   // var signatureDataInput = document.getElementById('signatureData');
+//   // var submitButton = document.getElementById('submitButton');
 
-  // Tambahkan event listener untuk setiap elemen input
-  nipInput.addEventListener('input', function () {
-    checkForm();
-  });
+//   // Tambahkan event listener untuk setiap elemen input
+//   nipInput.addEventListener('input', function () {
+//     checkForm();
+//   });
 
-  // namaInput.addEventListener('input', function () {
-  //   checkForm();
-  // });
+//   // namaInput.addEventListener('input', function () {
+//   //   checkForm();
+//   // });
 
-  // noHpInput.addEventListener('input', function () {
-  //   checkForm();
-  // });
+//   // noHpInput.addEventListener('input', function () {
+//   //   checkForm();
+//   // });
 
-  // asalInstansiInput.addEventListener('input', function () {
-  //   checkForm();
-  // });
+//   // asalInstansiInput.addEventListener('input', function () {
+//   //   checkForm();
+//   // });
 
-  // signatureDataInput.addEventListener('input', function () {
-  //   checkForm();
-  // });
+//   // signatureDataInput.addEventListener('input', function () {
+//   //   checkForm();
+//   // });
 
-  // Initial check when the page loads
-  checkForm();
-});
+//   // Initial check when the page loads
+//   checkForm();
+// });
 
-function checkForm() {
-  // Check if all form fields are filled
-  var formIsFilled = isFormFilled(); // Anda dapat mengimplementasikan fungsi ini berdasarkan struktur formulir Anda
+// function checkForm() {
+//   // Check if all form fields are filled
+//   var formIsFilled = isFormFilled(); // Anda dapat mengimplementasikan fungsi ini berdasarkan struktur formulir Anda
 
-  // Enable/disable the submit button based on the form state
-  var submitButton = document.getElementById('submitButton');
-  submitButton.disabled = !formIsFilled;
-}
+//   // Enable/disable the submit button based on the form state
+//   var submitButton = document.getElementById('submitButton');
+//   submitButton.disabled = !formIsFilled;
+// }
 
-// Tambahkan fungsi-fungsi tambahan yang diperlukan untuk memeriksa keadaan formulir
-function isFormFilled() {
-  // Implementasikan logika untuk memeriksa apakah semua kolom formulir yang diperlukan sudah diisi
-  // Contoh: kembalikan true jika semua kolom formulir yang diperlukan sudah diisi, false sebaliknya
-  var nipInput = document.getElementById('nip');
-  // var namaInput = document.getElementById('nama');
-  // var noHpInput = document.getElementById('no_hp');
-  // var asalInstansiInput = document.getElementById('asal_instansi_tamu');
-  // var signatureDataInput = document.getElementById('signatureData');
+// // Tambahkan fungsi-fungsi tambahan yang diperlukan untuk memeriksa keadaan formulir
+// function isFormFilled() {
+//   // Implementasikan logika untuk memeriksa apakah semua kolom formulir yang diperlukan sudah diisi
+//   // Contoh: kembalikan true jika semua kolom formulir yang diperlukan sudah diisi, false sebaliknya
+//   var nipInput = document.getElementById('nip');
+//   // var namaInput = document.getElementById('nama');
+//   // var noHpInput = document.getElementById('no_hp');
+//   // var asalInstansiInput = document.getElementById('asal_instansi_tamu');
+//   // var signatureDataInput = document.getElementById('signatureData');
 
-  return (
-    nipInput.value.trim() !== ''
-    // namaInput.value.trim() !== '' &&
-    // noHpInput.value.trim() !== '' &&
-    // asalInstansiInput.value.trim() !== ''
-    // signatureDataInput.value.trim() !== ''
-  );
-}
+//   return (
+//     nipInput.value.trim() !== ''
+//     // namaInput.value.trim() !== '' &&
+//     // noHpInput.value.trim() !== '' &&
+//     // asalInstansiInput.value.trim() !== ''
+//     // signatureDataInput.value.trim() !== ''
+//   );
+// }

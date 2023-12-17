@@ -89,8 +89,8 @@
                 <div class="mb-3">
                     <div class="bs-callout bs-callout-info">
                         <ul class="dot-list">
-                            <li>Kami akan menjamin kerahasiaan NIK anda.</li>
-                            <li>NIK yang anda inputkan akan kami gunakan untuk pengecekan otomatis apabila anda pernah melakukan
+                            <li>Kami akan menjamin kerahasiaan NIP/NIK anda.</li>
+                            <li>NIP/NIK yang anda inputkan akan kami gunakan untuk pengecekan otomatis apabila anda pernah melakukan
                                 presensi di sistem kami.</li>
                         </ul>
                     </div>
@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            <input type="hidden" name="alamat" id="alamat">
+            <!-- <input type="hidden" name="alamat" id="alamat"> -->
             <div class="column">
                 <div class="input-box" id="instansiText" style="display: none;">
                     <label for=" asal_instansi_tamu">Asal Instansi</label>

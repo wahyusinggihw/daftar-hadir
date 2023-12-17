@@ -28,9 +28,10 @@ class RapatController extends BaseController
     public function berhasilPage()
     {
         $idAgenda = $this->session->get('id_agenda');
+        $nik = $this->session->get('nik');
         // dd($idAgenda);
         $agendaRapat = $this->agendaRapat->getAgendaRapatByIdAgenda($idAgenda);
-        $daftarHadir = $this->daftarHadir->getDaftarHadirByID($agendaRapat['id_agenda']);
+        $daftarHadir = $this->daftarHadir->getDaftarHadirByID($agendaRapat['id_agenda'], $nik);
         // dd($daftarHadir);
         $data = [
             'title' => 'Behasil',
@@ -250,10 +251,12 @@ class RapatController extends BaseController
             // $this->session->remove('id_agenda');
             session()->setFlashdata('kode_valid', true);
             session()->setFlashdata('id_agenda', $idAgenda);
+            session()->setFlashdata('nik', $nip);
             return redirect('berhasil')->with('success', 'Terimakasih telah mengisi daftar hadir!');
         } else {
             session()->setFlashdata('id_agenda', $idAgenda);
             session()->setFlashdata('kode_valid', true);
+            session()->setFlashdata('nik', $nip);
             return redirect('gagal')->with('error', 'Anda sudah melakukan absensi!');
         }
     }

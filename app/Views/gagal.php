@@ -11,7 +11,7 @@
                         <?= $agendaRapat['agenda_rapat'] ?>
                     </div>
                     <div class="text-center">
-                        <i class="fa-regular fa-circle-xmark icon-selesai"></i>
+                        <i style="color: #dc3545;" class="fa-regular fa-circle-xmark icon-selesai"></i>
                     </div>
                     <div class="mt-4 mb-4 text-center">
                         Anda sudah mengisi presensi untuk kegiatan ini

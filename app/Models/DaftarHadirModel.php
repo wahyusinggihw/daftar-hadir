@@ -48,7 +48,7 @@ class DaftarHadirModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getDaftarHadirByID($id_agenda)
+    public function getDaftarHadirByID($id_agenda, $nik = null)
     {
         $id_admin = session()->get('id_admin');
         $builder = $this->table('daftarhadirs');
@@ -56,6 +56,9 @@ class DaftarHadirModel extends Model
         $builder->join('agendarapats', 'agendarapats.id_agenda = daftarhadirs.id_agenda_rapat',);
         // $builder->where('id_admin', $id_admin);
         $builder->where('id_agenda_rapat', $id_agenda);
+        if ($nik != null) {
+            $builder->where('NIK', $nik);
+        }
         $builder->orderBy('daftarhadirs.created_at', 'ASC');
         $query = $builder->get()->getResultArray();
         return $query;

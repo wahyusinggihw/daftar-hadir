@@ -1,6 +1,7 @@
 $(document).ready(function () {
   // check if there is validation error from checking the radio button
   var oldStatus = $('input[name="statusRadio"]:checked').val();
+  var submitButton = document.getElementById("submitButton");
   // console.log(oldStatus);
   if (oldStatus === "pegawai") {
     setInputFilter(
@@ -54,6 +55,7 @@ function initializePage() {
 }
 
 function onErrorHandlePegawaiStatus() {
+  submitButton.disabled = false;
   signaturePad.on();
   $(".note").hide();
   $("#asnNonAsnContainer").show();
@@ -75,6 +77,7 @@ function onErrorHandleTamuStatus() {
   // $("#instansiText").show();
   // tamuAjax($("#nip").val());
   //get nip value
+  submitButton.disabled = false;
   var nipValue = $("#nip").val();
   restoreSavedValues(nipValue);
   tamuStatusClicked = false;
@@ -119,6 +122,7 @@ function handleNipInputChange() {
 var tamuStatusClicked = false;
 
 function handleTamuStatus() {
+  submitButton.disabled = false;
   signaturePad.on();
   if (!tamuStatusClicked) {
     $(".note").fadeIn(200); // add slide-in animation
@@ -148,6 +152,7 @@ function handleTamuStatus() {
 
 // Function to handle 'pegawai' status
 function handlePegawaiStatus() {
+  submitButton.disabled = true;
   var asnNonAsnRadio = 'input[name="asnNonAsnRadio"]';
   var statusValuePegawai = $(asnNonAsnRadio + ":checked");
   $(".note").hide();
@@ -177,6 +182,7 @@ function handlePegawaiStatus() {
   $("#nip").attr("placeholder", "Masukkan NIP");
 
   $(asnNonAsnRadio).on("click", function () {
+    submitButton.disabled = true;
     // console.log(statusValuePegawai);
     removeReadonlyFormFields("#search, #nip");
     enableFormFields(
@@ -465,6 +471,7 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             text: "NIP tidak ditemukan. Cek kembali NIP anda dan coba lagi.",
           });
         } else if (data.status === true) {
+          submitButton.disabled = false;
           // $("#loadingIndicator").hide();
           $("#cariNikButton i").attr("class", initialClasses);
           $("#cariNikButton").addClass("disabled-button");
