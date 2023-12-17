@@ -149,9 +149,9 @@ class AuthControllerAPI extends BaseController
                     'nip' => $user['asn']->nip,
                     'kode_ukerja' => $user['asn']->kode_ukerja,
                     'instansi' => $user['asn']->ket_ukerja,
-                    'alamat' => $user['asn']->alamat,
-                    'no_hp' => $user['asn']->no_hp,
-                    'email' => $user['asn']->email,
+                    'alamat' => $user['asn']->alamat == null ? '-' : $user['asn']->alamat,
+                    'no_hp' => $user['asn']->no_hp == null ? '-' : $user['asn']->no_hp,
+                    'email' => $user['asn']->email == null ? '-' : $user['asn']->email,
                 ];
             } elseif ($user['non_asn']) {
                 $slug = $this->slugify->slugify($user['non_asn']->nama_lengkap);
@@ -161,9 +161,9 @@ class AuthControllerAPI extends BaseController
                     'nip' => $user['non_asn']->nip,
                     'kode_ukerja' => $user['non_asn']->kode_ukerja,
                     'instansi' => $user['non_asn']->ket_ukerja,
-                    'alamat' => $user['non_asn']->alamat,
-                    'no_hp' => $user['non_asn']->no_hp,
-                    'email' => $user['non_asn']->email,
+                    'alamat' => $user['non_asn']->alamat == null ? '-' : $user['non_asn']->alamat,
+                    'no_hp' => $user['non_asn']->no_hp == null ? '-' : $user['non_asn']->no_hp,
+                    'email' => $user['non_asn']->email == null ? '-' : $user['non_asn']->email,
                 ];
             }
 
