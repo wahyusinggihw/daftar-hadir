@@ -37,7 +37,7 @@
                     </div>
                     <br>
 
-                    <a href="<?= base_url('dashboard/kelola-bidang/') ?>" type="submit" class="btn btn-secondary">Batal</a>
+                    <a href="<?= base_url('dashboard/kelola-bidang') ?>" type="submit" class="btn btn-secondary">Batal</a>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>
             </div>
