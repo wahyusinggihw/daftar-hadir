@@ -86,7 +86,7 @@ class RapatController extends BaseController
         // $this->session->set('id_agenda', $rapat['id_agenda']);
         $data = [
             'title' => 'Form Absensi',
-            'instansi' => $instansiDecode,
+            // 'instansi' => $instansiDecode,
             'rapat' => $rapat,
         ];
 
