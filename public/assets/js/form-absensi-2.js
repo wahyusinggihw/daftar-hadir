@@ -38,10 +38,10 @@ function initializePage() {
     "Harus berupa angka"
   );
   disableFormFields(
-    "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+    "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
   readonlyFormFields(
-    "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+    "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
   $(".note").hide();
   $("#cariNikButton").addClass("disabled-button");
@@ -75,6 +75,8 @@ function onErrorHandlePegawaiStatus() {
   readonlyFormFields(
     "#no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu"
   );
+  removeReadonlyFormFields("#no_hp");
+  $("#my-form-input").show();
   handlePegawaiNipInput();
 }
 
@@ -88,6 +90,7 @@ function onErrorHandleTamuStatus() {
   restoreSavedValues(nipValue);
   tamuStatusClicked = false;
   $(".note").fadeIn(200);
+  $("#my-form-input").show();
   handleTamuNipInput();
 }
 
@@ -172,7 +175,7 @@ function handlePegawaiStatus() {
     // The radio button is already checked on page load
     removeReadonlyFormFields("#search, #nip");
     readonlyFormFields(
-      "#nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+      "#no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
     );
     enableFormFields(
       "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
@@ -180,7 +183,7 @@ function handlePegawaiStatus() {
     signaturePad.on();
   } else {
     readonlyFormFields(
-      "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+      "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
     );
   }
   $("#nip").attr("maxlength", "18");
@@ -515,7 +518,6 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
-          removeReadonlyFormFields("#no_hp");
           $("#signatureCanvas").removeClass("greyed-out-form");
           signaturePad.on();
           // console.log(data);
@@ -524,9 +526,22 @@ function pegawaiAjax(apiEndpoint, nikValue) {
           // terdapat beberapa data yang kosong, sehingga perlu dilakukan pengecekan
           function updateFormField(fieldId, fieldValue) {
             if (fieldValue === "") {
-              $(fieldId).val("-").prop("readonly", true);
+              // $(fieldId).prop("autofocus", true);
+              $(fieldId)[0].focus();
             } else {
               $(fieldId).val(fieldValue).prop("readonly", true);
+            }
+          }
+
+          // check if any of the data is null, if true then autofocus the input
+          function checkIfAnyDataIsNull() {
+            if (
+              data.data.no_hp === "" ||
+              data.data.nama_lengkap === "" ||
+              data.data.alamat === "" ||
+              data.data.ket_ukerja === ""
+            ) {
+              $("#no_hp").focus();
             }
           }
 
@@ -537,6 +552,7 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             "#instansiOption, #asal_instansi_option",
             data.data.ket_ukerja
           );
+          removeReadonlyFormFields("#no_hp");
           // console.log(data.data.no_hp);
           // Update the form fields with the fetched data
           // $("#no_hp").val(data.data.no_hp).prop("readonly", true);

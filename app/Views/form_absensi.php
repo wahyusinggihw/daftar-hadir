@@ -138,20 +138,15 @@
                             <?= validation_show_error('asal_instansi_tamu') ?>
                         </div>
                     </div>
-                    <!-- option -->
+
                     <div class="input-box" id="instansiOption">
-                        <label for="asal_instansi_option">Asal Instansi</label>
-                        <select class="select-box <?= validation_show_error('asal_instansi_option') ? 'invalid-input' : '' ?>" name="asal_instansi_option" id="asal_instansi_option">
-                            <option value="">Pilih instansi</option>
-                            <?php foreach ($instansi->data as $i) : ?>
-                                <?php $selected = old('asal_instansi_option') == $i->ket_ukerja ? 'selected' : ''; ?>
-                                <option value="<?= $i->ket_ukerja ?>" <?= $selected ?>><?= $i->ket_ukerja ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <label for=" asal_instansi_option">Asal Instansi</label>
+                        <input class="<?= validation_show_error('asal_instansi_option') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_option') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_option" name="asal_instansi_option" autocomplete="off" />
                         <div class="invalid-response">
                             <?= validation_show_error('asal_instansi_option') ?>
                         </div>
                     </div>
+                    <!-- option -->
                 </div>
 
                 <div class="input-box">
