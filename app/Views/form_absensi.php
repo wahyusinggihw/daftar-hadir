@@ -75,7 +75,7 @@
                     -pada pegawai
                     akan muncul jika user klik tombol cari
                  -->
-            <div style="display: none;" id="my-form-input">
+            <div id="my-form-input">
                 <div class="inputcontainer">
                     <div class="mb-3">
                         <div style="display: none;" class="bs-callout bs-callout-info" id="note-tamu">
@@ -139,6 +139,16 @@
                         </div>
                     </div>
 
+                    <div class="column">
+                        <div class="input-box" id="instansiOption">
+                            <label for=" asal_instansi_option">Asal Instansi</label>
+                            <input class="<?= validation_show_error('asal_instansi_option') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_option') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_option" name="asal_instansi_option" autocomplete="off" />
+                            <div class="invalid-response">
+                                <?= validation_show_error('asal_instansi_option') ?>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="input-box">
                         <div id="signature-pad" class="signature-pad">
                             <label>Tempat Tanda Tangan</label>
@@ -160,6 +170,7 @@
                         <button class="btn btn-rapat" type="button" id="submitButton" onclick="showConfirmation()" disabled>Submit</button>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </body>

@@ -51,6 +51,7 @@ function initializePage() {
   $("#instansiText").hide();
   signaturePad.off();
   clearValues();
+  $("#my-form-input").hide();
   // disableFormFields();
 }
 
@@ -294,6 +295,12 @@ function clearTamuFields() {
   $("#loadingIndicator").hide();
 }
 
+// cleaar pegawai fields
+function clearPegawaiFields() {
+  $("#no_hp, #nama, #alamat, #asal_instansi_option")
+    .val("")
+    .prop("readonly", false);
+}
 // Function to handle 'Cari NIK' button error
 function handleCariNikButtonError(initialClasses) {
   $("#cariNikButton i").attr("class", initialClasses);
@@ -502,6 +509,7 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             text: "NIP tidak ditemukan. Cek kembali NIP anda dan coba lagi.",
           });
         } else if (data.status === true) {
+          clearPegawaiFields();
           submitButton.disabled = false;
           // $("#loadingIndicator").hide();
           $("#cariNikButton i").attr("class", initialClasses);
