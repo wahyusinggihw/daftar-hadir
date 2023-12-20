@@ -38,10 +38,10 @@ function initializePage() {
     "Harus berupa angka"
   );
   disableFormFields(
-    "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+    "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
   readonlyFormFields(
-    "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+    "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
   );
   $(".note").hide();
   $("#cariNikButton").addClass("disabled-button");
@@ -55,6 +55,12 @@ function initializePage() {
 }
 
 function onErrorHandlePegawaiStatus() {
+  // disable option
+  // var asnNonAsnRadio = 'input[name="asnNonAsnRadio"]';
+  // // greyed out radio
+  // $(asnNonAsnRadio).addClass("greyed-out-radio");
+  // // greyed out label
+  // $("#asnNonAsnContainer label").addClass("greyed-out-radio");
   submitButton.disabled = false;
   signaturePad.on();
   $(".note").hide();
@@ -124,11 +130,13 @@ var tamuStatusClicked = false;
 function handleTamuStatus() {
   submitButton.disabled = false;
   signaturePad.on();
+  $("#note-asn").hide();
+  $("#note-nonasn").hide();
   if (!tamuStatusClicked) {
-    $(".note").fadeIn(200); // add slide-in animation
+    $("#note-tamu").fadeIn(200); // add slide-in animation
     tamuStatusClicked = true;
   }
-  $(".note").show(); // add slide-in animation
+  $("#note-tamu").show(); // add slide-in animation
 
   enableFormFields(
     "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
@@ -145,9 +153,11 @@ function handleTamuStatus() {
   $("#signatureCanvas").removeClass("greyed-out-form");
   $("#cariNikButton").hide();
   $("#label-nik").show();
-  $("#label-default").hide();
+  $("#label-asn").hide();
+  $("#label-nonasn").hide();
   // add placeholder for nip input
   $("#nip").attr("placeholder", "Masukkan NIK");
+  $("#my-form-input").show();
 }
 
 // Function to handle 'pegawai' status
@@ -157,11 +167,12 @@ function handlePegawaiStatus() {
   var statusValuePegawai = $(asnNonAsnRadio + ":checked");
   $(".note").hide();
 
+  $("#my-form-input").hide();
   if (statusValuePegawai.length > 0) {
     // The radio button is already checked on page load
     removeReadonlyFormFields("#search, #nip");
     readonlyFormFields(
-      "#no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+      "#nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
     );
     enableFormFields(
       "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
@@ -169,7 +180,7 @@ function handlePegawaiStatus() {
     signaturePad.on();
   } else {
     readonlyFormFields(
-      "#search, #nip, #no_hp, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
+      "#search, #nip, #nama, #alamat, #asal_instansi_option, #asal_instansi_tamu, #signatureCanvas"
     );
   }
   $("#nip").attr("maxlength", "18");
@@ -182,6 +193,23 @@ function handlePegawaiStatus() {
   $("#nip").attr("placeholder", "Masukkan NIP");
 
   $(asnNonAsnRadio).on("click", function () {
+    $("#note-tamu").hide();
+    $("#label-nik").hide();
+    if (this.value === "asn") {
+      $("#nip").attr("placeholder", "Masukkan NIP");
+      $("#label-asn").show();
+      $("#note-asn").show();
+      $("#note-nonasn").hide();
+      $("#label-nonasn").hide();
+    } else {
+      $("#nip").attr("placeholder", "Masukkan NIPT");
+      $("#label-asn").hide();
+      $("#label-nonasn").show();
+      $("#note-asn").hide();
+      $("#note-nonasn").show();
+    }
+    $("#my-form-input").show();
+    document.getElementById("nip").focus();
     submitButton.disabled = true;
     // console.log(statusValuePegawai);
     removeReadonlyFormFields("#search, #nip");
@@ -487,6 +515,7 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             showConfirmButton: false, // Optionally, hide the "OK" button
             timer: 4000, // Auto-close the toast after 2 seconds (adjust the duration as needed)
           });
+          removeReadonlyFormFields("#no_hp");
           $("#signatureCanvas").removeClass("greyed-out-form");
           signaturePad.on();
           // console.log(data);
