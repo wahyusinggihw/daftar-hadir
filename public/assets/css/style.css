@@ -69,10 +69,9 @@ nav .logo img {
 
 .landing-page .content .container {
   display: flex;
-  align-items: center;
   flex-direction: column;
 
-  min-height: calc(100vh - 80px);
+  /* min-height: calc(100vh - 80px); */
   -webkit-animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
   animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }

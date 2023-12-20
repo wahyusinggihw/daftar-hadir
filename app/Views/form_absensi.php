@@ -77,25 +77,14 @@
                  -->
             <div style="display: none;" id="my-form-input">
                 <div class="inputcontainer">
-                    <label style="display: none;" for="nip" class="form-label" id="label-nik">NIK</label>
-                    <label style="display: none;" for="nip" class="form-label" id="label-asn">NIP</label>
-                    <label style="display: none;" for="nip" class="form-label" id="label-nonasn">NIPT</label>
-                    <div class="search <?= validation_show_error('nip') ? 'invalid-input' : '' ?>" id="search">
-                        <input value="<?= old('nip') ?>" type="text" placeholder="Masukkan NIP" id="nip" name="nip" inputmode="numeric" autocomplete="off" />
-                        <a style="display: none;" class="cari" id="cariNikButton"><i class="fa fa-search"></i></a>
-                        <i style="display: none;" id="loadingIndicator" class="fa fa-circle-o-notch fa-spin"></i>
-                    </div>
-                    <div class="invalid-response mb-2">
-                        <?= validation_show_error('nip') ?>
-                    </div>
                     <div class="mb-3">
-                        <di style="display: none;" class="bs-callout bs-callout-info" id="note-tamu">
+                        <div style="display: none;" class="bs-callout bs-callout-info" id="note-tamu">
                             <ul class="dot-list">
                                 <li>Masukkan NIK Anda.</li>
                                 <li>NIK yang anda inputkan akan kami gunakan untuk pengecekan otomatis apabila anda pernah melakukan presensi di sistem kami.</li>
                                 <li>Kami akan menjamin kerahasiaan NIK Anda.</li>
                             </ul>
-                        </di>
+                        </div>
                         <div style="display: none;" class="bs-callout bs-callout-info" id="note-asn">
                             <ul class="dot-list">
                                 <li>Masukkan NIP Anda.</li>
@@ -108,82 +97,86 @@
                                 <li> Identitas akan muncul secara otomatis apabila NIPT yang anda masukkan .</li>
                             </ul>
                         </div>
+                        <label style="display: none;" for="nip" class="form-label" id="label-nik">NIK</label>
+                        <label style="display: none;" for="nip" class="form-label" id="label-asn">NIP</label>
+                        <label style="display: none;" for="nip" class="form-label" id="label-nonasn">NIPT</label>
+                        <div class="search <?= validation_show_error('nip') ? 'invalid-input' : '' ?>" id="search">
+                            <input value="<?= old('nip') ?>" type="text" placeholder="Masukkan NIP" id="nip" name="nip" inputmode="numeric" autocomplete="off" />
+                            <a style="display: none;" class="cari" id="cariNikButton"><i class="fa fa-search"></i></a>
+                            <i style="display: none;" id="loadingIndicator" class="fa fa-circle-o-notch fa-spin"></i>
+                        </div>
+                        <div class="invalid-response mb-2">
+                            <?= validation_show_error('nip') ?>
+                        </div>
+                        <!-- Tombol cari yang dimodifikasi menggunakan tag a untuk melakukan ajax request(isi data otomatis), karena dalam 1 form hanya bisa 1 tombol yakni tombol kirim (yang dibawah) -->
                     </div>
-                    <!-- Tombol cari yang dimodifikasi menggunakan tag a untuk melakukan ajax request(isi data otomatis), karena dalam 1 form hanya bisa 1 tombol yakni tombol kirim (yang dibawah) -->
-                </div>
 
-                <div class="column">
+                    <div class="column">
+                        <div class="input-box">
+                            <label for="nama">Nama Lengkap</label>
+                            <input class="<?= validation_show_error('nama') ? 'invalid-input' : '' ?>" value="<?= old('nama') ?>" type="text" placeholder="Masukkan Nama Lengkap" id="nama" name="nama" autocomplete="off" />
+                            <div class="invalid-response">
+                                <?= validation_show_error('nama') ?>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="no_hp">No. Handphone</label>
+                            <input class="<?= validation_show_error('no_hp') ? 'invalid-input' : '' ?>" value="<?= old('no_hp') ?>" type="text" placeholder="Masukkan No. Handphone" id="no_hp" name="no_hp" inputmode="numeric" autocomplete="off" />
+                            <div class="invalid-response">
+                                <?= validation_show_error('no_hp') ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <input type="hidden" name="alamat" id="alamat"> -->
+                    <div class="column">
+                        <div class="input-box" id="instansiText" style="display: none;">
+                            <label for=" asal_instansi_tamu">Asal Instansi</label>
+                            <input class="<?= validation_show_error('asal_instansi_tamu') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_tamu') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_tamu" name="asal_instansi_tamu" autocomplete="off" />
+                            <div class="invalid-response">
+                                <?= validation_show_error('asal_instansi_tamu') ?>
+                            </div>
+                        </div>
+                        <!-- option -->
+                        <div class="input-box" id="instansiOption">
+                            <label for="asal_instansi_option">Asal Instansi</label>
+                            <select class="select-box <?= validation_show_error('asal_instansi_option') ? 'invalid-input' : '' ?>" name="asal_instansi_option" id="asal_instansi_option">
+                                <option value="">Pilih instansi</option>
+                                <?php foreach ($instansi->data as $i) : ?>
+                                    <?php $selected = old('asal_instansi_option') == $i->ket_ukerja ? 'selected' : ''; ?>
+                                    <option value="<?= $i->ket_ukerja ?>" <?= $selected ?>><?= $i->ket_ukerja ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="invalid-response">
+                                <?= validation_show_error('asal_instansi_option') ?>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="input-box">
-                        <label for="nama">Nama Lengkap</label>
-                        <input class="<?= validation_show_error('nama') ? 'invalid-input' : '' ?>" value="<?= old('nama') ?>" type="text" placeholder="Masukkan Nama Lengkap" id="nama" name="nama" autocomplete="off" />
-                        <div class="invalid-response">
-                            <?= validation_show_error('nama') ?>
+                        <div id="signature-pad" class="signature-pad">
+                            <label>Tempat Tanda Tangan</label>
+                            <canvas id="signatureCanvas" class="signature-canvas <?= validation_show_error('signatureData') ? 'invalid-input' : '' ?>"></canvas>
+                            <input type="hidden" id="signatureData" name="signatureData" value="" />
+                            <a id="clearButton" data-action="clear" class="signature-button btn btn-sm btn-secondary text-white"><i class="fa fa-repeat"></i> Ulangi</a>
                         </div>
+                        <div class="invalid-response"><?= validation_show_error('signatureData') ?></div>
                     </div>
+
                     <div class="input-box">
-                        <label for="no_hp">No. Handphone</label>
-                        <input class="<?= validation_show_error('no_hp') ? 'invalid-input' : '' ?>" value="<?= old('no_hp') ?>" type="text" placeholder="Masukkan No. Handphone" id="no_hp" name="no_hp" inputmode="numeric" autocomplete="off" />
-                        <div class="invalid-response">
-                            <?= validation_show_error('no_hp') ?>
+                        <div class="text-end">
+                            <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>"></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- <input type="hidden" name="alamat" id="alamat"> -->
-                <div class="column">
-                    <div class="input-box" id="instansiText" style="display: none;">
-                        <label for=" asal_instansi_tamu">Asal Instansi</label>
-                        <input class="<?= validation_show_error('asal_instansi_tamu') ? 'invalid-input' : '' ?>" value="<?= old('asal_instansi_tamu') ?>" type="text" placeholder="Masukkan Asal Instansi" id="asal_instansi_tamu" name="asal_instansi_tamu" autocomplete="off" />
-                        <div class="invalid-response">
-                            <?= validation_show_error('asal_instansi_tamu') ?>
-                        </div>
-                    </div>
-                    <!-- option -->
-                    <div class="input-box" id="instansiOption">
-                        <label for="asal_instansi_option">Asal Instansi</label>
-                        <select class="select-box <?= validation_show_error('asal_instansi_option') ? 'invalid-input' : '' ?>" name="asal_instansi_option" id="asal_instansi_option">
-                            <option value="">Pilih instansi</option>
-                            <?php foreach ($instansi->data as $i) : ?>
-                                <?php $selected = old('asal_instansi_option') == $i->ket_ukerja ? 'selected' : ''; ?>
-                                <option value="<?= $i->ket_ukerja ?>" <?= $selected ?>><?= $i->ket_ukerja ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div class="invalid-response">
-                            <?= validation_show_error('asal_instansi_option') ?>
-                        </div>
+                    <!-- <div class="invalid-response" id="recaptcha-error"></div> -->
+                    <div class="invalid-response"><?= validation_show_error('g-recaptcha-response') ?></div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-rapat" type="button" id="submitButton" onclick="showConfirmation()" disabled>Submit</button>
                     </div>
                 </div>
-
-                <div class="input-box">
-                    <div id="signature-pad" class="signature-pad">
-                        <label>Tempat Tanda Tangan</label>
-                        <canvas id="signatureCanvas" class="signature-canvas <?= validation_show_error('signatureData') ? 'invalid-input' : '' ?>"></canvas>
-                        <input type="hidden" id="signatureData" name="signatureData" value="" />
-                        <a id="clearButton" data-action="clear" class="signature-button btn btn-sm btn-secondary text-white"><i class="fa fa-repeat"></i> Ulangi</a>
-                    </div>
-                    <div class="invalid-response"><?= validation_show_error('signatureData') ?></div>
-                </div>
-
-                <div class="input-box">
-                    <div class="text-end">
-                        <div class="g-recaptcha" data-sitekey="<?= env('RECAPTCHA_SITE_KEY_V2') ?>"></div>
-                    </div>
-                </div>
-                <!-- <div class="invalid-response" id="recaptcha-error"></div> -->
-                <div class="invalid-response"><?= validation_show_error('g-recaptcha-response') ?></div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-rapat" type="button" id="submitButton" onclick="showConfirmation()" disabled>Submit</button>
-                </div>
-            </div>
         </form>
     </div>
-    <section class="section-footer-form">
-        <div class="title-footer">
-            Diskominfosanti Kabupaten Buleleng 2023
-        </div>
-    </section>
 </body>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
