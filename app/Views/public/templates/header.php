@@ -42,14 +42,15 @@
 
   <div class="landing-page">
 
-    <?= $this->include('layout/navbar_home'); ?>
+    <nav>
+      <div class="section-top fixed-top">
+        <div class="container-lg">
+          <div class="d-flex align-items-center">
+            <img src="<?php echo base_url('assets/img/logo_brand.png'); ?>" alt="Logo" class="img-brand">
+            <div class="title-top">Daftar Hadir</div>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-    <div class="content">
-      <?= $this->renderSection('content') ?>
-    </div>
   </div>
-  <script src="<?= base_url('assets/js/home.js') ?>"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-
-</html>

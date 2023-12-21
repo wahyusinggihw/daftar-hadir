@@ -1,10 +1,5 @@
-<?= $this->extend('layout/page_layout') ?>
-
-<?= $this->section('style') ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/formabsensi.css') ?>">
-<?= $this->endSection(); ?>
-
-<?= $this->section('content') ?>
+<?= $this->include('public/templates/header') ?>
 
 <body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
     <?php if (session()->getFlashdata('error')) : ?>
@@ -175,6 +170,8 @@
     </div>
 </body>
 
+<?= $this->include('public/templates/footer') ?>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
@@ -215,5 +212,3 @@
 
     const base_url = '<?= base_url() ?>';
 </script>
-
-<?= $this->endSection() ?>

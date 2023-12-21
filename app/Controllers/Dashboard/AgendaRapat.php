@@ -69,7 +69,7 @@ class AgendaRapat extends BaseController
         ];
 
         $this->session->set('id_agenda', $agendaRapat['id_agenda']);
-        return view('informasi_rapat', $data);
+        return view('public/informasi_rapat', $data);
     }
 
     public function store()

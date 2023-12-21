@@ -1,9 +1,4 @@
-<?= $this->extend('layout/page_layout') ?>
-
-<?= $this->section('style') ?>
-<?= $this->endSection(); ?>
-
-<?= $this->section('content') ?>
+<?= $this->include('public/templates/header'); ?>
 
 <body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
     <!-- Modal -->
@@ -54,4 +49,4 @@
 
 <script src="<?php echo base_url('assets/js/info.js'); ?>"></script>
 
-<?= $this->endSection() ?>
+<?= $this->include('public/templates/footer'); ?>

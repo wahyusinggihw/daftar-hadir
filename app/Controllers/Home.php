@@ -21,7 +21,7 @@ class Home extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('home', $data);
+        return view('public/home', $data);
     }
 
     public function submitKode()

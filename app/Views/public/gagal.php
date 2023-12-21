@@ -1,6 +1,4 @@
-<?= $this->extend('layout/page_layout') ?>
-
-<?= $this->section('content') ?>
+<?= $this->include('public/templates/header') ?>
 
 <body>
     <div class="section-content">
@@ -41,4 +39,4 @@
     </script> -->
 </body>
 
-<?= $this->endSection() ?>
+<?= $this->include('public/templates/footer') ?>

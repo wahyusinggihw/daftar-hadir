@@ -38,7 +38,7 @@ class RapatController extends BaseController
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir[0],
         ];
-        return view('berhasil', $data);
+        return view('public/berhasil', $data);
     }
 
     public function gagalPage()
@@ -52,7 +52,7 @@ class RapatController extends BaseController
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
         ];
-        return view('gagal', $data);
+        return view('public/gagal', $data);
     }
 
     public function formAbsensi($kodeRapat)
@@ -90,7 +90,7 @@ class RapatController extends BaseController
             'rapat' => $rapat,
         ];
 
-        return view('form_absensi', $data);
+        return view('public/form_absensi', $data);
     }
 
     public function saveSignature($idAgenda, $nip)

@@ -1,10 +1,9 @@
-<?= $this->extend('layout/page_layout_home') ?>
+<?= $this->include('public/templates/header') ?>
 
 <?= $this->section('style') ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
 <?= $this->endSection(); ?>
 
-<?= $this->section('content') ?>
 
 <body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
   <!-- Modal -->
@@ -78,11 +77,5 @@
       </div>
     </div>
   </form>
-  <section class="section-footer">
-    <div class="title-footer">
-      Diskominfosanti Kabupaten Buleleng 2023
-    </div>
-  </section>
-</body>
 
-<?= $this->endSection() ?>
+  <?= $this->include('public/templates/footer') ?>
