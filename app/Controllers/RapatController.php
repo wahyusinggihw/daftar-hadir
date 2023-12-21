@@ -38,7 +38,7 @@ class RapatController extends BaseController
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir[0],
         ];
-        return view('public/berhasil', $data);
+        return view('public/rapat_berhasil', $data);
     }
 
     public function gagalPage()
@@ -52,7 +52,30 @@ class RapatController extends BaseController
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir,
         ];
-        return view('public/gagal', $data);
+        return view('public/rapat_gagal', $data);
+    }
+
+    public function informasiRapat($kodeRapat)
+    {
+        $agendaRapat  = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
+        // dd($agendaRapat);
+        if ($agendaRapat == null) {
+            return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
+        }
+
+        $isExpired = expiredTime($agendaRapat['tanggal'], $agendaRapat['jam'], $agendaRapat['kadaluwarsa']);
+        if ($isExpired) {
+            return redirect()->to('/')->with('error', 'Rapat sudah berakhir.');
+        }
+
+        $data = [
+            'title' => 'Informasi Rapat',
+            'qrCode' => generateQrCode($agendaRapat['link_rapat']),
+            'agendaRapat' => $agendaRapat,
+        ];
+
+        $this->session->set('id_agenda', $agendaRapat['id_agenda']);
+        return view('public/rapat_informasi_rapat', $data);
     }
 
     public function formAbsensi($kodeRapat)
@@ -90,7 +113,7 @@ class RapatController extends BaseController
             'rapat' => $rapat,
         ];
 
-        return view('public/form_absensi', $data);
+        return view('public/rapat_form_absensi', $data);
     }
 
     public function saveSignature($idAgenda, $nip)

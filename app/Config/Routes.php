@@ -7,7 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // Auth Admin
-$routes->match(['get', 'post'], 'login', 'Auth::login', ['filter' => 'islogin']);
+$routes->get('login', 'Auth::index');
+$routes->post('login', 'Auth::login', ['filter' => 'islogin']);
 $routes->group('auth', function ($routes) {
     $routes->match(['get', 'post'], 'change-password', 'Auth::changePassword');
     $routes->post('logout', 'Auth::logout');
@@ -27,7 +28,7 @@ $routes->get('berhasil', 'RapatController::berhasilPage', ['filter' => 'cekkode'
 $routes->get('gagal', 'RapatController::gagalPage');
 
 //  Route for displaying information about a meeting.
-$routes->get('/rapat/informasi/(:segment)', 'Dashboard\AgendaRapat::informasiRapat/$1');
+$routes->get('/rapat/informasi/(:segment)', 'RapatController::informasiRapat/$1');
 
 // AJAX PESERTA RAPAT (form daftar hadir)
 $routes->get('api/peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');

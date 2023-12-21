@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\UserModel;
+use PhpParser\Node\Expr\FuncCall;
 
 class Auth extends BaseController
 {
@@ -15,95 +16,88 @@ class Auth extends BaseController
         helper('my_helper');
     }
 
-    public function berhasil()
+    public function index()
     {
         $data = [
-            'title' => 'Berhasil',
+            'title' => 'Log In',
         ];
-        return view('admin/auth/berhasil', $data);
+        return view('admin/auth/login_view', $data);
     }
 
     public function login()
     {
-        if ($this->request->is('post')) {
-            // dd($this->request->getPost());
-            $rules =
-                [
-                    'username' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => 'Username tidak boleh kosong',
-                        ]
-                    ],
-                    'password' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => 'Password tidak boleh kosong',
-                        ]
-                    ],
-                    'g-recaptcha-response' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => 'centang reCAPTCHA terlebih dahulu.',
-                        ]
-                    ],
-                ];
-
-            $username = $this->request->getVar('username');
-            $password = $this->request->getVar('password');
-
-            if (!$this->validate($rules)) {
-                return redirect()->back()->withInput();
-            }
-
-            $token = $this->request->getVar('g-recaptcha-response');
-            $validateCaptcha  = verifyCaptcha($token);
-            if (!$validateCaptcha->success) {
-                $this->session->setFlashdata('error', 'Terdapat aktifitas tidak wajar, mohon coba lagi.');
-                return redirect()->back()->withInput()->with('kode_valid', true);
-            }
-
-            $admin = $this->adminModel->where('username', $username)->first();
-            // dd($user);
-            if (!$admin) {
-                $this->incrementLoginAttempts();
-                return redirect()->to('/login')->with('error', 'Username atau Password Salah');
-            }
-            if (password_verify($password, $admin['password'])) {
-                $data = [
-                    'id_admin' => $admin['id_admin'],
-                    'username' => $admin['username'],
-                    'nama' => $admin['nama'],
-                    'slug' => $admin['slug'],
-                    'avatar' => $admin['avatar'],
-                    'role' => $admin['role'],
-                    'id_instansi' => $admin['id_instansi'],
-                    'nama_instansi' => $admin['nama_instansi'],
-                    'id_bidang' => $admin['id_bidang'],
-                    'nama_bidang' => $admin['nama_bidang'],
-                    // 'logged_in' => TRUE
-                ];
-                session()->set($data);
-                if ($password === 'Admin123') {
-                    session()->set('password_default', TRUE);
-                    return redirect()->to('/auth/change-password')->with('error', 'Silahkan mengganti password terlebih dahulu');
-                }
-
-                session()->set('logged_in', TRUE);
-                if ($admin['role'] != 'operator') {
-
-                    return redirect()->to('/dashboard');
-                }
-                return redirect()->to('/dashboard/agenda-rapat');
-            } else {
-                $this->incrementLoginAttempts();
-                return redirect()->to('/login')->with('error', 'Username atau Password Salah');
-            }
-        } else {
-            $data = [
-                'title' => 'Log In',
+        // dd($this->request->getPost());
+        $rules =
+            [
+                'username' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Username tidak boleh kosong',
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Password tidak boleh kosong',
+                    ]
+                ],
+                'g-recaptcha-response' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'centang reCAPTCHA terlebih dahulu.',
+                    ]
+                ],
             ];
-            return view('admin/auth/login_view', $data);
+
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput();
+        }
+
+        $token = $this->request->getVar('g-recaptcha-response');
+        $validateCaptcha  = verifyCaptcha($token);
+        if (!$validateCaptcha->success) {
+            $this->session->setFlashdata('error', 'Terdapat aktifitas tidak wajar, mohon coba lagi.');
+            return redirect()->back()->withInput()->with('kode_valid', true);
+        }
+
+        $admin = $this->adminModel->where('username', $username)->first();
+        // dd($user);
+        if (!$admin) {
+            $this->incrementLoginAttempts();
+            return redirect()->to('/login')->with('error', 'Username atau Password Salah');
+        }
+        if (password_verify($password, $admin['password'])) {
+            $data = [
+                'id_admin' => $admin['id_admin'],
+                'username' => $admin['username'],
+                'nama' => $admin['nama'],
+                'slug' => $admin['slug'],
+                'avatar' => $admin['avatar'],
+                'role' => $admin['role'],
+                'id_instansi' => $admin['id_instansi'],
+                'nama_instansi' => $admin['nama_instansi'],
+                'id_bidang' => $admin['id_bidang'],
+                'nama_bidang' => $admin['nama_bidang'],
+                // 'logged_in' => TRUE
+            ];
+            session()->set($data);
+            if ($password === 'Admin123') {
+                session()->set('password_default', TRUE);
+                return redirect()->to('/auth/change-password')->with('error', 'Silahkan mengganti password terlebih dahulu');
+            }
+
+            session()->set('logged_in', TRUE);
+            if ($admin['role'] != 'operator') {
+
+                return redirect()->to('/dashboard');
+            }
+            return redirect()->to('/dashboard/agenda-rapat');
+        } else {
+            $this->incrementLoginAttempts();
+            return redirect()->to('/login')->with('error', 'Username atau Password Salah');
         }
     }
 
@@ -172,6 +166,14 @@ class Auth extends BaseController
             session()->setTempdata('failedLogin', 'Anda salah memasukkan username atau password sebanyak 3 kali. Coba lagi beberapat saat lagi.', 60);
             session()->remove('loginAttempts');
         }
+    }
+
+    public function berhasil()
+    {
+        $data = [
+            'title' => 'Berhasil',
+        ];
+        return view('admin/auth/berhasil', $data);
     }
 
     public function logout()

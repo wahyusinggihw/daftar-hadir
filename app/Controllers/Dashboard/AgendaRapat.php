@@ -49,29 +49,6 @@ class AgendaRapat extends BaseController
         return view('admin/view_agenda', $data);
     }
 
-    public function informasiRapat($kodeRapat)
-    {
-        $agendaRapat  = $this->agendaRapat->getAgendaRapatByKode($kodeRapat);
-        // dd($agendaRapat);
-        if ($agendaRapat == null) {
-            return redirect()->to('/')->with('error', 'Kode Rapat Tidak Ditemukan. Pastikan Kode yang Anda Masukkan Sudah Benar.');
-        }
-
-        $isExpired = expiredTime($agendaRapat['tanggal'], $agendaRapat['jam'], $agendaRapat['kadaluwarsa']);
-        if ($isExpired) {
-            return redirect()->to('/')->with('error', 'Rapat sudah berakhir.');
-        }
-
-        $data = [
-            'title' => 'Informasi Rapat',
-            'qrCode' => generateQrCode($agendaRapat['link_rapat']),
-            'agendaRapat' => $agendaRapat,
-        ];
-
-        $this->session->set('id_agenda', $agendaRapat['id_agenda']);
-        return view('public/informasi_rapat', $data);
-    }
-
     public function store()
     {
         // dd($this->request->getPost());
