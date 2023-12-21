@@ -88,13 +88,13 @@
                         <div style="display: none;" class="bs-callout bs-callout-info" id="note-asn">
                             <ul class="dot-list">
                                 <li>Masukkan NIP Anda.</li>
-                                <li>Identitas akan muncul secara otomatis apabila NIP yang anda masukkan .</li>
+                                <li>Identitas akan muncul secara otomatis apabila NIP yang anda masukkan benar.</li>
                             </ul>
                         </div>
                         <div style="display: none;" class="bs-callout bs-callout-info" id="note-nonasn">
                             <ul class="dot-list">
                                 <li>Masukkan NIPT Anda.</li>
-                                <li> Identitas akan muncul secara otomatis apabila NIPT yang anda masukkan .</li>
+                                <li>Identitas akan muncul secara otomatis apabila NIPT yang anda masukkan benar.</li>
                             </ul>
                         </div>
                         <label style="display: none;" for="nip" class="form-label" id="label-nik">NIK</label>
