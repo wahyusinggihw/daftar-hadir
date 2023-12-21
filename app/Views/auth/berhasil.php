@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <body>
-    <div class="container mt-3">
+    <div class="container-auth mt-3">
         <div class="row justify-content-center align-items-center text-center">
             <div class="animate__animated animate__tada animate__repeat-2">
                 <div class="d-flex align-items-center justify-content-center flex-column mt-4">
@@ -19,23 +19,23 @@
         </div>
         <!-- 
             cek apakah ada variable session logged_in, jika true maka akan di redirect ke halaman dashboard
-         -->
-        <a href="<?= base_url('/auth/login') ?>" class="btn btn-secondary my-2">Lanjutkan</a>
+        -->
+        <a href="<?= base_url('/auth/login') ?>" class="btn btn-secondary my-1" id="btnAuthBerhasil">Lanjutkan</a>
     </div>
 
     <script>
-        var count = 5;
-        var countdownElement = document.getElementById("countdown");
-        var countdownInterval = setInterval(function() {
-            countdownElement.innerHTML = "Anda akan diarahkan ke halaman dashboard dalam " + count + " detik";
-            count--;
-            if (count < 0) {
-                clearInterval(countdownInterval);
-                countdownElement.innerHTML = "Memuat...";
-                window.location.href = "<?= base_url('/auth/login') ?>";
-                // countdownElement.innerHTML = "";
-            }
-        }, 1000);
+        // var count = 5;
+        // var countdownElement = document.getElementById("countdown");
+        // var countdownInterval = setInterval(function() {
+        //     countdownElement.innerHTML = "Anda akan diarahkan ke halaman dashboard dalam " + count + " detik";
+        //     count--;
+        //     if (count < 0) {
+        //         clearInterval(countdownInterval);
+        //         countdownElement.innerHTML = "Memuat...";
+        //         window.location.href = "<?= base_url('/auth/login') ?>";
+        //         // countdownElement.innerHTML = "";
+        //     }
+        // }, 1000);
     </script>
 </body>
 
