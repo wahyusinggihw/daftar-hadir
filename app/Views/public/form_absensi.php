@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="<?= base_url('assets/css/formabsensi.css') ?>">
 <?= $this->include('public/templates/header') ?>
+
+<link rel="stylesheet" href="<?= base_url('assets/css/formabsensi.css') ?>">
 
 <body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
     <?php if (session()->getFlashdata('error')) : ?>
