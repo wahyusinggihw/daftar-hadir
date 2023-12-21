@@ -449,7 +449,7 @@ function tamuAjax(nikValue) {
           // Update the form fields with the fetched data
           $("#no_hp").val(data.data.no_hp).prop("readonly", false);
           $("#nama").val(data.data.nama).prop("readonly", false);
-          $("#alamat").val(data.data.alamat).prop("readonly", false);
+          // $("#alamat").val(data.data.alamat).prop("readonly", false);
           $("#instansiText, #asal_instansi_tamu")
             .val(data.data.asal_instansi)
             .prop("readonly", false);
@@ -528,8 +528,6 @@ function pegawaiAjax(apiEndpoint, nikValue) {
           });
           $("#signatureCanvas").removeClass("greyed-out-form");
           signaturePad.on();
-          // console.log(data);
-          // $("#nip").val(data.data.nip).prop("readonly", false);
           // check if data.data is null, if true then set the value to empty string
           // terdapat beberapa data yang kosong, sehingga perlu dilakukan pengecekan
           function updateFormField(fieldId, fieldValue) {
@@ -541,25 +539,13 @@ function pegawaiAjax(apiEndpoint, nikValue) {
             }
           }
 
-          // check if any of the data is null, if true then autofocus the input
-          function checkIfAnyDataIsNull() {
-            if (
-              data.data.no_hp === "" ||
-              data.data.nama_lengkap === "" ||
-              data.data.alamat === "" ||
-              data.data.ket_ukerja === ""
-            ) {
-              $("#no_hp").focus();
-            }
-          }
-
           updateFormField("#no_hp", data.data.no_hp);
           updateFormField("#nama", data.data.nama_lengkap);
-          updateFormField("#alamat", data.data.alamat);
           updateFormField(
             "#instansiOption, #asal_instansi_option",
             data.data.ket_ukerja
           );
+          // updateFormField("#alamat", data.data.alamat);
           removeReadonlyFormFields("#no_hp");
           // console.log(data.data.no_hp);
           // Update the form fields with the fetched data
