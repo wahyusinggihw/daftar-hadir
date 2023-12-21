@@ -38,7 +38,7 @@ class DaftarHadirController extends BaseController
 
         ];
 
-        return view('dashboard/daftar_hadir', $data);
+        return view('admin/daftar_hadir', $data);
     }
 
     public function delete($id)
@@ -98,7 +98,7 @@ class DaftarHadirController extends BaseController
         $pdf->addPage();
 
         // Load the view file and assign data to it
-        $html = view('dashboard/pdf_template', $rawData);
+        $html = view('admin/pdf_template', $rawData);
 
         //     $html = '
         //     <!DOCTYPE html>

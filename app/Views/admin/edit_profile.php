@@ -1,39 +1,37 @@
-<?= $this->extend('dashboard/layout/dashboard_layout') ?>
+<?= $this->include('admin/templates/header'); ?>
 
-<?= $this->section('content') ?>
+<!-- <body> -->
 
-<body>
+<div class="col-md-8 my-2">
+    <div class="card card-warning">
+        <div class="card-body">
+            <form action="<?= base_url('/dashboard/profile/edit-profile/' . $data['id_admin']) ?>" method="post" enctype="multipart/form-data">
+                <?= csrf_field() ?>
 
-    <div class="col-md-8 my-2">
-        <div class="card card-warning">
-            <div class="card-body">
-                <form action="<?= base_url('/dashboard/profile/edit-profile/' . $data['id_admin']) ?>" method="post" enctype="multipart/form-data">
-                    <?= csrf_field() ?>
+                <input type="hidden" id="text" name="id_user" value="<?= $data['id_admin'] ?>">
 
-                    <input type="hidden" id="text" name="id_user" value="<?= $data['id_admin'] ?>">
-
-                    <div class="form-group">
-                        <label for="nama">Nama Lengkap:</label>
-                        <input class="form-control <?= validation_show_error('nama') ? 'is-invalid' : '' ?>" value="<?= $data['nama'] ?>" type="text" id="nama" name="nama" placeholder="Masukkan nama" autofocus>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('nama') ?>
-                        </div>
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input class="form-control <?= validation_show_error('nama') ? 'is-invalid' : '' ?>" value="<?= $data['nama'] ?>" type="text" id="nama" name="nama" placeholder="Masukkan nama" autofocus>
+                    <div class="invalid-feedback">
+                        <?= validation_show_error('nama') ?>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="avatar" class="form-label">Foto Profil</label>
-                        <input class="form-control <?= validation_show_error('avatar') ? 'is-invalid' : '' ?>" value="<?= $data['avatar'] ?>" type="file" id="avatar" name="avatar">
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('avatar') ?>
-                        </div>
+                <div class="form-group">
+                    <label for="avatar" class="form-label">Foto Profil</label>
+                    <input class="form-control <?= validation_show_error('avatar') ? 'is-invalid' : '' ?>" value="<?= $data['avatar'] ?>" type="file" id="avatar" name="avatar">
+                    <div class="invalid-feedback">
+                        <?= validation_show_error('avatar') ?>
                     </div>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
         </div>
     </div>
+</div>
 
-</body>
+<!-- </body> -->
 
-<?= $this->endSection(); ?>
+<?= $this->include('admin/templates/footer'); ?>

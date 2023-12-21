@@ -36,7 +36,7 @@ class AdminController extends BaseController
                 'admins' => $this->adminModel->getAdminByRole(),
             ];
 
-            return view('dashboard/kelola_admin', $data);
+            return view('admin/kelola_admin', $data);
         } else {
             $data = [
                 'title' => 'Kelola Admin',
@@ -44,7 +44,7 @@ class AdminController extends BaseController
                 'role' => $currentRole,
                 'admins' => $this->adminModel->where('role', 'admin')->orderBy('created_at', 'DESC')->findAll(),
             ];
-            return view('dashboard/kelola_admin', $data);
+            return view('admin/kelola_admin', $data);
         }
 
 
@@ -67,7 +67,7 @@ class AdminController extends BaseController
             'instansi' => $instansiDecode,
             'bidang' => $this->bidangModel->getAllBidangByInstansi($this->session->get('id_instansi'))
         ];
-        return view('dashboard/tambah_admin', $data);
+        return view('admin/tambah_admin', $data);
     }
 
     public function store()
@@ -149,7 +149,7 @@ class AdminController extends BaseController
             'data' => $this->adminModel->where('slug', $slug)->first(),
         ];
 
-        return view('dashboard/edit_admin', $data);
+        return view('admin/edit_admin', $data);
     }
 
     public function update($id)

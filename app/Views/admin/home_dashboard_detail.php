@@ -1,6 +1,4 @@
-<?= $this->extend('dashboard/layout/dashboard_layout') ?>
-
-<?= $this->section('content') ?>
+<?= $this->include('admin/templates/header'); ?>
 
 <?php if (session()->get('role') == 'superadmin') : ?>
     <div class="row">
@@ -138,4 +136,4 @@
     });
 </script>
 
-<?= $this->endSection() ?>
+<?= $this->include('admin/templates/footer'); ?>

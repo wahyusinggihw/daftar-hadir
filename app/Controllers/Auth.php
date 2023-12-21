@@ -20,7 +20,7 @@ class Auth extends BaseController
         $data = [
             'title' => 'Berhasil',
         ];
-        return view('auth/berhasil', $data);
+        return view('admin/auth/berhasil', $data);
     }
 
     public function login()
@@ -67,7 +67,7 @@ class Auth extends BaseController
             // dd($user);
             if (!$admin) {
                 $this->incrementLoginAttempts();
-                return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
+                return redirect()->to('/login')->with('error', 'Username atau Password Salah');
             }
             if (password_verify($password, $admin['password'])) {
                 $data = [
@@ -97,13 +97,13 @@ class Auth extends BaseController
                 return redirect()->to('/dashboard/agenda-rapat');
             } else {
                 $this->incrementLoginAttempts();
-                return redirect()->to('/auth/login')->with('error', 'Username atau Password Salah');
+                return redirect()->to('/login')->with('error', 'Username atau Password Salah');
             }
         } else {
             $data = [
                 'title' => 'Log In',
             ];
-            return view('auth/login_view', $data);
+            return view('admin/auth/login_view', $data);
         }
     }
 
@@ -158,7 +158,7 @@ class Auth extends BaseController
             $data = [
                 'title' => 'Ganti Password',
             ];
-            return view('auth/change_password', $data);
+            return view('admin/auth/change_password', $data);
         }
     }
 
@@ -177,6 +177,6 @@ class Auth extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/auth/login');
+        return redirect()->to('/login');
     }
 }

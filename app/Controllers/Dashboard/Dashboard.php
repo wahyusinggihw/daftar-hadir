@@ -38,7 +38,7 @@ class Dashboard extends BaseController
             'totalAgendaSelesai' =>  count($status['selesai']),
         ];
 
-        return view('dashboard/home_dashboard', $data);
+        return view('admin/home_dashboard', $data);
     }
 
     public function viewDetailAgendaRapatByInstansi($id_instansi)
@@ -55,7 +55,7 @@ class Dashboard extends BaseController
             'totalAgendaTersedia' => count($status['tersedia']),
             'totalAgendaSelesai' =>  count($status['selesai']),
         ];
-        return view('dashboard/home_dashboard_detail', $data);
+        return view('admin/home_dashboard_detail', $data);
     }
 
     public function agenda()
@@ -68,7 +68,7 @@ class Dashboard extends BaseController
             'agenda' => $agendaRapat,
         ];
 
-        return view('dashboard/agenda_rapat', $data);
+        return view('admin/agenda_rapat', $data);
     }
 
     public function daftarHadir()
@@ -83,6 +83,6 @@ class Dashboard extends BaseController
         ];
         // dd($data['daftar_hadir']);
 
-        return view('dashboard/daftar_hadir', $data);
+        return view('admin/daftar_hadir', $data);
     }
 }

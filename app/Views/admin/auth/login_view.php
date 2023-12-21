@@ -35,7 +35,7 @@
         </div>
 
         <h2>Login</h2>
-        <form action="<?= base_url('/auth/login') ?>" method="post" id="form-login">
+        <form action="<?= base_url('/login') ?>" method="post" id="form-login">
             <?= csrf_field() ?>
             <div class="container">
                 <?php if (session('loginAttempts')) : ?>

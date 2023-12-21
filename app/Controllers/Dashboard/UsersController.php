@@ -26,7 +26,7 @@ class UsersController extends BaseController
             'active' => 'profile',
             'profile' => $profile
         ];
-        return view('dashboard/profile', $data);
+        return view('admin/profile', $data);
     }
 
     public function edit($slug)
@@ -41,7 +41,7 @@ class UsersController extends BaseController
         ];
 
 
-        return view('dashboard/edit_profile', $data);
+        return view('admin/edit_profile', $data);
     }
 
     public function editPassword($slug)
@@ -56,7 +56,7 @@ class UsersController extends BaseController
             // 'password' => $password2
         ];
 
-        return view('dashboard/edit_profilepassword', $data);
+        return view('admin/edit_profilepassword', $data);
     }
 
 

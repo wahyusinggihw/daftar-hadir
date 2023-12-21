@@ -30,7 +30,7 @@ class AgendaRapat extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('dashboard/tambah_agenda', $data);
+        return view('admin/tambah_agenda', $data);
     }
 
     public function view($slug)
@@ -46,7 +46,7 @@ class AgendaRapat extends BaseController
             'status' => $agendaRapat[0]['status']
         ];
 
-        return view('dashboard/view_agenda', $data);
+        return view('admin/view_agenda', $data);
     }
 
     public function informasiRapat($kodeRapat)
@@ -125,7 +125,7 @@ class AgendaRapat extends BaseController
             // 'status' => 'tersedia'
         ]);
 
-        return redirect('dashboard/agenda-rapat')->with('success', 'Data berhasil ditambahkan.');
+        return redirect('admin/agenda-rapat')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($slug)
@@ -137,7 +137,7 @@ class AgendaRapat extends BaseController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('dashboard/edit_agenda', $data);
+        return view('admin/edit_agenda', $data);
     }
 
     public function update()

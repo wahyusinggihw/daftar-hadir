@@ -29,7 +29,7 @@ class BidangInstansiController extends BaseController
             'bidang' => $this->bidangModel->getAllBidangByInstansi(session()->get('id_instansi')),
         ];
 
-        return view('dashboard/kelola_bidang', $data);
+        return view('admin/kelola_bidang', $data);
     }
 
     public function tambahBidang()
@@ -65,7 +65,7 @@ class BidangInstansiController extends BaseController
                 'validation' => \Config\Services::validation(),
             ];
 
-            return view('dashboard/tambah_bidang', $data);
+            return view('admin/tambah_bidang', $data);
         }
     }
 
@@ -81,7 +81,7 @@ class BidangInstansiController extends BaseController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('dashboard/edit_bidang', $data);
+        return view('admin/edit_bidang', $data);
     }
 
     public function update()
