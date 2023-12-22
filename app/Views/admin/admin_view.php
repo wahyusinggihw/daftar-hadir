@@ -104,4 +104,4 @@
 </script>
 <!-- </body> -->
 
-<?= $this->include('admin/templates/header'); ?>
+<?= $this->include('admin/templates/footer'); ?>
