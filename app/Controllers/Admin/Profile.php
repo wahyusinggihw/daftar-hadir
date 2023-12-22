@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use Ramsey\Uuid\Uuid;
 use App\Models\AdminModel;
 use Cocur\Slugify\Slugify;
 use App\Controllers\BaseController;
 
-class UsersController extends BaseController
+class Profile extends BaseController
 {
     protected $helpers = ['form'];
     protected $slugify;
@@ -26,7 +26,7 @@ class UsersController extends BaseController
             'active' => 'profile',
             'profile' => $profile
         ];
-        return view('admin/profile', $data);
+        return view('admin/profile_view', $data);
     }
 
     public function edit($slug)
@@ -41,7 +41,7 @@ class UsersController extends BaseController
         ];
 
 
-        return view('admin/edit_profile', $data);
+        return view('admin/profile_edit', $data);
     }
 
     public function editPassword($slug)
@@ -56,7 +56,7 @@ class UsersController extends BaseController
             // 'password' => $password2
         ];
 
-        return view('admin/edit_profilepassword', $data);
+        return view('admin/profile_editpassword', $data);
     }
 
 
@@ -108,7 +108,7 @@ class UsersController extends BaseController
             'password' => password_hash($this->request->getVar('new-password'), PASSWORD_DEFAULT)
         ]);
         session()->setFlashdata('success', 'Data berhasil diubah.');
-        return redirect()->to('/dashboard/profile')->with('success', 'Data berhasil diubah');
+        return redirect()->to('/admin/profile')->with('success', 'Data berhasil diubah');
     }
 
     //update profile
@@ -163,6 +163,6 @@ class UsersController extends BaseController
         session()->remove('avatar');
         session()->set('avatar', $imageName);
 
-        return redirect()->to('/dashboard/profile')->with('success', 'Data berhasil diubah');
+        return redirect()->to('/admin/profile')->with('success', 'Data berhasil diubah');
     }
 }

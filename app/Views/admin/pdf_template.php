@@ -73,6 +73,10 @@
             font-size: 10px;
             /* Align text within paragraphs to the right */
         }
+
+        .signature-container {
+            page-break-inside: avoid;
+        }
     </style>
 
 
@@ -133,7 +137,8 @@
         <tr style="border: none;">
             <td style="border: none;" width="55%"></td>
             <td style="border: none;" width="45%">
-                <div style="border: none;" class="tanda-tangan">
+                <!-- Apply page-break-inside: avoid; to the container -->
+                <div style="border: none;" class="tanda-tangan signature-container">
                     <p>Mengetahui : <br><span>Pejabat Pelaksana Teknis Kegiatan</span></p>
                     <br>
                     <p></p>

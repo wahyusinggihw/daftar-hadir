@@ -12,7 +12,7 @@
 <?php endif; ?>
 
 <?php if (session()->get('role') != 'operator') : ?>
-    <a href="<?= base_url('dashboard/kelola-bidang/tambah-bidang') ?>" class="btn btn-primary mb-2">Tambah Bidang</a>
+    <a href="<?= base_url('admin/kelola-admin/tambah-admin') ?>" class="btn btn-primary mb-2"><?= (session()->get('role') == 'superadmin') ? 'Tambah Admin' : 'Tambah Operator' ?></a>
 <?php endif; ?>
 
 <div class="table-container my-3" style="background-color:white; padding: 20px;">
@@ -20,30 +20,34 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Bidang</th>
-                <th>Nama Kepala Bidang</th>
-                <th>NIP Kepala Bidang</th>
-                <!-- <th>created_at</th> -->
+                <th>Nama Instansi</th>
+                <?php if (session()->get('role') == 'admin') : ?>
+                    <th>Nama Bidang</th>
+                <?php endif; ?>
+                <th>Nama Admin</th>
+                <th>Username</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($bidang as $item) : ?>
+            <?php foreach ($admins as $item) : ?>
                 <tr>
                     <td></td>
-                    <td><?= $item['nama_bidang'] ?></td>
-                    <td><?= $item['nama_kepala_bidang'] ?></td>
-                    <td><?= $item['nip_kepala_bidang'] ?></td>
+                    <td><?= $item['nama_instansi'] ?></td>
+                    <?php if (session()->get('role') == 'admin') : ?>
+                        <td><?= $item['nama_bidang'] ?></td>
+                    <?php endif; ?>
+                    <td><?= $item['nama'] ?></td>
+                    <td><?= $item['username'] ?></td>
                     <td>
                         <div class="row">
                             <div class="col-lg-12 btn-group">
-                                <!-- <a href="<?= base_url('dashboard/kelola-admin/view-agenda/' . $item['slug']) ?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a> -->
-                                <a href="<?= base_url('dashboard/kelola-bidang/edit-bidang/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fa-solid fa-pen"></i></a>
-                                <button href="#" class="btn btn-danger delete-button" data-id="<?= $item['id_bidang'] ?>"><i class="fa-solid fa-trash"></i></button>
+                                <!-- <a href="<?= base_url('admin/kelola-admin/view-agenda/' . $item['slug']) ?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a> -->
+                                <a href="<?= base_url('admin/kelola-admin/edit-admin/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fas fa-lock"></i></a>
+                                <button href="#" class="btn btn-danger delete-button" data-id="<?= $item['id_admin'] ?>"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </div>
                     </td>
-
                 </tr>
             <?php endforeach ?>
             <!-- Add more rows as needed -->
@@ -57,7 +61,7 @@
     new DataTable('#example', {
         responsive: true,
         "columnDefs": [{
-            "targets": [4], // Index of the column to disable sorting (zero-based index)
+            // "targets": [2, 5], // Index of the column to disable sorting (zero-based index)
             "orderable": false,
 
         }],
@@ -79,13 +83,13 @@
             cancelButtonText: 'Batal',
             reverseButtons: true
         }).then((result) => {
-            base_url = '<?= base_url() ?>';
             if (result.isConfirmed) {
-                // Trigger the form submission for POST request
                 console.log(id);
+                // Trigger the form submission for POST request
+                base_url = '<?= base_url() ?>';
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = base_url + '/dashboard/kelola-bidang/delete-bidang/' + id;
+                form.action = base_url + '/admin/kelola-admin/delete-admin/' + id;
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -99,4 +103,5 @@
     });
 </script>
 <!-- </body> -->
-<?= $this->include('admin/templates/footer'); ?>
+
+<?= $this->include('admin/templates/header'); ?>

@@ -7,8 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // Auth Admin
-$routes->get('login', 'Auth::index');
-$routes->post('login', 'Auth::login', ['filter' => 'islogin']);
+$routes->get('login', 'Auth::index', ['filter' => 'islogin']);
+$routes->post('login', 'Auth::login');
 $routes->group('auth', function ($routes) {
     $routes->match(['get', 'post'], 'change-password', 'Auth::changePassword');
     $routes->post('logout', 'Auth::logout');
@@ -18,17 +18,17 @@ $routes->group('auth', function ($routes) {
 // Landing page
 $routes->get('/', 'Home::index');
 $routes->post('/rapat/submit-kode', 'Home::submitKode');
-$routes->get('/rapat/daftar-hadir/(:segment)', 'RapatController::formAbsensi/$1');
-$routes->post('/rapat/daftar-hadir/store', 'RapatController::absenStore');
+$routes->get('/rapat/daftar-hadir/(:segment)', 'Rapat::formAbsensi/$1');
+$routes->post('/rapat/daftar-hadir/store', 'Rapat::absenStore');
 
 // berhasil page
-$routes->get('berhasil', 'RapatController::berhasilPage', ['filter' => 'cekkode']);
+$routes->get('berhasil', 'Rapat::berhasilPage', ['filter' => 'cekkode']);
 
 // gagal page
-$routes->get('gagal', 'RapatController::gagalPage');
+$routes->get('gagal', 'Rapat::gagalPage');
 
 //  Route for displaying information about a meeting.
-$routes->get('/rapat/informasi/(:segment)', 'RapatController::informasiRapat/$1');
+$routes->get('/rapat/informasi/(:segment)', 'Rapat::informasiRapat/$1');
 
 // AJAX PESERTA RAPAT (form daftar hadir)
 $routes->get('api/peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
@@ -39,49 +39,49 @@ $routes->get('api/pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegaw
 // API
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
     // login
-    $routes->post('login', "Api\AuthControllerAPI::login");
+    $routes->post('login', "API\AuthControllerAPI::login");
     // get agenda rapat berdasarkan instansi user (Home Screen)
     // Tersedia
-    $routes->get('agenda-rapat/instansi/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansi/$1');
+    $routes->get('agenda-rapat/instansi/(:segment)', 'API\AgendaRapatControllerAPI::getByInstansi/$1');
     // Selesai
-    $routes->get('agenda-rapat/instansi/selesai/(:segment)', 'Api\AgendaRapatControllerAPI::getByInstansiSelesai/$1');
+    $routes->get('agenda-rapat/instansi/selesai/(:segment)', 'API\AgendaRapatControllerAPI::getByInstansiSelesai/$1');
     // get agenda rapat berdasarkan id agenda rapat (Qr code result)
-    $routes->get('agenda-rapat/scan/(:segment)', 'Api\AgendaRapatControllerAPI::getAgendaRapat/$1');
+    $routes->get('agenda-rapat/scan/(:segment)', 'API\AgendaRapatControllerAPI::getAgendaRapat/$1');
     // search
-    $routes->get('agenda-rapat/search', 'Api\AgendaRapatControllerAPI::getAllAgendaRapat');
+    $routes->get('agenda-rapat/search', 'API\AgendaRapatControllerAPI::getAllAgendaRapat');
     // post form absen
-    $routes->post('daftar-hadir/store', 'Api\RapatControllerAPI::absenStore');
-    $routes->post('change-password', "Api\AuthControllerAPI::changePassword");
+    $routes->post('daftar-hadir/store', 'API\RapatControllerAPI::absenStore');
+    $routes->post('change-password', "API\AuthControllerAPI::changePassword");
 });
 
 // Dashboard
-$routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
-    $routes->get('/', 'Dashboard\Dashboard::index', ['filter' => 'admin']);
-    $routes->get('agenda-rapat', 'Dashboard\Dashboard::agenda');
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Admin\Dashboard::index', ['filter' => 'admin']);
+    $routes->get('agenda-rapat', 'Admin\AgendaRapat::index');
 
     // route khusus super admin untuk melihat agenda rapat berdasarkan instansi (tabel view )
-    $routes->get('view-detail-by-instansi/(:segment)', 'Dashboard\Dashboard::viewDetailAgendaRapatByInstansi/$1');
+    $routes->get('view-detail-by-instansi/(:segment)', 'Admin\Dashboard::viewDetailAgendaRapatByInstansi/$1');
 
     // CRUD agenda rapat di semua role
-    $routes->get('agenda-rapat/daftar-hadir/(:segment)', 'Dashboard\DaftarHadirController::cariDaftarHadir/$1');
-    $routes->post('agenda-rapat/daftar-hadir/delete-peserta/(:segment)', 'Dashboard\DaftarHadirController::delete/$1');
-    $routes->get('agenda-rapat/daftar-hadir/cetak/(:segment)', 'Dashboard\DaftarHadirController::generatePdf/$1');
+    $routes->get('agenda-rapat/daftar-hadir/(:segment)', 'Admin\DaftarHadir::index/$1');
+    $routes->post('agenda-rapat/daftar-hadir/delete-peserta/(:segment)', 'Admin\DaftarHadir::delete/$1');
+    $routes->get('agenda-rapat/daftar-hadir/cetak/(:segment)', 'Admin\DaftarHadir::generatePdf/$1');
 
-    $routes->get('agenda-rapat/tambah-agenda', 'Dashboard\AgendaRapat::tambahAgenda');
-    $routes->post('agenda-rapat/tambah-agenda/store', 'Dashboard\AgendaRapat::store');
+    $routes->get('agenda-rapat/tambah-agenda', 'Admin\AgendaRapat::tambahAgenda');
+    $routes->post('agenda-rapat/tambah-agenda/store', 'Admin\AgendaRapat::store');
 
-    $routes->get('agenda-rapat/view-agenda/(:segment)', 'Dashboard\AgendaRapat::view/$1');
+    $routes->get('agenda-rapat/view-agenda/(:segment)', 'Admin\AgendaRapat::view/$1');
 
-    $routes->get('agenda-rapat/edit-agenda/(:segment)', 'Dashboard\AgendaRapat::edit/$1');
-    $routes->post('agenda-rapat/edit-agenda/(:segment)/update', 'Dashboard\AgendaRapat::update/$1');
-    $routes->post('delete-agenda/(:segment)', 'Dashboard\AgendaRapat::delete/$1');
+    $routes->get('agenda-rapat/edit-agenda/(:segment)', 'Admin\AgendaRapat::edit/$1');
+    $routes->post('agenda-rapat/edit-agenda/(:segment)/update', 'Admin\AgendaRapat::update/$1');
+    $routes->post('delete-agenda/(:segment)', 'Admin\AgendaRapat::delete/$1');
 
     // Route edit profil
-    $routes->get('profile', 'Dashboard\UsersController::index');
-    $routes->get('profile/edit-profile/(:segment)', 'Dashboard\UsersController::edit/$1');
-    $routes->post('profile/edit-profile/(:segment)', 'Dashboard\UsersController::update/$1');
-    $routes->get('profile/edit-profilepassword/(:segment)', 'Dashboard\UsersController::editPassword/$1');
-    $routes->post('profile/edit-profilepassword/(:segment)', 'Dashboard\UsersController::updatePassword/$1');
+    $routes->get('profile', 'Admin\Profile::index');
+    $routes->get('profile/edit-profile/(:segment)', 'Admin\Profile::edit/$1');
+    $routes->post('profile/edit-profile/(:segment)', 'Admin\Profile::update/$1');
+    $routes->get('profile/edit-profilepassword/(:segment)', 'Admin\Profile::editPassword/$1');
+    $routes->post('profile/edit-profilepassword/(:segment)', 'Admin\Profile::updatePassword/$1');
 
     /**
      * Kelola Admin Routes
@@ -95,19 +95,21 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
      * - kelola-admin/* route is used to manage admin instansi and operator bidang
      */
     $routes->group('kelola-admin', ['filter' => 'admin'], function ($routes) {
-        $routes->get('/', 'Dashboard\AdminController::index');
-        // $routes->match(['get', 'post'], 'tambah-admin', 'Dashboard\AdminController::tambahAdmin');
-        $routes->get('tambah-admin', 'Dashboard\AdminController::tambahAdmin');
-        $routes->post('tambah-admin', 'Dashboard\AdminController::store');
-        $routes->get('edit-admin/(:segment)', 'Dashboard\AdminController::edit/$1');
-        $routes->post('edit-admin/(:segment)/update', 'Dashboard\AdminController::update/$1');
-        $routes->post('delete-admin/(:segment)', 'Dashboard\AdminController::delete/$1');
+        $routes->get('/', 'Admin\Admin::index');
+        // $routes->match(['get', 'post'], 'tambah-admin', 'Admin\Admin::tambahAdmin');
+        $routes->get('tambah-admin', 'Admin\Admin::tambahAdmin');
+        $routes->post('tambah-admin', 'Admin\Admin::store');
+        $routes->get('edit-admin/(:segment)', 'Admin\Admin::edit/$1');
+        $routes->post('edit-admin/(:segment)/update', 'Admin\Admin::update/$1');
+        $routes->post('delete-admin/(:segment)', 'Admin\Admin::delete/$1');
     });
 
     // Route untuk kelola bidang di role admin instansi
-    $routes->get('kelola-bidang', 'Dashboard\BidangInstansiController::index');
-    $routes->match(['get', 'post'], 'kelola-bidang/tambah-bidang', 'Dashboard\BidangInstansiController::tambahBidang');
-    $routes->get('kelola-bidang/edit-bidang/(:segment)', 'Dashboard\BidangInstansiController::edit/$1');
-    $routes->post('kelola-bidang/edit-bidang/(:segment)/update', 'Dashboard\BidangInstansiController::update/$1');
-    $routes->post('kelola-bidang/delete-bidang/(:segment)', 'Dashboard\BidangInstansiController::delete/$1');
+    $routes->get('kelola-bidang', 'Admin\BidangInstansi::index');
+    $routes->get('kelola-bidang/tambah-bidang', 'Admin\BidangInstansi::tambahBidang');
+    $routes->post('kelola-bidang/tambah-bidang/store', 'Admin\BidangInstansi::store');
+
+    $routes->get('kelola-bidang/edit-bidang/(:segment)', 'Admin\BidangInstansi::edit/$1');
+    $routes->post('kelola-bidang/edit-bidang/(:segment)/update', 'Admin\BidangInstansi::update/$1');
+    $routes->post('kelola-bidang/delete-bidang/(:segment)', 'Admin\BidangInstansi::delete/$1');
 });

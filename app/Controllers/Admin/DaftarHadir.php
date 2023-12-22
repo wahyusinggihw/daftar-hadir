@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\DaftarHadirModel;
@@ -8,7 +8,7 @@ use App\Models\AgendaRapatModel;
 use App\Models\BidangInstansiModel;
 use TCPDF;
 
-class DaftarHadirController extends BaseController
+class DaftarHadir extends BaseController
 {
     protected $daftarhadir;
     protected $agendaRapat;
@@ -21,7 +21,7 @@ class DaftarHadirController extends BaseController
         helper('my_helper');
     }
 
-    public function cariDaftarHadir($slug)
+    public function index($slug)
     {
         $agendaRapat = $this->agendaRapat->where('slug', $slug)->first();
         $daftarHadir = $this->daftarhadir->getDaftarHadirByID($agendaRapat['id_agenda']);
@@ -38,7 +38,7 @@ class DaftarHadirController extends BaseController
 
         ];
 
-        return view('admin/daftar_hadir', $data);
+        return view('admin/daftarhadir_view', $data);
     }
 
     public function delete($id)

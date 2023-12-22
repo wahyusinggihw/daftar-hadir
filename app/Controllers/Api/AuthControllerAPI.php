@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Api;
+namespace App\Controllers\API;
 
 use App\Controllers\BaseController;
 use App\Models\PesertaRapatModel;

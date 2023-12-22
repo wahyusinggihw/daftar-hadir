@@ -5,7 +5,7 @@
 <div class="col-md-8 my-2">
     <div class="card card-warning">
         <div class="card-body">
-            <form action="<?= base_url('/dashboard/profile/edit-profile/' . $data['id_admin']) ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('/admin/profile/edit-profile/' . $data['id_admin']) ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
 
                 <input type="hidden" id="text" name="id_user" value="<?= $data['id_admin'] ?>">

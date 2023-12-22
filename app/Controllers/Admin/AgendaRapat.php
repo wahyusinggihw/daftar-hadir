@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use Ramsey\Uuid\Uuid;
 use Cocur\Slugify\Slugify;
@@ -21,6 +21,18 @@ class AgendaRapat extends BaseController
         helper('my_helper');
     }
 
+    public function index()
+    {
+        $agendaRapat = $this->agendaRapat->getAgendas();
+        // dd($agendaRapat);
+        $data = [
+            'title' => 'Agenda Rapat',
+            'active' => 'agenda',
+            'agenda' => $agendaRapat,
+        ];
+
+        return view('admin/agendarapat_view', $data);
+    }
 
     public function tambahAgenda()
     {
@@ -30,7 +42,7 @@ class AgendaRapat extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('admin/tambah_agenda', $data);
+        return view('admin/agendarapat_tambah', $data);
     }
 
     public function view($slug)
@@ -46,7 +58,7 @@ class AgendaRapat extends BaseController
             'status' => $agendaRapat[0]['status']
         ];
 
-        return view('admin/view_agenda', $data);
+        return view('admin/agendarapat_detail', $data);
     }
 
     public function store()
@@ -114,7 +126,7 @@ class AgendaRapat extends BaseController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('admin/edit_agenda', $data);
+        return view('admin/agendarapat_edit', $data);
     }
 
     public function update()
@@ -169,7 +181,7 @@ class AgendaRapat extends BaseController
 
         $this->agendaRapat->updateAgenda($idAgenda, $data);
 
-        return redirect('dashboard/agenda-rapat')->with('success', 'Data berhasil diubah.');
+        return redirect('admin/agenda-rapat')->with('success', 'Data berhasil diubah.');
     }
 
     public function delete($id)
@@ -178,7 +190,7 @@ class AgendaRapat extends BaseController
         if ($agenda) {
             $this->deleteSignatures($agenda['id_agenda']);
             $this->agendaRapat->delete($id);
-            return redirect()->to('/dashboard/agenda-rapat')->with('success', 'Data berhasil dihapus.');
+            return redirect()->to('/admin/agenda-rapat')->with('success', 'Data berhasil dihapus.');
         }
     }
 

@@ -24,7 +24,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col-lg-12 btn-group">
-                                        <a href="<?= base_url('dashboard/view-detail-by-instansi/' . $item['id_instansi']) ?>" class="btn btn-info"><i class="fa-solid fa-eye" style="color: white;"></i></a>
+                                        <a href="<?= base_url('admin/view-detail-by-instansi/' . $item['id_instansi']) ?>" class="btn btn-info"><i class="fa-solid fa-eye" style="color: white;"></i></a>
                                     </div>
                                 </div>
                             </td>
@@ -115,7 +115,7 @@
                     event.preventDefault();
                     const base_url = '<?= base_url() ?>';
                     const dataInfo = this.getAttribute('data-info');
-                    const redirectURL = base_url + 'dashboard/agenda-rapat?data-info=' + dataInfo;
+                    const redirectURL = base_url + 'admin/agenda-rapat?data-info=' + dataInfo;
 
                     if (dataInfo === 'tersedia') {
                         // Redirect to the URL

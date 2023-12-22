@@ -19,7 +19,7 @@ class DaftarHadirSeed extends Seeder
             $dataDaftarHadir = [
                 'id_daftar_hadir' => $uuid,
                 'slug' => $faker->slug(),
-                'id_agenda_rapat' => 'c63021b2-5f35-49c3-9587-731ad0f28e24',
+                'id_agenda_rapat' => '515dfc1e-a60f-4a81-b2d3-269f39a8a541',
                 'NIK' => $faker->randomNumber(9, true),
                 'nama' => $faker->name(),
                 'no_hp' => $faker->phoneNumber(),

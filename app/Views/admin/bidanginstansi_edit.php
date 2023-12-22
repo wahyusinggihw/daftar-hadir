@@ -13,7 +13,7 @@
 <div class="col-md-8 my-2">
     <div class="card card-warning">
         <div class="card-body">
-            <form action="<?= base_url('dashboard/kelola-bidang/edit-bidang/' . $data['id_bidang']) . '/update' ?>" method="post">
+            <form action="<?= base_url('admin/kelola-bidang/edit-bidang/' . $data['id_bidang']) . '/update' ?>" method="post">
                 <?= csrf_field() ?>
                 <?= validation_list_errors() ?>
                 <input type="hidden" value="<?= $data['id_bidang'] ?>" name="id_bidang" id="id_bidang">

@@ -92,9 +92,9 @@ class Auth extends BaseController
             session()->set('logged_in', TRUE);
             if ($admin['role'] != 'operator') {
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('/admin');
             }
-            return redirect()->to('/dashboard/agenda-rapat');
+            return redirect()->to('/admin/agenda-rapat');
         } else {
             $this->incrementLoginAttempts();
             return redirect()->to('/login')->with('error', 'Username atau Password Salah');
