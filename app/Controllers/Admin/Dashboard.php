@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\AgendaRapatModel;
@@ -38,7 +38,7 @@ class Dashboard extends BaseController
             'totalAgendaSelesai' =>  count($status['selesai']),
         ];
 
-        return view('admin/home_dashboard', $data);
+        return view('admin/dashboard', $data);
     }
 
     public function viewDetailAgendaRapatByInstansi($id_instansi)
@@ -55,34 +55,6 @@ class Dashboard extends BaseController
             'totalAgendaTersedia' => count($status['tersedia']),
             'totalAgendaSelesai' =>  count($status['selesai']),
         ];
-        return view('admin/home_dashboard_detail', $data);
-    }
-
-    public function agenda()
-    {
-        $agendaRapat = $this->agendaRapat->getAgendas();
-        // dd($agendaRapat);
-        $data = [
-            'title' => 'Agenda Rapat',
-            'active' => 'agenda',
-            'agenda' => $agendaRapat,
-        ];
-
-        return view('admin/agenda_rapat', $data);
-    }
-
-    public function daftarHadir()
-    {
-        $id_agenda = $this->request->getVar('daftar_agenda');
-
-        $data = [
-            'title' => 'Daftar Peserta Rapat',
-            'active' => 'daftar_hadir',
-            'agenda_rapat' => $this->agendaRapat->getAgendaRapatByID(),
-            'daftar_hadir' => $this->daftarhadir->getDaftarHadirByID($id_agenda)
-        ];
-        // dd($data['daftar_hadir']);
-
-        return view('admin/daftar_hadir', $data);
+        return view('admin/dashboard_detail', $data);
     }
 }

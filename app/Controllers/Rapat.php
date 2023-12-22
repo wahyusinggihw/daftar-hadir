@@ -9,7 +9,7 @@ use App\Models\DaftarHadirModel;
 use App\Models\PesertaUmumModel;
 use App\Models\PesertaRapatModel;
 
-class RapatController extends BaseController
+class Rapat extends BaseController
 {
     protected $helpers = ['form'];
     protected $pesertaRapat;

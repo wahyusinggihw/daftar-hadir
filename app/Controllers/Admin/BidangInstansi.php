@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\BidangInstansiModel;
@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 use Cocur\Slugify\Slugify;
 
 
-class BidangInstansiController extends BaseController
+class BidangInstansi extends BaseController
 {
     protected $helpers = ['form'];
     protected $bidangModel;
@@ -29,44 +29,45 @@ class BidangInstansiController extends BaseController
             'bidang' => $this->bidangModel->getAllBidangByInstansi(session()->get('id_instansi')),
         ];
 
-        return view('admin/kelola_bidang', $data);
+        return view('admin/bidanginstansi_view', $data);
     }
 
     public function tambahBidang()
     {
-        if ($this->request->is('post')) {
-            $validate = $this->validateForm();
+        $instansi = $this->pesertaRapat->getInstansi();
+        $instansiDecode = json_decode($instansi);
+        $data = [
+            'title' => 'Tambah Bidang',
+            'instansi' => $instansiDecode,
+            'validation' => \Config\Services::validation(),
+        ];
 
-            if (!$validate) {
-                return redirect()->back()->withInput();
-            }
+        return view('admin/bidanginstansi_tambah', $data);
+    }
 
-            $uuid = Uuid::uuid4()->toString();
-            $slug = $this->slugify->slugify($this->request->getVar('nama_bidang'));
-            $data = [
-                'id_bidang' => $uuid,
-                'slug' => $slug,
-                'nama_bidang' => $this->request->getVar('nama_bidang'),
-                'nama_kepala_bidang' => $this->request->getVar('nama_kepala_bidang'),
-                'nip_kepala_bidang' => $this->request->getVar('nip_kepala_bidang'),
-                'id_instansi' => $this->session->get('id_instansi'),
-                // 'created_at' => date('Y-m-d H:i:s'),
-            ];
+    public function store()
+    {
+        $validate = $this->validateForm();
 
-            // dd($data);
-            $this->bidangModel->insert($data);
-            return redirect()->to('/dashboard/kelola-bidang')->with('success', 'Data berhasil ditambahkan');
-        } else {
-            $instansi = $this->pesertaRapat->getInstansi();
-            $instansiDecode = json_decode($instansi);
-            $data = [
-                'title' => 'Tambah Bidang',
-                'instansi' => $instansiDecode,
-                'validation' => \Config\Services::validation(),
-            ];
-
-            return view('admin/tambah_bidang', $data);
+        if (!$validate) {
+            return redirect()->back()->withInput();
         }
+
+        $uuid = Uuid::uuid4()->toString();
+        $slug = $this->slugify->slugify($this->request->getVar('nama_bidang'));
+        $data = [
+            'id_bidang' => $uuid,
+            'slug' => $slug,
+            'nama_bidang' => $this->request->getVar('nama_bidang'),
+            'nama_kepala_bidang' => $this->request->getVar('nama_kepala_bidang'),
+            'nip_kepala_bidang' => $this->request->getVar('nip_kepala_bidang'),
+            'id_instansi' => $this->session->get('id_instansi'),
+            // 'created_at' => date('Y-m-d H:i:s'),
+        ];
+
+        // dd($data);
+        $this->bidangModel->insert($data);
+        return redirect()->to('/dashboard/kelola-bidang')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit($slug)
@@ -81,7 +82,7 @@ class BidangInstansiController extends BaseController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('admin/edit_bidang', $data);
+        return view('admin/bidanginstansi_edit', $data);
     }
 
     public function update()

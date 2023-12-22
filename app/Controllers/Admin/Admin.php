@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Dashboard;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\AdminModel;
@@ -10,7 +10,7 @@ use App\Models\BidangInstansiModel;
 use Ramsey\Uuid\Uuid;
 use Cocur\Slugify\Slugify;
 
-class AdminController extends BaseController
+class Admin extends BaseController
 {
     protected $helpers = ['form'];
     protected $adminModel;
@@ -36,7 +36,7 @@ class AdminController extends BaseController
                 'admins' => $this->adminModel->getAdminByRole(),
             ];
 
-            return view('admin/kelola_admin', $data);
+            return view('admin/admin_view', $data);
         } else {
             $data = [
                 'title' => 'Kelola Admin',
@@ -44,7 +44,7 @@ class AdminController extends BaseController
                 'role' => $currentRole,
                 'admins' => $this->adminModel->where('role', 'admin')->orderBy('created_at', 'DESC')->findAll(),
             ];
-            return view('admin/kelola_admin', $data);
+            return view('admin/admin_view', $data);
         }
 
 
@@ -67,7 +67,7 @@ class AdminController extends BaseController
             'instansi' => $instansiDecode,
             'bidang' => $this->bidangModel->getAllBidangByInstansi($this->session->get('id_instansi'))
         ];
-        return view('admin/tambah_admin', $data);
+        return view('admin/admin_tambah', $data);
     }
 
     public function store()
@@ -149,7 +149,7 @@ class AdminController extends BaseController
             'data' => $this->adminModel->where('slug', $slug)->first(),
         ];
 
-        return view('admin/edit_admin', $data);
+        return view('admin/admin_edit', $data);
     }
 
     public function update($id)
