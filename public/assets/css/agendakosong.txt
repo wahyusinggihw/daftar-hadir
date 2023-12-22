@@ -25,7 +25,7 @@
 }
 
 .icon-empty {
-  width: 100px; /* Sesuaikan lebar gambar sesuai kebutuhan */
-  height: auto;
-  margin: auto; /* Biarkan tinggi mengikuti proporsi asli */
+    width: 100px; /* Sesuaikan lebar gambar sesuai kebutuhan */
+    height: auto;
+    margin: auto; /* Biarkan tinggi mengikuti proporsi asli */
 }
