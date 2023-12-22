@@ -15,7 +15,7 @@
 <!-- buat agar menjadi di tengah -->
 <div class="card card-primary">
     <div class="card-body">
-        <form action="<?= base_url('/dashboard/agenda-rapat/tambah-agenda/store') ?>" method="post">
+        <form action="<?= base_url('/admin/agenda-rapat/tambah-agenda/store') ?>" method="post">
             <?= csrf_field() ?>
             <div class="row">
                 <!-- <div class="col-sm-6"> -->
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
+            <a href="<?= base_url('admin/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>

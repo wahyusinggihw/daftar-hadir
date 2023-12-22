@@ -104,8 +104,8 @@
         <li class="nav-item dropdown">
           <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" style="color:white;"><i class="fas fa-th-large"></i> </a>
           <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
-            <li><a href="<?= base_url('dashboard/profile') ?>" class="dropdown-item"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href="<?= base_url('dashboard/profile/edit-profilepassword/' . session()->get('slug')) ?>" class="dropdown-item"><i class="fas fa-lock"></i> Edit Password</a></li>
+            <li><a href="<?= base_url('admin/profile') ?>" class="dropdown-item"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="<?= base_url('admin/profile/edit-profilepassword/' . session()->get('slug')) ?>" class="dropdown-item"><i class="fas fa-lock"></i> Edit Password</a></li>
           </ul>
         </li>
       </ul>
@@ -128,7 +128,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a style="text-decoration: none;" href="<?= base_url('dashboard') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none;" href="<?= base_url('admin') ?>">Home</a></li>
                 <li class="breadcrumb-item <?php echo isset($subtitle) ? '' : 'active' ?>"><?php isset($title) ? print($title) : '' ?></li>
                 <?php if (isset($title1)) :  ?>
                   <li class="breadcrumb-item <?php echo isset($title1) ? '' : 'active' ?>"><?php isset($title1) ? print($title1) : '' ?></li>

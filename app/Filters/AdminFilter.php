@@ -29,7 +29,7 @@ class AdminFilter implements FilterInterface
         $userRole = session()->get('role');
 
         if (!in_array($userRole, $allowedRoles)) {
-            return redirect()->to('/dashboard/agenda-rapat');
+            return redirect()->to('/admin/agenda-rapat');
         }
     }
 

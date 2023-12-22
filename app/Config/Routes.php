@@ -55,7 +55,7 @@ $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
 });
 
 // Dashboard
-$routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Admin\Dashboard::index', ['filter' => 'admin']);
     $routes->get('agenda-rapat', 'Admin\AgendaRapat::index');
 

@@ -12,7 +12,7 @@
 <?php endif; ?>
 
 <?php if ($agenda != null) : ?>
-    <a href="<?= base_url('/dashboard/agenda-rapat/tambah-agenda') ?>" class="btn btn-primary mb-2">Tambah Agenda</a>
+    <a href="<?= base_url('/admin/agenda-rapat/tambah-agenda') ?>" class="btn btn-primary mb-2">Tambah Agenda</a>
     <div class="table-container my-3" style="background-color:white; padding: 20px;">
         <table id="example" class="row-border" style="width:100%">
             <thead>
@@ -46,10 +46,10 @@
                         <td>
                             <div class="row">
                                 <div class="col-lg-12 btn-group">
-                                    <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/' . $item['slug']) ?>" class="btn btn-info mx-2"><i class="fa-solid fa-list" style="color: white;"></i></a>
-                                    <a href="<?= base_url('dashboard/agenda-rapat/view-agenda/' . $item['slug']) ?>" class="btn btn-info"><i class="fa-solid fa-eye" style="color: white;"></i></a>
+                                    <a href="<?= base_url('admin/agenda-rapat/daftar-hadir/' . $item['slug']) ?>" class="btn btn-info mx-2"><i class="fa-solid fa-list" style="color: white;"></i></a>
+                                    <a href="<?= base_url('admin/agenda-rapat/view-agenda/' . $item['slug']) ?>" class="btn btn-info"><i class="fa-solid fa-eye" style="color: white;"></i></a>
                                     <?php if ($item['status'] != 'selesai') : ?>
-                                        <a href="<?= base_url('dashboard/agenda-rapat/edit-agenda/' . $item['slug']) ?>" class="btn btn-warning ml-2<?= $item['editable'] == 'false' ? 'disabled' : '' ?>" <?= $item['editable'] == 'false' ? 'hidden' : '' ?>><i class="fa-solid fa-pen" style="color: white;"></i></a>
+                                        <a href="<?= base_url('admin/agenda-rapat/edit-agenda/' . $item['slug']) ?>" class="btn btn-warning ml-2<?= $item['editable'] == 'false' ? 'disabled' : '' ?>" <?= $item['editable'] == 'false' ? 'hidden' : '' ?>><i class="fa-solid fa-pen" style="color: white;"></i></a>
                                         <button class="btn btn-danger delete-button ml-2" data-id="<?= $item['id_agenda'] ?>"><i class="fa-solid fa-trash"></i></button>
                                     <?php endif; ?>
                                 </div>
@@ -71,7 +71,7 @@
         <div class="data-kosong">
             Data Agenda Kosong
         </div>
-        <a href="<?= base_url('/dashboard/agenda-rapat/tambah-agenda') ?>" id="tambah-agenda" class="btn btn-primary mb-2">Tambah Agenda</a>
+        <a href="<?= base_url('/admin/agenda-rapat/tambah-agenda') ?>" id="tambah-agenda" class="btn btn-primary mb-2">Tambah Agenda</a>
     </div>
 <?php endif; ?>
 
@@ -125,7 +125,7 @@
                 console.log(id);
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = base_url + '/dashboard/delete-agenda/' + id;
+                form.action = base_url + '/admin/delete-agenda/' + id;
                 const csrfInput = document.createElement('input');
                 csrfInput.type = 'hidden';
                 csrfInput.name = '<?= csrf_token() ?>';

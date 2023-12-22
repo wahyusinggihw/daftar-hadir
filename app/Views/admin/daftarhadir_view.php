@@ -12,7 +12,7 @@
 
 <?php if ($daftar_hadir != null) : ?>
     <!-- <a href="#" download class="btn btn-primary mb-2">Download File</a> -->
-    <a href="<?= base_url('dashboard/agenda-rapat/daftar-hadir/cetak/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Daftar Hadir</a>
+    <a href="<?= base_url('admin/agenda-rapat/daftar-hadir/cetak/' . $id_agenda) ?>" class="btn btn-secondary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Cetak Daftar Hadir</a>
     <!-- foreach php -->
     <div class="table-container my-3" style="background-color:white; padding: 20px;">
         <table id="example" class="order-column" style="width:100%">
@@ -94,7 +94,7 @@
                 // Trigger the form submission for POST request
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = base_url + '/dashboard/agenda-rapat/daftar-hadir/delete-peserta/' + id;
+                form.action = base_url + '/admin/agenda-rapat/daftar-hadir/delete-peserta/' + id;
                 document.body.appendChild(form);
                 form.submit();
             }

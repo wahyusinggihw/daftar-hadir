@@ -13,7 +13,7 @@
 <div class="">
     <div class="card card-warning">
         <div class="card-body">
-            <form action="<?= base_url('/dashboard/agenda-rapat/edit-agenda/' . $data['id_agenda'] . '/update') ?>" method="post">
+            <form action="<?= base_url('/admin/agenda-rapat/edit-agenda/' . $data['id_agenda'] . '/update') ?>" method="post">
                 <?= csrf_field() ?>
                 <input type="hidden" id="text" name="id_agenda" value="<?= $data['id_agenda'] ?>">
                 <div class="row">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="<?= base_url('dashboard/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
+                <a href="<?= base_url('admin/agenda-rapat') ?>" class="btn btn-secondary">Batal</a>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>

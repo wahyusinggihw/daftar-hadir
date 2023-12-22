@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= base_url('dashboard') ?>" class="brand-link" style="background-color: #007bff;">
+    <a href="<?= base_url('admin') ?>" class="brand-link" style="background-color: #007bff;">
         <img src="<?php echo base_url('assets/img/pemkab.png'); ?>" alt="AdminLTE Logo" class="brand-image" style="opacity: .8;" width="100">
         <span class="brand-text font-weight-light"><img src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="AdminLTE Logo" style="margin-left: 5px;" width="150;"></span>
     </a>
@@ -43,7 +43,7 @@
                with font-awesome or any other icon font library -->
                 <?php if (session()->get('role') != 'operator') : ?>
                     <li class="nav-item">
-                        <a href="<?= base_url('/dashboard') ?>" class="nav-link <?= uri_string() == 'dashboard' ? 'active' : '' ?>">
+                        <a href="<?= base_url('/admin') ?>" class="nav-link <?= uri_string() == 'admin' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Home</p>
                         </a>
@@ -52,7 +52,7 @@
 
                 <?php if (session()->get('role') == 'superadmin') : ?>
                     <li class="nav-item">
-                        <a href="<?= base_url('/dashboard/kelola-admin') ?>" class="nav-link <?= uri_string() == 'dashboard/kelola-admin' ? 'active' : '' ?>">
+                        <a href="<?= base_url('/admin/kelola-admin') ?>" class="nav-link <?= uri_string() == 'admin/kelola-admin' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Kelola Admin</p>
                         </a>
@@ -61,13 +61,13 @@
 
                 <?php if (session()->get('role') == 'admin') : ?>
                     <li class="nav-item">
-                        <a href="<?= base_url('/dashboard/kelola-bidang') ?>" class="nav-link <?= uri_string() == 'dashboard/kelola-bidang' ? 'active' : '' ?>">
+                        <a href="<?= base_url('/admin/kelola-bidang') ?>" class="nav-link <?= uri_string() == 'admin/kelola-bidang' ? 'active' : '' ?>">
                             <i class="nav-icon fa-solid fa-sitemap"></i>
                             <p>Kelola Bidang</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('/dashboard/kelola-admin') ?>" class="nav-link <?= uri_string() == 'dashboard/kelola-admin' ? 'active' : '' ?>">
+                        <a href="<?= base_url('/admin/kelola-admin') ?>" class="nav-link <?= uri_string() == 'admin/kelola-admin' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Kelola Operator</p>
                         </a>
@@ -75,7 +75,7 @@
                 <?php endif; ?>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('/dashboard/agenda-rapat') ?>" class="nav-link <?= uri_string() == "dashboard/agenda-rapat" ? 'active' : '' ?>">
+                    <a href="<?= base_url('/admin/agenda-rapat') ?>" class="nav-link <?= uri_string() == "admin/agenda-rapat" ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Agenda Rapat</p>
                     </a>

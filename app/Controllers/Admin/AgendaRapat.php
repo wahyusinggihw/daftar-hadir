@@ -114,7 +114,7 @@ class AgendaRapat extends BaseController
             // 'status' => 'tersedia'
         ]);
 
-        return redirect('dashboard/agenda-rapat')->with('success', 'Data berhasil ditambahkan.');
+        return redirect('admin/agenda-rapat')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($slug)
@@ -181,7 +181,7 @@ class AgendaRapat extends BaseController
 
         $this->agendaRapat->updateAgenda($idAgenda, $data);
 
-        return redirect('dashboard/agenda-rapat')->with('success', 'Data berhasil diubah.');
+        return redirect('admin/agenda-rapat')->with('success', 'Data berhasil diubah.');
     }
 
     public function delete($id)
@@ -190,7 +190,7 @@ class AgendaRapat extends BaseController
         if ($agenda) {
             $this->deleteSignatures($agenda['id_agenda']);
             $this->agendaRapat->delete($id);
-            return redirect()->to('/dashboard/agenda-rapat')->with('success', 'Data berhasil dihapus.');
+            return redirect()->to('/admin/agenda-rapat')->with('success', 'Data berhasil dihapus.');
         }
     }
 

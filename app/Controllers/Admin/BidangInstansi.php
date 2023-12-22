@@ -67,7 +67,7 @@ class BidangInstansi extends BaseController
 
         // dd($data);
         $this->bidangModel->insert($data);
-        return redirect()->to('/dashboard/kelola-bidang')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->to('/admin/kelola-bidang')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit($slug)
@@ -106,7 +106,7 @@ class BidangInstansi extends BaseController
         $this->bidangModel->updateBidang($idBidang, $data);
 
         session()->setFlashdata('success', 'Data berhasil diubah.');
-        return redirect('dashboard/kelola-bidang');
+        return redirect('admin/kelola-bidang');
     }
 
     public function delete($id)
@@ -114,7 +114,7 @@ class BidangInstansi extends BaseController
         $query = $this->bidangModel->find($id);
         if ($query) {
             $this->bidangModel->delete($id);
-            return redirect()->to('/dashboard/kelola-bidang')->with('success', 'Data berhasil dihapus');
+            return redirect()->to('/admin/kelola-bidang')->with('success', 'Data berhasil dihapus');
         }
     }
 

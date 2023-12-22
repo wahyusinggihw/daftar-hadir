@@ -5,7 +5,7 @@
 <div class="">
     <div class="card card-primary">
         <div class="card-body">
-            <form action="<?= base_url('dashboard/kelola-admin/tambah-admin') ?>" method="post">
+            <form action="<?= base_url('admin/kelola-admin/tambah-admin') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-sm-6">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="<?= base_url('dashboard/kelola-admin') ?>" type="submit" class="btn btn-secondary">Batal</a>
+                <a href="<?= base_url('admin/kelola-admin') ?>" type="submit" class="btn btn-secondary">Batal</a>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
         </div>

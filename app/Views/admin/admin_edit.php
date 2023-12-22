@@ -4,7 +4,7 @@
 <div class="">
     <div class="card card-warning">
         <div class="card-body">
-            <form action="<?= base_url('/dashboard/kelola-admin/edit-admin/' . $data['id_admin'] . '/update') ?>" method="post">
+            <form action="<?= base_url('/admin/kelola-admin/edit-admin/' . $data['id_admin'] . '/update') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-sm-6">

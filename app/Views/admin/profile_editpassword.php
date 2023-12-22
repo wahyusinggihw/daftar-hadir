@@ -13,7 +13,7 @@
 <div class="col-md-8 my-2">
     <div class="card card-warning">
         <div class="card-body">
-            <form action="<?= base_url('dashboard/profile/edit-profilepassword/' . $data['id_admin']) ?>" method="post">
+            <form action="<?= base_url('admin/profile/edit-profilepassword/' . $data['id_admin']) ?>" method="post">
                 <?= csrf_field() ?>
 
                 <input type="hidden" id="text" name="id" value="<?= $data['id_admin'] ?>">

@@ -12,7 +12,7 @@
 <?php endif; ?>
 
 <?php if (session()->get('role') != 'operator') : ?>
-    <a href="<?= base_url('dashboard/kelola-bidang/tambah-bidang') ?>" class="btn btn-primary mb-2">Tambah Bidang</a>
+    <a href="<?= base_url('admin/kelola-bidang/tambah-bidang') ?>" class="btn btn-primary mb-2">Tambah Bidang</a>
 <?php endif; ?>
 
 <div class="table-container my-3" style="background-color:white; padding: 20px;">
@@ -37,8 +37,8 @@
                     <td>
                         <div class="row">
                             <div class="col-lg-12 btn-group">
-                                <!-- <a href="<?= base_url('dashboard/kelola-admin/view-agenda/' . $item['slug']) ?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a> -->
-                                <a href="<?= base_url('dashboard/kelola-bidang/edit-bidang/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fa-solid fa-pen"></i></a>
+                                <!-- <a href="<?= base_url('admin/kelola-admin/view-agenda/' . $item['slug']) ?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a> -->
+                                <a href="<?= base_url('admin/kelola-bidang/edit-bidang/' . $item['slug']) ?>" class="btn btn-warning mx-2"><i class="fa-solid fa-pen"></i></a>
                                 <button href="#" class="btn btn-danger delete-button" data-id="<?= $item['id_bidang'] ?>"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                 console.log(id);
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = base_url + '/dashboard/kelola-bidang/delete-bidang/' + id;
+                form.action = base_url + '/admin/kelola-bidang/delete-bidang/' + id;
                 document.body.appendChild(form);
                 form.submit();
             }

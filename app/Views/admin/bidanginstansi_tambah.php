@@ -13,7 +13,7 @@
 <div class="col-md-8 my-2">
     <div class="card card-primary">
         <div class="card-body">
-            <form action="<?= base_url('dashboard/kelola-bidang/tambah-bidang/store') ?>" method="post">
+            <form action="<?= base_url('admin/kelola-bidang/tambah-bidang/store') ?>" method="post">
                 <?= csrf_field() ?>
 
                 <label for="nama">Nama Bidang:</label>
@@ -35,7 +35,7 @@
                 </div>
                 <br>
 
-                <a href="<?= base_url('dashboard/kelola-bidang') ?>" type="submit" class="btn btn-secondary">Batal</a>
+                <a href="<?= base_url('admin/kelola-bidang') ?>" type="submit" class="btn btn-secondary">Batal</a>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
         </div>

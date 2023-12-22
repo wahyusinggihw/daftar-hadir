@@ -42,11 +42,11 @@
                         <p class="float-right"><?= $profile['username']  ?></p>
                     </li>
                     <!-- <li class="list-group-item">
-                            <b>Password</b> <a href="<?= base_url('dashboard/profile/edit-profilepassword/' . $profile['slug']) ?>" class="float-right" style="text-decoration: none;">Ganti Password</a>
+                            <b>Password</b> <a href="<?= base_url('admin/profile/edit-profilepassword/' . $profile['slug']) ?>" class="float-right" style="text-decoration: none;">Ganti Password</a>
                         </li> -->
 
                 </ul>
-                <a href="<?= base_url('dashboard/profile/edit-profile/' . $profile['slug']) ?>" class="btn btn-warning btn-block"><b>Edit Profile</b></a>
+                <a href="<?= base_url('admin/profile/edit-profile/' . $profile['slug']) ?>" class="btn btn-warning btn-block"><b>Edit Profile</b></a>
             </div>
 
         </div>

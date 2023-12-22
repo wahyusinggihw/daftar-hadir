@@ -32,7 +32,7 @@ class LoggedInFilter implements FilterInterface
 
         if (session()->get('logged_in')) {
             // Redirect to the dashboard
-            return redirect()->to('/dashboard');
+            return redirect()->to('/admin');
         }
 
         return $request;

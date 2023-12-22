@@ -134,7 +134,7 @@ class Admin extends BaseController
         }
 
         $this->adminModel->insert($data);
-        return redirect()->to('/dashboard/kelola-admin')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->to('/admin/kelola-admin')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit($slug)
@@ -182,7 +182,7 @@ class Admin extends BaseController
             'password' => password_hash($this->request->getVar('new-password'), PASSWORD_DEFAULT)
         ]);
 
-        return redirect()->to('/dashboard/kelola-admin')->with('success', 'Data berhasil diubah');
+        return redirect()->to('/admin/kelola-admin')->with('success', 'Data berhasil diubah');
     }
 
     public function delete($id)
@@ -192,7 +192,7 @@ class Admin extends BaseController
         if ($admin) {
             $this->deleteAvatar($admin['id_admin']);
             $this->adminModel->delete($id);
-            return redirect()->to('/dashboard/kelola-admin')->with('success', 'Data berhasil dihapus');
+            return redirect()->to('/admin/kelola-admin')->with('success', 'Data berhasil dihapus');
         }
     }
 

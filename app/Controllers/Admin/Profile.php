@@ -108,7 +108,7 @@ class Profile extends BaseController
             'password' => password_hash($this->request->getVar('new-password'), PASSWORD_DEFAULT)
         ]);
         session()->setFlashdata('success', 'Data berhasil diubah.');
-        return redirect()->to('/dashboard/profile')->with('success', 'Data berhasil diubah');
+        return redirect()->to('/admin/profile')->with('success', 'Data berhasil diubah');
     }
 
     //update profile
@@ -163,6 +163,6 @@ class Profile extends BaseController
         session()->remove('avatar');
         session()->set('avatar', $imageName);
 
-        return redirect()->to('/dashboard/profile')->with('success', 'Data berhasil diubah');
+        return redirect()->to('/admin/profile')->with('success', 'Data berhasil diubah');
     }
 }
