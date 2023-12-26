@@ -1,7 +1,7 @@
 <?= $this->include('public/templates/header'); ?>
 
 <!-- <body> -->
-<div class="container-auth mt-3">
+<div class="container-auth mt-6">
     <div class="row justify-content-center align-items-center text-center">
         <div class="animate__animated animate__tada animate__repeat-2">
             <div class="d-flex align-items-center justify-content-center flex-column mt-4">

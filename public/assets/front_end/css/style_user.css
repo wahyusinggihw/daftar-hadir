@@ -7,8 +7,11 @@
     --acsent-color: #47536E;
 }
 
-body {
+*{
     font-family: 'Poppins', sans-serif;
+}
+
+body {
     height: 100%;
     width: 100%;
     background-size: cover;

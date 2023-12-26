@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard <?php isset($title) ? print('- ' . $title) : '' ?></title>
   <link rel="shortcut icon" href="<?= base_url('assets/img/icon.png') ?>" type="image/x-icon">
-  <link rel="stylesheet" href="<?= base_url('assets/back_end/style_admin.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('assets/back_end/css/style_admin.css') ?>">
 
 
   <!-- Google Font: Source Sans Pro -->

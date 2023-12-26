@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="<?php echo base_url('assets/back_end/changepass.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/back_end/css/changepass.css'); ?>">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -93,8 +93,8 @@
         </form>
     </div>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/admin.js') ?>"></script>
+    <script src="<?php echo base_url('assets/back_end/js/mata.js'); ?>"></script>
+    <script src="<?= base_url('assets/back_end/js/admin.js') ?>"></script>
 </body>
 
 
