@@ -1,10 +1,5 @@
 <?= $this->include('public/templates/header') ?>
 
-<?= $this->section('style') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
-<?= $this->endSection(); ?>
-
-
 <body style="background-image:url(<?= base_url('assets/img/bg_home.png') ?>);">
   <!-- Modal -->
   <?php if (session()->getFlashdata('error')) : ?>

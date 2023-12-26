@@ -9,6 +9,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-attachment: fixed;
 }
 
 
@@ -150,11 +156,6 @@ body {
 }
 
 .container-qrcode {
-    margin-top: 80px;
-    margin-bottom: 20px;
-}
-
-.container-form {
     margin-top: 80px;
     margin-bottom: 20px;
 }
@@ -387,8 +388,8 @@ body {
 
 /* FOOTER */
 .title-footer {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
     color: var(--color-main);
     text-align: center;
 }
@@ -396,6 +397,7 @@ body {
 .section-footer {
     width: 100%;
     padding-bottom: 15px;
+    margin-top: 50px;
 }
 
 @media (min-width: 576px) {
@@ -440,69 +442,6 @@ body {
     }
 }
 
-
-/* RADIO BUTTON */
-.myradio {
-    display: block;
-    position: relative;
-    margin-bottom: 12px;
-    margin-right: 30px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.myradio input[type="radio"] {
-    display: none;
-}
-
-.myradio input[type="radio"]+label {
-    font-weight: 500;
-    font-size: 17px;
-    margin-right: 15px;
-}
-
-.myradio input[type="radio"]+label span {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin: -2px 5px 0 0;
-    vertical-align: middle;
-    cursor: pointer;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    border: 2px solid #405C98;
-}
-
-.myradio input[type="radio"]+label span {
-    background-color: #fff;
-}
-
-.myradio input[type="radio"]:checked+label {
-    color: #333;
-    font-weight: 600;
-}
-
-.myradio input[type="radio"]:checked+label span {
-    background-color: #405C98;
-    border: 2px solid #ffffff;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
-}
-
-.myradio input[type="radio"]+label span,
-input[type="radio"]:checked+label span {
-    -webkit-transition: background-color 0.24s linear;
-    -o-transition: background-color 0.24s linear;
-    -moz-transition: background-color 0.24s linear;
-    transition: background-color 0.24s linear;
-}
-
-
-
-
-
 /* CALLOUT */
 .bs-callout {
     margin: 20px 0;
@@ -546,4 +485,325 @@ input[type="radio"]:checked+label span {
 .bs-callout-info {
     background-color: #f0f7fd;
     border-color: #5bc0de;
+}
+
+/* Css Change Password */
+
+
+
+/* CSS Form Absensi */
+
+:root {
+    --form-control-color: #405C98;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container-form {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.container-form header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+.container-form p {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.container-form .form {
+    margin-top: 0px;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.input-box input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+}
+
+/* .form .column {
+  display: flex;
+  column-gap: 15px;
+} */
+
+.form .status-box {
+    margin-top: 20px;
+}
+
+.status-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.form :where(.status-option, .status) {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    flex-direction: row;
+}
+
+.form .status {
+    column-gap: 5px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #405C98;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.form :where(.status input, .status label) {
+    cursor: pointer;
+}
+
+.status label {
+    color: #707070;
+}
+
+.form button {
+    height: 55px;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #405C98;
+}
+
+.form button:hover {
+    background: #6b85be;
+    color: white;
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+
+    .form :where(.status-option, .status) {
+        row-gap: 15px;
+    }
+}
+
+/* bagian loader */
+.inputcontainer {
+    position: relative;
+}
+
+.inputcontainer input {
+    width: 100%;
+    /* margin-top: 20px; */
+}
+
+.form .inputcontainer {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.inputcontainer label {
+    color: #333;
+}
+
+.note {
+    background-color: #cff4fc;
+    border-left: 6px solid #9eeaf9;
+    padding: 1.25rem;
+}
+
+.note p {
+    color: #055160;
+    text-align: justify;
+    align-self: start;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+/* bagian tanda tangan */
+.signature-pad {
+    width: 100%;
+    /* max-width: 565px; */
+}
+
+.signature-pad h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.input-box .signature-button {
+    font-size: 1rem;
+    font-weight: 400;
+    position: absolute;
+    right: 0px;
+}
+
+.signature-canvas {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    cursor: crosshair;
+    width: 100%;
+    height: 200px;
+    top: 0;
+    left: 0;
+}
+
+/* car yang bari */
+.search {
+    height: 50px;
+    color: #333;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin: 0.5em 0;
+    padding: 0.5em 0.5em 0.5em 1em;
+    -webkit-transition: border-color 0.3s ease;
+    /* Adjust the duration here */
+    transition: border-color 0.3s ease;
+    /* Adjust the duration here */
+    width: 100%;
+}
+
+.search a,
+.search input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    outline: 0;
+}
+
+#cariNikButton i {
+    font-size: 23px;
+    /* color: #333; */
+    color: #22b2a9;
+}
+
+#loadingIndicator {
+    font-size: 23px;
+    /* color: #333; */
+    color: #22b2a9;
+}
+
+.search a {
+    cursor: pointer;
+    padding: 0 0.25em;
+}
+
+.search input {
+    -webkit-box-flex: 1;
+    flex: 1;
+    /* font-weight: 500; */
+    font-size: 1rem;
+}
+
+/* tambahan invalid */
+.invalid-input {
+    border: 1px solid #dc3545;
+    /* border-color: 1px solid #dc3545; */
+}
+
+.invalid-input-radio {
+    color: #dc3545 !important;
+}
+
+.invalid-response {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.disabled-button {
+    pointer-events: none;
+    /* Prevents the anchor from being clickable */
+    opacity: 0.6;
+    /* Reduces the opacity to visually indicate it's disabled */
+}
+
+.greyed-out-form {
+    background-color: #efefef4d;
+    /* Change the background color to grey */
+    pointer-events: none;
+    /* Prevents interactions with the form */
 }

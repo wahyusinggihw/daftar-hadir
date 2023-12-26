@@ -134,6 +134,21 @@ body {
     transform: translateY(0);
     cursor: pointer;
 }
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-40%);
+    cursor: pointer;
+}
+
+.password-toggle-btn i {
+    font-size: 1.2em;
+}
 
 .invalid-feedback {
     display: block;

@@ -71,6 +71,5 @@
         </div>
     </div>
 </div>
-<script src="<?php echo base_url('assets/js/mata.js'); ?>"></script>
 <!-- </body> -->
 <?= $this->include('admin/templates/footer'); ?>

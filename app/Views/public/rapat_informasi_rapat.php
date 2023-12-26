@@ -47,6 +47,4 @@
     </div>
 </body>
 
-<script src="<?php echo base_url('assets/js/info.js'); ?>"></script>
-
 <?= $this->include('public/templates/footer'); ?>
