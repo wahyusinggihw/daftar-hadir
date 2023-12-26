@@ -20,7 +20,6 @@ body {
     background-attachment: fixed;
 }
 
-
 .section-top {
     background-color: #fff;
     padding: 10px 0;
@@ -386,6 +385,14 @@ body {
     font-weight: 600;
 }
 
+/* Auth Berhasil */
+
+.container-auth{
+    display: flex;
+    margin-top: 70px;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 

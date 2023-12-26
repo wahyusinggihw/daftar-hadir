@@ -1,10 +1,10 @@
 <?= $this->include('public/templates/header'); ?>
 
 <!-- <body> -->
-<div class="container-auth mt-6">
+<div class="container-auth">
     <div class="row justify-content-center align-items-center text-center">
         <div class="animate__animated animate__tada animate__repeat-2">
-            <div class="d-flex align-items-center justify-content-center flex-column mt-4">
+            <div class="d-flex align-items-center justify-content-center flex-column mt-5">
                 <i class="fa-regular fa-circle-check fa-4x text-success"></i>
                 <h1 class="h5 mb-3 fw-normal">
                     <div class="fs-4">Berhasil</div>
@@ -18,7 +18,7 @@
     <!-- 
             cek apakah ada variable session logged_in, jika true maka akan di redirect ke halaman dashboard
         -->
-    <a href="<?= base_url('/login') ?>" class="btn btn-secondary my-1" id="btnAuthBerhasil">Lanjutkan</a>
+    <a href="<?= base_url('/login') ?>" class="btn btn-secondary mt-4" id="btnAuthBerhasil">Lanjutkan</a>
 </div>
 
 <script>

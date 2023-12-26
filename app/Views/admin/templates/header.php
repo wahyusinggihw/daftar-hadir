@@ -26,7 +26,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?= base_url('assets/back_end/admin_lte/plugins/daterangepicker/daterangepicker.css') ?>">
   <!-- summernote -->
-  <link rel="stylesheet" href="<?= base_url('assets/plugins/summernote/summernote-bs4.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('assets/back_end/admin_lte/plugins/summernote/summernote-bs4.min.css') ?>">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
