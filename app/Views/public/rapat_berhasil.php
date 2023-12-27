@@ -2,7 +2,7 @@
 
 <body>
     <div class="section-content">
-        <div class="container-lg container-form">
+        <div class="container-lg container-notif">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-8 col-xxl-8 shadow-lg p-3">
                     <div class="title-judul-form">
