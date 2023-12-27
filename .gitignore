@@ -134,3 +134,8 @@ nb-configuration.xml
 /public/uploads/avatars/*
 !/public/uploads/avatars/default.png
 !/public/uploads/avatars/index.html
+
+#ignore admin lte
+!/public/assets/back_end/admin_lte/build
+!/public/assets/back_end/admin_lte/dist
+    
