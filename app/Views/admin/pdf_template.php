@@ -77,6 +77,10 @@
         .signature-container {
             page-break-inside: avoid;
         }
+
+        .isi-table {
+            text-align: left;
+        }
     </style>
 
 
@@ -124,11 +128,11 @@
         <?php $no = 1; ?>
         <?php foreach ($daftarHadir as $item) : ?>
             <tr>
-                <td class="no-column"><?= $no++ ?></td>
-                <td><?= $item['nama'] ?></td>
-                <td><?= $item['asal_instansi'] ?></td>
-                <td><?= $item['no_hp'] ?></td>
-                <td><img src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $item['ttd']) ?>" alt="ttd <?= $item['nama'] ?>"></td>
+                <td class="no-column isi-table"><?= $no++ ?></td>
+                <td class="isi-table"><?= $item['nama'] ?></td>
+                <td class="isi-table"><?= $item['asal_instansi'] ?></td>
+                <td class="isi-table"><?= $item['no_hp'] ?></td>
+                <td class="isi-table"><img src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace(base_url(), '', $item['ttd']) ?>" alt="ttd <?= $item['nama'] ?>"></td>
             </tr>
         <?php endforeach; ?>
     </table>
