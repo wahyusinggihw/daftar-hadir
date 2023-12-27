@@ -32,11 +32,13 @@ class Rapat extends BaseController
         // dd($idAgenda);
         $agendaRapat = $this->agendaRapat->getAgendaRapatByIdAgenda($idAgenda);
         $daftarHadir = $this->daftarHadir->getDaftarHadirByID($agendaRapat['id_agenda'], $nik);
+        $statusPegawai = $this->session->get('status_pegawai');
         // dd($daftarHadir);
         $data = [
             'title' => 'Behasil',
             'agendaRapat' => $agendaRapat,
             'daftarHadir' => $daftarHadir[0],
+            'statusPegawai' => $statusPegawai == 'asn' ? 'ASN' : 'Non ASN',
         ];
         return view('public/rapat_berhasil', $data);
     }
@@ -265,6 +267,7 @@ class Rapat extends BaseController
         $idAgenda = $this->request->getVar('id_agenda');
         $nip = $this->request->getVar('nip');
         $riwayatKehadiran = $this->daftarHadir->sudahAbsen($nip, $idAgenda);
+        $statusPegawai = $this->request->getVar('asnNonAsnRadio');
 
         if (!$riwayatKehadiran) {
             $statusUser = $this->request->getVar('statusRadio');
@@ -274,6 +277,7 @@ class Rapat extends BaseController
             // $this->session->remove('id_agenda');
             session()->setFlashdata('kode_valid', true);
             session()->setFlashdata('id_agenda', $idAgenda);
+            session()->setFlashdata('status_pegawai', $statusPegawai);
             session()->setFlashdata('nik', $nip);
             return redirect('berhasil')->with('success', 'Terimakasih telah mengisi daftar hadir!');
         } else {
