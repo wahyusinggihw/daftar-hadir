@@ -49,7 +49,7 @@
         .table-row {
             font-size: 10px;
             border-collapse: collapse;
-            width: 700px;
+            width: max-content;
         }
 
         .table-row td {
