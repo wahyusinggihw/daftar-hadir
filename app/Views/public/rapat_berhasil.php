@@ -14,10 +14,12 @@
                     </div>
                     <dl class="row">
                         <dt class="col-md-3">Status</dt>
-                        <dd class="col-md-9"><?= $daftarHadir['status'] ?></dd>
+                        <dd class="col-md-9"><?= $daftarHadir['status'] == 'pegawai' ? 'Pegawai' : 'Tamu' ?></dd>
 
-                        <dt class="col-md-3">Status Pegawai</dt>
-                        <dd class="col-md-9">ASN</dd>
+                        <?php if ($daftarHadir['status'] == 'pegawai') : ?>
+                            <dt class="col-md-3">Status Pegawai</dt>
+                            <dd class="col-md-9"><?= $statusPegawai ?></dd>
+                        <?php endif; ?>
 
                         <dt class="col-md-3">Nama Lengkap</dt>
                         <dd class="col-md-9"><?= $daftarHadir['nama'] ?></dd>
