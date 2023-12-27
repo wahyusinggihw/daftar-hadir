@@ -134,7 +134,3 @@ nb-configuration.xml
 /public/uploads/avatars/*
 !/public/uploads/avatars/default.png
 !/public/uploads/avatars/index.html
-
-# public\assets\build
-!/public/assets/build
-!/public/assets/dist
