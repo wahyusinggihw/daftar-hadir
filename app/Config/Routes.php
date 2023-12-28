@@ -31,10 +31,10 @@ $routes->get('gagal', 'Rapat::gagalPage', ['filter' => 'cekkode']);
 $routes->get('/rapat/informasi/(:segment)', 'Rapat::informasiRapat/$1');
 
 // AJAX PESERTA RAPAT (form daftar hadir)
-$routes->get('api/peserta/(:segment)', 'Api\UsersControllerAPI::getPeserta/$1');
-$routes->get('api/pegawai/(:segment)', 'Api\UsersControllerAPI::getPegawai/$1');
-$routes->get('api/pegawai/asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiAsn/$1');
-$routes->get('api/pegawai/non-asn/(:segment)', 'Api\UsersControllerAPI::getPegawaiNonAsn/$1');
+$routes->get('api/peserta/(:segment)', 'API\UsersControllerAPI::getPeserta/$1');
+$routes->get('api/pegawai/(:segment)', 'API\UsersControllerAPI::getPegawai/$1');
+$routes->get('api/pegawai/asn/(:segment)', 'API\UsersControllerAPI::getPegawaiAsn/$1');
+$routes->get('api/pegawai/non-asn/(:segment)', 'API\UsersControllerAPI::getPegawaiNonAsn/$1');
 
 // API
 $routes->group('api', ['filter' => 'basicAuth'], function ($routes) {
